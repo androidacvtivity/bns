@@ -1,0 +1,39 @@
+﻿
+
+
+    INSERT INTO CIS2.FORM_CUIIO
+    
+        (
+        
+        CUIIO,
+        CUIIO_VERS,
+        FORM,
+        FORM_VERS,
+        STATUT 
+        )
+
+
+
+
+SELECT 
+
+CUIIO,
+CUIIO_VERS,
+38 FORM,
+2000 FORM_VERS,
+'1' STATUT  
+
+    FROM CIS2.RENIM
+    
+    
+    WHERE
+
+
+    CUIIO IN (
+2030049229,
+40706922,
+41196386,
+41228666
+)
+
+AND CUIIO_VERS IN (2007)

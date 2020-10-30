@@ -1,0 +1,9 @@
+﻿
+
+
+
+    SELECT *    
+    FROM USER_BANCU.VW_KATALOG_EI_78_1036
+    
+    WHERE CAEM2 IS NOT NULL
+    ;

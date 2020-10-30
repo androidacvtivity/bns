@@ -1,0 +1,724 @@
+﻿--DECLARE
+--
+--  CURSOR C IS
+--
+--
+--SELECT 
+--    DF.PERIOADA,
+--    DF.FORM,
+--    DF.FORM_VERS,
+--    DF.ID_MDTABLE,
+--    DF.COD_CUATM,
+--    DF.NR_SECTIE,
+--    DF.NUME_SECTIE,
+--    DF.NR_SECTIE1,
+--    DF.NUME_SECTIE1,
+--    DF.NR_SECTIE2,
+--    DF.NUME_SECTIE2,
+--    DF.NR_ROW  NR_ROW,
+--    DF.ORDINE,
+--    DF.DECIMAL_POS,
+--    DF.NUME_ROW,
+--    DF.COL1,
+--    DF.COL2,
+--    DF.COL3,
+--    DF.COL4,
+--    DF.COL5
+--    
+--FROM 
+--(
+  SELECT
+  :pPERIOADA AS PERIOADA,                                                    
+  :pFORM AS FORM,                                                            
+  :pFORM_VERS AS FORM_VERS,                                                  
+  :pID_MDTABLE AS ID_MDTABLE,                                                
+  :pCOD_CUATM AS COD_CUATM,   
+  VB.FULL_CODE AS NR_SECTIE,                                                         
+  VB.CFP_DENUMIRE AS NUME_SECTIE, 
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+  CASE WHEN VB.COL2 = 0 THEN NULL ELSE VB.COL2 END||'~'||VB.ORDINE AS NR_ROW,
+  VB.ORDINE,
+  '00000' AS DECIMAL_POS,
+  VB.DENUMIRE AS NUME_ROW,
+--  DENUMIRE,
+--  ORDINE,
+--  COL1,
+  CASE WHEN VB.COL3 = 0 THEN NULL ELSE VB.COL3 END     AS COL1,
+  CASE WHEN VB.COL4 = 0 THEN NULL ELSE VB.COL4 END     AS COL2,
+  CASE WHEN VB.COL5 = 0 THEN NULL ELSE VB.COL5 END     AS COL3,
+  CASE WHEN VB.COL6 = 0 THEN NULL ELSE VB.COL6 END     AS COL4,
+  CASE WHEN VB.COL7 = 0 THEN NULL ELSE VB.COL7 END     AS COL5
+ 
+FROM
+(
+SELECT
+--  D.RIND_S,
+--  D.RIND_D,
+--  D.ID_MD_S,
+--  D.ID_MD_D,
+  T.CFP,
+  T.FULL_CODE,
+  T.CFP_DENUMIRE,
+  T.DENUMIRE,
+  T.ORDINE,
+  SUM(CASE WHEN D.CAPITOL IN (1010) THEN D.COL1_S ELSE NULL END) AS COL1,
+  ----------------------------------------------------------------------------------
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R301_1 ELSE NULL END) AS COL2,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R302_1 ELSE NULL END) AS COL3,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R303_1 ELSE NULL END) AS COL4,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R304_1 ELSE NULL END) AS COL5,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R305_1 ELSE NULL END) AS COL6,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R305_2 ELSE NULL END) AS COL7
+  -----------------------------------------------------------------------------------
+  
+FROM
+(
+SELECT
+  A.RIND AS RIND_S,
+  B.RIND AS RIND_D,
+  A.CUIIO,
+  CC.CODUL AS CFP,
+  CC.DENUMIRE AS CFP_DENUMIRE,
+  A.CAPITOL,
+  A.ID_MD AS ID_MD_S,
+  B.ID_MD AS ID_MD_D,
+  SUM(A.COL1) AS COL1_S,
+  SUM(B.COL1) AS COL1_D
+FROM
+(
+SELECT
+      D.CUIIO,
+      D.CFP,
+      D.RIND,
+      D.ID_MD,
+      D.CAPITOL,
+      CIS2.NVAL(D.COL1) AS COL1
+    FROM
+      CIS2.VW_DATA_ALL D
+       
+    WHERE
+     (D.PERIOADA =:pPERIOADA) AND 
+     (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND IN ('1','2','3','4','5','6')
+) A
+INNER JOIN
+(      
+ SELECT
+      D.CUIIO,
+      D.CFP,
+      D.RIND,
+      D.ID_MD,
+      D.CAPITOL,
+      CIS2.NVAL(D.COL1) AS COL1
+    FROM
+      CIS2.VW_DATA_ALL D
+
+    WHERE
+     (D.PERIOADA =:pPERIOADA) AND 
+      (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND NOT IN ('00','--','1','2','3','4','5','6')
+) B ON (A.CUIIO=B.CUIIO)
+  ------------------------------------------------------------------------------------
+--  INNER JOIN CIS2.VW_CL_CUATM C ON (A.CUATM=C.CODUL) 
+----  INNER JOIN VW_CL_CUATM CC ON (C.GRUPA=CC.CODUL)
+--  INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%' )
+--WHERE
+--  CC.PRGS IN (2)
+  ------------------------------------------------------------------------------------
+
+  INNER JOIN CIS2.VW_CL_CFP C ON  (C.CODUL=A.CFP)
+  INNER JOIN CIS2.VW_CL_CFP CC ON (C.FULL_CODE LIKE '%'||CC.CODUL||';%')
+  ------------------------------------------------------------------------
+  WHERE 
+  CC.CODUL NOT IN ('10','17','19','21','25','26','27','29')
+
+
+  
+GROUP BY
+  A.RIND,
+  B.RIND,
+  A.ID_MD,
+  B.ID_MD,
+  A.CUIIO,
+  CC.CODUL,
+  CC.DENUMIRE,
+  A.CAPITOL
+) D 
+LEFT JOIN
+(
+-------------------------------------------------------------------------------------
+SELECT
+  D.CUIIO,
+  D.CFP,
+  D.CAPITOL,
+  SUM(CASE WHEN D.RIND IN ('301') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R301_1,
+  SUM(CASE WHEN D.RIND IN ('302') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R302_1,
+  SUM(CASE WHEN D.RIND IN ('303') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R303_1,
+  SUM(CASE WHEN D.RIND IN ('304') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R304_1,
+  SUM(CASE WHEN D.RIND IN ('305') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R305_1,
+  SUM(CASE WHEN D.RIND IN ('305') THEN CIS2.NVAL(D.COL2) ELSE NULL END) AS R305_2
+ 
+FROM
+  CIS2.VW_DATA_ALL D
+WHERE
+  (D.PERIOADA =:pPERIOADA) AND 
+  (:pID_MDTABLE=:pID_MDTABLE) AND
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (20) AND
+  D.CAPITOL IN (1012)
+GROUP BY
+  D.CUIIO,
+  D.CFP,
+  D.CAPITOL
+----------------------------------------------------------------------------------
+
+) DD ON (D.CUIIO=DD.CUIIO)
+RIGHT JOIN
+(
+SELECT
+  C.CODUL AS CFP,
+  C.FULL_CODE,
+  C.DENUMIRE AS CFP_DENUMIRE,
+  D.DENUMIRE,
+  D.ORDINE,
+  D.RIND
+FROM  CIS2.MD_RIND_OUT D
+--(
+
+--SELECT 'TOTAL' AS DENUMIRE,                                      '100'   AS ORDINE, '101-102-103-104-105-106-107-108-109-110-111-112-113.1-113.2-113.3-113.4-113.5' AS RIND FROM DUAL UNION
+--SELECT 'Hoteluri si moteluri' AS DENUMIRE,                       '100.1' AS ORDINE, '101-102-103'  AS RIND FROM DUAL UNION
+--SELECT 'Hoteluri' AS DENUMIRE,                                   '101'   AS ORDINE, '101' AS RIND FROM DUAL UNION
+--SELECT 'Hoteluri de tip apartament' AS DENUMIRE,                 '102'   AS ORDINE, '102' AS RIND FROM DUAL UNION
+--SELECT 'Moteluri' AS DENUMIRE,                                   '103'   AS ORDINE, '103' AS RIND FROM DUAL UNION
+--SELECT 'Camine pentru vizitatori' AS DENUMIRE,                   '104' AS ORDINE,   '113.4' AS RIND FROM DUAL UNION
+--SELECT 'Pensiuni turistice si agroturistice - total' AS DENUMIRE,'105' AS ORDINE,   '106-107' AS RIND FROM DUAL UNION  
+--SELECT 'Pensiuni turistice.' AS DENUMIRE,                        '106'   AS ORDINE, '106' AS RIND FROM DUAL UNION  
+--SELECT 'Pensiuni agroturistice.' AS DENUMIRE,                    '107'   AS ORDINE, '107' AS RIND FROM DUAL UNION  
+--
+--SELECT 'Structuri de intremare' AS DENUMIRE,                     '108'   AS ORDINE, '113.1-113.2-113.3' AS RIND FROM DUAL UNION 
+--SELECT 'Sanatorii'              AS DENUMIRE,                     '109' AS ORDINE,   '113.1'  AS RIND FROM DUAL UNION 
+--SELECT 'Pensiuni  de tratament' AS DENUMIRE,                     '110' AS ORDINE,   '113.2'  AS RIND FROM DUAL UNION 
+--SELECT 'Alte structiri de intremare' AS DENUMIRE,                '111' AS ORDINE,   '113.3'  AS RIND FROM DUAL UNION
+--SELECT 'Structuri de odihna' AS DENUMIRE,                        '112'   AS ORDINE, '104-105-108-109' AS RIND FROM DUAL UNION
+--SELECT 'Vila turistica'      AS DENUMIRE,                        '113' AS ORDINE,   '104'    AS RIND FROM DUAL UNION
+--SELECT 'Bungalou'            AS DENUMIRE,                        '114'   AS ORDINE, '105'    AS RIND FROM DUAL UNION
+--SELECT 'Sate de vacanta si alte structuri' AS DENUMIRE,          '115' AS ORDINE,   '109'  AS RIND FROM DUAL UNION
+--SELECT 'Camping'                           AS DENUMIRE,          '116' AS ORDINE,   '108'    AS RIND FROM DUAL UNION
+--SELECT 'Tabere de vacanta'                 AS DENUMIRE,          '117' AS ORDINE,   '110'    AS RIND FROM DUAL 
+--ORDER BY ORDINE
+--) D
+----------------------------------------------------
+--  CROSS JOIN CIS2.VW_CL_CUATM C
+--WHERE
+--  C.PRGS IN (2) AND
+--  C.CODUL NOT IN ('9800000')
+
+   CROSS JOIN CIS2.VW_CL_CFP C
+   WHERE 
+   
+  D.ID_MDTABLE = 7389 
+  AND  C.CODUL NOT IN ('10','17','19','21','25','26','27','29') 
+  
+-------------------------------------------------------
+) T ON (T.RIND LIKE '%'||D.RIND_D||'%' AND T.CFP=D.CFP)
+
+GROUP BY
+  T.CFP,
+  T.FULL_CODE,
+  T.CFP_DENUMIRE,
+  T.DENUMIRE,
+  T.ORDINE
+--  D.RIND_S,
+--  D.RIND_D
+--  D.ID_MD_S,
+--  D.ID_MD_D
+--ORDER BY
+--  T.FULL_CODE
+  
+UNION
+
+SELECT
+--  A.RIND_S,
+--  A.RIND_D,
+--  A.ID_MD_S,
+--  A.ID_MD_D,
+  A.CFP,
+  A.FULL_CODE,
+  A.CFP_DENUMIRE,
+  A.DENUMIRE,
+  TO_NUMBER(A.ORDINE||'.'||A.RIND_S) ORDINE,
+--  A.RIND_D||'.'||A.RIND_S ORDINE,
+  B.COL1,
+  B.COL2,
+  B.COL3,
+  B.COL4,
+  B.COL5,
+  B.COL6,
+  B.COL7
+ 
+FROM
+(
+SELECT
+        C.CODUL AS CFP,
+        C.FULL_CODE,
+        C.DENUMIRE AS CFP_DENUMIRE,    
+        D.RIND_D,
+        D.RIND_S,
+        D.ID_MD_D,
+        D.ID_MD_S, 
+        D.CAPITOL,
+        D.DENUMIRE,
+        T.ORDINE
+    
+        
+    FROM 
+(
+SELECT   '101' RIND_D, '1' RIND_S,  11795  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+    UNION 
+ SELECT   '102' RIND_D, '1' RIND_S,  11796  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+    UNION
+ SELECT   '103' RIND_D, '1' RIND_S,  11797  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL 
+    UNION
+ SELECT   '104' RIND_D, '1' RIND_S,  11798  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL 
+    UNION
+ SELECT   '105' RIND_D, '1' RIND_S,  11799  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+    UNION
+ SELECT   '106' RIND_D, '1' RIND_S,  11800  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+   UNION
+ SELECT   '107' RIND_D, '1' RIND_S,  11801  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+   UNION
+ SELECT   '108' RIND_D, '1' RIND_S,  11802  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+   UNION
+ SELECT   '109' RIND_D, '1' RIND_S,  11803  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+   UNION
+ SELECT   '110' RIND_D, '1' RIND_S,  11804  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+    UNION
+ SELECT   '111' RIND_D, '1' RIND_S,  11805  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL 
+  UNION
+ SELECT   '113.1' RIND_D,  '1' RIND_S,  12238  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.2' RIND_D,  '1' RIND_S,  12240  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.3' RIND_D,  '1' RIND_S,  12241  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.5' RIND_D,  '1' RIND_S,  12242  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '112'   RIND_D,  '1' RIND_S,  12521  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.4'   RIND_D,  '1' RIND_S,  12524  ID_MD_D, 11788  ID_MD_S,  1010    CAPITOL, '5 stele' DENUMIRE  FROM DUAL
+------------------------------------------------------------------------------------------------------------------------- 
+
+ UNION
+ SELECT   '101'   RIND_D,  '2' RIND_S,  11795  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '102'   RIND_D,  '2' RIND_S,  11796  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '103'   RIND_D,  '2' RIND_S,  11797  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '104'   RIND_D,  '2' RIND_S,  11798  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '105'   RIND_D,  '2' RIND_S,  11799  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '106'   RIND_D,  '2' RIND_S,  11800  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '107'   RIND_D,  '2' RIND_S,  11801  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '108'   RIND_D,  '2' RIND_S,  11802  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '109'   RIND_D,  '2' RIND_S,  11803  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '110'   RIND_D,  '2' RIND_S,  11804  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '111'   RIND_D,  '2' RIND_S,  11805  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.1'   RIND_D,  '2' RIND_S,  12238  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL       
+ UNION
+ SELECT   '113.2'   RIND_D,  '2' RIND_S,  12240  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.3'   RIND_D,  '2' RIND_S,  12241  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.5'   RIND_D,  '2' RIND_S,  12242  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '112'    RIND_D,  '2' RIND_S,   12521  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.4'    RIND_D,  '2' RIND_S,   12524  ID_MD_D, 11789  ID_MD_S,  1010    CAPITOL, '4 stele' DENUMIRE  FROM DUAL
+ -------------------------------------------------------------------------------------------------------------------------
+ 
+ UNION
+ SELECT   '101'    RIND_D,  '3' RIND_S,   11795  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '102'    RIND_D,  '3' RIND_S,   11796  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '103'    RIND_D,  '3' RIND_S,   11797  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '104'    RIND_D,  '3' RIND_S,   11798  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '105'    RIND_D,  '3' RIND_S,   11799  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '106'    RIND_D,  '3' RIND_S,   11800  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '107'    RIND_D,  '3' RIND_S,   11801  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '108'    RIND_D,  '3' RIND_S,   11802  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '109'    RIND_D,  '3' RIND_S,   11803  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '110'    RIND_D,  '3' RIND_S,   11804  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '111'    RIND_D,  '3' RIND_S,   11805  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.1'   RIND_D,  '3' RIND_S,   12238  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.2'   RIND_D,  '3' RIND_S,   12240  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.3'   RIND_D,  '3' RIND_S,   12241  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.5'   RIND_D,  '3' RIND_S,   12242  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '112'    RIND_D,  '3' RIND_S,   12521  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.4'    RIND_D,  '3' RIND_S,   12524  ID_MD_D, 11790  ID_MD_S,  1010    CAPITOL, '3 stele' DENUMIRE  FROM DUAL
+------------------------------------------------------------------------------------------------------------------------------
+UNION
+ SELECT   '101'    RIND_D,  '4' RIND_S,   11795  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '102'    RIND_D,  '4' RIND_S,   11796  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '103'    RIND_D,  '4' RIND_S,   11797  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '104'    RIND_D,  '4' RIND_S,   11798  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '105'    RIND_D,  '4' RIND_S,   11799  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '106'    RIND_D,  '4' RIND_S,   11800  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '107'    RIND_D,  '4' RIND_S,   11801  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '108'    RIND_D,  '4' RIND_S,   11802  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '109'    RIND_D,  '4' RIND_S,   11803  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '110'    RIND_D,  '4' RIND_S,   11804  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '111'    RIND_D,  '4' RIND_S,   11805  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.1'   RIND_D,  '4' RIND_S,   12238  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.2'   RIND_D,  '4' RIND_S,   12240  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.3'   RIND_D,  '4' RIND_S,   12241  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.5'   RIND_D,  '4' RIND_S,   12242  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '112'    RIND_D,  '4' RIND_S,   12521  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.4'    RIND_D,  '4' RIND_S,   12524  ID_MD_D, 11791  ID_MD_S,  1010    CAPITOL, '2 stele' DENUMIRE  FROM DUAL
+ 
+ 
+ ----------------------------------------------------------------------------------------------------------------------------
+ UNION
+ SELECT   '101'    RIND_D,  '5' RIND_S,   11795  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '102'    RIND_D,  '5' RIND_S,   11796  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '103'    RIND_D,  '5' RIND_S,   11797  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '104'    RIND_D,  '5' RIND_S,   11798  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '105'    RIND_D,  '5' RIND_S,   11799  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '106'    RIND_D,  '5' RIND_S,   11800  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '107'    RIND_D,  '5' RIND_S,   11801  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '108'    RIND_D,  '5' RIND_S,   11802  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '109'    RIND_D,  '5' RIND_S,   11803  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '110'    RIND_D,  '5' RIND_S,   11804  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '111'    RIND_D,  '5' RIND_S,   11805  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.1'   RIND_D,  '5' RIND_S,   12238  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.2'   RIND_D,  '5' RIND_S,   12240  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.3'   RIND_D,  '5' RIND_S,   12241  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.5'   RIND_D,  '5' RIND_S,   12242  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '112'    RIND_D,  '5' RIND_S,   12521  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.4'    RIND_D,  '5' RIND_S,   12524  ID_MD_D, 11792  ID_MD_S,  1010    CAPITOL, '1 stea' DENUMIRE  FROM DUAL
+ 
+ ---------------------------------------------------------------------------------------------------------------------------
+ UNION
+ SELECT   '101'    RIND_D,  '6' RIND_S,   11795  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '102'    RIND_D,  '6' RIND_S,   11796  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '103'    RIND_D,  '6' RIND_S,   11797  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '104'    RIND_D,  '6' RIND_S,   11798  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '105'    RIND_D,  '6' RIND_S,   11799  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '106'    RIND_D,  '6' RIND_S,   11800  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '107'    RIND_D,  '6' RIND_S,   11801  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '108'    RIND_D,  '6' RIND_S,   11802  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '109'    RIND_D,  '6' RIND_S,   11803  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '110'    RIND_D,  '6' RIND_S,   11804  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '111'    RIND_D,  '6' RIND_S,   11805  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.1'   RIND_D,  '6' RIND_S,   12238  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.2'   RIND_D,  '6' RIND_S,   12240  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.3'   RIND_D,  '6' RIND_S,   12241  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.5'   RIND_D,  '6' RIND_S,   12242  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '112'    RIND_D,  '6' RIND_S,   12521  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ UNION
+ SELECT   '113.4'    RIND_D,  '6' RIND_S,   12524  ID_MD_D, 11793  ID_MD_S,  1010    CAPITOL, 'Neclasificate' DENUMIRE  FROM DUAL
+ 
+ 
+) D
+CROSS JOIN CIS2.VW_CL_CFP C
+    INNER JOIN
+(
+
+    SELECT 
+              ORDINE,
+              RIND
+              
+            FROM CIS2.MD_RIND_OUT D
+            
+            WHERE 
+            
+             D.ID_MDTABLE = 6297
+
+
+
+) T ON (T.RIND = D.RIND_D) 
+--    WHERE
+--      C.PRGS IN (2) AND
+--      C.CODUL NOT IN ('9800000')
+--    ORDER BY
+--      T.ORDINE,
+--      D.RIND_D,
+--      D.RIND_S 
+) A
+LEFT JOIN
+(
+SELECT
+  D.RIND_S,
+  D.RIND_D,
+  D.ID_MD_S,
+  D.ID_MD_D,
+  CC.CODUL AS CFP,
+  SUM(CASE WHEN D.CAPITOL IN (1010) THEN D.COL1_S ELSE NULL END) AS COL1,
+  ------------------------------------------------------------------------------
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R301_1 ELSE NULL END) AS COL2,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R302_1 ELSE NULL END) AS COL3,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R303_1 ELSE NULL END) AS COL4,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R304_1 ELSE NULL END) AS COL5,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R305_1 ELSE NULL END) AS COL6,
+  SUM(CASE WHEN DD.CAPITOL IN (1012) THEN DD.R305_2 ELSE NULL END) AS COL7
+  ------------------------------------------------------------------------------
+  
+ 
+ 
+FROM
+(
+SELECT
+  A.RIND AS RIND_S,
+  B.RIND AS RIND_D,
+  A.CUIIO,
+  C.CODUL AS CFP,
+  A.CAPITOL,
+  A.ID_MD AS ID_MD_S,
+  B.ID_MD AS ID_MD_D,
+  SUM(A.COL1) AS COL1_S,
+  SUM(B.COL1) AS COL1_D
+FROM
+(
+SELECT
+      D.CUIIO,
+      D.CFP,
+      D.RIND,
+      D.ID_MD,
+      D.CAPITOL,
+      CIS2.NVAL(D.COL1) AS COL1
+    FROM
+      CIS2.VW_DATA_ALL D
+  
+    WHERE
+     (D.PERIOADA =:pPERIOADA) AND 
+     (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND IN ('1','2','3','4','5','6')
+) A
+INNER JOIN
+(      
+ SELECT
+      D.CUIIO,
+      D.CFP,
+      D.RIND,
+      D.ID_MD,
+      D.CAPITOL,
+      CIS2.NVAL(D.COL1) AS COL1
+    FROM
+      CIS2.VW_DATA_ALL D
+
+    WHERE
+      (D.PERIOADA =:pPERIOADA) AND 
+     (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND NOT IN ('00','--','1','2','3','4','5','6','113')
+) B ON (A.CUIIO=B.CUIIO)
+--------------------------------------------------------------------------------
+--INNER JOIN CIS2.VW_CL_CUATM C ON (A.CUATM=C.CODUL)
+--INNER JOIN CIS2.VW_CL_CUATM CC ON (C.GRUPA=CC.CODUL)
+-------------------------------------------------------------------------------
+INNER JOIN CIS2.VW_CL_CFP C ON (A.CFP=C.CODUL)
+--INNER JOIN CIS2.VW_CL_CFP CC ON (C.GRUPA=CC.CODUL)
+--WHERE 
+--C.CODUL NOT IN ('10','17','19','21','25','26','27','29')
+
+
+GROUP BY
+  A.RIND,
+  B.RIND,
+  A.ID_MD,
+  B.ID_MD,
+  A.CUIIO,
+  C.CODUL,
+  A.CAPITOL
+) D
+LEFT JOIN
+(
+-------------------------------------------------------------------------------------------------
+SELECT
+  D.CUIIO,
+  D.CFP,
+  D.CAPITOL,
+  SUM(CASE WHEN D.RIND IN ('301') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R301_1,
+  SUM(CASE WHEN D.RIND IN ('302') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R302_1,
+  SUM(CASE WHEN D.RIND IN ('303') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R303_1,
+  SUM(CASE WHEN D.RIND IN ('304') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R304_1,
+  SUM(CASE WHEN D.RIND IN ('305') THEN CIS2.NVAL(D.COL1) ELSE NULL END) AS R305_1,
+  SUM(CASE WHEN D.RIND IN ('305') THEN CIS2.NVAL(D.COL2) ELSE NULL END) AS R305_2
+ 
+FROM
+  CIS2.VW_DATA_ALL D
+WHERE
+  (D.PERIOADA =:pPERIOADA) AND 
+  (:pID_MDTABLE=:pID_MDTABLE) AND
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (20) AND
+  D.CAPITOL IN (1012)
+GROUP BY
+  D.CUIIO,
+  D.CFP,
+  D.CAPITOL
+---------------------------------------------------------------------------------------------------  
+) DD ON (D.CUIIO=DD.CUIIO)
+  
+  -------------------------------------------------------------------------------------------------
+--  INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL)
+--  INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%')
+--WHERE
+--  CC.PRGS IN (2) AND
+--  CC.CODUL NOT IN ('9800000')
+--
+ INNER JOIN CIS2.VW_CL_CFP C ON (D.CFP=C.CODUL)
+ INNER JOIN CIS2.VW_CL_CFP CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%')
+ WHERE 
+ CC.CODUL NOT IN ('10','17','19','21','25','26','27','29')
+-- 
+  
+  --------------------------------------------------------------------------------------------------
+GROUP BY
+  D.RIND_S,
+  D.RIND_D,
+  D.ID_MD_S,
+  D.ID_MD_D,
+  CC.CODUL
+) B ON (A.RIND_S=B.RIND_S AND A.RIND_D=B.RIND_D AND A.ID_MD_S=B.ID_MD_S AND A.ID_MD_D=B.ID_MD_D AND A.CFP=B.CFP)
+
+--WHERE
+--  A.CFP=B.CFP OR
+--  B.CFP IS NULL
+----ORDER BY
+--  A.CUATM
+  
+) VB
+ORDER BY
+  FULL_CODE,
+  ORDINE
+--  ) DF;
+--  
+--  BEGIN
+--
+--  FOR CR IN C
+--  
+--  LOOP
+--     INSERT INTO   USER_BANCU.TABLE_OUT_TEST 
+--    
+--  --   CIS2.TABLE_OUT
+--    (
+--      PERIOADA,
+--      FORM,
+--      FORM_VERS,
+--      ID_MDTABLE,
+--      COD_CUATM,
+--      NR_SECTIE,
+--      NUME_SECTIE,
+--      NR_SECTIE1,
+--      NUME_SECTIE1,
+--      NR_SECTIE2,
+--      NUME_SECTIE2,
+--      NR_ROW,
+--      ORDINE,
+--      DECIMAL_POS,
+--      NUME_ROW,
+--       
+--      COL1, COL2, COL3, COL4, COL5
+--    )
+--    VALUES
+--    (
+--      CR.PERIOADA,
+--      CR.FORM,
+--      CR.FORM_VERS,
+--      CR.ID_MDTABLE,
+--      CR.COD_CUATM,
+--      CR.NR_SECTIE,
+--      CR.NUME_SECTIE,
+--      CR.NR_SECTIE1,
+--      CR.NUME_SECTIE1,
+--      CR.NR_SECTIE2,
+--      CR.NUME_SECTIE2,
+--      CR.NR_ROW,
+--      CR.ORDINE,
+--      CR.DECIMAL_POS,
+--      CR.NUME_ROW,
+--       
+--      CR.COL1, CR.COL2, CR.COL3, CR.COL4, CR.COL5
+--    );
+--  END LOOP;
+--END;

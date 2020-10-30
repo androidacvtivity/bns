@@ -1,0 +1,30 @@
+﻿
+
+SELECT 
+    
+      'Rind'||D.RIND 
+          
+
+      AS REZULTAT   
+
+
+FROM
+  VW_DATA_ALL D
+
+    
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL_VERS=:CAPITOL_VERS) AND
+  (:ID_MD=:ID_MD)
+  
+  AND D.FORM IN (3)
+  AND D.CAPITOL=100 
+  D.RIND IN('02','03','04','05','06','07')
+  
+  HAVING 
+  
+  SUM(CASE WHEN  D.CAPITOL=100 AND D.RIND IN('02','03','04','05','06','07') AND NVAL(D.COL1) = 1 THEN 1 ELSE 0 END) > 0     

@@ -1,0 +1,4 @@
+
+
+SELECT *
+FROM registru_19_10_2017

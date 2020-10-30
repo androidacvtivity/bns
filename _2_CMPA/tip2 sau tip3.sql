@@ -1,0 +1,73 @@
+﻿SELECT
+     
+    --  COUNT (D.UNIT_CODE) CNT,
+      D.UNIT_CODE 
+    --  D.RIND,
+     -- C.CODUL,
+    --   D.COL1   
+       
+FROM
+  VW_DATA_ALL_GC  D
+--INNER JOIN MD_RIND R ON D.ID_MD = R.ID_MD
+  
+ -- INNER  JOIN VW_CL_CUATM C ON D.CUATM = C.CODUL 
+ -- INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL||';%')     
+  
+  
+WHERE
+  (D.PERIOADA IN (:pPERIOADA))  AND   
+ -- (D.FORM =:pFORM) AND
+ -- (D.FORM_VERS =:pFORM_VERS) AND 
+ -- (:pID_MDTABLE =:pID_MDTABLE) AND
+ -- (D.CUATM_FULL LIKE '%'||:pCUATM||';%') AND
+  D.FORM IN (58)  AND
+  D.CAPITOL IN (419)
+  AND D.RIND IN ('TIP2','TIP3')
+  
+  GROUP BY 
+  D.UNIT_CODE,
+   D.RIND,
+   D.COL1 
+    
+ HAVING  
+ D.COL1 >  0
+ 
+ AND D.UNIT_CODE NOT IN  (
+ 
+ SELECT
+     D.UNIT_CODE
+ 
+FROM
+  VW_DATA_ALL_GC  D
+  INNER JOIN MD_RIND R ON D.ID_MD = R.ID_MD
+  
+--  INNER  JOIN VW_CL_CUATM C ON D.CUATM = C.CODUL 
+ -- INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL||';%')     
+  
+  
+WHERE
+  (D.PERIOADA IN (:pPERIOADA))  AND   
+ -- (D.FORM =:pFORM) AND
+ -- (D.FORM_VERS =:pFORM_VERS) AND 
+ -- (:pID_MDTABLE =:pID_MDTABLE) AND
+ -- (D.CUATM_FULL LIKE '%'||:pCUATM||';%') AND
+  D.FORM IN (58)  AND
+  D.CAPITOL IN (419)
+  AND D.RIND IN ('0')
+  
+  
+  GROUP BY 
+  D.UNIT_CODE,
+  D.RIND,
+   D.COL1 
+    
+ HAVING  
+ D.COL1 >  0
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ )

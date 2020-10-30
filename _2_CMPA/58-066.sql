@@ -1,0 +1,44 @@
+﻿SELECT
+ 
+ 
+        'Trebuie de completeat cap.IIcol.2 rînd. 065 '  AS REZULTAT
+        
+      
+
+FROM 
+ VW_DATA_ALL D
+ 
+ 
+ 
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL <> :CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  (D.FORM IN (58)  AND  D.CAPITOL IN (417)   AND D.RIND IN ('065')) 
+   OR  
+  (D.FORM IN (58)  AND  D.CAPITOL IN (416)   AND D.RIND IN ('060','080','070','090'))
+ 
+  
+
+  
+HAVING
+
+(
+    SUM(CASE  WHEN  (D.CAPITOL IN (416)   AND D.RIND IN ('060')) THEN  NVAL(D.COL8) ELSE 0  END)  +
+    SUM(CASE  WHEN  (D.CAPITOL IN (416)   AND D.RIND IN ('080')) THEN  NVAL(D.COL8) ELSE 0  END)  +
+    SUM(CASE  WHEN  (D.CAPITOL IN (416)   AND D.RIND IN ('070')) THEN  NVAL(D.COL8) ELSE 0  END)  +
+    SUM(CASE  WHEN  (D.CAPITOL IN (416)   AND D.RIND IN ('090')) THEN  NVAL(D.COL8) ELSE 0  END)    >  0
+  
+    AND 
+    
+    SUM(CASE  WHEN  (D.CAPITOL IN (417)   AND D.RIND IN ('065')) THEN  NVAL(D.COL2) ELSE 0  END)    =  0
+
+  
+)
+

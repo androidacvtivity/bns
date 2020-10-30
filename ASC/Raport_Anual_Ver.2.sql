@@ -1,0 +1,94 @@
+﻿SELECT L.CUIIO,
+       L.AGENT_ECONOMIC,
+       L.CUATM,
+       R.COL1 ANUL
+FROM 
+(
+SELECT 
+L.CUIIO,
+L.TIPUL_STRUCTURII||'-'||R.TIPUL_STRUCTURII||'-'||L.DENUMIRE AGENT_ECONOMIC,
+L.CUATM
+
+FROM
+
+(
+SELECT
+      D.CUIIO,
+      D.CUATM,
+  --    C.FULL_CODE, 
+      D.CUIIO_VERS,
+      R.DENUMIRE,
+      MR.DENUMIRE TIPUL_STRUCTURII,
+       MR.ORDINE
+      
+    
+    FROM
+      CIS2.VW_DATA_ALL D 
+              INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS)
+              INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD= D.ID_MD)
+              INNER JOIN CIS2.VW_CL_CUATM C ON (C.CODUL = D.CUATM)
+
+    WHERE
+      (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+      (D.PERIOADA =:pPERIOADA) AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND NOT IN ('00','--','1','2','3','4','5','6')
+       
+      ORDER BY 
+      MR.ORDINE ) L LEFT JOIN (
+      SELECT
+      D.CUIIO,
+      D.CUATM,
+      C.FULL_CODE, 
+      D.CUIIO_VERS,
+      R.DENUMIRE,
+      MR.DENUMIRE TIPUL_STRUCTURII, 
+      MR.ORDINE
+      
+    
+    FROM
+      CIS2.VW_DATA_ALL D 
+              INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS)
+              INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD= D.ID_MD)
+              INNER JOIN CIS2.VW_CL_CUATM C ON (C.CODUL = D.CUATM)
+
+    WHERE
+      (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+      (D.PERIOADA =:pPERIOADA) AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND IN ('1','2','3','4','5','6')
+       
+     ORDER BY 
+      MR.ORDINE
+      ) R ON (R.CUIIO = L.CUIIO)
+      
+      
+      ORDER BY 
+      L.ORDINE,
+      R.ORDINE,
+      L.CUATM
+      )  L LEFT JOIN (
+      SELECT
+      D.CUIIO,
+   
+      D.COL1 
+     
+     
+      
+    
+    FROM
+      CIS2.VW_DATA_ALL D 
+              INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS)
+              INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD= D.ID_MD)
+              INNER JOIN CIS2.VW_CL_CUATM C ON (C.CODUL = D.CUATM)
+
+    WHERE
+      (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+      (D.PERIOADA =:pPERIOADA) AND  
+      D.FORM IN (20) AND
+      D.CAPITOL IN (1010) AND
+      D.RIND  IN ('00')
+      
+      ) R ON R.CUIIO = L.CUIIO

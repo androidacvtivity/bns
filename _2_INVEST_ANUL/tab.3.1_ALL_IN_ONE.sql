@@ -1,0 +1,417 @@
+﻿--
+--DECLARE
+--
+--  CURSOR C IS
+--
+--SELECT 
+--    DF.PERIOADA,
+--    DF.FORM,
+--    DF.FORM_VERS,
+--    DF.ID_MDTABLE,
+--    DF.COD_CUATM,
+--    DF.NR_SECTIE,
+--    DF.NUME_SECTIE,
+--    DF.NR_SECTIE1,
+--    DF.NUME_SECTIE1,
+--    DF.NR_SECTIE2,
+--    DF.NUME_SECTIE2,
+--    DF.NR_ROW||'~'||ROWNUM NR_ROW,
+--    DF.ORDINE,
+--    DF.DECIMAL_POS,
+--    DF.NUME_ROW,
+--    DF.COL1,
+--    DF.COL2,
+--    DF.COL3
+-- 
+--    
+--  
+--
+--   
+--FROM 
+--(
+
+
+SELECT
+  :pPERIOADA AS PERIOADA,
+  :pFORM AS FORM,
+  :pFORM_VERS AS FORM_VERS,
+  :pID_MDTABLE AS ID_MDTABLE,
+  :pCOD_CUATM AS COD_CUATM,    
+  '0' AS NR_SECTIE,
+  '0' AS NUME_SECTIE,
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+   NR_ROW,
+   ORDINE,
+  '000' AS DECIMAL_POS,
+   NUME_ROW,
+   COL1, COL2, COL3
+   
+FROM (
+
+
+SELECT
+ 
+   R.RIND AS NR_ROW,
+   R.ORDINE AS ORDINE,
+ 
+   R.DENUMIRE AS NUME_ROW,
+    
+   SUM(CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END)AS COL1,
+  
+   
+  
+   ROUND((((SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL1 ELSE 0 END))/
+       CIS2.NOZERO(SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL3 ELSE 0 END)))/  
+      (P.COL1))*100,1) AS COL2,
+    
+    
+    
+  CASE WHEN R.RIND IN '100' THEN 100 ELSE
+ 
+  ROUND(((SUM(CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END))*100)/  
+         (SUM(CASE WHEN D.RIND IN '100' THEN D.COL1 ELSE 0 END)),1) END AS COL3
+FROM 
+ CIS2.VW_DATA_ALL D
+
+
+CROSS JOIN (
+    SELECT
+      DENUMIRE,
+      RIND,
+      ORDINE
+  
+    FROM 
+     CIS2.MD_RIND
+  
+   WHERE
+     ID_MD IN (39830,39831,39833,39834,39838,39839,39844,39846,39847,39848,39850,39851,39854,39857) AND
+     CAPITOL = 323 AND
+     RIND_VERS >= 2006 AND
+     STATUT = 1  ) R
+     
+CROSS JOIN (
+    SELECT 
+                  
+                   SUM(CASE WHEN MR.RIND IN ('01') THEN   D.COL1 ELSE NULL END)  AS COL1
+                 
+                     FROM CIS2.DATA_ALL D
+                
+                       INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+                       INNER JOIN CIS2.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+                 
+                     WHERE 
+                     D.FORM=100 AND
+                     D.PERIOADA IN :pPERIOADA AND
+                     MR.CAPITOL = 330 AND   
+                     D.CUIIO = 2 
+  
+
+  ) P
+     
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN :pPERIOADA AND
+  D.FORM = 8 AND
+  D.CAPITOL = 323 AND
+  D.ID_MD IN (39830,39831,39833,39834,39838,39839,39844,39846,39847,39848,39850,39851,39854,39857) 
+  
+GROUP BY
+  R.DENUMIRE,
+  R.RIND,
+  R.ORDINE,
+  P.COL1
+  
+  UNION 
+
+SELECT
+  
+   R.RIND AS NR_ROW,
+   R.ORDINE AS ORDINE,
+   R.DENUMIRE AS NUME_ROW,
+   
+  SUM(CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END)AS COL1,
+  
+   
+  
+   ROUND((((SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL1 ELSE 0 END))/
+       CIS2.NOZERO(SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL3 ELSE 0 END)))/  
+      (P.COL1))*100,1) AS COL2,
+    
+    
+    
+   
+  ROUND(((SUM(CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END))*100)/  
+         (SUM(CASE WHEN D.RIND IN '100' THEN D.COL1 ELSE 0 END)),1) AS COL3
+  
+  
+FROM 
+  CIS2.VW_DATA_ALL D
+  
+CROSS JOIN (
+    SELECT
+      DENUMIRE,
+      RIND,
+      ORDINE
+  
+    FROM 
+     CIS2.MD_RIND
+  
+   WHERE
+     RIND IN ('440') AND
+     CAPITOL = 323 AND
+     RIND_VERS >= 2006 AND
+     STATUT = 1  ) R
+     
+CROSS JOIN (
+    SELECT 
+                  
+                   SUM(CASE WHEN MR.RIND IN ('03') THEN   D.COL1 ELSE NULL END)  AS COL1
+                 
+                     FROM CIS2.DATA_ALL D
+                
+                       INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+                       INNER JOIN CIS2.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+                 
+                     WHERE 
+                     D.FORM=100 AND
+                     D.PERIOADA IN :pPERIOADA AND
+                     MR.CAPITOL = 330 AND   
+                     D.CUIIO = 2 
+
+  ) P
+     
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN :pPERIOADA AND
+  D.FORM = 8 AND
+  D.CAPITOL = 323 AND
+  D.RIND IN ('100','440')
+  
+GROUP BY
+  R.DENUMIRE,
+  R.RIND,
+  R.ORDINE,
+  P.COL1
+  
+UNION
+
+SELECT
+  
+   R.RIND AS NR_ROW,
+   R.ORDINE AS ORDINE,
+   R.DENUMIRE AS NUME_ROW,
+   
+  SUM(DISTINCT CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END)AS COL1,
+  
+   
+  
+   ROUND((((SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL1 ELSE 0 END))/
+       CIS2.NOZERO(SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL3 ELSE 0 END)))/  
+      (P.COL1))*100,1) AS COL2,
+    
+    
+    
+   
+  ROUND(((SUM(CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END))*100)/  
+         (SUM(CASE WHEN D.RIND IN '100' THEN D.COL1 ELSE 0 END)),1) AS COL3
+  
+  
+FROM 
+  CIS2.VW_DATA_ALL D
+  
+CROSS JOIN (
+    SELECT
+      DENUMIRE,
+      RIND,
+      ORDINE
+  
+    FROM 
+     CIS2.MD_RIND
+  
+   WHERE
+     RIND IN ('441','442','450') AND
+     CAPITOL = 323 AND
+     RIND_VERS >= 2006 AND
+     STATUT = 1  ) R
+     
+CROSS JOIN (
+    SELECT 
+                  
+                   SUM(CASE WHEN MR.RIND IN ('04') THEN   D.COL1 ELSE NULL END)  AS COL1
+                 
+                     FROM CIS2.DATA_ALL D
+                
+                       INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+                       INNER JOIN CIS2.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+                 
+                     WHERE 
+                     D.FORM=100 AND
+                     D.PERIOADA IN :pPERIOADA AND
+                     MR.CAPITOL = 330 AND   
+                     D.CUIIO = 2 
+  
+
+  ) P
+     
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN :pPERIOADA AND
+  D.FORM = 8 AND
+  D.CAPITOL = 323 AND
+  D.RIND IN ('100','441','442','450')
+  
+GROUP BY
+  R.DENUMIRE,
+  R.RIND,
+  R.ORDINE,
+  P.COL1
+  
+  ---------------------------------------------------------------------
+  
+  
+  UNION
+
+SELECT
+  
+   R.RIND AS NR_ROW,
+   R.ORDINE AS ORDINE,
+   R.DENUMIRE AS NUME_ROW,
+   
+  SUM(DISTINCT CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END)AS COL1,
+  
+   
+  
+   ROUND((((SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL1 ELSE 0 END))/
+       CIS2.NOZERO(SUM(CASE WHEN R.RIND =  D.RIND  THEN D.COL3 ELSE 0 END)))/  
+      (P.COL1))*100,1) AS COL2,
+    
+    
+    
+   
+  ROUND(((SUM(CASE WHEN R.RIND = D.RIND  THEN D.COL1 ELSE 0 END))*100)/  
+         (SUM(CASE WHEN D.RIND IN '100' THEN D.COL1 ELSE 0 END)),1) AS COL3
+  
+  
+FROM 
+  CIS2.VW_DATA_ALL D
+  
+CROSS JOIN (
+    SELECT
+      DENUMIRE,
+      RIND,
+      ORDINE
+  
+    FROM 
+     CIS2.MD_RIND
+  
+   WHERE
+     RIND IN ('410','420','430') AND
+     CAPITOL = 323 AND
+     RIND_VERS >= 2006 AND
+     STATUT = 1  ) R
+     
+CROSS JOIN (
+    SELECT 
+                  
+                   SUM(CASE WHEN MR.RIND IN ('02') THEN   D.COL1 ELSE NULL END)  AS COL1
+                 
+                     FROM CIS2.DATA_ALL D
+                
+                       INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+                       INNER JOIN CIS2.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+                 
+                     WHERE 
+                     D.FORM=100 AND
+                     D.PERIOADA IN :pPERIOADA AND
+                     MR.CAPITOL = 330 AND   
+                     D.CUIIO = 2 
+  
+
+  ) P
+     
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN :pPERIOADA AND
+  D.FORM = 8 AND
+  D.CAPITOL = 323 AND
+  D.RIND IN ('100','410','420','430')
+  
+GROUP BY
+  R.DENUMIRE,
+  R.RIND,
+  R.ORDINE,
+  P.COL1
+  
+)
+
+)  DF
+  
+  ;
+  
+  
+  BEGIN
+
+  FOR CR IN C
+  
+  LOOP
+    INSERT INTO  -- USER_BANCU.TABLE_OUT_TEST 
+    
+     CIS2.TABLE_OUT
+    (
+      PERIOADA,
+      FORM,
+      FORM_VERS,
+      ID_MDTABLE,
+      COD_CUATM,
+      NR_SECTIE,
+      NUME_SECTIE,
+      NR_SECTIE1,
+      NUME_SECTIE1,
+      NR_SECTIE2,
+      NUME_SECTIE2,
+      NR_ROW,
+      ORDINE,
+      DECIMAL_POS,
+      NUME_ROW,
+       
+      COL1, COL2, COL3
+    )
+    VALUES
+    (
+      CR.PERIOADA,
+      CR.FORM,
+      CR.FORM_VERS,
+      CR.ID_MDTABLE,
+      CR.COD_CUATM,
+      CR.NR_SECTIE,
+      CR.NUME_SECTIE,
+      CR.NR_SECTIE1,
+      CR.NUME_SECTIE1,
+      CR.NR_SECTIE2,
+      CR.NUME_SECTIE2,
+      CR.NR_ROW,
+      CR.ORDINE,
+      CR.DECIMAL_POS,
+      CR.NUME_ROW,
+       
+      CR.COL1, CR.COL2, CR.COL3
+    );
+  END LOOP;
+END;
+  
+  

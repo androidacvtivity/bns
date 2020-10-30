@@ -1,0 +1,85 @@
+﻿
+SELECT 
+
+
+'Rind.'||L.COL1||', Tara. '||L.COL2||': '||L.REZULTAT ||' <= '|| R.REZULTAT  AS REZULTAT
+
+FROM
+
+(
+SELECT 
+ D.CUIIO,
+ SUBSTR(D.RIND, 1, 3)  COL1 ,
+ NVAL(D.COL1)  COL2,
+ MAX(CASE WHEN D.PERIOADA IN (:PERIOADA) AND  D.NUM IN (2,3,4)  THEN D.COL4 ELSE 0 END)  AS REZULTAT
+
+FROM
+  VW_DATA_ALL D                                    
+WHERE
+  (D.PERIOADA IN (:PERIOADA, :PERIOADA-1)) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR  D.CUIIO_VERS <>:CUIIO_VERS) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL=-1) AND
+  (:FORM = :FORM) AND
+  
+  D.FORM  IN(13) AND     
+  D.CAPITOL IN(1020)
+ 
+  
+GROUP BY 
+D.CUIIO,
+SUBSTR(D.RIND, 1, 3),
+D.COL1
+
+
+) L  LEFT JOIN  (
+
+SELECT 
+ D.CUIIO,
+ SUBSTR(D.RIND, 1, 3)  COL1 ,
+ NVAL(D.COL1)  COL2,
+ MAX(CASE WHEN  D.NUM IN (2,3,1)  THEN D.COL4 ELSE 0 END)  AS REZULTAT
+
+FROM
+  VW_DATA_ALL D                                    
+WHERE
+  (D.PERIOADA IN (:PERIOADA-1)) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR  D.CUIIO_VERS <>:CUIIO_VERS) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL=-1) AND
+  (:FORM = :FORM) AND
+  
+  D.FORM  IN(13) AND     
+  D.CAPITOL IN(1020)
+ 
+  
+GROUP BY 
+D.CUIIO,
+SUBSTR(D.RIND, 1, 3),
+D.COL1
+
+) R ON (R.COL1 = L.COL1  AND R.COL2 = L.COL2  AND L.CUIIO = R.CUIIO)  
+
+
+
+        GROUP BY 
+        L.COL1,
+        R.COL1,
+        L.COL2,
+        L.COL2,
+        L.REZULTAT,
+        R.REZULTAT,
+        R.CUIIO 
+        
+        HAVING 
+        1=1
+        
+        AND L.REZULTAT < R.REZULTAT
+        
+        AND R.CUIIO IS NOT NULL 

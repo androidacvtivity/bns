@@ -1,0 +1,27 @@
+﻿SELECT 
+
+   D.CUIIO,  
+  SUBSTR(MR.RIND, 1, 3) AS RIND, 
+  NVAL(D.COL1) AS TARA,
+ MAX(CASE WHEN D.PERIOADA IN (:PERIOADA-1)   THEN NVAL(D.COL4) ELSE 0 END)  AS REZULTAT
+FROM 
+  CIS2.DATA_ALL D
+  ---------------------
+                INNER JOIN CIS2.MD_RIND MR ON MR.ID_MD = D.ID_MD
+WHERE   
+  (D.PERIOADA IN(:PERIOADA-1))AND 
+  (D.CUIIO           = :CUIIO          OR :CUIIO= -1)        AND 
+  (D.CUIIO_VERS      = :CUIIO_VERS     OR :CUIIO_VERS = -1)  AND 
+  (D.FORM            = :FORM           OR :FORM = -1)        AND 
+  (D.FORM_VERS       = :FORM_VERS      OR :FORM_VERS = -1)   AND 
+  (MR.CAPITOL         = :CAPITOL        OR :CAPITOL = -1  )   AND 
+  (MR.CAPITOL_VERS    = :CAPITOL_VERS   OR :CAPITOL_VERS = -1) 
+  AND D.FORM = 13 
+  AND MR.CAPITOL = 337
+  
+  
+  
+ GROUP BY 
+ D.CUIIO, 
+  SUBSTR(MR.RIND, 1, 3), 
+  D.COL1

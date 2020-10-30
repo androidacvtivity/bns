@@ -1,0 +1,67 @@
+
+
+INSERT INTO CIS2.SYS_USER_ACCES
+(
+  ID_USER,
+  CUATM,
+  FORM,
+  FORM_VERS,
+  ISADMIN,
+  ACCES_TYPE,
+  CAPITOL_ACCES, 
+  DATA_REG   
+)
+SELECT 
+    ID_USER,
+    ADDRES CUATM,
+    15 FORM,
+    1004 FORM_VERS,  
+    '0'  ISADMIN,
+     1  ACCES_TYPE,
+     NULL   CAPITOL_ACCES,
+     SYSDATE   DATA_REG
+       
+    FROM CIS2.SYS_USER
+    
+    WHERE
+    
+    
+ID_USER IN (
+    67,
+281,
+726,
+409,
+1178,
+656,
+9,
+251,
+719,
+607,
+1119,
+531,
+1098,
+253,
+226,
+475,
+1239,
+289,
+426,
+710,
+23,
+24,
+290,
+581,
+533,
+1088,
+29,
+492,
+1242,
+529,
+661,
+534,
+742,
+1244,
+1245,
+540,
+59
+);

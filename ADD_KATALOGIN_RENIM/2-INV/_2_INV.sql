@@ -1,0 +1,75 @@
+﻿
+
+SELECT 
+
+
+        D.CUIIO,
+        R.CUATM,
+        R.DENUMIRE,  
+        C.CODUL,
+        C.DENUMIRE  DEN_CAEM2,
+
+        SUM(D.COL1)  AS COL1
+
+
+FROM CIS.VW_DATA_ALL D
+
+                INNER JOIN CIS.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+
+                INNER JOIN CIS2.VW_CL_CAEM2 C ON (C.CODUL=NVL(TO_CHAR(D.CAEM2), '0'))
+ 
+
+
+
+        
+
+ WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN (:pPERIOADA) AND
+  D.FORM = 6 AND
+  D.CAPITOL = 31
+  AND D.RIND IN ('100')
+  AND C.CODUL LIKE 'A%'
+  
+  
+  GROUP BY 
+     D.CUIIO,
+     R.CUATM,
+     R.DENUMIRE,   
+     C.CODUL,
+     C.DENUMIRE
+  
+  
+  ;
+
+
+
+
+
+
+
+SELECT 
+
+        SUM(D.COL1)  AS COL1
+
+
+FROM CIS.VW_DATA_ALL D
+
+
+ 
+
+        
+
+ WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN (:pPERIOADA) AND
+  D.FORM = 6 AND
+  D.CAPITOL = 31
+  AND D.RIND IN ('100');
+  

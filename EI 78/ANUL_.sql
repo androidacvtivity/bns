@@ -1,0 +1,36 @@
+SELECT
+  D.CUIIO,
+  P.ANUL  PERIODA,
+  D.COL1  AS COL1,
+  D.COL3  AS COL3  ,
+  D.COL4  AS COL4 
+ 
+  
+  
+ 
+FROM
+  CIS2.VW_DATA_ALL D
+            INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA)    
+  
+  
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (46)  AND
+  D.CAPITOL IN (409)
+  AND D.RIND NOT IN('2','1','-')
+  
+  GROUP  BY 
+  D.CUIIO,
+  P.ANUL,
+  D.COL1,
+  D.COL3,
+  D.COL4  
+  

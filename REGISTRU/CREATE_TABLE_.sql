@@ -1,0 +1,158 @@
+﻿CREATE TABLE REGISTRU
+(
+  IDNO            NUMBER,
+  DATA_REG        DATE,
+  DEN_COM         VARCHAR2(1024 BYTE),
+  FORMA_ORG       VARCHAR2(1024 BYTE),
+  ADRESA          VARCHAR2(1024 BYTE),
+  LIST_COND       VARCHAR2(1024 BYTE),
+  LISTA_FOND      NVARCHAR2(2000),
+  GEN_ACT_NE_LIC  VARCHAR2(1024 BYTE),
+  GEN_ACT_LIC     VARCHAR2(1024 BYTE),
+  STATUTUL        VARCHAR2(1024 BYTE)
+)
+TABLESPACE USERS
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+-------------------------------------------------------------------------------
+
+DROP TABLE USER_BANCU.INIT_REGISTRU_MD CASCADE CONSTRAINTS;
+----------------------------------------
+CREATE TABLE USER_BANCU.INIT_REGISTRU_MD
+(
+  IDNO            NUMBER,
+  DATA_REG        DATE,
+  DEN_COM         VARCHAR2(1024 BYTE),
+  FORMA_ORG       VARCHAR2(1024 BYTE),
+  ADRESA          VARCHAR2(1024 BYTE),
+  LIST_COND       VARCHAR2(1024 BYTE),
+  LISTA_FOND      NVARCHAR2(2000),
+  GEN_ACT_NE_LIC  VARCHAR2(1024 BYTE),
+  GEN_ACT_LIC     VARCHAR2(1024 BYTE),
+  STATUTUL        VARCHAR2(1024 BYTE)
+)
+TABLESPACE USERS
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+  INSERT INTO INIT_REGISTRU_MD
+  (
+  IDNO,
+  DATA_REG,
+  DEN_COM,
+  FORMA_ORG,
+  ADRESA,
+  LIST_COND,
+  LISTA_FOND,
+  GEN_ACT_NE_LIC,
+  GEN_ACT_LIC,
+  STATUTUL  
+ )
+
+SELECT 
+  IDNO,
+  DATA_REG,
+  DEN_COM,
+  FORMA_ORG,
+  ADRESA,
+  LIST_COND,
+  LISTA_FOND,
+  GEN_ACT_NE_LIC,
+  GEN_ACT_LIC,
+  STATUTUL     
+
+
+FROM USER_BANCU.INIT_REGISTRU_MD
+
+
+;
+
+------------------------------------------------------------------------------
+
+
+CREATE TABLE INIT_REGISTRU_MD
+(
+  IDNO            NUMBER,
+  DATA_REG        DATE,
+  DEN_COM         VARCHAR2(1024 BYTE),
+  FORMA_ORG       VARCHAR2(1024 BYTE),
+  ADRESA          VARCHAR2(1024 BYTE),
+  LIST_COND       VARCHAR2(1024 BYTE),
+  LISTA_FOND      NVARCHAR2(2000),
+  GEN_ACT_NE_LIC  VARCHAR2(1024 BYTE),
+  GEN_ACT_LIC     VARCHAR2(1024 BYTE),
+  STATUTUL        VARCHAR2(1024 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+MONITORING; 
+
+        SELECT *
+        
+        FROM INIT_REGISTRU_MD;
+        
+        
+        
+         
+        

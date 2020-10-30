@@ -1,0 +1,47 @@
+﻿
+
+
+
+SELECT 
+
+ D.CUIIO,    
+ RD.RIND,
+-- RD.DENUMIRE,
+ 
+SUM (D.COL1) AS COL1,
+SUM (D.COL2) AS COL2,
+SUM (D.COL3) AS COL3,
+SUM (D.COL4) AS COL4,
+SUM (D.COL5) AS COL5
+
+ FROM VW_DATA_ALL D 
+ 
+ 
+      INNER JOIN MD_RIND RD ON (RD.ID_MD = D.ID_MD)  
+      
+      
+ WHERE
+  D.FORM IN (8)           AND 
+  D.FORM_VERS = :pFORM_VERS   AND
+  D.PERIOADA IN (:pPERIOADA)       AND     
+  D.CAPITOL IN (327)       AND
+  D.CUATM_FULL LIKE '%'||:PCOD_CUATM||';%'  
+
+
+GROUP BY
+ D.CUIIO,
+ RD.RIND,
+ RD.DENUMIRE,
+ RD.ORDINE
+ 
+ 
+
+ 
+ HAVING 
+ 
+ SUM (D.COL2) >  5 
+ 
+ 
+  ORDER BY 
+ 
+ RD.ORDINE

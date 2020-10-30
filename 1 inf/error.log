@@ -1,0 +1,17 @@
+09:58:26 Thread (1) Connecting to :root@localhost. 
+09:58:26 Thread (48) Import Started [29/01/2018 09:58:26]
+09:58:26 Thread (48) Processing "KATALOG_NEW_2017.xls" into "cis2.new_katalog_1_inf_2017"
+09:58:26 Thread (48) The rows failed importing will be written to file : F:\Version_Control\BNS\1 inf\KATALOG_NEW_2017_rows_with_error.csv
+09:58:26 Thread (48) Importing 1 out of 1 files
+09:58:26 Thread (48) Reading from file KATALOG_NEW_2017.xls
+09:58:26 Thread (48) Import block size optimization is enabled
+09:58:26 Thread (48) Change Schema to cis2
+09:58:27 Thread (48) Inserting row 2000 into table new_katalog_1_inf_2017
+09:58:28 Thread (48) Inserting row 6000 into table new_katalog_1_inf_2017
+09:58:29 Thread (48) Inserting row 10225 into table new_katalog_1_inf_2017
+09:58:29 Thread (48) 10225 rows from file KATALOG_NEW_2017.xls were processed.
+09:58:29 Thread (48) A total of 10225 out of 10225 rows were imported to table new_katalog_1_inf_2017.
+
+09:58:29 Thread (48) Nothing to discard, delete F:\Version_Control\BNS\1 inf\KATALOG_NEW_2017_rows_with_error.csv
+09:58:29 Thread (48) Import Finished [29/01/2018 09:58:29]
+09:58:29 Thread (48) Import time: 00:00:03.4482006 

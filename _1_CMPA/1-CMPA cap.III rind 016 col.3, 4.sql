@@ -1,0 +1,43 @@
+SELECT 
+D.UNIT_CODE,
+D.CUATM,
+D.RIND,
+D.COL1,
+D.COL2,
+D.COL3,
+D.COL4,
+D.COL5,
+D.COL6,
+D.COL7,
+D.COL8
+
+FROM
+  VW_DATA_ALL_GC  D
+
+WHERE
+  (D.PERIOADA IN (:pPERIOADA))  AND   
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+  (:pID_MDTABLE =:pID_MDTABLE) AND 
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (61)  AND
+  D.CAPITOL IN (1112)
+ -- AND D.RIND IN ('210') 
+  
+ 
+  
+  
+  
+  
+  
+--  AND 
+--  
+--  (D.CUATM LIKE '45%' 
+--  OR D.CUATM LIKE '48%' 
+--  OR D.CUATM LIKE '78%'
+--  OR D.CUATM LIKE '10%' 
+--  OR D.CUATM LIKE '80%'
+--  OR D.CUATM LIKE '21%'
+--  OR D.CUATM LIKE '10%'
+--  OR D.CUATM LIKE '10%'
+--  )  

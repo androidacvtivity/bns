@@ -1,0 +1,84 @@
+SELECT
+TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'TOTAL'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1992 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/2017 00:00:00', 'MM/DD/YYYY HH24:MI:SS')
+   
+ UNION ALL 
+   
+ SELECT
+TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'01/01/1992'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1992 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/1992 00:00:00', 'MM/DD/YYYY HH24:MI:SS')  
+   
+UNION ALL 
+
+SELECT
+TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'01/01/1993'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1993 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/1993 00:00:00', 'MM/DD/YYYY HH24:MI:SS') 
+   
+   
+ UNION ALL 
+ 
+ SELECT
+ TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'01/01/1994'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1994 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/1994 00:00:00', 'MM/DD/YYYY HH24:MI:SS') 
+   
+ -----------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ UNION ALL 
+ 
+ SELECT
+ TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'01/01/1995'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1995 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/1995 00:00:00', 'MM/DD/YYYY HH24:MI:SS') 
+   
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ 
+UNION ALL 
+ 
+ SELECT
+ TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'01/01/1996'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1996 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/1996 00:00:00', 'MM/DD/YYYY HH24:MI:SS')   
+   
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ 
+UNION ALL 
+ 
+ SELECT
+ TRIM(TO_CHAR(COUNT (*))) AS CNT,
+'01/01/1996'  AS PERIOD
+  
+FROM VW_FINAL_REGISTRU_MD 
+
+WHERE 
+   DATA_REG BETWEEN TO_DATE('01/01/1996 00:00:00', 'MM/DD/YYYY HH24:MI:SS') AND TO_DATE('12/31/1996 00:00:00', 'MM/DD/YYYY HH24:MI:SS')  
+   

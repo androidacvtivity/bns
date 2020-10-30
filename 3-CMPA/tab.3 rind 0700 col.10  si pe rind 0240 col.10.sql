@@ -1,0 +1,31 @@
+﻿--tab.3 rind 0700 col.10  si pe rind 0240 col.10
+
+SELECT  
+D.NR_GOSP,
+D.RIND,
+SUM(D.COL10) AS COL10 
+
+
+
+FROM
+  CIS2.VW_DATA_ALL_GC D 
+        
+WHERE
+  (D.PERIOADA=:PERIOADA)
+ 
+ 
+ AND  D.FORM IN (62)
+ AND D.CAPITOL = 1117    
+ AND D.RIND IN  ('0700','0240') 
+ 
+GROUP BY 
+D.NR_GOSP,
+D.RIND
+  
+
+HAVING 
+SUM(D.COL10) IS NOT NULL
+
+ORDER BY 
+D.NR_GOSP,
+D.RIND

@@ -1,0 +1,33 @@
+--INSERT INTO CIS2.FORM_CUIIO (
+--           CUIIO,
+--           CUIIO_VERS,
+--           FORM,
+--           FORM_VERS,
+--           STATUT  
+--
+--)
+
+SELECT 
+
+L.CUIIO,
+L.CUIIO_VERS,
+39 FORM,
+2000 FORM_VERS,
+'1' STATUT 
+
+ 
+FROM 
+
+(SELECT 
+        L.CUIIO,
+        2008 CUIIO_VERS 
+        
+        
+        FROM VW_KATALOG_29_AGRO_TRIM_4 L LEFT JOIN 
+                USER_BANCU.VW_KATALOG_9_AGRO R ON R.CUIIO = L.CUIIO 
+                
+                WHERE 
+                R.CUIIO IS NULL ) L LEFT JOIN CIS2.RENIM R ON  L.CUIIO = R.CUIIO  AND R.CUIIO_VERS = L.CUIIO_VERS
+                
+                WHERE 
+                R.CUIIO IS NOT NULL 

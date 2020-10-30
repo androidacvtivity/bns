@@ -1,0 +1,93 @@
+﻿
+
+--insert into cis2.RENIM(
+--
+-- CUIIO,
+--             CUIIO_VERS,
+--             DENUMIRE,
+--             EDIT_USER,
+--             STATUT,  
+--             CUATM,
+--             CFP,
+--             CFOJ,
+--             COCM,
+--             CAEM,
+--             BUGET,
+--             TIP,
+--             PROD,
+--             FOR_CUB,
+--             GENMUZEE,
+--             TIPMUZEE,
+--             TIP_LOCAL,
+--             TIP_INST,
+--             CAEM2,
+--             N85_NTL,
+--             N85_NTIIP,
+--             N85_NDIIP,
+--             N85_NPDS,
+--             N85_NRIIP,
+--             N85_NSIIP,
+--             GENMUZEE2,
+--             NFI,
+--             NTII,
+--             NPDS,
+--             ORGANE,
+--             TIP_INV,
+--             RENIM_PERS,
+--             ORGANE_COND,
+--             GEN_INSTITUTIE 
+--)         
+--
+   SELECT 
+             CUIIO,
+            1816  CUIIO_VERS,
+             DENUMIRE,
+             EDIT_USER,
+             STATUT,  
+             CUATM,
+             CFP,
+             CFOJ,
+             COCM,
+             CAEM,
+             BUGET,
+             TIP,
+             PROD,
+             FOR_CUB,
+             GENMUZEE,
+             TIPMUZEE,
+             TIP_LOCAL,
+             TIP_INST,
+             CAEM2,
+             N85_NTL,
+             N85_NTIIP,
+             N85_NDIIP,
+             N85_NPDS,
+             N85_NRIIP,
+             N85_NSIIP,
+             GENMUZEE2,
+             NFI,
+             NTII,
+             NPDS,
+             ORGANE,
+             TIP_INV,
+             RENIM_PERS,
+             ORGANE_COND,
+             GEN_INSTITUTIE 
+                
+                FROM USER_BANCU.VW_MAX_RENIM_2LIVII
+                
+                WHERE 
+
+                
+CUIIO IN (3768898810,
+40984489,
+4089598110,
+40202802,
+41095840,
+40040127,
+2053437,
+4098997210,
+91899,
+40801678,
+41096443
+)

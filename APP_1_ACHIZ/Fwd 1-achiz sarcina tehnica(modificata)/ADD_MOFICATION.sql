@@ -1,0 +1,41 @@
+﻿--INSERT INTO CIS2.MD_RIND (
+--
+--  ID_MD,
+--  FORM,         
+--  FORM_VERS,
+--  CAPITOL,
+--  CAPITOL_VERS,
+--  RIND,
+--  RIND_VERS,
+--  DENUMIRE,
+--  DECIMAL_POS,
+--  COL_ACTIV,
+--  ORDINE,
+--  DATA_REG,
+--  STATUT,
+--  DINAMIC
+--)
+
+
+
+SELECT 
+  ID_MD,
+  FORM,         
+  FORM_VERS,
+  CAPITOL,
+  CAPITOL_VERS,
+  RIND,
+  2008 RIND_VERS,
+  DENUMIRE,
+  DECIMAL_POS,
+  COL_ACTIV,
+  ORDINE,
+  DATA_REG,
+  STATUT,
+  DINAMIC
+    
+    FROM CIS2.MD_RIND 
+    
+    WHERE 
+    FORM  =  54   AND CAPITOL = 1075
+    AND RIND_VERS = 2000

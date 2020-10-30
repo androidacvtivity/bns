@@ -1,0 +1,27 @@
+
+
+
+
+
+DROP TABLE USER_BANCU.IT_PARK_CHISNAU CASCADE CONSTRAINTS;
+
+
+
+--------------------------------------------------------------------------------
+SELECT 
+  IDNO,
+  DATA_REG,
+  DEN_COM,
+  FORMA_ORG,
+  ADRESA,
+  LIST_COND,
+  LISTA_FOND,
+  GEN_ACT_NE_LIC,
+  GEN_ACT_LIC,
+  STATUTUL 
+
+FROM INITERNEDIAR_REGISTRU_MD
+
+ORDER BY 
+
+DATA_REG DESC 

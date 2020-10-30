@@ -1,0 +1,5 @@
+﻿
+
+
+
+DROP USER SPOTLIGHT CASCADE;

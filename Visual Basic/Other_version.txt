@@ -1,0 +1,49 @@
+Sub MergeSheet()
+
+'Declaring the Variables
+Dim LastRow, ShtCnt As Integer
+Dim ShtName As String
+Dim NewSht As Worksheet
+
+'Assinging a Sheet Name by UserInput
+ShtName:
+ShtName = InputBox("Enter the Sheet Name you want to create", "Merge Sheet", "Master Sheet")
+
+'Count of Total Worksheet in the present workbook
+ShtCnt = Sheets.Count
+
+'Using For Loop check if the worksheet exists
+For i = 1 To ShtCnt
+If Sheets(i).Name = ShtName Then
+MsgBox "Sheet already Exists", , "Merge Sheet"
+GoTo ShtName
+End If
+Next i
+
+'Create a New Sheet
+Worksheets.Add.Name = ShtName
+
+'Assigning NewSht as Current Sheet
+Set NewSht = ActiveSheet
+
+'Moving Worksheet to the beginning of this workbook
+NewSht.Move before:=Worksheets(1)
+
+'Copying all the data to the New Sheet Using For Loop
+For i = 2 To ShtCnt + 1
+
+'If i=2 Then copy all the data from the second sheet including header.
+If i = 2 Then
+Sheets(i).UsedRange.Copy NewSht.Cells(1, 1)
+Else
+
+'If i is grater than 2 then copy all the data excluding Header(1st Row).
+Sheets(i).UsedRange.Offset(1, 0).Resize(Sheets(i).UsedRange.Rows.Count - 1, Sheets(i).UsedRange.Columns.Count).Copy NewSht.Cells(LastRow + 1, 1)
+End If
+LastRow = NewSht.Cells.SpecialCells(xlCellTypeLastCell).Row
+Next i
+
+'Displaying the Message after copying data successfully
+MsgBox "Data has been copied to " & ShtName, , "Merge Sheet"
+
+End Sub

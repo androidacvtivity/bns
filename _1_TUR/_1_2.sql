@@ -1,0 +1,6 @@
+﻿ 
+ 
+ 
+    UPDATE USER_BANCU.KAT_1_TUR
+    
+    SET CUIIO_VERS = 1044;

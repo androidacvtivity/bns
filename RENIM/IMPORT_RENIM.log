@@ -1,0 +1,68 @@
+11:55:38 Thread (1) Connecting to :root@localhost. 
+11:55:38 Thread (4) Import Started [29/01/2018 11:55:38]
+11:55:38 Thread (4) Processing "RENIM_29_01_2017.xls" into "cis2.renim_29_01_2018"
+11:55:38 Thread (4) The rows failed importing will be written to file : F:\Version_Control\BNS\RENIM\RENIM_29_01_2017_rows_with_error.csv
+11:55:38 Thread (4) Importing 1 out of 1 files
+11:55:38 Thread (4) Reading from file RENIM_29_01_2017.xls
+11:55:38 Thread (4) Import block size optimization is enabled
+11:55:40 Thread (4) Change Schema to cis2
+11:55:41 Thread (4) Inserting row 2000 into table renim_29_01_2018
+11:55:44 Thread (4) Inserting row 6000 into table renim_29_01_2018
+11:55:49 Thread (4) Inserting row 14000 into table renim_29_01_2018
+11:55:56 Thread (4) Inserting row 30000 into table renim_29_01_2018
+11:56:11 Thread (4) Inserting row 40000 into table renim_29_01_2018
+11:56:15 Thread (4) Inserting row 50000 into table renim_29_01_2018
+11:56:20 Thread (4) Inserting row 60000 into table renim_29_01_2018
+11:56:22 Thread (4) Inserting row 64999 into table renim_29_01_2018
+11:56:22 Thread (4) 64999 rows from file RENIM_29_01_2017.xls were processed.
+11:56:22 Thread (4) A total of 64999 out of 64999 rows were imported to table renim_29_01_2018.
+
+11:56:22 Thread (4) Nothing to discard, delete F:\Version_Control\BNS\RENIM\RENIM_29_01_2017_rows_with_error.csv
+11:56:22 Thread (4) Import Finished [29/01/2018 11:56:22]
+11:56:22 Thread (4) Import time: 00:00:44.7786646 
+14:57:29 Thread (1) Connecting to :root@localhost. 
+14:57:29 Thread (62) Import Started [29/01/2018 14:57:29]
+14:57:29 Thread (62) Processing "RENIM_29_01_2017.xlsm" into "cis2.renim_29_01_2018"
+14:57:29 Thread (62) The rows failed importing will be written to file : F:\Version_Control\BNS\RENIM\RENIM_29_01_2017_rows_with_error.csv
+14:57:29 Thread (62) Importing 1 out of 1 files
+14:57:29 Thread (62) Reading from file RENIM_29_01_2017.xlsm
+14:57:29 Thread (62) Import block size optimization is enabled
+14:57:33 Thread (62) Change Schema to cis2
+14:57:34 Thread (62) Inserting row 2000 into table renim_29_01_2018
+14:57:36 Thread (62) Inserting row 6000 into table renim_29_01_2018
+14:57:41 Thread (62) Inserting row 14000 into table renim_29_01_2018
+14:57:49 Thread (62) Inserting row 30000 into table renim_29_01_2018
+14:58:01 Thread (62) Inserting row 40000 into table renim_29_01_2018
+14:58:04 Thread (62) Inserting row 50000 into table renim_29_01_2018
+14:58:09 Thread (62) Inserting row 60000 into table renim_29_01_2018
+14:58:15 Thread (62) Inserting row 70000 into table renim_29_01_2018
+14:58:20 Thread (62) Inserting row 80000 into table renim_29_01_2018
+14:58:24 Thread (62) Inserting row 90000 into table renim_29_01_2018
+14:58:29 Thread (62) Inserting row 100000 into table renim_29_01_2018
+14:58:34 Thread (62) Inserting row 110000 into table renim_29_01_2018
+14:58:39 Thread (62) Inserting row 120000 into table renim_29_01_2018
+14:58:44 Thread (62) Inserting row 130000 into table renim_29_01_2018
+14:58:49 Thread (62) Inserting row 140000 into table renim_29_01_2018
+14:58:53 Thread (62) Inserting row 150000 into table renim_29_01_2018
+14:58:58 Thread (62) Inserting row 160000 into table renim_29_01_2018
+14:59:04 Thread (62) Inserting row 170000 into table renim_29_01_2018
+14:59:08 Thread (62) Inserting row 180000 into table renim_29_01_2018
+14:59:13 Thread (62) Inserting row 190000 into table renim_29_01_2018
+14:59:18 Thread (62) Inserting row 200000 into table renim_29_01_2018
+14:59:23 Thread (62) Inserting row 210000 into table renim_29_01_2018
+14:59:28 Thread (62) Inserting row 220000 into table renim_29_01_2018
+14:59:33 Thread (62) Inserting row 230000 into table renim_29_01_2018
+14:59:38 Thread (62) Inserting row 240000 into table renim_29_01_2018
+14:59:43 Thread (62) Inserting row 250000 into table renim_29_01_2018
+14:59:48 Thread (62) Inserting row 260000 into table renim_29_01_2018
+14:59:54 Thread (62) Inserting row 270000 into table renim_29_01_2018
+14:59:59 Thread (62) Inserting row 280000 into table renim_29_01_2018
+15:00:04 Thread (62) Inserting row 290000 into table renim_29_01_2018
+15:00:09 Thread (62) Inserting row 300000 into table renim_29_01_2018
+15:00:13 Thread (62) Inserting row 309414 into table renim_29_01_2018
+15:00:13 Thread (62) 309414 rows from file RENIM_29_01_2017.xlsm were processed.
+15:00:13 Thread (62) A total of 309414 out of 309414 rows were imported to table renim_29_01_2018.
+
+15:00:13 Thread (62) Nothing to discard, delete F:\Version_Control\BNS\RENIM\RENIM_29_01_2017_rows_with_error.csv
+15:00:14 Thread (62) Import Finished [29/01/2018 15:00:14]
+15:00:14 Thread (62) Import time: 00:02:44.7680503 

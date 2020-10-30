@@ -1,0 +1,3 @@
+﻿    UPDATE USER_BANCU.KAT_5_CON_1043
+    
+            SET CUIIO_VERS = 1043;

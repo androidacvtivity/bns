@@ -1,0 +1,26 @@
+﻿--
+--INSERT INTO CIS2.FORM_CUIIO 
+--(
+--
+--  CUIIO,
+--  CUIIO_VERS,
+--  FORM,
+--  FORM_VERS,
+--  STATUT   
+--
+--)
+
+
+SELECT 
+
+  CUIIO,
+  1035 CUIIO_VERS,
+  FORM,
+  FORM_VERS,
+  STATUT    
+  
+  FROM CIS2.FORM_CUIIO
+  WHERE
+FORM  IN (44)
+
+AND CUIIO_VERS IN (1036);

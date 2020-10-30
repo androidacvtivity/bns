@@ -1,0 +1,33 @@
+﻿SELECT                                                                       
+--  :pPERIOADA AS PERIOADA,                                                    
+--  :pFORM AS FORM,                                                            
+--  :pFORM_VERS AS FORM_VERS,                                                  
+--  :pID_MDTABLE AS ID_MDTABLE,                                                
+--  :pCOD_CUATM AS COD_CUATM,                                                  
+--  '0' AS NR_SECTIE,                                                         
+--  '0' AS NUME_SECTIE,                                                        
+--  '0' AS NR_SECTIE1,
+--  '0' AS NUME_SECTIE1,
+--  '0' AS NR_SECTIE2,
+--  '0' AS NUME_SECTIE2,
+   TO_NUMBER(D.RIND)  AS NR_ROW,  
+   RI.ORDINE AS ORDINE,
+  '11' AS DECIMAL_POS,
+   RI.DENUMIRE AS NUME_ROW,
+  
+  
+  SUM(CASE WHEN D.CAPITOL IN 1021 THEN D.COL1 ELSE 0 END) AS COL1,
+  SUM(CASE WHEN D.CAPITOL IN 1021 THEN D.COL2 ELSE 0 END) AS COL2
+
+  FROM CIS2.VW_DATA_ALL D                        
+       INNER JOIN CIS2.RENIM R ON R.CUIIO= D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS                
+       INNER JOIN CIS2.VW_CL_CUATM VC ON (VC.FULL_CODE LIKE '%'||:pCOD_CUATM  ||';%' AND VC.CODUL = R.CUATM)
+       INNER JOIN CIS2.MD_RIND RI ON (RI.ID_MD = D.ID_MD AND RI.RIND = D.RIND)
+  
+  
+  WHERE D.FORM = 28 AND
+    D.CAPITOL = 1021 AND 
+    D.PERIOADA = :pPERIOADA
+  
+GROUP BY RI.ORDINE, D.RIND, RI.DENUMIRE
+ORDER BY RI.ORDINE

@@ -1,0 +1,38 @@
+﻿
+
+
+
+
+SELECT 
+ 
+  D.CUIIO,
+  R.DENUMIRE,
+  D.CUATM,
+  SUM(D.COL6)  AS COL1
+  
+  
+FROM 
+  CIS2.VW_DATA_ALL D
+  
+         INNER JOIN CIS2.RENIM R ON R.CUIIO = D.CUIIO AND D.CUIIO_VERS = R.CUIIO_VERS
+  
+WHERE
+  D.PERIOADA IN (:pPERIOADA) AND 
+  D.FORM_VERS = :pFORM_VERS     AND    
+  (:pID_MDTABLE=:pID_MDTABLE) AND
+  D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%' AND
+  D.FORM IN (31)                 AND 
+  D.CAPITOL IN (377)           
+  
+  AND D.COL6  IS NOT NULL
+
+  
+ GROUP BY 
+ D.CUIIO,
+ R.DENUMIRE,
+ D.CUATM
+  
+ 
+  
+  
+  

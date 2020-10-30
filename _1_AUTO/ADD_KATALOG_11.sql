@@ -1,0 +1,41 @@
+﻿--
+--INSERT INTO CIS2.RENIM A (
+--
+--           A.CUIIO,
+--           A.CUIIO_VERS,
+--           A.DENUMIRE,
+--           A.EDIT_USER,
+--           A.STATUT,
+--           A.CUATM,
+--           A.CFP,
+--           A.CFOJ,
+--
+--           A.BUGET,
+--           A.TIP,
+--          
+--           A.CAEM2
+--) 
+
+SELECT 
+                                  
+           A.CUIIO,
+           A.CUIIO_VERS,
+           A.DENUMIRE,
+           1 EDIT_USER,
+           '1' STATUT,
+           A.CUATM,
+           A.CFP,
+           A.CFOJ,
+          
+           '0' BUGET,
+           '0' TIP,
+          
+           A.CAEM2
+           
+                                            
+              FROM  USER_BANCU.KAT_1_AUTO_v2 A LEFT JOIN CIS2.RENIM R ON R.CUIIO = A.CUIIO AND R.CUIIO_VERS = A.CUIIO_VERS 
+              
+              
+             WHERE 
+             
+             R.CUIIO IS   NULL 

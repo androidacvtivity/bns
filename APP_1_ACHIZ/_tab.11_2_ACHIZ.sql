@@ -1,0 +1,198 @@
+﻿
+            SELECT 
+                :pPERIOADA AS PERIOADA,
+                :pFORM AS FORM,
+                :pFORM_VERS AS FORM_VERS,
+                :pID_MDTABLE AS ID_MDTABLE,
+                :pCOD_CUATM AS COD_CUATM,         
+                '0' AS NR_SECTIE,
+                '0' AS NUME_SECTIE,
+                '0' AS NR_SECTIE1,
+                '0' AS NUME_SECTIE1,
+                '0' AS NR_SECTIE2,
+                '0' AS NUME_SECTIE2,
+                 L.NR_ROW  AS NR_ROW,
+                 L.NR_ROW AS ORDINE,
+                 '00000000000' AS DECIMAL_POS, 
+                 L.NUME_ROW,
+                 R.COL1,
+                 R.COL2,
+                 R.COL3,
+                 R.COL4,
+                 R.COL5,
+                 R.COL6,
+                 R.COL7,
+                 R.COL8,
+                 R.COL9,
+                 R.COL10,
+                 R.COL11
+            
+            FROM ( 
+            
+            
+                     SELECT 
+                  
+                            R.NR_ROW,
+                            R.NUME_ROW,
+                            R.RIND          RIND,
+                            R.RIND_VERS     RIND_VERS
+                            
+                               
+                            FROM CIS2.MD_RIND R
+                            
+                            INNER JOIN (                  
+                            SELECT 
+                            R.RIND,
+                            MAX(R.RIND_VERS) AS RIND_VERS
+                            
+                            FROM CIS2.MD_RIND R 
+                            
+                            WHERE 
+                            R.RIND_VERS <=:pPERIOADA
+                            AND  (R.FORM =:pFORM) AND 
+                            (R.FORM_VERS =:pFORM_VERS) AND
+                            (:pID_MDTABLE=:pID_MDTABLE) AND 
+                             R.FORM = 53  AND 
+                             R.CAPITOL IN (1074) AND 
+                             ASCII(R.RIND) <> 45   
+                             AND R.RIND IN ('210')
+                           
+                            
+                            GROUP BY 
+                            R.RIND
+                              
+                            
+                             ) RR   ON (    RR.RIND      = R.RIND
+                                       AND  RR.RIND_VERS = R.RIND_VERS)
+                             
+    CROSS JOIN 
+  (
+    SELECT
+      DECODE(CS.CODUL, 
+      '0000000','01',
+      '0100000','02','1111111','03','0300000','04',
+      '1400000','05','3400000','06','3600000','07','4100000','08','4300000','09',
+      '4500000','10','4800000','11','6200000','12','7100000','13','7400000','14',
+      '7800000','15','2222222','16','1000000','17','2500000','18','3100000','19',
+      '3800000','20','5400000','21','5500000','22','6000000','23','6400000','24',
+      '6700000','25','8000000','26','8300000','27','8900000','28','9200000','29',
+      '3333333','30','1200000','31','1700000','32','2100000','33','2700000','34',
+      '2900000','35','5700000','36','8500000','37','8700000','38','9600000','39',
+      '9601000','40')
+      AS NR_ROW,
+      CS.DENUMIRE AS NUME_ROW,
+      CS.CODUL AS CS_CUATM
+    FROM
+      CIS2.VW_CL_CUATM CS
+    WHERE
+      CS.CODUL 
+      IN(
+         '0000000',
+         '0100000','1111111','0300000','1400000','3400000','3600000','4100000','4300000','4500000',
+         '4800000','6200000','7100000','7400000','7800000','2222222','1000000','2500000','3100000','3800000',
+         '5400000','5500000','6000000','6400000','6700000','8000000','8300000','8900000','9200000','3333333',
+         '1200000','1700000','2100000','2700000','2900000','5700000','8500000','8700000','9600000','9601000')
+  ) R           
+                                       
+                            WHERE
+                            
+                           (R.FORM =:pFORM) AND 
+                           (R.FORM_VERS =:pFORM_VERS) AND
+                           (:pID_MDTABLE=:pID_MDTABLE) AND 
+                           R.FORM = 53  AND 
+                           R.CAPITOL IN (1074) AND 
+                           ASCII(R.RIND) <> 45  
+                            AND R.RIND IN ('210')          
+                           
+                           
+                           GROUP BY
+                           R.NR_ROW,
+                           R.NUME_ROW,
+                           R.RIND,
+                           R.RIND_VERS
+                         
+                           
+                           ORDER BY
+                            R.NR_ROW,
+                           R.RIND 
+                           ) L LEFT JOIN 
+                           (
+                           
+                           SELECT
+  R.NR_ROW,
+  R.NUME_ROW,
+  MR.RIND,
+  MR.RIND_VERS,
+
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%'  THEN NVAL(D.COL1) + NVAL(D.COL3) END )  AS COL1,
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%'  THEN NVAL(D.COL4) + NVAL(D.COL2) END )  AS COL2,
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%'  THEN ROUND((NVAL(D.COL4) + NVAL(D.COL2)) / NOZERO((NVAL(D.COL1) + NVAL(D.COL3))),1)  END )  AS COL3,
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%' THEN NVAL(D.COL1)  END )  AS COL4,
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%' THEN NVAL(D.COL2)  END )  AS COL5, 
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%' THEN ROUND(NVAL(D.COL2) / NOZERO(NVAL(D.COL1)),1)  END )  AS COL6, 
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%'  THEN NVAL(D.COL3) END )  AS COL7,
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%'  THEN NVAL(D.COL4) END )  AS COL8, 
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%' THEN ROUND(NVAL(D.COL4) / NOZERO(NVAL(D.COL3)),1)  END )  AS COL9, 
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%'  THEN NVAL(D.COL5) END )  AS COL10, 
+    SUM(CASE WHEN CC.FULL_CODE LIKE '%'||R.CS_CUATM||'%' THEN ROUND(NVAL(D.COL6),1)  END )  AS COL11 
+    
+FROM   CIS2.VW_DATA_ALL D
+INNER JOIN CIS2.VW_CL_CUATM CC ON (D.CUATM=CC.CODUL)
+    CROSS JOIN 
+  (
+    SELECT
+      DECODE(CS.CODUL, 
+      '0000000','01',
+      '0100000','02','1111111','03','0300000','04',
+      '1400000','05','3400000','06','3600000','07','4100000','08','4300000','09',
+      '4500000','10','4800000','11','6200000','12','7100000','13','7400000','14',
+      '7800000','15','2222222','16','1000000','17','2500000','18','3100000','19',
+      '3800000','20','5300000','21','5500000','22','6000000','23','6400000','24',
+      '6700000','25','8000000','26','8300000','27','8900000','28','9200000','29',
+      '3333333','30','1200000','31','1700000','32','2100000','33','2700000','34',
+      '2900000','35','5700000','36','8500000','37','8700000','38','9600000','39',
+      '9601000','40')
+      AS NR_ROW,
+      CS.DENUMIRE AS NUME_ROW,
+      CS.CODUL AS CS_CUATM
+    FROM
+      CIS2.VW_CL_CUATM CS
+    WHERE
+      CS.CODUL 
+      IN(
+         '0000000',
+         '0100000','1111111','0300000','1400000','3400000','3600000','4100000','4300000','4500000',
+         '4800000','6200000','7100000','7400000','7800000','2222222','1000000','2500000','3100000','3800000',
+         '5300000','5500000','6000000','6400000','6700000','8000000','8300000','8900000','9200000','3333333',
+         '1200000','1700000','2100000','2700000','2900000','5700000','8500000','8700000','9600000','9601000')
+  ) R 
+
+         INNER JOIN CIS2.MD_RIND MR ON (MR.ID_MD = D.ID_MD) 
+  WHERE 
+  (D.PERIOADA =:pPERIOADA) AND
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+  (:pID_MDTABLE =:pID_MDTABLE)  AND 
+  (D.CUATM_FULL LIKE '%' ||:pCOD_CUATM||';%') AND
+  D.FORM = 53 AND 
+  D.CAPITOL IN (1074) 
+  AND MR.RIND IN ('210')
+  
+  GROUP BY
+  MR.RIND,
+  MR.RIND_VERS,
+  R.NR_ROW,
+  R.NUME_ROW
+  ORDER BY 
+  
+  R.NR_ROW
+                           )  R ON  (
+                           
+                            R.NR_ROW          =  L.NR_ROW 
+                            AND R.NUME_ROW    =  L.NUME_ROW  
+                            AND R.RIND        =  L.RIND
+                            AND R.RIND_VERS   =  L.RIND_VERS
+                           
+                           )
+                           
+                           

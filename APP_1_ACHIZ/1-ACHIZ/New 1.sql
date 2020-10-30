@@ -1,0 +1,63 @@
+--Cap. Export I Rind.1 Col.2  = Cap. Export I ?col.2 rind.1(trimI+trimII+trimIII+trimIV)
+
+
+SELECT DISTINCT
+  
+   'Anul curent exista Cap.SR Export rind 01 sau rind 05 atunci exista trim IV si invers.'
+  
+   
+   AS REZULTAT
+  
+  FROM
+  CIS2.VW_DATA_ALL D INNER JOIN
+  (
+    SELECT P.PERIOADA FROM CIS2.VW_MD_PERIOADA P 
+    WHERE P.PERIOADA = :PERIOADA 
+    
+    UNION   
+   
+   SELECT P.PERIOADA  FROM CIS2.VW_MD_PERIOADA P INNER JOIN CIS2.VW_MD_PERIOADA T ON(P.ANUL=T.ANUL AND P.TIP_PERIOADA=5 AND P.NUM IN (4) ) 
+   WHERE T.PERIOADA = :PERIOADA
+   
+  ) P ON(D.PERIOADA=P.PERIOADA)
+WHERE
+  (:PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO              OR :CUIIO = -1) AND
+  (:CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (:FORM = :FORM               OR :FORM = -1) AND
+  (:FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (:CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (:ID_MD=:ID_MD               OR :ID_MD = -1) AND 
+   
+  D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('46.1.01','46.1.05','44.1.01','44.1.05')
+  
+  
+  
+--   HAVING
+--   
+--   (SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('46.1.01')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) +
+--   
+--   SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('46.1.05')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) > 0)
+--   
+--   AND 
+--   
+--   
+--  (SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('44.1.01')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) +
+--   
+--   SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('44.1.05')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) = 0)
+--   
+--   
+--   OR 
+--    (SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('46.1.01')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) +
+--   
+--   SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('46.1.05')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) = 0)
+--   
+--   AND 
+--   
+--   
+--  (SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('44.1.01')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) +
+--   
+--   SUM(CASE WHEN D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('44.1.05')   THEN CIS2.NVAL(D.COL1) ELSE 0 END) > 0)
+--
+--

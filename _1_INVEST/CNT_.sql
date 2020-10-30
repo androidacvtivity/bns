@@ -1,0 +1,8 @@
+﻿
+
+
+
+
+       SELECT 
+        COUNT (*) AS CNT
+       FROM  USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE

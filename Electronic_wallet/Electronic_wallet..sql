@@ -1,0 +1,6 @@
+﻿
+
+
+
+        SELECT*
+        FROM USER_BANCU.VW_REGISTRU;

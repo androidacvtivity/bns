@@ -1,0 +1,93 @@
+﻿
+--SELECT
+--
+--   'PERIOADA:'||VB.PERIOADA||' - Codul serviciilor conform CS AEE:'||VB.COL1||'codul conform CITLT:'||VB.COL3||'Lei:'||VB.COL4 AS REZULTAT  
+--
+--FROM 
+--
+--(
+SELECT
+  D.CUIIO,
+  P.NUM PERIOADA,
+  D.COL1 AS COL1,
+  D.COL3 AS COL3,
+  D.COL4 AS COL4
+ 
+    FROM
+    CIS2.VW_DATA_ALL D
+            INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA)    
+
+
+WHERE
+
+  (D.CUIIO=:CUIIO                OR :CUIIO = -1) AND
+  (D.CUIIO_VERS<>:CUIIO_VERS     OR D.CUIIO_VERS=:CUIIO_VERS) AND
+  (D.FORM <> :FORM               OR D.FORM =:FORM) AND
+  (D.FORM_VERS<>:FORM_VERS       OR D.FORM_VERS=:FORM_VERS) AND
+  (D.CAPITOL<>:CAPITOL           OR D.CAPITOL=:CAPITOL) AND
+  (D.CAPITOL_VERS<>:CAPITOL_VERS OR D.CAPITOL_VERS=:CAPITOL_VERS) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  P.PERIOADA_ANULA = :PERIOADA AND
+  P.NUM IN (4,1,3,2) AND 
+
+   
+  D.FORM IN (44)  AND
+  D.CAPITOL IN (405)
+  AND D.RIND NOT IN('2','1','-')
+  
+  GROUP  BY 
+  D.CUIIO,
+  P.NUM,
+  D.COL1,
+  D.COL3,
+  D.COL4
+  
+  
+  UNION  ALL 
+  
+  SELECT
+  D.CUIIO,
+  P.ANUL  PERIOADA,
+  D.COL1  AS COL1,
+  D.COL3  AS COL3  ,
+  D.COL4  AS COL4 
+ 
+  
+  
+ 
+FROM
+  CIS2.VW_DATA_ALL D
+            INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA)    
+  
+  
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (46)  AND
+  D.CAPITOL IN (409)
+  AND D.RIND NOT IN('2','1','-')
+  
+  GROUP  BY 
+  D.CUIIO,
+  P.ANUL,
+  D.COL1,
+  D.COL3,
+  D.COL4  
+  
+ 
+--  ) VB
+--  
+--  
+--  GROUP BY 
+--  VB.PERIOADA,
+--  VB.COL1,
+--  VB.COL3,
+--  VB.COL4

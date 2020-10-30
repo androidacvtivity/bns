@@ -1,0 +1,9 @@
+﻿BEGIN
+  FOR t IN (SELECT object_name, object_type FROM all_objects WHERE owner='ALL_APP_DB' AND object_type IN ('TABLE','VIEW','PROCEDURE','FUNCTION','PACKAGE')) LOOP
+    IF t.object_type IN ('TABLE','VIEW') THEN
+      EXECUTE IMMEDIATE 'GRANT SELECT, UPDATE, INSERT, DELETE ON ALL_APP_DB.'||t.object_name||' TO BACKUP_DB';
+    ELSIF t.object_type IN ('PROCEDURE','FUNCTION','PACKAGE') THEN
+      EXECUTE IMMEDIATE 'GRANT EXECUTE ON ALL_APP_DB.'||t.object_name||' TO BACKUP_DB';
+    END IF;
+  END LOOP;
+END;

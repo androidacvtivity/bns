@@ -1,0 +1,6 @@
+﻿
+
+
+        SELECT *
+
+         FROM USER_BANCU.VW_KATALOG_2_INVEST_2019;

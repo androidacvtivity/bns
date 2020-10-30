@@ -1,0 +1,10 @@
+﻿GRANT select ON ALL_APP.VW_REG_MODIF_08_04_2019 TO  BACKUP WITH GRANT OPTION;
+
+
+
+BEGIN
+    FOR t IN (SELECT * FROM user_tables) 
+    LOOP   
+        EXECUTE IMMEDIATE 'GRANT SELECT ON ' || t.table_name || ' TO BACKUP';    
+    END LOOP;
+END;

@@ -1,0 +1,53 @@
+﻿SELECT
+
+ 
+  'Rind 120.Col1 =  '||SUM(CASE WHEN  D.RIND IN ('120') THEN  D.COL1 ELSE 0 END)||' ,  ' ||'Rind 121.Col2 = '||SUM(CASE WHEN  D.RIND IN ('121') THEN  D.COL2 ELSE 0 END) 
+  AS REZULTAT
+
+FROM
+  VW_DATA_ALL D
+
+WHERE
+  (D.PERIOADA IN (:PERIOADA)    OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL=:CAPITOL) AND
+  (:CAPITOL_VERS=:CAPITOL_VERS) AND
+  (:ID_MD=:ID_MD) AND 
+  D.FORM IN (54) AND 
+  
+  D.CAPITOL IN (1077)
+  
+  AND D.RIND IN ('120','121')
+
+  HAVING 
+  (
+  SUM(CASE WHEN  D.RIND IN ('120') THEN  NVAL(D.COL1) ELSE 0 END) > 0
+  
+  AND 
+  
+  SUM(CASE WHEN  D.RIND IN ('121') THEN  NVAL(D.COL2) ELSE 0 END)  = 0
+  )
+  
+  OR
+  
+  (
+  SUM(CASE WHEN  D.RIND IN ('120') THEN  NVAL(D.COL1) ELSE 0 END) = 0
+  
+  AND 
+  
+  SUM(CASE WHEN  D.RIND IN ('121') THEN  NVAL(D.COL2) ELSE 0 END)  > 0
+  )
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

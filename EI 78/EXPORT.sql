@@ -1,0 +1,45 @@
+﻿SELECT
+
+     
+   D.CUIIO,
+--   MAX(R.CUIIO_VERS) CUIIO_VERS,
+   D.COL1 COD_SERV,
+   R.DENUMIRE,
+   R.CUATM,
+   R.CAEM2,
+   R.CFP,
+   R.CFOJ      
+     
+          
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+    INNER JOIN CIS2.VW_CL_SERVICII SS ON (rtrim(SS.CODUL, '0')=D.COL1 ) 
+
+ 
+     INNER JOIN CIS2.RENIM R ON R.CUIIO=D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS
+   
+     
+  WHERE 
+  (D.PERIOADA IN (1035,1034,1033,1032) ) AND 
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+  (:pID_MDTABLE =:pID_MDTABLE) AND
+  
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND
+  D.CAPITOL IN (407,408)
+ 
+  AND D.COL1 IN (851,852,853)
+  
+    
+ GROUP BY 
+   D.CUIIO,
+   D.COL1,
+   R.DENUMIRE,
+   R.CUATM,
+   R.CAEM2,
+   R.CFP,
+   R.CFOJ 

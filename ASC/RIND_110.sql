@@ -1,0 +1,64 @@
+
+SELECT L.*,
+       R.* 
+FROM 
+
+(
+SELECT
+  D.CUIIO,
+  D.RIND,
+  SUM(D.COL1) AS COL1  
+  
+FROM CIS2.VW_DATA_ALL D
+  WHERE 
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM = 20
+  AND D.RIND IN ('101','102','103','104','105','106','107','108','109','110','111','112','113.1','113.2','113.3','113.4','113.5')
+ 
+  
+ 
+  GROUP BY 
+  D.CUIIO,
+  D.RIND
+ 
+   )  L LEFT JOIN (
+   
+   
+   SELECT
+  D.CUIIO,
+  D.RIND,
+  SUM(D.COL1) AS COL1  
+  
+FROM CIS2.VW_DATA_ALL D
+  WHERE 
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM = 20
+  AND D.RIND IN ('1','2','3','4','5','6')
+ 
+  
+ 
+  GROUP BY 
+  D.CUIIO,
+  D.RIND
+   
+   ) R ON (R.CUIIO = L.CUIIO)
+   
+   WHERE 
+   
+   R.CUIIO IS NOT   NULL

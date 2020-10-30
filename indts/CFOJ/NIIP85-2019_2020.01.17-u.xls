@@ -1,0 +1,592 @@
+﻿<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Title>CATALOG</Title>
+  <Author>BNS</Author>
+  <LastAuthor>Olga Sluzova</LastAuthor>
+  <LastPrinted>2016-05-20T11:46:55Z</LastPrinted>
+  <Created>2014-04-18T14:35:43Z</Created>
+  <LastSaved>2020-01-17T09:08:17Z</LastSaved>
+  <Version>15.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11670</WindowHeight>
+  <WindowWidth>19170</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial Cyr" x:CharSet="238"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s67" ss:Name="Body">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Font ss:FontName="Tahoma" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s63">
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Tahoma" ss:Size="11" ss:Color="#0000FF" ss:Bold="1"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s65">
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss" ss:Color="#FF0000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s116" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s117" ss:Parent="s67">
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s118" ss:Parent="s67">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss" ss:Color="#FF0000"
+    ss:Bold="1"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s119">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial Cyr" x:CharSet="238"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s120">
+   <Font ss:FontName="Arial Cyr" x:CharSet="238"/>
+  </Style>
+  <Style ss:ID="s122" ss:Parent="s67">
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss" ss:Color="#FF0000"
+    ss:Bold="1"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s162">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s163">
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s199" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Tahoma" x:CharSet="204" x:Family="Swiss"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s200">
+   <Font ss:FontName="Tahoma" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="CATALOG">
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="547" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62">
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="40.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="286.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="50.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="21.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="38.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="21.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="34.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="38.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="57"/>
+   <Column ss:StyleID="s62" ss:Width="53.25"/>
+   <Column ss:StyleID="s62" ss:Width="50.25" ss:Span="1"/>
+   <Row>
+    <Cell ss:Index="2" ss:StyleID="s63"><Data ss:Type="String">NIIP85-2019_2020.01.17-u.xls</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.25">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CUIIO</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Denumirea</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CUATM</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">CFP</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">COCM</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NTL</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NTIIP</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NDIIP</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NPDS</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NRIIP</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">NSIIP</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7014933</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Grădiniţa de copii „Garofiţa”, Balasineşti</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1410000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7014985</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii, Beleavinţi</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1411000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7014991</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii, Berlinţi</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1413000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7016151</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Romaniţa”, Bulboaca</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1415000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015186</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Doiniţa”, Colicăuţi </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1417000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015275</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Albinuţa”, Coteala </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1419000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015393</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Albinuţa”, Drepcăuţi </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1422000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015482</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Mărţişor”, Grimăncăuţi </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1423000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015507</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Zîmbetul”, Halahora de Sus </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1424000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015298</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Albinuţa”, Hlina</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1425000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015625</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii № 1 „Andrieş”, Larga </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1426000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015648</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii № 3 „Albinuţa”, Larga </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1426000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015654</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii № 4 „Prichindel”, Larga </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1426000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015683</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii, Mărcăuţi  </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1427000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015714</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Coloboc”, Medveja</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1428000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015789</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Mărţişor”, Pererita</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1430000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015984</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii, Slobozia-Şirăuţi </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1431000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7015967</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii, Şirăuţi</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1432000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7016027</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Romaniţa”, Tabani </Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1433000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s120">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7016085</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Grădiniţa de copii, Bogdăneşti</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1414000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"/>
+   </Row>
+   <Row ss:StyleID="s163">
+    <Cell ss:StyleID="s199"><Data ss:Type="String">7016151</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Grădiniţa de copii „Romaniţa”, Bulboaca</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1415000</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">8704</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">0</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Briceni</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">17.01.2020</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s162"/>
+    <Cell ss:StyleID="s162"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s200"/>
+   </Row>
+   <Row ss:Index="544">
+    <Cell ss:Index="3" ss:StyleID="s65"/>
+   </Row>
+   <Row ss:Index="547">
+    <Cell ss:Index="3" ss:StyleID="s65"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Layout x:Orientation="Landscape"/>
+    <Header x:Margin="0.51181102362204722"/>
+    <Footer x:Margin="0.51181102362204722"/>
+    <PageMargins x:Bottom="0.98425196850393704" x:Left="0" x:Right="0"
+     x:Top="0.98425196850393704"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>36</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

@@ -1,0 +1,48 @@
+SELECT
+ 
+     DISTINCT  D.CUIIO
+     
+     
+    
+FROM
+  CIS2.VW_DATA_ALL D 
+  
+  
+WHERE 
+  (D.PERIOADA=:pPERIOADA) AND
+  (D.FORM=:pFORM) AND
+  (D.FORM_VERS=:pFORM_VERS) AND
+  (:pID_MDTABLE=:pID_MDTABLE) AND
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  
+  D.FORM IN (16) 
+ 
+  AND D.CUIIO NOT IN (
+  
+  SELECT
+ 
+     DISTINCT  D.CUIIO
+   
+    
+FROM
+  CIS2.VW_DATA_ALL D 
+  
+  
+WHERE 
+  (D.PERIOADA=:pPERIOADA) AND
+  (D.FORM=:pFORM) AND
+  (D.FORM_VERS=:pFORM_VERS) AND
+  (:pID_MDTABLE=:pID_MDTABLE) AND
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  
+  D.FORM IN (16) 
+  AND D.CAPITOL IN (100) 
+  AND D.RIND IN('01','02','03','04','05','06','07')
+  
+  )
+  
+
+
+ 
+
+  

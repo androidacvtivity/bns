@@ -1,0 +1,1708 @@
+﻿<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>BNS</Author>
+  <LastAuthor>Liudmila Batrincea</LastAuthor>
+  <LastPrinted>2018-12-12T09:01:25Z</LastPrinted>
+  <Created>2016-11-22T08:31:24Z</Created>
+  <LastSaved>2019-12-17T06:37:04Z</LastSaved>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11460</WindowHeight>
+  <WindowWidth>19200</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
+  <RefModeR1C1/>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial Cyr" x:CharSet="238"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62" ss:Name="Body">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63" ss:Name="Body 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s64" ss:Name="Header">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s65" ss:Name="Header 2">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s66" ss:Name="Обычный 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" ss:Size="11"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s67" ss:Name="Обычный 3">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:CharSet="204" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m294347128" ss:Parent="s64">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="m294340016" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="m294340036" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000" ss:Italic="1"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Times New Roman" x:CharSet="204" x:Family="Roman"
+    ss:Size="20" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Times New Roman" x:CharSet="204" x:Family="Roman"
+    ss:Size="20" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:CharSet="204" x:Family="Roman" ss:Size="8"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:CharSet="204" x:Family="Roman" ss:Size="8"/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Times New Roman" x:CharSet="204" x:Family="Roman" ss:Size="8"/>
+  </Style>
+  <Style ss:ID="s78">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Times New Roman" x:CharSet="204" x:Family="Roman" ss:Size="8"/>
+  </Style>
+  <Style ss:ID="s83" ss:Parent="s64">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s88" ss:Parent="s64">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s92" ss:Parent="s64">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s95" ss:Parent="s64">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s103" ss:Parent="s62">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s104" ss:Parent="s62">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s105" ss:Parent="s62">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s106" ss:Parent="s62">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s111" ss:Parent="s65">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s116" ss:Parent="s65">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s120" ss:Parent="s65">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s123" ss:Parent="s65">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#D3D3D3" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s125" ss:Parent="s63">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s126" ss:Parent="s63">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s127" ss:Parent="s63">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s128" ss:Parent="s63">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s129" ss:Parent="s63">
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s130" ss:Parent="s63">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s131" ss:Parent="s63">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s132" ss:Parent="s63">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s133" ss:Parent="s66">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="9" ss:Color="#333333"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s134" ss:Parent="s66">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="8" ss:Color="#333333"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s135" ss:Parent="s66">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="11" ss:Color="#333333"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s136" ss:Parent="s66">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="11" ss:Color="#333333"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s137" ss:Parent="s66">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s138" ss:Parent="s66">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s143" ss:Parent="s67">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s146" ss:Parent="s67">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s147" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s148" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s149" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s157" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s158" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000" ss:Italic="1"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s166" ss:Parent="s67">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s167" ss:Parent="s67">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s168" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s169" ss:Parent="s67">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s170" ss:Parent="s67">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s171" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s172" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="9"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s173" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s174" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s175" ss:Parent="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Symbol" x:CharSet="2" x:Family="Roman" ss:Size="6"
+    ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s176" ss:Parent="s67">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s177" ss:Parent="s67">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="titlu">
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="53" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:AutoFitWidth="0" ss:Width="153.75"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="45"/>
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="57"/>
+   <Row ss:Index="15" ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell ss:MergeAcross="6" ss:StyleID="s69"><Data ss:Type="String">Sarcina Tehnică:Modificare 16-0007 0005</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell ss:MergeAcross="6" ss:StyleID="s69"><Data ss:Type="String">Formular statistic: 2-INV  anual</Data></Cell>
+   </Row>
+   <Row ss:Index="19" ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell ss:MergeAcross="6" ss:StyleID="s71"><Data ss:Type="String">Anexa 2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell ss:MergeAcross="6" ss:StyleID="s71"><Data ss:Type="String">Machetul Tabelelor de Ieşire</Data></Cell>
+   </Row>
+   <Row ss:Index="51" ss:AutoFitHeight="0" ss:Height="12">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">MD-2019, or. Chişinău, str. Grenoble, 106</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:MergeDown="2" ss:StyleID="s74"/>
+    <Cell ss:MergeAcross="2" ss:StyleID="s72"><Data ss:Type="String">MD-2019, Кишинэу, ул. Гренобль, 106</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="31.5">
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Secția de proiectare și realizare aplicațiilor informatice complexe</Data></Cell>
+    <Cell ss:Index="5" ss:MergeAcross="2" ss:StyleID="s77"><Data ss:Type="String">Отдел проектирования и разработки комплексных информационных приложений</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12">
+    <Cell ss:StyleID="s78"><Data ss:Type="String">tel.:&#160; 022 40-30-20, 022 40-30-21</Data></Cell>
+    <Cell ss:Index="5" ss:MergeAcross="2" ss:StyleID="s77"><Data ss:Type="String">тел.: 022 40-30-20, 022 40-30-21</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <TopRowVisible>6</TopRowVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>14</ActiveRow>
+     <RangeSelection>R15C1:R15C7</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="1_0_Tab.1.4_0">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="26" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="40.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="81.75"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="87.75"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="90.75"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s83"><Data ss:Type="String">Tab.1.4</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s88"><Data ss:Type="String">                                                                                 Darea in folosinta a cladirlor si edificiilor </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s92"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeDown="2" ss:StyleID="s95"><Data ss:Type="String">Denumirea    indicatorului</Data></Cell>
+    <Cell ss:MergeDown="2" ss:StyleID="s95"><Data ss:Type="String">Cod rind</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="s95"><Data ss:Type="String">Date in    folosinta</Data></Cell>
+    <Cell ss:MergeDown="2" ss:StyleID="s95"><Data ss:Type="String">Valoarea efectiva   pentru beneficiar,  mii lei</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:MergeDown="1" ss:StyleID="s95"><Data ss:Type="String">unitati</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s95"><Data ss:Type="String">suprafata, m2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="4" ss:StyleID="s95"><Data ss:Type="String">totala</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">locuibila</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s95"><Data ss:Type="String">A</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">B</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">3</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="Number">4</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Case de locuit</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">01</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 01 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.01 Col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.01 Col.3</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.01 Col.4</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">apartamente</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">02</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 02 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 02 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 02 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> o cameră</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">03</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 03 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 03 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 03 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> două camere</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">04</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 04 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 04 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 04 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> trei camere</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">05</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 05 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 05 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 05 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> patru camere şi peste</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">06</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 06 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 06 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 06 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu un nivel</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">07</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 07 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 07 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 07 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu 2 nivele</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">08</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 08 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 08 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 08 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu 3-4 nivele</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">09</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 09 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 09 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 09 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu 5 nivele</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">10</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 10 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 10 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 10 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu 9 nivele</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">11</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 11 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 11 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 11 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu 6, 7, 8, 10, 11, 15 nivele</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">12</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 12 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 12 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 12 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String"> cu 16 nivele şi peste</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">13</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 13 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 13 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 13 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Camine</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 14 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 14 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 14 col.3</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Total </Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">16</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 02 col.1</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 16 col.2</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind 16 col.3</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.16 Col.4</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Case de locuit aflate în construcţia nefinisată, unitati</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">17</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.17</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Case de locuit aflate in constructia nefinisata, m2 de suprafata totala </Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">18</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.18</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Vindut populatiei apartamente noi, unitati</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">19</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.19</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Suprafata totala, m2</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">20</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Sum Rind.20</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Layout x:Orientation="Landscape"/>
+    <Header x:Margin="0.19685039370078741"/>
+    <Footer x:Margin="0.19685039370078741" x:Data="&amp;R&amp;P / &amp;N"/>
+    <PageMargins x:Bottom="0.3543307086614173" x:Left="0.3543307086614173"
+     x:Right="0.3543307086614173" x:Top="0.3543307086614173"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>7</SplitHorizontal>
+   <TopRowBottomPane>7</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>21</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="1_0_Tab.1.5_0">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="28" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="168"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="42"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="73.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="105"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s83"><Data ss:Type="String">Tab.1.5</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s88"><Data ss:Type="String">                                                                                                         Cladiri nerezidentiale </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s92"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeDown="1" ss:StyleID="s95"><Data ss:Type="String">Denumirea indicatorului</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s95"><Data ss:Type="String">Cod rind</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s95"><Data ss:Type="String">Capacitatea  obiectului dat in folosinta</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m294347128"><Data ss:Type="String">Date in folosinta</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s95"><Data ss:Type="String">Valoarea efectiva pentru    beneficiar, mii lei</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell ss:Index="4" ss:StyleID="s95"><Data ss:Type="String">numarul cladirilor, unitati </Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">suprafata totala m2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s95"><Data ss:Type="String">A</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">B</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">3</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="Number">4</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Clădiri nerezidenţiale</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">industriale</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">51</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">agricole</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">52</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">comerciale</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">53</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">de învăţămînt</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">54</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">de sănătate</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">55</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">alte</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">56</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Instituţii preşcolare,locuri</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">61</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Spitale, paturi</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">62</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Policlinici,vizite pe schimb</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">63</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Reţele de gaz, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">65</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Apeduct, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">66</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Apeduct, mii m3 de apă în 24 de ore</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">67</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Aprovizionarea cu căldură, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">68</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Aprovizionarea cu căldură, gral/h</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">69</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Instalaţii de canalizare, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">70</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Instalaţii de canalizare, mii m3 de apă în 24 de ore</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">71</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Drumuri cu îmbrăcăminte rigidă, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">72</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Întreprinderi de comerţ, m2 de suprafaţa de comerţ</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">73</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Întreprunderi de alimentaţie publică, locuri</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">74</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Retele electrice cu tensiunea 04-20kV si mai mult, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">75</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Drumuri dupa reparatiea capitala, km</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">76</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">x</Data></Cell>
+    <Cell ss:StyleID="s104"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Layout x:Orientation="Landscape"/>
+    <Header x:Margin="0.19685039370078741"/>
+    <Footer x:Margin="0.19685039370078741" x:Data="&amp;R&amp;P / &amp;N"/>
+    <PageMargins x:Bottom="0.3543307086614173" x:Left="0.3543307086614173"
+     x:Right="0.3543307086614173" x:Top="0.3543307086614173"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>6</SplitHorizontal>
+   <TopRowBottomPane>6</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="1_00_Tab.16 _00">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="44" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="219"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="25.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="157.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="163.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="93"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="4" ss:StyleID="s111"><Data ss:Type="String">Tab.16 </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="4" ss:StyleID="s116"><Data ss:Type="String">Investiţii în active imobilizate, pe tipuri de imobilizari, 2018                                        &#10; TOTAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="4" ss:StyleID="s120"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
+    <Cell ss:StyleID="s123"/>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Rind</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Investitii in active imobilizate, mii lei</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">In % fata de perioada respectiva a anului precedent</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Structura, %</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s123"><Data ss:Type="String">A</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">B</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">TOTAL (rd.200+rd.300)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">100</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Imobilizari necorporale, total (rd.210 + rd.230 + rd.240)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">200</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">drepturi de proprietate intelectuala</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">210</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">cheltueli de cercetare - dezvoltare</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">220</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">programe informatice</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">230</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">alte imobilizari necorporale</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">240</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Imobilizari corporale, total (rd.400 + rd.500 + rd.600 + rd.700)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">300</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Mijloace fixe, total (rd.410 + rd.420 + rd.430 + rd.440 + rd.450 + rd.460)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">400</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">cladiri rezidentiale (de locuit)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">410</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">cladiri nerezidentiale</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">420</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">constructii speciale (ingineresti)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">430</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">masini, utilaje  din care:</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">440</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">tehnica de calcul</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">441</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">din rindul 440 - importate</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">442</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">mijloace de transport</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">450</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">alte mijloace fixe</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">460</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Terenuri</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">500</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Resurse minerale</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">600</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Active biologice imobilizate (rd.710 + rd.720)</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">700</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">active biologice fitotehnice</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">710</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">active biologice zootehnie</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">720</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">surse proprii</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">810</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">bugetul de stat</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">820</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">bugetele unitatilor administrativ - teritoriale</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">830</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">credite si imprumuturi interne</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">840</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">credite si imprumuturi externe</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">850</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">surse din strainatate</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">860</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">fondul rutier</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">870</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">fondul ecologic</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">880</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">altele</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">890</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">organele administratiei publice</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">510</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">agentii economici</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">520</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s125"><Data ss:Type="String">populatie</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">530</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s127"><Data ss:Type="String">Informativ</Data></Cell>
+    <Cell ss:StyleID="s128"/>
+    <Cell ss:StyleID="s129"/>
+    <Cell ss:StyleID="s129"/>
+    <Cell ss:StyleID="s129"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Indicatorului</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">n/ r</Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">Anul curent</Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">Anul precedent</Data></Cell>
+    <Cell ss:StyleID="s129"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24">
+    <Cell ss:StyleID="s133"><Data ss:Type="String">rocurarea mijloacelor fixe utilizate anterior de alte organizatii si a constructiilor nefinisate</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="Number">730</Data></Cell>
+    <Cell ss:StyleID="s135"/>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75">
+    <Cell ss:StyleID="s133"><Data ss:Type="String">Vinzarea mijloacelor fixe si obiectelor din constructiile nefinisate</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="Number">740</Data></Cell>
+    <Cell ss:StyleID="s135"/>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s137"><Data ss:Type="String">Mijloace fixe puse în funcţiune</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="Number">750</Data></Cell>
+    <Cell ss:StyleID="s135"/>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">x</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s138"><Data ss:Type="String">Mijloace fixe nefinisate</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="Number">760</Data></Cell>
+    <Cell ss:StyleID="s135"/>
+    <Cell ss:StyleID="s135"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Layout x:Orientation="Landscape"/>
+    <Header x:Margin="0.19685039370078741"/>
+    <Footer x:Margin="0.19685039370078741" x:Data="&amp;R&amp;P / &amp;N"/>
+    <PageMargins x:Bottom="0.3543307086614173" x:Left="0.3543307086614173"
+     x:Right="0.3543307086614173" x:Top="0.3543307086614173"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>5</SplitHorizontal>
+   <TopRowBottomPane>18</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>39</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="tabel lucru">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="14" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="42"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="81"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="141.75" ss:Span="2"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="142.5"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s143"><Data ss:Type="String">Tab.12</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:MergeAcross="5" ss:StyleID="s146"><Data ss:Type="String">                             Tabel de lucru CAP. LOC  annual</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:MergeAcross="5"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="48.75">
+    <Cell ss:StyleID="s147"><Data ss:Type="String">Nr. rd.</Data></Cell>
+    <Cell ss:StyleID="s148"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Cod CUATM</Font><Sup><Font
+        html:Color="#000000">1</Font></Sup><Font html:Color="#000000"> oraşe (municipii), sate (comune)</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s149"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Denumirea</Font><Sup><Font
+        html:Color="#000000">1</Font></Sup><Font html:Color="#000000"> oraşelor (municipiilor), satelor (comunelor)</Font></ss:Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="m294340016"><Data ss:Type="String">Date în exploatare</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.75" ss:Hidden="1">
+    <Cell ss:StyleID="s157"/>
+    <Cell ss:StyleID="s158"/>
+    <Cell ss:StyleID="s158"/>
+    <Cell ss:MergeAcross="2" ss:StyleID="m294340036"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24">
+    <Cell ss:StyleID="s166"/>
+    <Cell ss:StyleID="s167"/>
+    <Cell ss:StyleID="s158"/>
+    <Cell ss:StyleID="s168"><Data ss:Type="String">clădiri rezidenţiale/case de locuit individuale, unităţi</Data></Cell>
+    <Cell ss:StyleID="s168"><Data ss:Type="String">în care: apartamente/case de locuit individuale, unităţi</Data></Cell>
+    <Cell ss:StyleID="s168"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">suprafaţa totală a apartamentelor/caselor de locuit individuale, m</Font><Sup><Font
+        html:Color="#000000">2</Font></Sup></ss:Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="6.75">
+    <Cell ss:StyleID="s169"/>
+    <Cell ss:StyleID="s170"/>
+    <Cell ss:StyleID="s170"/>
+    <Cell ss:StyleID="s171"/>
+    <Cell ss:StyleID="s171"/>
+    <Cell ss:StyleID="s171"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s172"><Data ss:Type="String">A</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">B </Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">C</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="Number">3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s173"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s174"><Data ss:Type="String">ooooooo</Data></Cell>
+    <Cell ss:StyleID="s174"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Total</Font><Font
+       html:Size="9" html:Color="#000000"> – </Font><I><Font html:Color="#000000">Всего</Font></I></ss:Data></Cell>
+    <Cell ss:StyleID="s174"><Data ss:Type="String">Rind 01 col.1</Data></Cell>
+    <Cell ss:StyleID="s174"><Data ss:Type="String">Rind.02 col.1</Data></Cell>
+    <Cell ss:StyleID="s174"><Data ss:Type="String">Rind.02 col.2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s173"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s175"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s176"/>
+    <Cell ss:StyleID="s176"/>
+    <Cell ss:StyleID="s176"/>
+    <Cell ss:StyleID="s176"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s173"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s175"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s173"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s175"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s173"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s175"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font><Font
+       html:Face="Times New Roman" x:CharSet="2" x:Family="Roman"
+       html:Color="#000000">__</Font><Font html:Color="#000000">½</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+    <Cell ss:StyleID="s177"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Layout x:Orientation="Landscape"/>
+    <PageMargins x:Bottom="0.3" x:Right="0.2" x:Top="0.3"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>300</HorizontalResolution>
+    <VerticalResolution>300</VerticalResolution>
+   </Print>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

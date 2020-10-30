@@ -1,0 +1,10 @@
+SELECT 
+  CUIIO,
+  CUIIO_VERS,
+  DENUMIRE,
+  CUATM ,
+  CFP,
+  CFOJ,
+  CAEM2
+        
+        FROM USER_BANCU.KAT_1_INF

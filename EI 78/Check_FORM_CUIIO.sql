@@ -1,0 +1,85 @@
+﻿
+
+
+
+SELECT
+
+  L.CUIIO,
+  L.CUIIO_VERS
+
+FROM 
+(
+SELECT 
+
+  CUIIO,
+  CUIIO_VERS
+  
+  FROM CIS2.FORM_CUIIO
+  WHERE
+FORM  IN (44)
+
+AND CUIIO_VERS IN (1036)
+
+) L  LEFT JOIN  (
+
+
+
+SELECT 
+
+  CUIIO,
+  CUIIO_VERS
+  
+  FROM CIS2.RENIM
+  
+  WHERE
+  CUIIO_VERS   IN (1035)
+
+) R ON (R.CUIIO = L.CUIIO)
+
+WHERE 
+ R.CUIIO  IS  NULL
+
+
+
+-----------------------------------------------------------------------------------
+;
+SELECT
+
+  L.CUIIO,
+  L.CUIIO_VERS
+
+FROM 
+(
+SELECT 
+
+  CUIIO,
+  CUIIO_VERS
+  
+  FROM CIS2.FORM_CUIIO
+  WHERE
+FORM  IN (44)
+
+AND CUIIO_VERS IN (1036)
+
+) L  LEFT JOIN  (
+
+
+
+SELECT 
+
+  CUIIO,
+  CUIIO_VERS
+  
+  FROM CIS2.FORM_CUIIO
+  WHERE
+FORM  IN (44)
+
+AND CUIIO_VERS   IN (1035)
+
+) R ON (R.CUIIO = L.CUIIO)
+
+WHERE 
+ R.CUIIO  IS  NULL
+
+
+;

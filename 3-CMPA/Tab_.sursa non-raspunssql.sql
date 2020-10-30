@@ -1,0 +1,84 @@
+﻿SELECT
+    :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+    '0' AS NR_SECTIE,
+    '0' AS NUME_SECTIE,
+    '0' AS NR_SECTIE1,
+    '0' AS NUME_SECTIE1,
+    '0' AS NR_SECTIE2,
+    '0' AS NUME_SECTIE2,
+     RIND||'~'||ROWNUM AS NR_ROW,   
+      ORDINE,
+    '000000' AS DECIMAL_POS,
+    DENUMIRE NUME_ROW,
+      COL1,
+      COL2,
+      COL3,
+      COL4,
+      COL5,
+      COL6
+    FROM
+  
+(
+    SELECT 
+         CASE 
+         WHEN MR.RIND = 'TIP2' THEN  '0.1' 
+         WHEN MR.RIND = 'TIP3' THEN  '0.2' 
+         ELSE MR.RIND END  ORDINE, 
+         MR.RIND,
+         MR.DENUMIRE, 
+         COUNT(DISTINCT CASE WHEN  MR.RIND = R.RIND AND (D.CUATM_FULL LIKE '%'||'0000000'||';%')    THEN   D.UNIT_CODE ELSE NULL END) AS COL1,
+         COUNT(DISTINCT CASE WHEN  MR.RIND = R.RIND AND (D.CUATM_FULL LIKE '%'||'0100000'||';%')    THEN   D.UNIT_CODE ELSE NULL END) AS COL2,
+         COUNT(DISTINCT CASE WHEN  MR.RIND = R.RIND AND (D.CUATM_FULL LIKE '%'||'1111111'||';%')    THEN   D.UNIT_CODE ELSE NULL END) AS COL3,
+         COUNT(DISTINCT CASE WHEN  MR.RIND = R.RIND AND (D.CUATM_FULL LIKE '%'||'2222222'||';%')    THEN   D.UNIT_CODE ELSE NULL END) AS COL4,
+         COUNT(DISTINCT CASE WHEN  MR.RIND = R.RIND AND (D.CUATM_FULL LIKE '%'||'3333333'||';%')    THEN   D.UNIT_CODE ELSE NULL END) AS COL5,
+         COUNT(DISTINCT CASE WHEN  MR.RIND = R.RIND AND (D.CUATM_FULL LIKE '%'||'9600000'||';%')    THEN   D.UNIT_CODE ELSE NULL END) AS COL6
+FROM
+  VW_DATA_ALL_GC  D
+  INNER JOIN MD_RIND R ON D.ID_MD = R.ID_MD AND  R.RIND NOT IN ('CM','-')
+  
+  CROSS JOIN (
+  SELECT 
+            
+            RIND,
+            DENUMIRE,
+            ORDINE    
+            
+            
+            FROM    MD_RIND
+            
+            WHERE 
+            
+            form = 58
+            
+            AND CAPITOL = 419
+            AND RIND NOT IN ('CM','-')
+            
+            
+          
+  ) MR
+     
+  
+  
+WHERE
+  (D.PERIOADA IN (:pPERIOADA))  AND   
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+  (:pID_MDTABLE =:pID_MDTABLE) AND
+
+  D.FORM IN (58)  AND
+  D.CAPITOL IN (419)
+  AND R.RIND NOT IN ('CM')
+  
+  GROUP BY 
+  MR.RIND,
+  MR.ORDINE,
+  MR.DENUMIRE
+  
+  ORDER BY 
+  
+  ORDINE
+ )

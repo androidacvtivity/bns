@@ -1,0 +1,30 @@
+﻿
+
+
+
+
+
+SELECT 
+
+ DISTINCT D.CUIIO
+
+
+ FROM CIS2.VW_DATA_ALL D
+
+WHERE
+
+CUIIO IN (
+41188101,
+41131851,
+40963330,
+40071168,
+40075114
+    
+    )
+    
+    AND FORM IN (44)
+    
+    AND CAPITOL  IN (405,406,407,408)
+    
+    
+    AND RIND_VERS IN (1028)

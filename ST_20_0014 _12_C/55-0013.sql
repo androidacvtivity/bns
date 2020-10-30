@@ -1,0 +1,51 @@
+﻿
+
+SELECT
+
+ DECODE(CC.NR_COLUMN,'1', 'COL1 ', '2', 'COL2 ', '3', 'COL3 ')||': '||
+
+   
+   CIS2.NVAL(SUM(CASE WHEN D.RIND IN('10') THEN DECODE(CC.NR_COLUMN,'1', D.COL1, '2', D.COL2, '3', D.COL3) ELSE 0 END))||' <> '||
+   CIS2.NVAL(SUM(CASE WHEN D.RIND IN ('20','30','40') THEN DECODE(CC.NR_COLUMN,'1', D.COL1, '2', D.COL2, '3', D.COL3)ELSE 0 END))
+  
+  
+ 
+  
+  
+  AS REZULTAT
+
+
+FROM CIS2.VW_DATA_ALL D,
+         (                                                                        
+       SELECT '1' AS NR_COLUMN FROM DUAL UNION
+       SELECT '2' AS NR_COLUMN FROM DUAL UNION
+       SELECT '3' AS NR_COLUMN FROM DUAL                                                                                                     
+     
+       
+       ) CC  
+
+
+
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (55)  
+  AND D.CAPITOL IN (1078)
+  
+ 
+  GROUP BY 
+
+  CC.NR_COLUMN
+  
+  HAVING 
+  
+  CIS2.NVAL(SUM(CASE WHEN D.RIND IN('10') THEN DECODE(CC.NR_COLUMN,'1', D.COL1, '2', D.COL2, '3', D.COL3) ELSE 0 END))  <> 
+  CIS2.NVAL(SUM(CASE WHEN D.RIND IN('20','30','40') THEN DECODE(CC.NR_COLUMN,'1', D.COL1, '2', D.COL2, '3', D.COL3)ELSE 0 END))
+  

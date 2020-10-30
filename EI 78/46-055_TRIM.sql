@@ -1,0 +1,25 @@
+
+
+  SELECT
+  D.CUIIO,
+  MAX(D.COL1) AS COL1,
+  MAX(D.COL3) AS COL3,
+  SUM(D.COL4) AS COL4
+ 
+  
+  
+  
+FROM
+  CIS2.VW_DATA_ALL D 
+WHERE
+  (D.PERIOADA IN (1033,1034,1035,1032)) AND 
+  (D.CUIIO=:CUIIO           OR :CUIIO = -1) AND
+
+  D.FORM IN (44)  AND
+  D.CAPITOL IN (405)
+  AND D.RIND NOT IN('2','1','-')
+  
+  GROUP  BY 
+  D.CUIIO
+
+ 

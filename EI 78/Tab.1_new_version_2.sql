@@ -1,0 +1,132 @@
+﻿
+
+
+SELECT
+  :pPERIOADA AS PERIOADA,
+  :pFORM AS FORM,
+  :pFORM_VERS AS FORM_VERS,
+  :pID_MDTABLE AS ID_MDTABLE,
+  :pCOD_CUATM AS COD_CUATM,
+  '0' AS NR_SECTIE,
+  '0' AS NUME_SECTIE,
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+   A.CUIIO||'~'||ROWNUM AS NR_ROW,
+   ROWNUM AS ORDINE, 
+  '0000' AS DECIMAL_POS,
+   NUME_ROW,
+   SUBSTR(A.CAEM2,2,4) AS COL1,
+   A.PACHET AS COL2,
+   ROUND(A.COL1,1) AS COL3,
+   ROUND(A.COL2,1) AS COL4
+FROM
+
+
+(
+   SELECT
+   L.CUIIO,
+   L.NUME_ROW, 
+   L.RIND,
+   L.CAEM2,
+   L.PACHET,
+   L.COL1  AS COL1,
+   R.COL1  AS COL2
+   
+   
+   FROM 
+
+(
+SELECT
+   R.CUIIO,
+   MAX(R.DENUMIRE) AS NUME_ROW, 
+   D.RIND,
+   D.CAEM2,
+   D.PACHET,
+   ROUND(SUM(CASE WHEN D.PERIOADA IN (:pPERIOADA) THEN D.RIND ELSE NULL END),1) AS COL1
+ 
+
+
+
+FROM
+  CIS2.VW_DATA_ALL D
+  INNER JOIN CIS2.RENIM R ON (R.CUIIO= D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS)
+ 
+ WHERE
+  D.FORM IN (46)                           AND 
+  D.FORM_VERS = :pFORM_VERS                AND    
+  D.CAPITOL IN (1)                         AND 
+  D.PERIOADA IN (:pPERIOADA) AND 
+  D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%'  
+ 
+ -- AND D.CUIIO IN (13557) 
+ 
+
+GROUP BY
+  R.CUIIO,
+  D.RIND,
+  D.CAEM2,
+  D.PACHET
+ORDER BY
+  R.CUIIO,
+  D.RIND
+  
+  ) L LEFT JOIN (
+  
+  SELECT
+   R.CUIIO,
+   MAX(R.DENUMIRE) AS NUME_ROW, 
+   D.RIND,
+   
+   D.CAEM2,
+   D.PACHET,
+   SUM(CASE WHEN 1=1  THEN D.RIND ELSE NULL END) AS COL1
+    FROM
+     CIS2.VW_DATA_ALL D
+     
+         INNER JOIN CIS2.RENIM R ON (R.CUIIO= D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS)
+                
+      
+         INNER JOIN
+         (
+           SELECT P.PERIOADA FROM CIS2.VW_MD_PERIOADA P 
+           WHERE P.PERIOADA = :pPERIOADA 
+    
+           UNION   
+   
+           SELECT P.PERIOADA  
+           
+           FROM CIS2.VW_MD_PERIOADA P 
+           
+           INNER JOIN CIS2.VW_MD_PERIOADA T ON(P.ANUL=T.ANUL AND P.TIP_PERIOADA=5 )
+            
+           WHERE T.PERIOADA = :pPERIOADA
+           
+           AND P.NUM = 4
+   
+        ) P ON(D.PERIOADA=P.PERIOADA)
+        
+        
+ WHERE
+  D.FORM IN (44)                           AND 
+ -- D.FORM_VERS = :pFORM_VERS                AND    
+  D.CAPITOL IN (1)                         AND 
+ -- D.PERIOADA IN (:pPERIOADA) AND 
+  D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%'  
+ 
+ -- AND D.CUIIO IN (13557) 
+  
+  
+  GROUP BY
+  R.CUIIO,
+  D.RIND,
+  D.CAEM2,
+  D.PACHET
+ORDER BY
+  R.CUIIO,
+  D.RIND
+  
+  )  R ON R.CUIIO = L.CUIIO 
+  
+  ) A
