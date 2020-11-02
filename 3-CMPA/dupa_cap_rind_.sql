@@ -1,8 +1,9 @@
 ﻿SELECT 
-   
+         D.UNIT_CODE,
          CASE WHEN D.CAPITOL = 1115 THEN 'Tabelul_1'
               WHEN D.CAPITOL = 1116 THEN 'Tabelul_2'
               WHEN D.CAPITOL = 1117 THEN 'Tabelul_3'
+              WHEN D.CAPITOL = 1118 THEN 'Cap. SR'
          END 
           AS CAPITOL,
          D.RIND,   
@@ -34,10 +35,11 @@ WHERE
   (:pID_MDTABLE =:pID_MDTABLE) AND 
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (62)  AND
-  D.CAPITOL IN (1115,1116,1117)
+  D.CAPITOL IN (1115,1116,1117,1118)
   
   
   GROUP BY 
+   D.UNIT_CODE,
    D.CAPITOL,
    D.RIND  
   
