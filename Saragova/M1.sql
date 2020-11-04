@@ -1,0 +1,33 @@
+﻿SELECT 
+    DISTINCT     
+    L.CUIIO,
+    R.DENUMIRE,
+    L.PACHET,
+    PR.DATA_REG    
+FROM CIS.VW_DATA_ALL L
+    --M1, CONS.TS, 5CI,65 AUTO, 2 INVEST
+
+                INNER JOIN CIS.RENIM R ON R.CUIIO = L.CUIIO AND     R.CUIIO_VERS = L.CUIIO_VERS  
+                INNER JOIN USER_EREPORTING.DATA_ALL_PRIMIT PR ON PR.CUIIO = L.CUIIO AND     PR.CUIIO_VERS = L.CUIIO_VERS  
+                
+
+    WHERE 
+    L.PERIOADA = :pPERIOADA AND L.FORM = :pFORM
+     AND ID_SCHEMA = :pID_SCHEMA
+   
+    
+    
+    GROUP BY 
+    L.CUIIO,
+    R.DENUMIRE,
+    L.PACHET,
+    PR.DATA_REG      
+    
+    ORDER BY 
+    PR.DATA_REG DESC;
+    
+    
+    
+    
+    
+    

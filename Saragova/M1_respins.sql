@@ -1,0 +1,40 @@
+
+
+
+--M1, CONS.TS, 5CI,65 AUTO, 2 INVEST
+--pentru USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE
+
+
+SELECT 
+    DISTINCT     
+    L.CUIIO,
+    R.DENUMIRE,
+    L.PACHET,
+    MAX(L.DATA_REG) DATA_REG     
+
+
+FROM -- USER_EREPORTING.VW_DATA_ALL_PRIMIT L
+     USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE L 
+
+                INNER JOIN CIS.RENIM R ON R.CUIIO = L.CUIIO AND 
+                                          R.CUIIO_VERS = L.CUIIO_VERS  
+
+    WHERE 
+    L.PERIOADA = :pPERIOADA AND L.FORM = :pFORM
+    AND L.ID_SCHEMA = :pID_SCHEMA 
+    
+    
+    GROUP BY 
+    L.CUIIO,
+    R.DENUMIRE,
+    L.PACHET
+  
+    
+    ORDER BY 
+    L.CUIIO;
+    
+    
+    
+    
+    
+    
