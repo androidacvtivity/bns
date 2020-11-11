@@ -1,0 +1,21 @@
+Tabelul 6.2
+algoritmul formarii tabelului
+
+COL1 =  
+((Cap.I Rind 000 COL2   + Cap.I Rind 000 COL4    + Cap.I Rind 000 COL6) /
+( Cap.II Rind  2002 COL1  * (nr.zile prima luna a TRIMESTRULUI  )) 
+ + (Cap.II Rind  2002 COL2  * (nr.zile a doua  luna a TRIMESTRULUI)  
++  (Cap.II Rind  2002 COL1  * (nr.zile a treia luna a TRIMESTRULUI)) * 100
+
+COL2 =  
+((Cap.I Rind 000 COL2   + Cap.I Rind 000 COL4    + Cap.I Rind 000 COL6) /
+( Cap.II Rind  220 COL1  * (nr.zile prima luna a TRIMESTRULUI  )) 
+ + (Cap.II Rind  220 COL2  * (nr.zile a doua  luna a TRIMESTRULUI)  
++  (Cap.II Rind  220 COL1  * (nr.zile a treia luna a TRIMESTRULUI)) * 100
+
+
+COL3 =  
+((Cap.II Rind 210 COL1   + Cap.II Rind 210 COL2    + Cap.I Rind 210 COL3) /
+( Cap.II Rind  200 COL1  * (nr.zile prima luna a TRIMESTRULUI  )) 
+ + (Cap.II Rind  200 COL2  * (nr.zile a doua  luna a TRIMESTRULUI)  
++  (Cap.II Rind  200 COL1  * (nr.zile a treia luna a TRIMESTRULUI)) * 100
