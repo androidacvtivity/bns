@@ -1,0 +1,4 @@
+﻿
+
+    SELECT *
+    FROM RENIM_2009;
