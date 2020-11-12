@@ -28,10 +28,13 @@
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (39) AND FC.STATUT <> '3')  FC
+             WHERE FC.FORM IN (39) 
+             AND FC.STATUT <> '3'
              
-                                                LEFT JOIN RENIM_2009 R ON R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS 
+             )  FC
+             
+                                                LEFT JOIN USER_BANCU.RENIM_2009 R ON R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS 
                                                 
                                                 WHERE 
                                                 
-                                                R.CUIIO IS NULL )  FC
+                                                R.CUIIO IS NOT NULL )  FC

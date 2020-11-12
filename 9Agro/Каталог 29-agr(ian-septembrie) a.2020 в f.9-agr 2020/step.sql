@@ -1,44 +1,44 @@
-﻿DROP VIEW USER_BANCU.VW_KATALOG_29_AGRO_TRIM_4;
-
-/* Formatted on 11/11/2020 10:50:50 AM (QP5 v5.326) */
-CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_29_AGRO_TRIM_3_2020
-(
-    CUIIO,
-    CUIIO_VERS,
-    DENUMIRE,
-    EDIT_USER,
-    STATUT,
-    CUATM,
-    CFP,
-    CFOJ,
-    COCM,
-    CAEM,
-    BUGET,
-    TIP,
-    PROD,
-    FOR_CUB,
-    GENMUZEE,
-    TIPMUZEE,
-    TIP_LOCAL,
-    TIP_INST,
-    CAEM2,
-    N85_NTL,
-    N85_NTIIP,
-    N85_NDIIP,
-    N85_NPDS,
-    N85_NRIIP,
-    N85_NSIIP,
-    GENMUZEE2,
-    NFI,
-    NTII,
-    NPDS,
-    ORGANE,
-    TIP_INV,
-    RENIM_PERS,
-    ORGANE_COND
-)
-AS
-    SELECT R.CUIIO,
+﻿--DROP VIEW USER_BANCU.VW_KATALOG_29_AGRO_TRIM_4;
+--
+--/* Formatted on 11/11/2020 10:50:50 AM (QP5 v5.326) */
+--CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_29_AGRO_TRIM_3_2020
+--(
+--    CUIIO,
+--    CUIIO_VERS,
+--    DENUMIRE,
+--    EDIT_USER,
+--    STATUT,
+--    CUATM,
+--    CFP,
+--    CFOJ,
+--    COCM,
+--    CAEM,
+--    BUGET,
+--    TIP,
+--    PROD,
+--    FOR_CUB,
+--    GENMUZEE,
+--    TIPMUZEE,
+--    TIP_LOCAL,
+--    TIP_INST,
+--    CAEM2,
+--    N85_NTL,
+--    N85_NTIIP,
+--    N85_NDIIP,
+--    N85_NPDS,
+--    N85_NRIIP,
+--    N85_NSIIP,
+--    GENMUZEE2,
+--    NFI,
+--    NTII,
+--    NPDS,
+--    ORGANE,
+--    TIP_INV,
+--    RENIM_PERS,
+--    ORGANE_COND
+--)
+--AS
+   SELECT R.CUIIO,
            R.CUIIO_VERS,
            R.DENUMIRE,
            R.EDIT_USER,
@@ -86,4 +86,6 @@ AS
              WHERE FC.FORM IN (45) AND FC.STATUT <> '3') FC
            INNER JOIN CIS2.RENIM R
                ON (R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS)
-     WHERE R.CFOJ NOT IN ('685');
+     WHERE 
+     1=1  
+     AND R.CFOJ IS NOT NULL;

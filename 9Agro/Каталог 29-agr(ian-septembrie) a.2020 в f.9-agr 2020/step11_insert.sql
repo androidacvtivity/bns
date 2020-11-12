@@ -10,6 +10,11 @@ FROM RENIM_2009 L
 
         LEFT JOIN CIS2.RENIM R ON R.CUIIO = L.CUIIO AND R.CUIIO_VERS = L.CUIIO_VERS 
         
+        
+        
+        
+        
+        
         ) L  LEFT JOIN (
         
          SELECT FC.CUIIO,

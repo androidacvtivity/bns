@@ -13,6 +13,8 @@ L.CUIIO_VERS
                
                WHERE 
                
-               L.CUIIO IS NOT NULL
+               L.CUIIO IS NOT NULL;
+               
+               
     
     ;

@@ -21,7 +21,7 @@
                  C.CFOJ,
                  C.CAEM2                          --7
  
-  FROM USER_BANCU.RENIM_1_TR_AUTO C
+  FROM RENIM_2009 C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -31,7 +31,7 @@
                 
                 (
                     SELECT *
-                    FROM USER_BANCU.RENIM_1_TR_AUTO C
+                    FROM RENIM_2009 C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
