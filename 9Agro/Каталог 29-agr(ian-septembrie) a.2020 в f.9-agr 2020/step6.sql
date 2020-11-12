@@ -1,8 +1,24 @@
-﻿SELECT FC.CUIIO,
-       FC.CUIIO_VERS
-       
-       FROM 
-   (SELECT FC.CUIIO,
+﻿
+               
+--               INSERT INTO CIS2.FORM_CUIIO FC (
+--                FC.CUIIO,
+--                   FC.CUIIO_VERS,
+--                   FC.FORM,
+--                   FC.FORM_VERS,
+--                   FC.STATUT
+--               
+--               )
+--               
+               
+               SELECT           
+                   FC.CUIIO,
+                   FC.CUIIO_VERS,
+                   FC.FORM,
+                   FC.FORM_VERS,
+                   FC.STATUT
+              FROM
+
+ (  SELECT FC.CUIIO,
                    FC.CUIIO_VERS,
                    FC.FORM,
                    FC.FORM_VERS,
@@ -14,6 +30,10 @@
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (39) AND FC.STATUT <> '3')  FC
+             WHERE FC.FORM IN (39) 
+             AND FC.STATUT <> '3'
+             ) FC 
              
-                                                LEFT JOIN 
+             WHERE
+             1=1  
+          --   FC.CUIIO_VERS <>   2009

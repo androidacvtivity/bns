@@ -1,27 +1,17 @@
 ﻿--1.  3830
 --2.  3830
---3. (R.CUIIO = L.CUIIO AND  R.CUIIO_VERS = L.CUIIO_VERS AND R.FORM =  39 AND STATUT = '1')   = 364
+--3. (R.CUIIO = L.CUIIO AND  R.CUIIO_VERS = L.CUIIO_VERS AND R.FORM =  39 AND STATUT = '1')   = 36
 
-
-
-
-
-
-
-
-
-
-
-INSERT INTO CIS2.FROM_VERS (
-
-    CUIIO,
-    CUIIO_VERS,
-    FORM,
-    FORM_VERS,
-    STATUT 
-
-
-)
+--INSERT INTO CIS2.FORM_CUIIO  (
+--
+--    CUIIO,
+--    CUIIO_VERS,
+--    FORM,
+--    FORM_VERS,
+--    STATUT 
+--
+--
+--)
 
 SELECT 
     L.CUIIO,
@@ -59,6 +49,6 @@ FROM RENIM_2009 L
         
         
         WHERE 
-        R.CUIIO IS NULL 
+        R.CUIIO IS NOT NULL 
         
 ;

@@ -1,4 +1,10 @@
-﻿
-
-    SELECT *
+﻿SELECT *
     FROM RENIM_2009;
+    
+        UPDATE RENIM_2009
+    
+    SET CUIIO_VERS = 2009;
+
+
+
+

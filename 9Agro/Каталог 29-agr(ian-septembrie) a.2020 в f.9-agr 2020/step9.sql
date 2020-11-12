@@ -1,9 +1,25 @@
-﻿SELECT 
-    L.CUIIO 
-    FROM 
+﻿--INSERT INTO CIS2.FORM_CUIIO (
+--
+--       CUIIO,
+--       CUIIO_VERS,
+--       FORM,
+--       FORM_VERS,
+--       STATUT
+--
+--)
 
-(
- SELECT FC.CUIIO,
+
+
+
+
+
+
+
+
+
+
+ SELECT 
+       FC.CUIIO,
        FC.CUIIO_VERS,
        FC.FORM,
        FC.FORM_VERS,
@@ -24,10 +40,16 @@
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (39) AND FC.STATUT <> '3')  FC
+             WHERE FC.FORM IN (39) 
+             AND FC.STATUT <> '3'
              
-                                                RIGHT JOIN RENIM_2009 R ON R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS 
+             
+             )  FC
+            
+                                                RIGHT   JOIN RENIM_2009 R ON R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS 
                                                 
                                                 WHERE 
                                                 
-                                                L.CUIIO IS NOT NULL )  L 
+                                                R.CUIIO IS NOT  NULL 
+                                                
+--                                                AND FC.STATUT <> '1'
