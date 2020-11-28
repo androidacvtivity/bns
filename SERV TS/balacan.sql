@@ -1,0 +1,12 @@
+﻿
+
+
+
+
+
+
+
+SELECT 
+FROM CIS.VW_DATA_ALL
+
+
