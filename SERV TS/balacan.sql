@@ -1,12 +1,25 @@
-﻿
+﻿SELECT  
+D.CUIIO,
+R.DENUMIRE,
+R.CUATM,
+MAX(D.DATA_REG) DATA_REG
+ FROM CIS2.VW_DATA_ALL D
+        INNER JOIN CIS2.RENIM R ON R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS  
+        
+        
+        
+        WHERE 
+        
+        D.FORM = 7 
+        AND D.PERIOADA = 429
+        AND D.CUATM LIKE '01%'
+        
 
 
+GROUP BY 
+D.CUIIO,
+R.DENUMIRE,
+R.CUATM
 
-
-
-
-
-SELECT 
-FROM CIS.VW_DATA_ALL
-
-
+ORDER BY 
+D.CUIIO
