@@ -1,0 +1,9 @@
+    SELECT 
+    SUBSTR (CL,0,6) AS COL1,
+    SUBSTR (CL,7,1000) AS COL12
+    FROM USER_BANCU.CLASIFICATOR
+    
+    
+    
+    ORDER BY
+    SUBSTR (CL,0,6);
