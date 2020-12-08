@@ -1,0 +1,32 @@
+﻿--INSERT INTO USER_BANCU.TUR_2020  (
+--
+-- CUIIO,
+--    CUIIO_VERS,
+--    CAEM2
+--)
+--
+
+SELECT 
+    CUIIO,
+   CUIIO_VERS,
+    CAEM2
+   
+ FROM USER_BANCU.KATALOG_1_TR_auto_2020
+ 
+ WHERE 
+ 
+ CAEM2 IS NULL 
+ --649
+--CUIIO IN (
+--
+--SELECT 
+-- CUIIO
+--   
+-- FROM USER_BANCU.KATALOG_1_TR_auto_2020
+-- 
+-- WHERE 
+-- --649
+-- CAEM2 IS NULL
+-- AND CUIIO_VERS = 2009
+--)
+
