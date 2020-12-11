@@ -20,7 +20,7 @@ BEGIN
   
    
      
-     CIS.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
+     M53.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
   
   
   
