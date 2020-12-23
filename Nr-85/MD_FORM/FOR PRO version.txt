@@ -1,0 +1,124 @@
+<table id='Tab_Data' border='1'width="80%" cellpadding="0" cellspacing="0" width = "80%">
+<tbody><tr>
+<td style="vertical-align: top; padding: 5px 10px; width: 35%;">
+
+  <div align="left">
+      <strong>Denumirea:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="CUIIO_DENUMIRE" align="left">&nbsp;</td>
+</tr></tbody></table>
+
+  <div align="left">
+      <strong>Raionul (municipiul):</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="CUATMR_DENUMIRE" align="left">&nbsp;</td>
+<td id = "CUATMR" width="50" style="border: 1px solid;  text-align: right;">&nbsp;</td>
+</tr></tbody></table>
+
+  <div align="left">
+      <strong>Satul (comuna):</strong></div>
+
+<table width="100%" class="title"><tbody><tr>
+        <td id="CUATML_DENUMIRE" align="left">&nbsp;</td><td style="border: 1px solid; text-align: right; width: 49px;"id = "CUATML" >&nbsp;</td>
+</tr></tbody></table>
+
+  <div align="left">
+      <strong>Strada:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td>&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>Cod CUIIO:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td>&nbsp;</td><td width="150" style="border: 1px solid; text-align: right;" id="CUIIO">&nbsp;</td>
+</tr></tbody></table>
+
+  
+
+
+  <div align="left">
+      <strong>Conducatorul:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td>&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>Data:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td ID="DATA_REG" align="left" >&nbsp;</td>
+</tr></tbody></table>
+
+  <div  align="center">
+      <strong>Numele si coordonatele executantului:</strong></div>
+
+
+  <div align="left">
+      <strong>
+    Dl (dna): </strong>
+  </div>
+
+<table width="100%" class="title"><tbody><tr><td id="USER_DENUMIRE" align="left" >&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>Telefon:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="PHONE" align="left">&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>E-mail:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="email" align="left">&nbsp;</td></tr></tbody></table>
+</td>
+<th >
+<table width="100%">
+    <tr align="center">
+        <td>
+            <h4>BIROUL NAŢIONAL DE STATISTICĂ</h4>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <img src="images/LogoReport.png" alt="BNS" style="width: 80px;" />
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h4>Cercetare statistică</h4>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h4 id = "PERIODICITATEA">&nbsp;</h4>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h3 id="FORM_DEN_SHORT">&nbsp;</h3>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h3 id="FORM_DENUMIRE">&nbsp;</h3>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h2 id="PERIOADA">&nbsp;</h2>
+        </td>
+    </tr>
+    
+</table>
+</th>
+<td width="35%" style="padding: 5px 10px;  valign="top">
+
+   <p>&Icirc;n conformitate&nbsp; cu Legea Republicii Moldova Nr. 412-XV din  9.12.2004&nbsp; &laquo;Cu privire la statistica  oficial&#259;&raquo; organele statisticii oficiale:<br />
+- au dreptul s&#259; ob&#355;in&#259; date  statistice de la toate persoanele fizice &#351;i juridice, indiferent de forma de proprietate; <br />
+- asigur&#259; &#1089;&#1086;nfiden&#355;ialitatea datelor individuale ob&#355;inute &#351;i utilizarea  lor numai &icirc;n sc&#1086;&#1088;uri statistice.<br />
+Refuzul, prezentarea cu &icirc;nt&icirc;rziere a datelor  statistice, prezentarea datelor eronate sau &icirc;n volum incomplet constituie  contraven&#355;ie administrativ&#259; &#351;i se sanc&#355;ioneaz&#259; conform legisla&#355;iei &icirc;n vigoare.</p><br>
+      <p>&#1040;&#1088;&#1075;&#1086;bat prin  Ordinul BNS al Republicii Moldova<br />
+     Nr.&nbsp;&nbsp; &nbsp;&nbsp;din&nbsp; </p> <br>
+      <p><strong>Prezint&#259;:</strong><br />
+     - Institu&#355;iile  &#351;tiin&#355;ifice, institu&#355;iile de &icirc;nv&#259;&#355;&#259;m&icirc;nt superior care au doctorat, postdoctorat  (2 ex.),&nbsp; <strong>p&icirc;n&#259; la </strong><strong>data</strong><strong> de 25 ianuarie</strong><strong> </strong><br />
+     Academiei de &#350;tiin&#355;e  a Moldovei (A&#350;M), pe adresa: <br />
+     mun.Chi&#351;in&#259;u, str. &#350;tefan cel Mare 1, bir.325; <br />
+     - A&#350;M <strong>p&icirc;n&#259; la </strong><strong>data</strong><strong> de 19 martie&nbsp;&nbsp; </strong><strong>&ndash;</strong><strong>&nbsp;&nbsp; </strong>Biroului Na&#355;ional de Statistic&#259;. </p>
+</tr></tbody>

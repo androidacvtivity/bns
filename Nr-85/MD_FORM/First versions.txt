@@ -1,0 +1,129 @@
+<table id='Tab_Data' border='1'width="80%" cellpadding="0" cellspacing="0" width = "80%">
+<tbody><tr>
+<td style="vertical-align: top; padding: 5px 10px; width: 35%;">
+
+  <div align="left">
+      <strong>Denumirea:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="CUIIO_DENUMIRE" align="left">&nbsp;</td>
+</tr></tbody></table>
+
+  <div align="left">
+      <strong>Raionul (municipiul):</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="CUATMR_DENUMIRE" align="left">&nbsp;</td>
+<td id = "CUATMR" width="50" style="border: 1px solid;  text-align: right;">&nbsp;</td>
+</tr></tbody></table>
+
+  <div align="left">
+      <strong>Satul (comuna):</strong></div>
+
+<table width="100%" class="title"><tbody><tr>
+        <td id="CUATML_DENUMIRE" align="left">&nbsp;</td><td style="border: 1px solid; text-align: right; width: 49px;"id = "CUATML" >&nbsp;</td>
+</tr></tbody></table>
+
+  <div align="left">
+      <strong>Strada:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td>&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>Cod CUIIO:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td>&nbsp;</td><td width="150" style="border: 1px solid; text-align: right;" id="CUIIO">&nbsp;</td>
+</tr></tbody></table>
+
+  
+
+
+  <div align="left">
+      <strong>Conducatorul:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td>&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>Data:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td ID="DATA_REG" align="left" >&nbsp;</td>
+</tr></tbody></table>
+
+  <div  align="center">
+      <strong>Numele si coordonatele executantului:</strong></div>
+
+
+  <div align="left">
+      <strong>
+    Dl (dna): </strong>
+  </div>
+
+<table width="100%" class="title"><tbody><tr><td id="USER_DENUMIRE" align="left" >&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>Telefon:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="PHONE" align="left">&nbsp;</td></tr></tbody></table>
+
+  <div align="left">
+      <strong>E-mail:</strong></div>
+
+<table width="100%" class="title"><tbody><tr><td id="email" align="left">&nbsp;</td></tr></tbody></table>
+</td>
+<th >
+<table width="100%">
+    <tr align="center">
+        <td>
+            <h4>BIROUL NAŢIONAL DE STATISTICĂ</h4>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <img src="images/LogoReport.png" alt="BNS" style="width: 80px;" />
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h4>Cercetare statistică</h4>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h4 id = "PERIODICITATEA">&nbsp;</h4>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h3 id="FORM_DEN_SHORT">&nbsp;</h3>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h3 id="FORM_DENUMIRE">&nbsp;</h3>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <h2 id="PERIOADA">&nbsp;</h2>
+        </td>
+    </tr>
+    
+</table>
+</th>
+<td width="35%" style="padding: 5px 10px;  valign="top">
+
+   <p>În conformitate cu Legea Republicii Moldova nr. 93 din 26.05.2017 «Cu privire la statistica oficială», producătorii de statistici oficiale:<br />
+- au dreptul să obțină și să colecteze datele necesare producerii de informație statistică de la toate persoanele fizice și juridice (art.13); <br />
+- asigur&#259; &#1089;&#1086;nfiden&#355;ialitatea datelor individuale ob&#355;inute &#351;i utilizarea  lor numai &icirc;n sc&#1086;&#1088;uri statistice.<br />
+Neprezentarea la timp a datelor statistice, prezentarea de date eronate sau în volum incomplet constituie contravenţie şi se sancţionează conform art.330 al Codului contravențional al Republicii Moldova.</p><br>
+      <p>Aprobat prin Ordinul Biroului Naţional de Statistică 
+nr. 63  din 24.09.2018 
+<br />
+     </p> <br>
+      <p><strong>Prezint&#259;:</strong><br />
+    
+    - Instituțiile de educație timpurie din subordinea Ministerului Educației, Culturii și Cercetării – până la 20 ianuarie în adresa Direcțiilor raionale/municipale învăţământ, tineret și sport, UTA Găgăuzia;
+    <br>
+    - Direcțiile raionale/municipale învăţământ, tineret și sport, UTA Găgăuzia, instituțiile de educație timpurie private – până la 25 ianuarie organului teritorial de statistică;
+    <br>
+    - Organele teritoriale de statistică – până la 22 februarie  Biroului Naţional de Statistică
+    
+</tr></tbody>
