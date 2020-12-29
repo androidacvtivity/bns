@@ -1,3 +1,15 @@
-﻿
+﻿SELECT  
+CAPITOL,
+CAPITOL_VERS
 
-
+    FROM CIS2.MD_CAPITOL
+    
+    
+    GROUP BY 
+    CAPITOL,
+    CAPITOL_VERS
+    
+    ORDER BY 
+    CAPITOL DESC;
+    
+    
