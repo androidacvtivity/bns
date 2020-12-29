@@ -1,1 +1,5 @@
 ﻿
+
+SELECT SYSDATE 
+
+FROM DUAL;
