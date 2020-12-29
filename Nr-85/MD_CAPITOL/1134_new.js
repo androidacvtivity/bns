@@ -143,4 +143,27 @@ if (itemId == "17_1134_62016_2.1_1" && isChecked == true){
 		document.getElementById("17_1134_62025_3.5_1").checked = false;
 		document.getElementById("17_1134_62019_3.6_1").checked = false;
     }
+	
+	// 4
+	if (itemId == "17_1134_62028_4.1_1" && isChecked == true){
+        document.getElementById("17_1134_62027_4.2_1").checked = false;
+       
+    }
+	else if (itemId == "17_1134_62027_4.2_1" && isChecked == true){
+        document.getElementById("17_1134_62028_4.1_1").checked = false;
+       
+    }
+	
+	
+	
+	// 5
+	if (itemId == "17_1134_62031_5.1_1" && isChecked == true){
+        document.getElementById("17_1134_62030_5.2_1").checked = false;
+       
+    }
+	else if (itemId == "17_1134_62030_5.2_1" && isChecked == true){
+        document.getElementById("17_1134_62031_5.1_1").checked = false;
+       
+    }
+	
  }
