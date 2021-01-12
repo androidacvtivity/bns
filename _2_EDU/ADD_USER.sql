@@ -1,0 +1,103 @@
+﻿--  INSERT INTO CIS2.SYS_USER_ACCES L 
+--  (
+--  
+--  L.ID_USER,
+--  L.CUATM,
+--  L.FORM,
+--  L.FORM_VERS,
+--  L.ISADMIN,
+--  L.ACCES_TYPE,
+--  L.CAPITOL_ACCES,
+--  L.DATA_REG  
+--  
+--  )
+--  
+  
+  
+  SELECT 
+  L.ID_USER,
+  L.CUATM,
+  17 FORM,
+  L.FORM_VERS,
+  L.ISADMIN,
+  L.ACCES_TYPE,
+  L.CAPITOL_ACCES,
+  SYSDATE DATA_REG  
+  FROM  
+  
+  
+  (
+  SELECT 
+  L.ID_USER,
+  L.CUATM,
+  L.FORM,
+  L.FORM_VERS,
+  L.ISADMIN,
+  L.ACCES_TYPE,
+  L.CAPITOL_ACCES,
+  L.DATA_REG  
+  FROM     
+
+(
+ SELECT 
+  ID_USER,
+  CUATM,
+  form,
+  FORM_VERS,
+  ISADMIN,
+  ACCES_TYPE,
+  CAPITOL_ACCES,
+  DATA_REG      
+    
+    
+    FROM CIS2.SYS_USER_ACCES
+    
+    WHERE 
+    FORM = 40
+    ) L LEFT JOIN (
+    
+    SELECT 
+  ID_USER,
+  CUATM,
+  form,
+  FORM_VERS,
+  ISADMIN,
+  ACCES_TYPE,
+  CAPITOL_ACCES,
+  DATA_REG      
+    
+    
+    FROM CIS2.SYS_USER_ACCES
+    
+    WHERE 
+    FORM = 17
+    
+    ) R ON L.ID_USER = R.ID_USER
+    
+
+WHERE 
+
+R.ID_USER IS NULL ) L LEFT JOIN (
+
+ SELECT 
+  ID_USER,
+  CUATM,
+  form,
+  FORM_VERS,
+  ISADMIN,
+  ACCES_TYPE,
+  CAPITOL_ACCES,
+  DATA_REG      
+    
+    
+    FROM CIS2.SYS_USER_ACCES
+    
+    WHERE 
+    FORM = 40 
+) R ON R.ID_USER = L.ID_USER
+
+WHERE 
+R.ID_USER IS NOT NULL 
+
+
+AND ROWNUM < 10 
