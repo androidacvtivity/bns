@@ -1,0 +1,12 @@
+
+
+
+
+    SELECT 
+    CUIIO 
+     FROM USER_BANCU.KAT_1_AUTO_FINAL;
+     
+     
+--     UPDATE USER_BANCU.KAT_1_AUTO_FINAL
+--     
+--        SET CUIIO_VERS = 1048;
