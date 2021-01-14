@@ -1,0 +1,6 @@
+﻿
+
+
+    SELECT 
+    CUIIO
+    FROM USER_BANCU.INFFINAL
