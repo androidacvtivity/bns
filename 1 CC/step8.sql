@@ -1,3 +1,23 @@
+﻿                
+--INSERT INTO CIS2.FORM_CUIIO  
+--(
+--                   CUIIO,
+--                   CUIIO_VERS,
+--                   FORM,
+--                   FORM_VERS,
+--                   STATUT
+--
+--)
+
+                
+                SELECT             
+                   FC.CUIIO,
+                   2009 CUIIO_VERS,
+                   FC.FORM,
+                   FC.FORM_VERS,
+                   FC.STATUT
+              FROM 
+(
 SELECT FC.CUIIO,
                    FC.CUIIO_VERS,
                    FC.FORM,
@@ -12,4 +32,5 @@ SELECT FC.CUIIO,
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
              WHERE FC.FORM IN (12) AND FC.STATUT <> '3'
              
-           --  AND FC.CUIIO_VERS <> 2009
+             AND FC.CUIIO_VERS <> 2009
+             ) FC 
