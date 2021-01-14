@@ -10,7 +10,9 @@ SELECT FC.CUIIO,
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (2) AND FC.STATUT <> '3'
+             WHERE FC.FORM IN (2) 
              
-             AND 
-             FC.CUIIO_VERS <> 2009
+             AND FC.STATUT <> '1'
+             
+--             AND 
+--             FC.CUIIO_VERS =  2009
