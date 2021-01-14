@@ -68,7 +68,10 @@ AS
            R.TIP_INV,
            R.RENIM_PERS,
            R.ORGANE_COND
-      FROM (SELECT FC.CUIIO,
+      FROM (
+      
+      
+      SELECT FC.CUIIO,
                    FC.CUIIO_VERS,
                    FC.FORM,
                    FC.FORM_VERS,
@@ -80,6 +83,11 @@ AS
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (2) AND FC.STATUT <> '3') FC
+             WHERE FC.FORM IN (2) AND FC.STATUT <> '3'
+             
+             
+             
+             
+             ) FC
            INNER JOIN CIS2.RENIM R
                ON (R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS);
