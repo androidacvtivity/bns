@@ -1,0 +1,10 @@
+﻿
+
+CREATE TABLE FORM_CUIIO 
+
+
+
+AS 
+    SELECT * FROM  CIS2.FORM_CUIIO;
+    
+     
