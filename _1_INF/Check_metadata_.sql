@@ -65,7 +65,7 @@
             
             
                         INNER  JOIN  CIS2.VW_CL_CUATM C ON C.CODUL = A.CUATM 
-                        INNER  JOIN  CIS2.VW_CL_CAEM2 CA ON SUBSTR(CA.CODUL,2,7) = A.NEW_CAEM2
+                        INNER  JOIN  CIS2.VW_CL_CAEM2 CA ON CA.NUME_CODE = A.NEW_CAEM2
                         INNER  JOIN  CIS2.VW_CL_CFP CFP  ON CFP.CODUL = A.CFP
                        
             WHERE

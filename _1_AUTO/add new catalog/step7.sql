@@ -1,0 +1,23 @@
+﻿SELECT 
+  CUIIO
+
+
+    FROM USER_BANCU.KAT_2_INVEST_ANUL
+    
+    ORDER BY 
+    
+    CUIIO 
+    ;
+
+SELECT 
+CUIIO,
+COUNT (CUIIO) AS CNT
+
+    FROM USER_BANCU.KAT_2_INVEST_ANUL
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) = 1    
+    
