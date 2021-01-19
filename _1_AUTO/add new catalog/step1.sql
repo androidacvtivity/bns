@@ -15,7 +15,7 @@
              --PERIOADA  = 432
              
              
-           AND FC.CUIIO_VERS =   2009
+         --  AND FC.CUIIO_VERS =   2009
           
           --2008 -- 44418
           --2009 -- 44418
