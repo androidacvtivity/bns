@@ -1,11 +1,14 @@
 ﻿SELECT 
-      B.CONTROL,
-      B.FORMULA,
-      B.PRIORITATEA,
-      B.STATUT
-      FROM 
-      (
+      L.CONTROL,
+      L.FORMULA,
+      L.PRIORITATEA,
+      L.STATUT
+      
+      
+        
+        FROM
 
+( 
 SELECT 
       B.CONTROL,
       B.FORMULA,
@@ -24,7 +27,7 @@ SELECT
         
          WHERE
          1=1
-         AND A.FORM  = 46
+         AND A.FORM  = 17
                
          GROUP BY 
           A.CONTROL
@@ -37,11 +40,10 @@ SELECT
         
          WHERE
          1=1
-         AND B.FORM  = 46
+         AND B.FORM  = 17
          AND B.STATUT <> '3'
                
          
          
          ORDER BY 
-          B.CONTROL
-          ) B
+          B.CONTROL ) L
