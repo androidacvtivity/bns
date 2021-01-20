@@ -1,0 +1,22 @@
+﻿SELECT 
+  CUIIO
+
+
+    FROM USER_BANCU.KAT_1_COMERT_2009
+    
+    ORDER BY 
+    
+    CUIIO 
+    ;
+
+SELECT 
+CUIIO,
+COUNT (CUIIO) AS CNT
+
+    FROM USER_BANCU.KAT_1_COMERT_2009
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) =  1 ; 
