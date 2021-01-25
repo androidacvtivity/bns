@@ -1,0 +1,13 @@
+1.  Checking the functioning of the title sheet of the statistical report.
+1.1 Activitatea statutară
+
+Доработан интерфейс для отчета из присланного файла - Situatii financiare ale reprezentantelor entitatii nerezidente Machetul.pdf. 
+Пожалуйста, проверьте.
+
+Был добавлен контроль и автосумма, продолжаю работу над задачей. 
+66-010 - Forma 1  rd.070 col.4,5 = rd.010 + rd.020 + rd.030 + rd.040 + rd.050 + rd.060  col.4,5 
+
+
+
+
+
