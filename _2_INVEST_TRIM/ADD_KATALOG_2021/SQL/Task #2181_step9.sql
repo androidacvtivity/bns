@@ -38,4 +38,4 @@ SELECT FC.CUIIO,
              
              WHERE 
              
-             R.CUIIO IS NULL 
+             R.CUIIO IS NOT  NULL 
