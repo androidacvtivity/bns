@@ -1,8 +1,8 @@
-1. I must to add catalog for 2021 for statistical report - 2 INVEST TRIM. 
-
 1.1 CREATE TABLE USER_BANCU.KAT_2_INVEST_TRIM - I created table.  
 1.2 I imported data from excel file to table. Without problem.
 1.3 I must checked metadata and and if it is necessary I must corrected they. 
+1.4 We checked the metadata in the catalog and added the appropriate metadata for each row or statistical unit that corresponds to the current classifiers. 
+1.5 I have created another table and I will enter all the corrected data in it.  
 1.4 We checked the metadata in the catalog and added the right metadata for each row or statistical unit that corresponds to the current classifiers. 
 1.5 I have created another table and I will insert all the corrected data in it in all columns but in column (CUIIO_VERS) I insert version which I needed. (1048).
 1.6 Now I have the new catalog for the statistical report for the period I needed, with all the data in all the columns, which are right.    
@@ -12,7 +12,8 @@
 2.0 Task #2181_step5.sql Each statistical units from catalog have this version (1048) for first trimester for 2021 year. What is right. 
 If there are statistical units with different versions. It is necessary to enter in the catalog statistical units with the default version. (1048)
 2.1 Now I will check the new catalog with the new version with the main table (RENIM) on a  two columns. On a column CUIIO and column CUIIO_VERS.
-2.2 În tabelul principal nu sunt - 1007 unități statistice cu asa versiune. (Task #2181_step6.sql)
+2.2 In the main table are not - 1007 statistical units with such a version. (Task #2181_step6.sql)
 2.3 Now we need to check if in the maximum version for the quarter these are statistical units with versions smaller than 1048. Task #2181_step7.sql
 2.4 I checked - don't are statistical units with version smaller than 1048. 
-2.5 Now I need to insert  the missing statistical units. With version 1048. 
+2.5 Now I need to insert  the missing statistical units. With version 1048 I inserted this rows. 
+2.6 Now in main table and new catalog with new version - 1048 is the same number of rows with version 1048.
