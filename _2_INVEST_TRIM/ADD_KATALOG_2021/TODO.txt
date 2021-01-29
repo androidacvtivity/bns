@@ -1,0 +1,7 @@
+1. I must to add catalog for 2021 for statistical report - 2 INVEST TRIM. 
+
+1.1 CREATE TABLE USER_BANCU.KAT_2_INVEST_TRIM - I created table.  
+1.2 I imported data from excel file to table. Without problem.
+1.3 I must checked metadata and and if it is necessary I must corrected they. 
+1.4 We checked the metadata in the catalog and added the appropriate metadata for each row or statistical unit that corresponds to the current classifiers. 
+1.5 I have created another table and I will enter all the corrected data in it.  
