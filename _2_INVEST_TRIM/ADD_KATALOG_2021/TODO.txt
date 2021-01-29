@@ -22,3 +22,5 @@ If there are statistical units with different versions. It is necessary to enter
 2.9 Now I will are bloked statistical units who don't are in new catalog.  
 3.0 Now I will insert new statistical units in catalog  for this period.  - 1048
 3.1 I finished added new catalog for first quarter in 2021 year.
+3.2 I forgot to update the metadata of this catalog.
+3.3 Now i will update metadata of this catalog. 

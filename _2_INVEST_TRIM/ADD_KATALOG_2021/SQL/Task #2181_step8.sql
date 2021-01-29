@@ -27,4 +27,4 @@ FROM USER_BANCU.KAT_2_INVEST_TRIM_F L
                 LEFT JOIN CIS.RENIM R ON R.CUIIO = L.CUIIO AND R.CUIIO_VERS  = L.CUIIO_VERS 
                 
                 WHERE 
-                R.CUIIO IS    NULL 
+                R.CUIIO IS   NOT  NULL 
