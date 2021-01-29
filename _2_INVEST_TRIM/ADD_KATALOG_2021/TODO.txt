@@ -17,3 +17,8 @@ If there are statistical units with different versions. It is necessary to enter
 2.4 I checked - don't are statistical units with version smaller than 1048. 
 2.5 Now I need to insert  the missing statistical units. With version 1048 I inserted this rows. 
 2.6 Now in main table and new catalog with new version - 1048 is the same number of rows with version 1048.
+2.7 Now I must to verified which from old catalog don't are in new catalog and will are blocked in new catalog. 
+2.8 Now i must verified if are data in period  - 1048. Don't are data in this period. 
+2.9 Now I will are bloked statistical units who don't are in new catalog.  
+3.0 Now I will insert new statistical units in catalog  for this period.  - 1048
+3.1 I finished added new catalog for first quarter in 2021 year.
