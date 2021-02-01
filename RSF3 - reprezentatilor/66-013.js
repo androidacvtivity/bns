@@ -52,6 +52,10 @@ function RSF3_reprezentanta_AN1() {
 	
 	var R180_C1 = $("#66_1132_61968_180_1");
     var R180_C2 = $("#66_1132_61968_180_2");  
+	
+	var R190_C1 = $("#66_1132_61969_190_1");
+    var R190_C2 = $("#66_1132_61969_190_2");  
+	
     
        
     //--------------readOnly input -----------------------
@@ -61,19 +65,24 @@ function RSF3_reprezentanta_AN1() {
     
 	R180_C1.prop("readonly", true);
     R180_C2.prop("readonly", true);
+	
+	R190_C1.prop("readonly", true);
+    R190_C2.prop("readonly", true);
     
     
        //-------------------------------Rind 070------------------------------------------------------
-    R070_C1.val(parseInt(R090_C1.val() * 1 + R020_C1.val() * 1 + R030_C1.val() * 1 +R040_C1.val() * 1 + R050_C1.val() * 1 + R060_C1.val() * 1 ));
-    R070_C2.val(parseInt(R090_C2.val() * 1 + R020_C2.val() * 1 + R030_C2.val() * 1 +R040_C2.val() * 1 + R050_C2.val() * 1 + R060_C2.val() * 1));
-    
+    R070_C1.val(parseInt(R010_C1.val() * 1 + R020_C1.val() * 1 + R030_C1.val() * 1 +R040_C1.val() * 1 + R050_C1.val() * 1 + R060_C1.val() * 1 ));
+    R070_C2.val(parseInt(R010_C2.val() * 1 + R020_C2.val() * 1 + R030_C2.val() * 1 +R040_C2.val() * 1 + R050_C2.val() * 1 + R060_C2.val() * 1));
+    //-------------------------------Rind 180------------------------------------------------------
 	
 	 R180_C1.val(parseInt(R080_C1.val() * 1 + R090_C1.val() * 1 + R100_C1.val() * 1 + R110_C1.val() * 1 + R120_C1.val() * 1 + R130_C1.val() * 1 + R140_C1.val() * 1 + R150_C1.val() * 1  + R160_C1.val() * 1 + R170_C1.val() * 1  ));
 	
      R180_C2.val(parseInt(R080_C2.val() * 1 + R090_C2.val() * 1 + R100_C2.val() * 1 + R110_C2.val() * 1 + R120_C2.val() * 1 + R130_C2.val() * 1 + R140_C2.val() * 1 + R150_C2.val() * 1  + R160_C2.val() * 1 + R170_C2.val() * 1  ));
-	
+	 //-------------------------------Rind 190------------------------------------------------------
 	
    
-    
+     R190_C1.val(parseInt(R070_C1.val() * 1 + R180_C1.val() * 1 ));
+	 R190_C2.val(parseInt(R070_C2.val() * 1 + R180_C2.val() * 1 ));
+	
  
 }
