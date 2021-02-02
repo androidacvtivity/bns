@@ -1,0 +1,39 @@
+﻿
+
+SELECT
+CUIIO 
+FROM USER_BANCU.VW_KATALOG_EI_78_2009;
+
+
+
+
+
+SELECT
+
+  DISTINCT CUIIO 
+  
+  
+  FROM CIS2.VW_DATA_ALL
+  
+  WHERE
+  
+   FORM = 46 
+   AND PERIOADA = 2009 
+   
+   AND CUIIO IN (
+   
+   SELECT 
+R.CUIIO
+FROM USER_BANCU.VW_KATALOG_EI_78_1047 L 
+      RIGHT JOIN USER_BANCU.VW_KATALOG_EI_78_2009 R ON L.CUIIO = R.CUIIO 
+      
+      WHERE 
+      
+      L.CUIIO IS  NULL 
+   
+   
+   
+   )
+  
+   
+ 
