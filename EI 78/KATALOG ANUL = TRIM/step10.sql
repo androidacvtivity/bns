@@ -1,0 +1,20 @@
+﻿
+
+
+
+
+
+
+
+
+SELECT 
+L.CUIIO 
+FROM USER_BANCU.VW_KATALOG_EI_78_1047 L 
+
+        LEFT  JOIN  USER_BANCU.VW_KATALOG_EI_78_2009 R ON R.CUIIO = L.CUIIO 
+        
+        
+        WHERE 
+        
+        R.CUIIO IS NULL 
+        
