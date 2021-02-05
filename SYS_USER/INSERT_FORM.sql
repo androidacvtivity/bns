@@ -19,7 +19,7 @@
 
                 SELECT 
                 
-                1347 ID_USER,
+                 ID_USER,
                  CUATM,
                  FORM,
                  FORM_VERS,
@@ -33,4 +33,5 @@
                     
                     WHERE 
                     
-                    ID_USER IN (1156)
+                    FORM = 57
+                    AND ID_USER NOT IN (734,693)
