@@ -35,8 +35,8 @@
 --    TIP_INV,
 --    RENIM_PERS,
 --    ORGANE_COND,
---    GEN_INSTITUTIE
---    IDNO
+--    GEN_INSTITUTIE,
+--     IDNO
 --)
 
 
@@ -96,5 +96,5 @@ SELECT FC.CUIIO
 ) 
 
 
---AND CUIIO_VERS =     2009
+AND CUIIO_VERS =  2009
 --AND CUIIO <> 7028102
