@@ -1,0 +1,26 @@
+﻿
+
+CREATE TABLE USER_BANCU.KATALOG_2RSF_2009_v2
+(
+  CUIIO           NUMBER                        ,
+  CUIIO_VERS      NUMBER                        ,
+  DENUMIRE        VARCHAR2(1004 BYTE),
+  CUATM           VARCHAR2(1024 BYTE)              ,
+  CFP             VARCHAR2(1024 BYTE),
+  CFOJ            VARCHAR2(3 BYTE),
+  CAEM2           VARCHAR2(6 BYTE),
+  IDNO            VARCHAR2(13 BYTE)
+)
+TABLESPACE TBS_DTI_USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+MONITORING;

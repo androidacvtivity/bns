@@ -1,0 +1,24 @@
+SELECT 
+CUIIO,
+COUNT (CUIIO) AS CNT
+
+    FROM USER_BANCU.KATALOG_2RSF_2009_v2
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) > 1  ; --1127
+    
+    
+    SELECT 
+        CUIIO
+
+
+    FROM USER_BANCU.KATALOG_2RSF_2009_v2
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) > 1  ; --1127

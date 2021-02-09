@@ -3,10 +3,10 @@
                    FC.FORM,
                    FC.FORM_VERS,
                    FC.STATUT
-                   
                    FROM 
 
 (
+
 SELECT FC.CUIIO,
                    FC.CUIIO_VERS,
                    FC.FORM,
@@ -20,17 +20,10 @@ SELECT FC.CUIIO,
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
              WHERE FC.FORM IN (:pFORM) AND FC.STATUT <> '3'
+             
              ) FC 
              
-          
-
-WHERE
-
-
-   --PERIOADA  = 432
              
-             
-           FC.CUIIO_VERS <> 2009
-          
-          --2008 -- 44418
-          --2009 -- 44418
+--             WHERE 
+--             
+--             FC.CUIIO_VERS <> 2009
