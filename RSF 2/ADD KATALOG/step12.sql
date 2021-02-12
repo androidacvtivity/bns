@@ -1,6 +1,6 @@
 ﻿
 
-CREATE TABLE USER_BANCU.KATALOG_2RSF_2009_v2
+CREATE TABLE USER_BANCU.KATALOG_2RSF_2009_v1
 (
   CUIIO           NUMBER                        ,
   CUIIO_VERS      NUMBER                        ,

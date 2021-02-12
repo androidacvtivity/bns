@@ -1,13 +1,13 @@
-﻿--INSERT INTO USER_BANCU.KAT_2_INVEST_TRIM_F 
---(
---  CUIIO,
---  CUIIO_VERS,
---  DENUMIRE,
---  CUATM,
---  CFP,
---  CAEM2  
---  
---  )
+﻿INSERT INTO USER_BANCU.KAT_2_INVEST_TRIM_F 
+(
+  CUIIO,
+  CUIIO_VERS,
+  DENUMIRE,
+  CUATM,
+  CFP,
+  CAEM2  
+  
+  )
   
   SELECT 
   L.CUIIO,

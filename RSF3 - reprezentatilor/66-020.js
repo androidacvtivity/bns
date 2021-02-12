@@ -29,7 +29,7 @@ function RSF3_reprezentanta_AN2() {
     var R070_C1 = $("#66_1133_62003_070_1");
     var R070_C2 = $("#66_1133_62003_070_2");
     var R080_C1 = $("#66_1133_62004_080_1");
-    var R080_C2 = $("#66_1133_62004_080_2");
+    var R080_C2 = $("#66_1133_62004_080_1");
    
     
 
@@ -66,4 +66,4 @@ function RSF3_reprezentanta_AN2() {
    R080_C1.val(parseInt(R030_C1.val() * 1 + R060_C1.val() * 1  - R070_C1.val() * 1  )); 
    R080_C2.val(parseInt(R030_C2.val() * 1 + R060_C2.val() * 1  - R070_C2.val() * 1 ));
    
-}
+  
