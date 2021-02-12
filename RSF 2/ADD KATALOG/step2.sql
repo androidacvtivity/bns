@@ -7,5 +7,5 @@
          L.CFOJ,
          L.CAEM2,
          L.IDNO
-            FROM USER_BANCU.CIS2_RENIM L;
+            FROM USER_BANCU.KATALOG_2RSF_2009_v1 L;
             
