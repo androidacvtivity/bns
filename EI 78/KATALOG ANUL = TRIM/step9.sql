@@ -18,4 +18,4 @@ SELECT FC.CUIIO,
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
              WHERE FC.FORM IN (44) AND FC.STATUT <> '3'
              
-             ) FC  LEFT 
+             ) FC   
