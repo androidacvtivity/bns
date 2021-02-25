@@ -1,0 +1,11 @@
+SELECT 
+CUIIO,
+COUNT (CUIIO) AS CNT
+
+    FROM USER_BANCU.RSF_REPR_2009_FIN
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) = 1  ; --1127

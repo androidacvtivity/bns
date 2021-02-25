@@ -1,0 +1,19 @@
+﻿SELECT *
+
+    FROM CIS2.FORM_CUIIO 
+    
+    WHERE 
+    
+    CUIIO IN (
+    SELECT 
+CUIIO
+
+
+    FROM USER_BANCU.RSF_REPR_2009_FIN
+    
+   
+    
+    )
+    
+    AND CUIIO_VERS = 2009
+    AND FORM = 57
