@@ -1,15 +1,15 @@
-﻿INSERT INTO USER_BANCU.KAT_5_CON_1047_F (
-  CUIIO,
-  CUIIO_VERS,
-  DENUMIRE,
-  CUATM,
-  CFP,
-  CAEM2,
-  IDNO  
-
-
-)  
-  
+﻿--INSERT INTO USER_BANCU.KAT_EI_78_1048_FIN (
+--  CUIIO,
+--  CUIIO_VERS,
+--  DENUMIRE,
+--  CUATM,
+--  CFP,
+--  CAEM2,
+--  IDNO  
+--
+--
+--)  
+--  
   
   SELECT 
   L.CUIIO,
@@ -30,13 +30,13 @@ FROM
          TRIM(L.CFP)    CFP,
          TRIM(L.CAEM2)  CAEM2,
          TRIM(L.IDNO)   IDNO
-            FROM USER_BANCU.KAT_5_CON_1047 L
+            FROM USER_BANCU.KAT_EI_78_1048 L
             
             
              LEFT   JOIN  CIS2.VW_CL_CUATM C ON TRIM(C.CODUL) = TRIM(L.CUATM)  
              
              WHERE 
-             C.CODUL IS NOT NULL 
+             C.CODUL IS NOT  NULL 
              
              ) L
              
@@ -44,6 +44,6 @@ FROM
               
               
               WHERE 
-              CA.CODUL IS NOT  NULL 
+              CA.CODUL IS  NOT  NULL 
               
               
