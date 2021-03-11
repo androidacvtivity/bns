@@ -1,0 +1,3 @@
+﻿SELECT *
+
+FROM VW_DATA_ALL_GC_MAX
