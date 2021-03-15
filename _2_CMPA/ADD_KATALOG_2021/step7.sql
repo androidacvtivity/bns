@@ -2,14 +2,14 @@
 
 CREATE TABLE USER_BANCU.REG_UNIT_GC_HOLD
 (
-  UNIT_CODE       NUMBER                        NOT NULL,
-  UNIT_CODE_VERS  NUMBER                        NOT NULL,
-  NR_GOSP         NUMBER                        NOT NULL,
-  NR_MAPS         NUMBER                        NOT NULL,
+  UNIT_CODE       NUMBER                        ,
+  UNIT_CODE_VERS  NUMBER                        ,
+  NR_GOSP         NUMBER                        ,
+  NR_MAPS         NUMBER                        ,
   SURNAME         VARCHAR2(100 BYTE),
   NAME            VARCHAR2(100 BYTE),
   PATRONIMIC      VARCHAR2(100 BYTE),
-  CUATM           VARCHAR2(7 BYTE)              NOT NULL,
+  CUATM           VARCHAR2(7 BYTE)              ,
   ADDRESS_1       VARCHAR2(100 BYTE),
   ADDRESS_2       VARCHAR2(10 BYTE),
   ADDRESS_3       VARCHAR2(10 BYTE),
