@@ -1,4 +1,134 @@
-﻿SELECT 
+﻿CREATE OR REPLACE FORCE VIEW VW_DATA_ALL_GC_MAX
+(
+    PERIOADA,
+    ANUL,
+    NUM,
+    UNIT_CODE,
+    UNIT_CODE_VERS,
+    NR_GOSP,
+    NR_MAPS,
+    CUATM,
+    CUATM_FULL,
+    ADDRESS_1,
+    ADDRESS_2,
+    ADDRESS_3,
+    ADDRESS_4,
+    ENVIRONMENT,
+    PACHET,
+    FORM,
+    FORM_VERS,
+    FORM_DEN,
+    CAPITOL,
+    CAPITOL_VERS,
+    CAPITOL_DEN,
+    TAB,
+    ID_MD,
+    RIND,
+    RIND_VERS,
+    ID_USER,
+    USER_NAME,
+    DATA_REG,
+    COL1,
+    COL2,
+    COL3,
+    COL4,
+    COL5,
+    COL6,
+    COL7,
+    COL8,
+    COL9,
+    COL10,
+    COL11,
+    COL12,
+    COL13,
+    COL14,
+    COL15,
+    COL16,
+    COL17,
+    COL18,
+    COL19,
+    COL20,
+    COL21,
+    COL22,
+    COL23,
+    COL24,
+    COL25,
+    COL26,
+    COL27,
+    COL28,
+    COL29,
+    COL30
+)
+AS
+
+
+SELECT
+
+    RN.PERIOADA,
+    RN.ANUL,
+    RN.NUM,
+    RN.UNIT_CODE,
+    RN.UNIT_CODE_VERS,
+    RN.NR_GOSP,
+    RN.NR_MAPS,
+    RN.CUATM,
+    RN.CUATM_FULL,
+    RN.ADDRESS_1,
+    RN.ADDRESS_2,
+    RN.ADDRESS_3,
+    RN.ADDRESS_4,
+    RN.ENVIRONMENT,
+    RN.PACHET,
+    RN.FORM,
+    RN.FORM_VERS,
+    RN.FORM_DEN,
+    RN.CAPITOL,
+    RN.CAPITOL_VERS,
+    RN.CAPITOL_DEN,
+    RN.TAB,
+    RN.ID_MD,
+    RN.RIND,
+    RN.RIND_VERS,
+    RN.ID_USER,
+    RN.USER_NAME,
+    RN.DATA_REG,
+    RN.COL1,
+    RN.COL2,
+    RN.COL3,
+    RN.COL4,
+    RN.COL5,
+    RN.COL6,
+    RN.COL7,
+    RN.COL8,
+    RN.COL9,
+    RN.COL10,
+    RN.COL11,
+    RN.COL12,
+    RN.COL13,
+    RN.COL14,
+    RN.COL15,
+    RN.COL16,
+    RN.COL17,
+    RN.COL18,
+    RN.COL19,
+    RN.COL20,
+    RN.COL21,
+    RN.COL22,
+    RN.COL23,
+    RN.COL24,
+    RN.COL25,
+    RN.COL26,
+    RN.COL27,
+    RN.COL28,
+    RN.COL29,
+    RN.COL30 
+
+FROM CIS2.VW_DATA_ALL_GC RN 
+
+INNER JOIN (
+
+
+SELECT 
 FC.UNIT_CODE, 
 MAX(FC.UNIT_CODE_VERS) UNIT_CODE_VERS,
 FC.NR_GOSP,
@@ -10,6 +140,11 @@ FC.NR_MAPS
  FC.UNIT_CODE, 
  FC.NR_GOSP,
  FC.NR_MAPS 
+ ) D ON 
  
+  D.UNIT_CODE = RN.UNIT_CODE
+                  AND D.UNIT_CODE_VERS = RN.UNIT_CODE_VERS
+                  AND D.NR_GOSP = RN.NR_GOSP
+                  AND D.NR_MAPS = RN.NR_MAPS
  
          

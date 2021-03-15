@@ -1,7 +1,13 @@
---SELECT 
---FC.UNIT_CODE
---FROM 
---(
+﻿SELECT 
+FC.UNIT_CODE, 
+FC.UNIT_CODE_VERS,
+FC.NR_GOSP,
+FC.NR_MAPS,
+FC.FORM,
+FC.FORM_VERS,
+FC.STATUT    
+FROM 
+(
 SELECT 
 FC.UNIT_CODE, 
 FC.UNIT_CODE_VERS,
@@ -39,12 +45,9 @@ FC.STATUT
                AND BB.NR_GOSP = FC.NR_GOSP
                AND BB.NR_MAPS = FC.NR_MAPS
                
-               
-               
                )
- WHERE FC.FORM IN (58) AND FC.STATUT <> '3'
+ WHERE FC.FORM IN (58) AND FC.STATUT <> '3') FC 
  
- 
- 
- 
- --) FC 
+-- 
+-- WHERE 
+-- FC.UNIT_CODE_VERS = 1048
