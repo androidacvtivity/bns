@@ -22,6 +22,6 @@
     
      SELECT 
             UNIT_CODE
-            FROM USER_BANCU.REG_UNIT_GC_HOLD
+            FROM USER_BANCU.REG_UNIT_GC_HOLD_v1
     
     )
