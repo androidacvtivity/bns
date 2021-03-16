@@ -1,0 +1,11 @@
+﻿SELECT 
+UNIT_CODE,
+COUNT (UNIT_CODE) AS CNT
+
+    FROM USER_BANCU.CMPA1
+    
+    GROUP BY 
+    UNIT_CODE 
+    
+    HAVING 
+    COUNT (UNIT_CODE) = 1 ; 
