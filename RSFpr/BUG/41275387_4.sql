@@ -34,7 +34,7 @@ SELECT
            
            L.CUIIO IN (
 
-41275387
+40862607 
 )
 
 AND L.FORM = 63
@@ -58,7 +58,7 @@ AND L.PERIOADA = 2009
            
            L.CUIIO IN (
 
-41275387
+40862607 
 )
 
 AND L.FORM = 63
