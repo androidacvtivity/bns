@@ -5,10 +5,10 @@
 --set STATUT =  '1'
 
 
---
---            SELECT * 
---
---            FROM CIS2.FORM_CUIIO 
+
+            SELECT * 
+
+            FROM CIS2.FORM_CUIIO 
             
             
             WHERE 
@@ -17,9 +17,9 @@
             CUIIO IN (
             SELECT CUIIO  
 
-FROM USER_BANCU.RSF_REPR_2009_FIN )
+FROM USER_BANCU.KAT_RSF1 )
 
 AND CUIIO_VERS = 2009
-AND FORM = 63
-AND STATUT =  '3'
+AND FORM = 57
+AND STATUT =  '1'
 AND FORM_VERS = 2000
