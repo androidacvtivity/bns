@@ -1,0 +1,89 @@
+﻿SELECT  
+    NVAL(L.REZULTAT) ||'<>'|| NVAL(R.REZULTAT)
+    AS REZULTAT
+FROM
+(
+SELECT DISTINCT
+
+  D.CUIIO,
+  SUM(CASE WHEN D.RIND IN('423') THEN CIS2.NVAL(D.COL1) ELSE 0 END) 
+  
+  AS REZULTAT
+    
+FROM
+  CIS2.VW_DATA_ALL D
+  INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA)   
+WHERE
+  (D.CUIIO         = :CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS    = :CUIIO_VERS          OR :CUIIO_VERS = -1) AND
+  (D.FORM          = :FORM                OR :FORM = -1) AND
+  (D.FORM_VERS     = :FORM_VERS           OR :FORM_VERS = -1) AND
+  (D.CAPITOL       = :CAPITOL             OR :CAPITOL= -1) AND
+  (D.CAPITOL_VERS  = :CAPITOL_VERS        OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  
+  P.PERIOADA_ANULA = :PERIOADA AND
+  
+ 
+  D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('4.320.423') 
+  GROUP BY 
+  D.CUIIO
+ 
+
+ ) L RIGHT JOIN 
+ 
+  (
+   
+   SELECT DISTINCT
+     D.CUIIO,
+   SUM(CASE WHEN D.RIND IN('896','898') AND P.NUM IN (4) THEN CIS2.NVAL(D.COL1) ELSE 0 END) 
+  
+    AS REZULTAT
+  
+   
+FROM
+  CIS2.VW_DATA_ALL D
+  INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA)   
+WHERE
+  (D.CUIIO         = :CUIIO               OR :CUIIO = -1) AND
+  (:CUIIO_VERS     = :CUIIO_VERS          OR :CUIIO_VERS     <> :CUIIO_VERS) AND
+  (:FORM          = :FORM                 OR :FORM     <> :FORM ) AND
+  (:FORM_VERS     = :FORM_VERS            OR :FORM_VERS     <> :FORM_VERS) AND
+  (:CAPITOL       = :CAPITOL              OR :CAPITOL       <> :CAPITOL) AND
+  (:CAPITOL_VERS  = :CAPITOL_VERS         OR :CAPITOL_VERS  <> :CAPITOL_VERS) AND
+  (:ID_MD=:ID_MD               OR :ID_MD <>:ID_MD) AND
+  
+  
+  P.PERIOADA_ANULA = :PERIOADA AND
+  
+ 
+  D.FORM = 5 AND D.CAPITOL = 309 
+  AND D.RIND IN('896','898')
+  
+ 
+  
+  GROUP BY 
+   D.CUIIO
+   
+   
+   ) R ON (R.CUIIO=L.CUIIO)
+   
+   
+   
+   
+   
+   
+   
+   GROUP BY 
+   L.REZULTAT,
+   R.REZULTAT
+   
+   HAVING 
+   
+   
+   NVAL(L.REZULTAT) <> NVAL(R.REZULTAT)
+  
+   
+   
+ 
