@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_RSFpr_2009
+﻿CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_RSF_2009
 (
     CUIIO,
     CUIIO_VERS,
@@ -80,11 +80,11 @@ AS
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (63) AND CUIIO_VERS <= 2009
+                                  WHERE FORM IN (57) AND CUIIO_VERS <= 2009
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (63) AND FC.STATUT <> '3'
+             WHERE FC.FORM IN (57) AND FC.STATUT <> '3'
              
              
              
