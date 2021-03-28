@@ -490,7 +490,10 @@ SELECT
     A.SERV_CODUL,
     A.DENUMIRE
     
-
+  HAVING 
+    SUM(A.COL1) - SUM(B.COL1) <> 0
+    OR 
+    SUM(A.COL2) - SUM(B.COL2) <> 0
     
     )
 
