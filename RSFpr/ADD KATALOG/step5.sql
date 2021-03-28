@@ -38,9 +38,13 @@
              WHERE FC.FORM IN (57) AND FC.STATUT <> '3'
              ) FC  
              
+             --97411
              
              
+             WHERE 
              
---             WHERE 
---             
---             FC.CUIIO_VERS <>  2009
+             FC.CUIIO_VERS =  2009
+             
+             AND 
+             
+             FC.STATUT = '1' 
