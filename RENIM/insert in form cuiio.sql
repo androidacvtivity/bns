@@ -1,0 +1,43 @@
+--INSERT INTO  FORM_CUIIO 
+--(
+--
+--CUIIO,
+--CUIIO_VERS,
+--FORM,
+--FORM_VERS,
+--STATUT
+--
+--)
+
+
+
+SELECT 
+CUIIO,
+CUIIO_VERS,
+34 FORM,
+2000 FORM_VERS,
+'1' STATUT            
+            
+            FROM RENIM
+            
+            WHERE 
+            
+
+
+
+
+CUIIO IN (
+2562430,
+40238482,
+41173853,
+41194080,
+41282683,
+41342348,
+44786596,
+502940834,
+502941968,
+503280078
+
+)
+
+AND CUIIO_VERS = 2009
