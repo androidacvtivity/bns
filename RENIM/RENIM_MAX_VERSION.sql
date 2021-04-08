@@ -50,7 +50,7 @@
      
      
                CUIIO,
-              2007  CUIIO_VERS,
+               CUIIO_VERS,
                DENUMIRE,
                EDIT_USER,
                STATUT,
@@ -82,7 +82,8 @@
                TIP_INV,
                RENIM_PERS,
                ORGANE_COND,
-               GEN_INSTITUTIE   
+               GEN_INSTITUTIE,
+               IDNO   
 
           FROM  USER_BANCU.VW_MAX_RENIM_CIS2 
           
@@ -92,24 +93,29 @@
       
           CUIIO IN (
 
-38926881,
-37727062,
-40028155,
-38529571,
-20271072,
-40900831,
-40238318,
-41194004,
-41165144,
-4070322078,
-40446255,
-4052432278,
-41182160
- 
+40192469,
+40746293,
+40853468,
+41031260,
+41091115,
+41091138,
+41120590,
+41125736,
+41232585,
+41232917,
+41232946,
+41236022,
+41266193,
+41266879,
+41266885,
+41315000,
+41343019
+
+
 )
-    AND CUIIO_VERS  = 2007
+    --AND CUIIO_VERS  = 2007
 
 
 
 
-   -- AND CUIIO_VERS <> 2007
+   AND CUIIO_VERS =  2009
