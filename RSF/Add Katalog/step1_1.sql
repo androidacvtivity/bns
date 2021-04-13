@@ -1,0 +1,26 @@
+﻿SELECT 
+CUIIO,
+COUNT (CUIIO) AS CNT
+
+    FROM USER_BANCU.KAT_RSF
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) = 1  ; --1127
+    
+    
+    UPDATE  USER_BANCU.KAT_RSF
+    
+    SET CUIIO_VERS = 2009;
+
+
+SELECT *
+FROM USER_BANCU.KAT_RSF;
+
+
+
+
+
+      

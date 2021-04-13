@@ -9,11 +9,11 @@
 CUIIO
 
 
-    FROM USER_BANCU.RSF_REPR_2009_FIN
+    FROM USER_BANCU.KAT_RSF
     
    
     
     )
     
     AND CUIIO_VERS = 2009
-    AND FORM = 57
+    AND FORM = 63

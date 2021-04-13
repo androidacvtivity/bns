@@ -17,13 +17,13 @@ FROM
          TRIM(L.CFP)    CFP,
          TRIM(L.CAEM2)  CAEM2,
          TRIM(L.IDNO)   IDNO
-            FROM USER_BANCU.RSF_REPR_2009_FIN L
+            FROM USER_BANCU.KAT_RSF L
             
             
              LEFT   JOIN  CIS2.VW_CL_CUATM C ON TRIM(C.CODUL) = TRIM(L.CUATM)  
              
              WHERE 
-             C.CODUL IS NOT NULL 
+             C.CODUL IS NOT  NULL 
              
              ) L
              

@@ -1,4 +1,4 @@
-﻿UPDATE CIS2.RENIM VB
+﻿--UPDATE CIS2.RENIM VB
         
  SET     (
 
@@ -25,7 +25,7 @@
                  C.CAEM2,
                  C.IDNO                          --7
  
-  FROM USER_BANCU.RSF_REPR_2009_FIN C
+  FROM USER_BANCU.KAT_RSF C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -35,7 +35,7 @@
                 
                 (
                     SELECT *
-                    FROM USER_BANCU.RSF_REPR_2009_FIN C
+                    FROM USER_BANCU.KAT_RSF C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
