@@ -33,7 +33,7 @@
         
         
 FROM
-  VW_DATA_ALL_GC  D
+  CIS2.VW_DATA_ALL_GC  D
   
   
   
