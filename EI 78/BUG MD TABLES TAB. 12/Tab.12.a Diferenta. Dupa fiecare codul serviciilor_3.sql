@@ -1,0 +1,112 @@
+﻿SELECT 
+ CUIIO,
+ CUATM,
+ SERV_CODUL,
+ MAX(DENUMIRE)  DENUMIRE,
+ SUM(COL1) AS COL1,
+SUM(COL2) AS COL2
+
+ 
+FROM
+ 
+(
+SELECT 
+    D.PERIOADA,
+    D.CUIIO AS CUIIO,
+    D.CUATM,
+    SS.CODUL   SERV_CODUL, 
+    SS.DENUMIRE||'-'||MAX(R.DENUMIRE) DENUMIRE,
+    
+  
+   (SUM(CASE WHEN   P.PERIOADA_ANULA = :pPERIOADA AND P.NUM IN (1,2,3,4) AND  D.CAPITOL IN (405)  AND D.RIND NOT IN ('1','2','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    +
+    SUM(CASE WHEN  P.PERIOADA_ANULA = :pPERIOADA AND P.NUM IN (1,2,3,4)  AND  D.CAPITOL IN (406)  AND D.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END ))
+    AS COL1,
+    
+    
+    ROUND((SUM(CASE WHEN   P.PERIOADA_ANULA = :pPERIOADA AND P.NUM IN (1,2,3,4) AND  D.CAPITOL IN (405)  AND D.RIND NOT IN ('1','2','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    +
+    SUM(CASE WHEN  P.PERIOADA_ANULA = :pPERIOADA AND P.NUM IN (1,2,3,4)  AND  D.CAPITOL IN (406)  AND D.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )) / CR.COL1,0)
+    AS COL2
+        
+ 
+   
+     
+          
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+    INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA) 
+    INNER JOIN CIS2.VW_CL_SERVICII SS ON (rtrim(SS.CODUL, '0')=D.COL1 ) 
+    
+   INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+   
+    LEFT JOIN (
+    
+    SELECT
+            
+            D.PERIOADA,
+            SUM(CASE WHEN   P.PERIOADA_ANULA = :pPERIOADA AND P.NUM IN (1,2,3,4) THEN D.COL1 ELSE NULL  END ) AS COL1            
+                  FROM DATA_ALL D
+                          INNER  JOIN MD_RIND MR ON D.ID_MD = MR.ID_MD
+                          INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA) 
+                      
+                        WHERE
+                              P.PERIOADA_ANULA = :pPERIOADA AND            
+                              D.FORM IN (101)
+                              AND D.CUIIO IN (5)
+                              AND MR.CAPITOL IN (10002)
+                              AND MR.RIND IN ('01')
+            
+            GROUP BY 
+            D.PERIOADA 
+    )    CR  ON (D.PERIOADA=CR.PERIOADA)
+
+           
+           
+   WHERE        
+   
+  (D.FORM = 44) AND
+  (D.FORM_VERS = 1004) AND 
+  (:pID_MDTABLE =:pID_MDTABLE) AND
+  
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  
+  (D.FORM IN (44) AND D.CAPITOL IN (405,406)) AND 
+ 
+  P.PERIOADA_ANULA = :pPERIOADA
+ 
+   AND SS.CODUL <> '0'
+   
+   
+  
+
+  GROUP BY  
+  D.PERIOADA,
+  D.CUIIO,
+  D.CUATM,
+  SS.CODUL,
+  SS.DENUMIRE,
+  CR.COL1
+  
+  
+  
+  ORDER BY 
+   D.CUIIO,
+   D.CUATM
+  
+  
+  
+  )
+  
+  GROUP BY 
+CUIIO,
+ CUATM,
+ SERV_CODUL
+ 
+ 
+ORDER BY 
+CUIIO,
+ CUATM
+ 
