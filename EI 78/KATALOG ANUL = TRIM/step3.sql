@@ -5,4 +5,4 @@ FROM USER_BANCU.VW_KATALOG_EI_78_1047 L
       
       WHERE 
       
-      R.CUIIO IS  NULL 
+      R.CUIIO IS NOT  NULL 
