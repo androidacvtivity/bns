@@ -1,0 +1,34 @@
+
+
+
+ SELECT 
+    DISTINCT  
+    D.CUIIO,
+    R.DENUMIRE,
+    D.CAPITOL,
+    D.RIND
+     
+     
+ FROM CIS2.VW_DATA_ALL_FR D 
+       INNER JOIN  RENIM R ON R.CUIIO = R.CUIIO AND R.CUIIO_VERS = R.CUIIO_VERS  
+ 
+ 
+ WHERE 
+ 
+ D.PERIOADA IN (:pPERIOADA)
+ AND D.FORM  IN  (:pFORM)
+-- AND D.FORM_VERS IN (2009) 
+ AND D.CAPITOL IN (1091,1090,1092)
+ 
+-- OR  (D.capitol IN (1090,1062) AND capitol_vers=2009)
+ 
+ 
+ GROUP BY 
+ D.CUIIO,
+ R.DENUMIRE,
+ D.CAPITOL,
+ D.RIND
+ 
+ 
+ 
+ 
