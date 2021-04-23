@@ -1,0 +1,44 @@
+
+SELECT *  
+
+FROM 
+
+(
+SELECT 
+ ROWNUM ORDINE,
+  CUIIO,
+ 
+  DENUMIRE,
+  CUATM,
+  CAEM2,
+ 
+  CAPITOL_DEN,
+  RIND,
+  COL1,
+  COL2,
+  COL3,
+  COL4     
+FROM USER_BANCU.RSF_PR_v1
+)
+
+
+GROUP BY 
+  
+  ORDINE,
+  CUIIO,
+ 
+  DENUMIRE,
+  CUATM,
+  CAEM2,
+ 
+  CAPITOL_DEN,
+  RIND,
+  COL1,
+  COL2,
+  COL3,
+  COL4,     
+  ROWNUM
+
+HAVING 
+
+ROWNUM < 59000
