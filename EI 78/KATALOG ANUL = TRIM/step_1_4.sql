@@ -10,7 +10,7 @@ FROM USER_BANCU.VW_KATALOG_EI_78_1047 L
       LEFT JOIN USER_BANCU.VW_KATALOG_EI_78_1045  R_45  ON (L.CUIIO = R_45.CUIIO  AND  L.CUATM = R_45.CUATM)  
       LEFT JOIN USER_BANCU.VW_KATALOG_EI_78_1045  R_44  ON (L.CUIIO = R_44.CUIIO  AND  L.CUATM = R_44.CUATM)  
                                                       
-                                                      
+               ----------------                                       
                                                       
                                                       
                                                       
