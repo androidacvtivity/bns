@@ -17,14 +17,14 @@ FROM USER_BANCU.VW_KATALOG_EI_78_1047 L
       
       WHERE 
       
-      R.CUIIO IS    NOT  NULL 
+      R.CUIIO IS      NULL 
       OR 
-      R_46.CUIIO IS    NOT  NULL 
+      R_46.CUIIO IS      NULL 
        OR 
-      R_45.CUIIO IS     NOT NULL 
+      R_45.CUIIO IS      NULL 
       
       OR 
-      R_44.CUIIO IS     NOT NULL 
+      R_44.CUIIO IS      NULL 
       
       
       
