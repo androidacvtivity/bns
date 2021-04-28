@@ -1,0 +1,353 @@
+--INSERT INTO CIS.TABLE_OUT 
+--(
+--  PERIOADA,
+--  FORM,
+--  FORM_VERS,
+--  ID_MDTABLE,
+--  COD_CUATM,
+--  NR_SECTIE,
+--  NUME_SECTIE,
+--  NR_SECTIE1,
+--  NUME_SECTIE1,
+--  NR_SECTIE2,
+--  NUME_SECTIE2,
+--  NR_ROW,
+--  ORDINE,
+--  DECIMAL_POS,
+--  NUME_ROW,
+--  
+--  COL1, COL2, COL3, COL4, COL5
+--)
+
+SELECT DISTINCT                                                                     
+--  :pPERIOADA AS PERIOADA,                                                    
+--  :pFORM AS FORM,                                                            
+--  :pFORM_VERS AS FORM_VERS,                                                  
+--  :pID_MDTABLE AS ID_MDTABLE,                                                
+--  :pCOD_CUATM AS COD_CUATM,                                                  
+--  '0' AS NR_SECTIE,                                                         
+--  '0' AS NUME_SECTIE,                                                        
+--  '0' AS NR_SECTIE1,
+--  '0' AS NUME_SECTIE1,
+--  '0' AS NR_SECTIE2,
+--  '0' AS NUME_SECTIE2,
+    NR_ROW,  
+    ROWNUM AS ORDINE,
+  '00000' AS DECIMAL_POS,
+   NUME_ROW,
+   COL1,
+   COL2,
+   COL3,
+   COL4,
+   COL5
+   
+FROM
+(
+
+SELECT DISTINCT                                                                     
+  :pPERIOADA AS PERIOADA,                                                    
+  :pFORM AS FORM,                                                            
+  :pFORM_VERS AS FORM_VERS,                                                  
+  :pID_MDTABLE AS ID_MDTABLE,                                                
+  :pCOD_CUATM AS COD_CUATM,                                                  
+  '0' AS NR_SECTIE,                                                         
+  '0' AS NUME_SECTIE,                                                        
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+   CODUL AS NR_ROW,  
+   FULL_CODE AS ORDINE,
+  '00000' AS DECIMAL_POS,
+   DENUMIRE  AS NUME_ROW,
+   COL1,
+   COL2,
+   COL3,
+   COL4,
+   COL5
+   
+FROM
+(
+SELECT
+  D.FULL_CODE,
+  D.DENUMIRE,
+  D.CODUL,
+  D.COL1,
+  D.COL2,
+  D.COL3,
+  J.COL4,
+  J.COL5 FROM
+
+
+(SELECT DISTINCT
+ CG.FULL_CODE,
+ CG.DENUMIRE, 
+ CASE 
+   WHEN LENGTH(CG.FULL_CODE) = 24 
+      THEN CASE WHEN CG.NUM_CODE IN (7420,7720) THEN CG.CODUL END 
+    
+   WHEN LENGTH(CG.FULL_CODE) <= 18
+      THEN CASE WHEN CG.CODUL BETWEEN 'G' AND 'T' THEN CG.CODUL END
+        
+ END AS CODUL,
+ 
+ COUNT(CASE WHEN D.RIND IN '10' AND PERIOADA IN :pPERIOADA THEN 1 END) AS COL1,
+ ROUND(SUM(CASE WHEN RIND IN ('10') AND D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/12)*12 AND :pPERIOADA-12  THEN COL1 ELSE NULL END) ,1) AS COL3,
+ ROUND(SUM(CASE WHEN RIND IN ('10') AND D.PERIOADA BETWEEN FLOOR(:pPERIOADA/12)*12 AND :pPERIOADA THEN COL1 ELSE NULL END) ,1) AS COL2
+  
+
+FROM 
+  CIS.VW_DATA_ALL_COEF D
+  INNER JOIN CIS.VW_CL_CAEM2 C ON (D.CAEM2=C.CODUL)
+  INNER JOIN CIS.VW_CL_CAEM2 CG ON (C.FULL_CODE LIKE '%'||CG.CODUL||';%')
+  
+  
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/12)*12 AND :pPERIOADA-12 OR 
+   D.PERIOADA BETWEEN FLOOR(:pPERIOADA/12)*12 AND :pPERIOADA OR
+   D.PERIOADA IN :pPERIOADA) AND
+  D.FORM IN (4)
+  AND D.CAPITOL IN (4)
+  AND D.RIND IN ('10')
+  AND CG.CODUL BETWEEN 'G' AND 'T'
+  --AND CG.CODUL NOT IN ('N7700')
+  
+GROUP BY
+ CG.FULL_CODE,
+ CG.NUM_CODE,
+ CG.DENUMIRE,
+ CG.CODUL ) D
+ 
+ 
+INNER JOIN (
+
+SELECT DISTINCT
+ CG.FULL_CODE,
+ CG.DENUMIRE, 
+ CASE 
+   WHEN LENGTH(CG.FULL_CODE) = 24 
+      THEN CASE WHEN CG.NUM_CODE IN (7420,7720) THEN CG.CODUL END 
+    
+   WHEN LENGTH(CG.FULL_CODE) <= 18
+      THEN CASE WHEN CG.CODUL BETWEEN 'G' AND 'T' THEN CG.CODUL END
+        
+ END AS CODUL,
+ 
+ 0 AS COL3,
+ ROUND(SUM(CASE WHEN  D.CAPITOL = 4 AND D.RIND IN '10' AND (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/3)*3 AND :pPERIOADA-12) THEN COL1 ELSE 0 END),1) AS COL5,
+ ROUND(SUM(CASE WHEN  D.CAPITOL = 4 AND D.RIND IN '10' AND (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/3)*3 AND :pPERIOADA) THEN COL1 ELSE 0 END),1) AS COL4
+  
+
+FROM 
+  CIS.VW_DATA_ALL_COEF D
+  INNER JOIN CIS.VW_CL_CAEM2 C ON (D.CAEM2=C.CODUL )
+  INNER JOIN CIS.VW_CL_CAEM2 CG ON (C.FULL_CODE LIKE '%'||CG.CODUL||';%')
+  
+  
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/3)*3 AND :pPERIOADA-12 OR
+   D.PERIOADA BETWEEN FLOOR(:pPERIOADA/3)*3 AND :pPERIOADA) AND
+  D.FORM IN (4)
+  AND D.CAPITOL IN (4)
+  AND D.RIND IN ('10')
+  AND CG.CODUL BETWEEN 'G' AND 'T' 
+  --AND CG.CODUL NOT IN ('N7700')
+  
+GROUP BY
+ CG.FULL_CODE,
+ CG.NUM_CODE,
+ CG.DENUMIRE,
+ CG.CODUL 
+
+
+
+
+
+
+)J ON J.FULL_CODE = D.FULL_CODE
+ 
+
+ORDER BY
+  FULL_CODE
+  
+  
+)
+
+WHERE
+  CODUL IS NOT NULL
+  
+UNION
+SELECT DISTINCT                                                                     
+  :pPERIOADA AS PERIOADA,                                                    
+  :pFORM AS FORM,                                                            
+  :pFORM_VERS AS FORM_VERS,                                                  
+  :pID_MDTABLE AS ID_MDTABLE,                                                
+  :pCOD_CUATM AS COD_CUATM,                                                  
+  '0' AS NR_SECTIE,                                                         
+  '0' AS NUME_SECTIE,                                                        
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+   CODUL AS NR_ROW,  
+   FULL_CODE AS ORDINE,
+  '00000' AS DECIMAL_POS,
+   DENUMIRE  AS NUME_ROW,
+   COL1,
+   COL2,
+   COL3,
+   COL4,
+   COL5
+   
+FROM
+(
+SELECT
+  D.FULL_CODE,
+  D.DENUMIRE,
+  D.CODUL,
+  D.COL1,
+  D.COL2,
+  D.COL3,
+  D.COL4,
+  D.COL5 FROM
+
+
+(SELECT DISTINCT
+ CG.FULL_CODE,
+ CG.DENUMIRE, 
+ CG.CODUL AS CODUL,
+ 
+ COUNT(CASE WHEN D.RIND IN '10' AND PERIOADA IN :pPERIOADA THEN 1 END) AS COL1,
+ ROUND(SUM(CASE WHEN RIND IN ('10') AND D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/12)*12 AND :pPERIOADA-12  THEN COL1 ELSE NULL END) ,1) AS COL3,
+ ROUND(SUM(CASE WHEN RIND IN ('10') AND D.PERIOADA BETWEEN FLOOR(:pPERIOADA/12)*12 AND :pPERIOADA THEN COL1 ELSE NULL END) ,1) AS COL2,
+ ROUND(SUM(CASE WHEN  D.CAPITOL = 4 AND D.RIND IN '10' AND (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/3)*3 AND :pPERIOADA-12) THEN COL1 ELSE 0 END),1) AS COL5,
+ ROUND(SUM(CASE WHEN  D.CAPITOL = 4 AND D.RIND IN '10' AND (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/3)*3 AND :pPERIOADA) THEN COL1 ELSE 0 END),1) AS COL4
+ 
+  
+
+FROM 
+  CIS.VW_DATA_ALL_COEF D
+  INNER JOIN CIS.VW_CL_CAEM2 C ON (D.CAEM2=C.CODUL)
+  INNER JOIN CIS.VW_CL_CAEM2 CG ON (C.FULL_CODE LIKE '%'||CG.CODUL||';%')
+  
+  
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/12)*12 AND :pPERIOADA-12 OR 
+   D.PERIOADA BETWEEN FLOOR(:pPERIOADA/12)*12 AND :pPERIOADA OR
+   D.PERIOADA IN :pPERIOADA) AND
+  D.FORM IN (4)
+  AND D.CAPITOL IN (4)
+  AND D.RIND IN ('10')
+  AND CG.CODUL IN ('S9601','S9602','S9603','S9604','S9609')
+  --AND CG.CODUL NOT IN ('N7700')
+  
+GROUP BY
+ CG.FULL_CODE,
+ CG.NUM_CODE,
+ CG.DENUMIRE,
+ CG.CODUL ) D
+ 
+
+WHERE
+  CODUL IS NOT NULL
+  
+)
+
+
+
+UNION
+SELECT DISTINCT                                                                     
+  :pPERIOADA AS PERIOADA,                                                    
+  :pFORM AS FORM,                                                            
+  :pFORM_VERS AS FORM_VERS,                                                  
+  :pID_MDTABLE AS ID_MDTABLE,                                                
+  :pCOD_CUATM AS COD_CUATM,                                                  
+  '0' AS NR_SECTIE,                                                         
+  '0' AS NUME_SECTIE,                                                        
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+   CODUL AS NR_ROW,  
+   FULL_CODE AS ORDINE,
+  '00000' AS DECIMAL_POS,
+   DENUMIRE  AS NUME_ROW,
+   COL1,
+   COL2,
+   COL3,
+   COL4,
+   COL5
+   
+FROM
+(
+SELECT
+  D.FULL_CODE,
+  D.DENUMIRE,
+  D.CODUL,
+  D.COL1,
+  D.COL2,
+  D.COL3,
+  D.COL4,
+  D.COL5 FROM
+
+
+(SELECT DISTINCT
+ CG.FULL_CODE,
+ CG.DENUMIRE, 
+ CG.CODUL AS CODUL,
+ 
+ COUNT(CASE WHEN D.RIND IN '10' AND PERIOADA IN :pPERIOADA THEN 1 END) AS COL1,
+ ROUND(SUM(CASE WHEN RIND IN ('10') AND D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/12)*12 AND :pPERIOADA-12  THEN COL1 ELSE NULL END) ,1) AS COL3,
+ ROUND(SUM(CASE WHEN RIND IN ('10') AND D.PERIOADA BETWEEN FLOOR(:pPERIOADA/12)*12 AND :pPERIOADA THEN COL1 ELSE NULL END) ,1) AS COL2,
+ ROUND(SUM(CASE WHEN  D.CAPITOL = 4 AND D.RIND IN '10' AND (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/3)*3 AND :pPERIOADA-12) THEN COL1 ELSE 0 END),1) AS COL5,
+ ROUND(SUM(CASE WHEN  D.CAPITOL = 4 AND D.RIND IN '10' AND (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/3)*3 AND :pPERIOADA) THEN COL1 ELSE 0 END),1) AS COL4
+ 
+  
+
+FROM 
+  CIS.VW_DATA_ALL_COEF D
+  INNER JOIN CIS.VW_CL_CAEM2 C ON (D.CAEM2=C.CODUL)
+  INNER JOIN CIS.VW_CL_CAEM2 CG ON (C.FULL_CODE LIKE '%'||CG.CODUL||';%')
+  
+  
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND   
+  (D.PERIOADA BETWEEN FLOOR((:pPERIOADA-12)/12)*12 AND :pPERIOADA-12 OR 
+   D.PERIOADA BETWEEN FLOOR(:pPERIOADA/12)*12 AND :pPERIOADA OR
+   D.PERIOADA IN :pPERIOADA) AND
+  D.FORM IN (4)
+  AND D.CAPITOL IN (4)
+  AND D.RIND IN ('10')
+  AND CG.CODUL IN ('S9510','S9520')
+  --AND CG.CODUL NOT IN ('N7700')
+  
+GROUP BY
+ CG.FULL_CODE,
+ CG.NUM_CODE,
+ CG.DENUMIRE,
+ CG.CODUL ) D
+ 
+
+WHERE
+  CODUL IS NOT NULL
+  
+)
+
+)
+
+ORDER BY ORDINE
