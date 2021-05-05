@@ -1,0 +1,28 @@
+﻿SELECT
+  'Nu este completat Numărul mediu al salariaţilor în perioada de gestiune sau Confirmati lipsa salariatilor'
+  AS REZULTAT,
+  
+  SUM (CASE WHEN D.CAPITOL IN ('1119') AND RIND IN ('3') THEN NVAL(D.COL1) ELSE 0 END  ) AS COL1,
+  
+  SUM (CASE WHEN D.CAPITOL NOT IN ('1119')  THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END) AS COL2 
+FROM
+  CIS2.VW_DATA_ALL_FR D  
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (63)  
+ 
+
+HAVING
+
+SUM (CASE WHEN D.CAPITOL NOT IN ('1119')  THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END) > 0 
+
+AND 
+SUM (CASE WHEN D.CAPITOL IN ('1119') AND RIND IN ('3') THEN NVAL(D.COL1) ELSE 0 END  ) = 0 
