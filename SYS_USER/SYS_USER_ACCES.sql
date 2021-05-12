@@ -1,24 +1,24 @@
 ﻿
---
---
---    INSERT INTO    CIS2.SYS_USER_ACCES
---    (
---  ID_USER,        
---  CUATM,          
---  FORM,           
---  FORM_VERS,      
---  ISADMIN,        
---  ACCES_TYPE,     
---  CAPITOL_ACCES,  
---  DATA_REG       
---  )
---  
+
+
+    INSERT INTO    CIS2.SYS_USER_ACCES
+    (
+  ID_USER,        
+  CUATM,          
+  FORM,           
+  FORM_VERS,      
+  ISADMIN,        
+  ACCES_TYPE,     
+  CAPITOL_ACCES,  
+  DATA_REG       
+  )
+  
 
 
 
 
 SELECT
-  677 ID_USER,        
+  1407 ID_USER,        
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -45,7 +45,7 @@ FROM
   
         WHERE
         
-        ID_USER IN (1088)) L  LEFT JOIN  (
+        ID_USER IN (376)) L  LEFT JOIN  (
         
         SELECT
   ID_USER,        
@@ -62,7 +62,7 @@ FROM
   
         WHERE
         
-        ID_USER IN (677)
+        ID_USER IN (1407)
         
         ) R ON R.FORM = L.FORM
 
@@ -72,30 +72,22 @@ FROM
         R.FORM IS NULL
         
 
+GROUP BY 
+  L.CUATM,          
+  L.FORM,           
+  L.FORM_VERS,      
+  L.ISADMIN,        
+  L.ACCES_TYPE,     
+  L.CAPITOL_ACCES,
+  ROWNUM 
+
+      HAVING 
+      
+      ROWNUM <=15  
 
 
 
-;
   
-  ---------------------------------------------------------------------------
-  
-  
-  
-  SELECT
-  ID_USER,        
-  CUATM,          
-  FORM,           
-  FORM_VERS,      
-  ISADMIN,        
-  ACCES_TYPE,     
-  CAPITOL_ACCES,  
-  DATA_REG 
-  
-     FROM CIS2.SYS_USER_ACCES
-  
-  
-        WHERE
-        
-        ID_USER IN (677)
+ 
         
   
