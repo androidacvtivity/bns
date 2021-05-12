@@ -15,7 +15,9 @@ D.PERIOADA,
          D.CUATM,
          CASE WHEN D.CAPITOL = 1115 THEN 'Tabelul 1'
               WHEN D.CAPITOL = 1116 THEN 'Tabelul 2'
-              WHEN D.CAPITOL = 1117 THEN 'Tabelul 3' END CAPITOL,
+              WHEN D.CAPITOL = 1117 THEN 'Tabelul 3' 
+              WHEN D.CAPITOL = 1118 THEN 'Cap SR'
+              END CAPITOL,
           D.RIND,
          SUM(D.COL1)  AS COL1,
          SUM(D.COL2) AS COL2,
@@ -36,7 +38,8 @@ FROM
   
   WHERE
   
-   (D.PERIOADA IN (1044,1045,1046,1047,1040,1041,1042,1043))  AND   
+   --(D.PERIOADA IN (1044,1045,1046,1047,1040,1041,1042,1043))  AND   
+   D.PERIOADA = 1048 AND 
    (D.FORM = 62) 
   
  
