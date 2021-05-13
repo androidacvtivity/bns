@@ -45,7 +45,7 @@ WHERE
 
 R.CUIIO IS  NULL 
 
-AND L.IDNO = 0
+--AND L.IDNO = 0
 
 
 
