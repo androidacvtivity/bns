@@ -1,0 +1,5 @@
+--CUIIO din RENIM care au versiunea 2009 
+--IDNO nu este NULL si nu este egal cu 0,
+--care sunt in USER_EREPORTING.IDNO_CUIIO
+--dar sunt nule sau sunt egale cu zero. 
+--Se face update dupa CUIIO .  
