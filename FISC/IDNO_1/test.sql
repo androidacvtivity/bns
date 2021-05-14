@@ -1,0 +1,13 @@
+
+   CREATE TABLE  USER_BANCU.IDNO_CUIIO
+   AS 
+    SELECT *
+    from USER_EREPORTING.IDNO_CUIIO;
+    
+     CREATE TABLE  USER_BANCU.RENIM
+     AS 
+     SELECT *
+    from  CIS2.RENIM
+    WHERE 
+    CUIIO_VERS = 2009;
+   
