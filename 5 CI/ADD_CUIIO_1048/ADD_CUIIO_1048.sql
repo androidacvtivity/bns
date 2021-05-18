@@ -1,15 +1,15 @@
-  INSERT INTO USER_BANCU.KAT_RSF1_F 
-  (
-  CUIIO,
-  CUIIO_VERS,
-  DENUMIRE,
-  CUATM,
-  CFP,
-  CAEM2,
-  IDNO  
-  
-  )
-  
+--  INSERT INTO USER_BANCU.KAT_RSF1_F 
+--  (
+--  CUIIO,
+--  CUIIO_VERS,
+--  DENUMIRE,
+--  CUATM,
+--  CFP,
+--  CAEM2,
+--  IDNO  
+--  
+--  )
+--  
   
   
   SELECT 
@@ -18,8 +18,7 @@
   L.DENUMIRE,
   L.CUATM,
   L.CFP,
-  L.CAEM2,
-  L.IDNO  
+  L.CAEM2 
 
 FROM
 (
@@ -29,15 +28,15 @@ FROM
          TRIM(L.DENUMIRE) DENUMIRE,
          TRIM(L.CUATM)  CUATM,
          TRIM(L.CFP)    CFP,
-         TRIM(L.CAEM2)  CAEM2,
-         TRIM(L.IDNO)   IDNO
-            FROM USER_BANCU.KAT_RSF1 L
+         TRIM(L.CAEM2)  CAEM2
+      
+            FROM USER_BANCU.KAT_RSF L
             
             --84617
              LEFT   JOIN  CIS2.VW_CL_CUATM C ON TRIM(C.CODUL) = TRIM(L.CUATM)  
              
              WHERE 
-             C.CODUL IS   NOT NULL 
+             C.CODUL IS   NOT  NULL 
              
              ) L
              
@@ -45,6 +44,6 @@ FROM
               
               
               WHERE 
-              CA.CODUL IS  NOT  NULL 
+              CA.CODUL IS  NOT   NULL 
               
               
