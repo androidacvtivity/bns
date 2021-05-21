@@ -45,6 +45,8 @@ SELECT
     CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN (1118) AND D.RIND IN ('TIP2') THEN  1 ELSE NULL END))>0
     
     
+    
+    
     ) 
     ------------------------------------------------
      AND CC.FULL_CODE LIKE '%'||CTM.CS_CUATM||'%' THEN  CIS2.NVAL(D.COL1)  ELSE NULL END)) AS COL2,
