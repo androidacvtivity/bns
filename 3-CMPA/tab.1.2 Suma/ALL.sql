@@ -1,0 +1,53 @@
+    SELECT 
+     DISTINCT D.UNIT_CODE, 
+    'TIP2' TIP 
+
+    FROM CIS2.VW_DATA_ALL_GC 
+    
+    D WHERE 
+    
+     (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)  AND 
+    D.FORM_VERS = :pFORM_VERS  AND D.FORM = :pFORM   
+    AND 
+    D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%' 
+    AND D.FORM IN (62) 
+    AND D.CAPITOL IN (1118) 
+    AND D.RIND IN ('TIP2') 
+    
+    
+    UNION ALL 
+    
+     SELECT 
+     DISTINCT D.UNIT_CODE, 
+    'TIP3' TIP 
+
+    FROM CIS2.VW_DATA_ALL_GC 
+    
+    D WHERE 
+     (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)  AND 
+    
+    D.FORM_VERS = :pFORM_VERS  AND D.FORM = :pFORM   
+    AND 
+    D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%' 
+    AND D.FORM IN (62) 
+    AND D.CAPITOL IN (1118) 
+    AND D.RIND IN ('TIP3') 
+    
+    
+     UNION ALL 
+    
+     SELECT 
+     DISTINCT D.UNIT_CODE, 
+    '0' TIP 
+
+    FROM CIS2.VW_DATA_ALL_GC 
+    
+    D WHERE 
+    
+     (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)  AND 
+    D.FORM_VERS = :pFORM_VERS  AND D.FORM = :pFORM   
+    AND 
+    D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%' 
+    AND D.FORM IN (62) 
+    AND D.CAPITOL IN (1118) 
+    AND D.RIND IN ('0') 
