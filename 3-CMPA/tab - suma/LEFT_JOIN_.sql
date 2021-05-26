@@ -8,6 +8,7 @@
               FROM
 
             (
+            
             SELECT 
               D.UNIT_CODE,
           
@@ -30,8 +31,13 @@
               
               GROUP BY 
                  D.UNIT_CODE
+                 
+                 
+                 
               ) L LEFT JOIN (
-                 SELECT 
+                
+
+ SELECT 
 
               DISTINCT  D.UNIT_CODE,
          
@@ -51,7 +57,7 @@
               D.FORM IN (62)  AND
               D.CAPITOL NOT  IN (1118)  
              
-              
+             AND   D.UNIT_CODE = 686643
               GROUP BY 
            
               D.UNIT_CODE
@@ -61,6 +67,8 @@
               
            
              D.UNIT_CODE
+             
+             
                  
                  ) R ON R.UNIT_CODE = L.UNIT_CODE 
                  
