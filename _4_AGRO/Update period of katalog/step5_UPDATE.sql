@@ -1,68 +1,29 @@
 ﻿DECLARE -- ====================================================================
 
 CURSOR C IS
-
-
-
 SELECT 
+            L.CUIIO,
+            L.CUIIO_VERS,
+            L.CFOJ OLD_CFOJ,
+            R.CFOJ NEW_CFOJ
+            
+            
+            FROM CIS2.RENIM L RIGHT JOIN USER_BANCU.KAT_4_AGRO_2020 R ON 
+             R.CUIIO = L.CUIIO AND R.CUIIO_VERS = L.CUIIO_VERS
+             
+             
+             
+             WHERE 
+             
+             L.CUIIO IS NOT NULL 
+            
 
-        R.CUIIO,
-        L.CUIIO E_CUIIO,
-        R.CUIIO_VERS,
-        R.IDNO IDNO_NEW ,
-        L.IDNO E_IDNO
-        
-        
-        FROM 
 
-(SELECT 
-        
-        R.CUIIO,
-        R.CUIIO_VERS,
-        R.IDNO
-        
-        FROM CIS2.RENIM R
-        
-        WHERE 
-        
-        R.CUIIO_VERS  = 2009
-        
-        AND 
-        
-        (R.IDNO IS NOT NULL
-        AND  
-        R.IDNO <> 0)
-        
-        
-        
-        
-        ) R LEFT JOIN (
-        
-        
-        SELECT 
-        CUIIO,
-        IDNO
-        from USER_EREPORTING.IDNO_CUIIO
-        )  L ON  L.CUIIO = R.CUIIO 
-        
-        
-        
-        WHERE 
-        
-       
-        
-        (
-        
-        L.IDNO IS NULL  
-        
-        OR 
-       
-        L.IDNO = 0
-        
-        )
-         
-
-         AND L.CUIIO IS NOT NULL
+             GROUP BY 
+            L.CUIIO,
+            L.CUIIO_VERS,
+            L.CFOJ,
+            R.CFOJ
          
          
         
@@ -74,13 +35,15 @@ SELECT
 BEGIN -- ======================================================================
 FOR CR IN C
 LOOP
-UPDATE USER_EREPORTING.IDNO_CUIIO SET
-IDNO = CR.IDNO_NEW
+UPDATE CIS2.RENIM SET
+CFOJ = CR.NEW_CFOJ
 WHERE
 CUIIO = CR.CUIIO 
+AND 
+CUIIO_VERS = CR.CUIIO_VERS
 
 
 
 ;
 END LOOP;
-END; --
+END; 
