@@ -44,10 +44,10 @@ SELECT     R.CUIIO,
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (43) AND FC.STATUT <> '3') FC
+             WHERE FC.FORM IN (:pFORM) AND FC.STATUT <> '3') FC
            INNER JOIN CIS2.RENIM R
                ON (R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS)
                
                
                
-     --WHERE R.CUIIO_VERS = 2010
+     WHERE R.CUIIO_VERS = 2009
