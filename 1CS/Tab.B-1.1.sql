@@ -1,5 +1,3 @@
-﻿--
---
 --INSERT INTO TABLE_OUT 
 --(
 --  PERIOADA,
@@ -21,19 +19,19 @@
 --)
 ------------------------------------------------------------------
 SELECT
-  :pPERIOADA AS PERIOADA,
-  :pFORM AS FORM,
-  :pFORM_VERS AS FORM_VERS,
-  :pID_MDTABLE AS ID_MDTABLE,
-  :pCOD_CUATM AS COD_CUATM,
-  
-         
-  COD_CFP AS NR_SECTIE,
-  DEN_CFP AS NUME_SECTIE,
-  '0' AS NR_SECTIE1,
-  '0' AS NUME_SECTIE1,
-  '0' AS NR_SECTIE2,
-  '0' AS NUME_SECTIE2,
+--  :pPERIOADA AS PERIOADA,
+--  :pFORM AS FORM,
+--  :pFORM_VERS AS FORM_VERS,
+--  :pID_MDTABLE AS ID_MDTABLE,
+--  :pCOD_CUATM AS COD_CUATM,
+--  
+--         
+--  COD_CFP AS NR_SECTIE,
+--  DEN_CFP AS NUME_SECTIE,
+--  '0' AS NR_SECTIE1,
+--  '0' AS NUME_SECTIE1,
+--  '0' AS NR_SECTIE2,
+--  '0' AS NUME_SECTIE2,
    RIND||'~'||COD_CFP AS NR_ROW,
    RIND AS ORDINE,
   '00000' AS DECIMAL_POS,
