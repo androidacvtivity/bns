@@ -1,0 +1,30 @@
+
+
+
+
+SELECT 
+L.CUIIO     EREPORT_CUIIO ,
+L.IDNO      EREPORT_IDNO,
+
+R.CUIIO     RENIM_CUIIO,
+R.IDNO      RENIM_IDNO
+from USER_EREPORTING.IDNO_CUIIO L LEFT JOIN   
+
+(
+SELECT 
+        
+        R.CUIIO,
+        R.CUIIO_VERS,
+        R.IDNO
+        
+        FROM CIS2.RENIM R
+        
+        WHERE 
+        
+        R.CUIIO_VERS  = 2009
+
+) R ON TRIM(R.CUIIO) = TRIM(L.CUIIO)  AND TRIM(R.IDNO) = TRIM(L.IDNO)
+
+WHERE 
+
+R.CUIIO IS  NULL 
