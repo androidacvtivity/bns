@@ -1,20 +1,44 @@
+--INSERT INTO TABLE_OUT 
+--(
+--  PERIOADA,
+--  FORM,
+--  FORM_VERS,
+--  ID_MDTABLE,
+--  COD_CUATM,
+--  NR_SECTIE,
+--  NUME_SECTIE,
+--  NR_SECTIE1,
+--  NUME_SECTIE1,
+--  NR_SECTIE2,
+--  NUME_SECTIE2,
+--  NR_ROW,
+--  ORDINE,
+--  DECIMAL_POS,
+--  NUME_ROW,
+--  
+--  COL1, COL2, COL3, COL4, COL5, COL6, COL7 , COL8, COL9,
+--   COL10, COL11, COL12, COL13, COL14, COL15, COL16 , COL17, COL18, COL19 , COL20, COL21, 
+--   COL22, COL23, COL24, COL25, COL26  
+--)
+
+
 SELECT     
---  :pPERIOADA AS PERIOADA,                                                    
---  :pFORM AS FORM,                                                            
---  :pFORM_VERS AS FORM_VERS,                                                  
---  :pID_MDTABLE AS ID_MDTABLE,                                                
---  :pCOD_CUATM AS COD_CUATM,                                                  
---  '0' AS NR_SECTIE,                                                         
---  '0' AS NUME_SECTIE,                                                        
---  '0' AS NR_SECTIE1,
---  '0' AS NUME_SECTIE1,
---  '0' AS NR_SECTIE2,
---  '0' AS NUME_SECTIE2,     
+  :pPERIOADA AS PERIOADA,                                                    
+  :pFORM AS FORM,                                                            
+  :pFORM_VERS AS FORM_VERS,                                                  
+  :pID_MDTABLE AS ID_MDTABLE,                                                
+  :pCOD_CUATM AS COD_CUATM,                                                  
+  '0' AS NR_SECTIE,                                                         
+  '0' AS NUME_SECTIE,                                                        
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,     
 
    R.CUIIO||'~'||SUM(ROWNUM)/0.13 AS NR_ROW,
      
    R.CUIIO AS ORDINE,
-   '000000111' AS DECIMAL_POS,
+   '00000000000000000000000000' AS DECIMAL_POS,
    R.DENUMIRE||'CUATM '||R.CUATM ||' CAEM: '||R.CAEM2||')' AS NUME_ROW,
    
  TO_NUMBER(R.CUATM) AS COL1,
@@ -42,7 +66,7 @@ SELECT
  CASE WHEN SUM(L.COL21) = 0 THEN NULL ELSE SUM(L.COL21) END   AS COL23,
  CASE WHEN SUM(L.COL22) = 0 THEN NULL ELSE SUM(L.COL22) END   AS COL24,
  CASE WHEN SUM(L.COL23) = 0 THEN NULL ELSE SUM(L.COL23) END   AS COL25,
- CASE WHEN SUM(L.COL24) = 0 THEN NULL ELSE SUM(L.COL20) END   AS COL26
+ CASE WHEN SUM(L.COL24) = 0 THEN NULL ELSE SUM(L.COL24) END   AS COL26
  
  
            
@@ -187,7 +211,7 @@ WHERE
  (:pID_MDTABLE=:pID_MDTABLE) AND
   D.FORM = 4 
   
-  --AND D.PERIOADA IN (:pPERIOADA)
+--  AND D.PERIOADA IN (:pPERIOADA)
 AND 
   D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%' 
   
