@@ -17,6 +17,7 @@ WHERE
 
   D.FORM IN (62)  AND
   D.CAPITOL IN (1118)
+  AND D.RIND IN  ('TIP2','TIP3','0')
   
   GROUP BY
   D.NR_GOSP 
