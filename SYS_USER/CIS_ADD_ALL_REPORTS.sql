@@ -1,24 +1,24 @@
-﻿
-
-
-    INSERT INTO    CIS2.SYS_USER_ACCES
-    (
-  ID_USER,        
-  CUATM,          
-  FORM,           
-  FORM_VERS,      
-  ISADMIN,        
-  ACCES_TYPE,     
-  CAPITOL_ACCES,  
-  DATA_REG       
-  )
-  
+--
+--
+--
+--    INSERT INTO    CIS.SYS_USER_ACCES
+--    (
+--  ID_USER,        
+--  CUATM,          
+--  FORM,           
+--  FORM_VERS,      
+--  ISADMIN,        
+--  ACCES_TYPE,     
+--  CAPITOL_ACCES,  
+--  DATA_REG       
+--  )
+--  
 
 
 
 
 SELECT
-  1407 ID_USER,        
+  1003 ID_USER,        
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -31,21 +31,21 @@ FROM
 
 ( 
   SELECT
-  ID_USER,        
-  CUATM,          
+  1003 ID_USER,        
+  '0000000'CUATM,          
   FORM,           
   FORM_VERS,      
-  ISADMIN,        
-  ACCES_TYPE,     
-  CAPITOL_ACCES,  
-  DATA_REG 
+  '0' ISADMIN,        
+  '1' ACCES_TYPE,     
+  NULL CAPITOL_ACCES,  
+  SYSDATE DATA_REG 
   
-     FROM CIS2.SYS_USER_ACCES
+     FROM CIS.MD_FORM 
+     --CIS2.SYS_USER_ACCES
   
   
         WHERE
-        
-        ID_USER IN (376)
+        1=1
         
         
         
@@ -63,12 +63,12 @@ FROM
   CAPITOL_ACCES,  
   DATA_REG 
   
-     FROM CIS2.SYS_USER_ACCES
+     FROM CIS.SYS_USER_ACCES
   
   
         WHERE
         
-        ID_USER IN (1407)
+        ID_USER IN (1003)
         
         ) R ON R.FORM = L.FORM
 
@@ -88,8 +88,8 @@ GROUP BY
   ROWNUM 
 
       HAVING 
-      
-      ROWNUM <=15  
+     1=1 
+      AND ROWNUM <=15  
 
 
 
