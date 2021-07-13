@@ -1,18 +1,18 @@
 ﻿
 
-
-    INSERT INTO    CIS2.SYS_USER_ACCES
-    (
-  ID_USER,        
-  CUATM,          
-  FORM,           
-  FORM_VERS,      
-  ISADMIN,        
-  ACCES_TYPE,     
-  CAPITOL_ACCES,  
-  DATA_REG       
-  )
-  
+--
+--    INSERT INTO    CIS2.SYS_USER_ACCES
+--    (
+--  ID_USER,        
+--  CUATM,          
+--  FORM,           
+--  FORM_VERS,      
+--  ISADMIN,        
+--  ACCES_TYPE,     
+--  CAPITOL_ACCES,  
+--  DATA_REG       
+--  )
+--  
 
 
 
