@@ -1,11 +1,11 @@
 ﻿SELECT
-  
+   D.CUIIO,
   'COL'|| CC.NR_COLUMN||' '||
   SUM(CASE WHEN D.RIND IN '0000' THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10) ELSE 0 END) ||' <> '||
   SUM(CASE WHEN D.RIND NOT IN '0000' THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10) ELSE 0 END) AS REZULTAT
   
 FROM 
-  VW_DATA_ALL_TEMP D,            
+  VW_DATA_ALL D,            
        (                                                                        
        SELECT '1' AS NR_COLUMN FROM DUAL UNION                                  
        SELECT '2' AS NR_COLUMN FROM DUAL UNION                                  
@@ -22,7 +22,7 @@ FROM
   
 WHERE
   (D.PERIOADA IN (:PERIOADA)) AND
-  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  --(D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
   (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
   (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
   (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
@@ -33,6 +33,7 @@ WHERE
    D.FORM = 8
   
 GROUP BY
+  D.CUIIO,
   CC.NR_COLUMN
 
 HAVING
@@ -41,5 +42,6 @@ HAVING
   
   
 ORDER BY
+  D.CUIIO,
   CC.NR_COLUMN
   

@@ -1,11 +1,11 @@
 SELECT
-  
+    D.CUIIO,
   'COL'|| CC.NR_COLUMN||' '||
   SUM(CASE WHEN D.RIND IN '700' THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4) ELSE 0 END) ||' <> '||
   SUM(CASE WHEN D.RIND IN ('710','720') THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4) ELSE 0 END) AS REZULTAT
   
 FROM 
-  VW_DATA_ALL_TEMP D,            
+  VW_DATA_ALL D,            
        (                                                                        
        SELECT '1' AS NR_COLUMN FROM DUAL UNION                                  
        SELECT '2' AS NR_COLUMN FROM DUAL UNION                                  
@@ -14,7 +14,7 @@ FROM
   
 WHERE
   (D.PERIOADA IN (:PERIOADA)) AND
-  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+ -- (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
   (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
   (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
   (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
@@ -25,6 +25,7 @@ WHERE
    D.FORM = 8
   
 GROUP BY
+  D.CUIIO,
   CC.NR_COLUMN
 
 HAVING
@@ -32,5 +33,6 @@ HAVING
   SUM(CASE WHEN D.RIND IN ('710','720') THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4) ELSE 0 END)
   
 ORDER BY
+  D.CUIIO,
   CC.NR_COLUMN
   
