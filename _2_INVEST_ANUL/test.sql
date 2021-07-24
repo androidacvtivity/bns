@@ -1,0 +1,6 @@
+﻿
+
+SELECT 
+SYSDATE 
+
+FROM DUAL;
