@@ -287,14 +287,10 @@ function fCBGC_Cap3() {
     
     var rows = document.getElementById('Tab_Data').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
     for (let i = 0; i < rows.length; i++) {
-    
-        rows.forEach((row) => {
-          alert("test");
-        });
-    
+        
         rows[i].onchange = function() {
-            //var a = eval('R' + (i - 2) + '_C13');
-            //alert(a.val());
+           // var a = eval('R' + (i - 2) + '_C13');
+          //   alert(a.val());
             if(eval('R' + (i - 2) + '_C13').val() == "3"){
                 //----------clear input --------------------------
                 eval('R' + (i - 2) + '_C14').val("");
