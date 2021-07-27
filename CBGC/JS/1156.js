@@ -26,11 +26,6 @@ function fCBGC_Cap9_3() {
     var R5_C2 = $("#68_1156_63293_5_2");
     var R6_C1 = $("#68_1156_63294_6_1");
     var R6_C2 = $("#68_1156_63294_6_2");
-    
-    
-
-    
-
     var R7_C1 = $("#68_1156_63296_7_1"); 
     var R7_C2 = $("#68_1156_63296_7_2");
     var R8_C1 = $("#68_1156_63297_8_1");
@@ -79,48 +74,21 @@ function fCBGC_Cap9_3() {
     var R29_C2 = $("#68_1156_63320_29_2");
     
   
- var rows = document.getElementById('Tab_Data').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+ 
 
  //var a = rows.length;
  //alert(a.val());
 
-   for (let i = 0; i < rows.length; i++) {
-    
-   
-    
-        rows[i].onchange = function() {
-           
-         //   var a = eval('R' + (i - 2) + '_C1');
-         //     alert(a.val());
-            
-            
-        
-            
-            if(eval('R' + (i - 2) + '_C1').val() == "2"){
-            
-            
-                //----------clear input --------------------------
-                eval('R' + (i - 2) + '_C2').val("");
-                //----------readOnly input -----------------------
-                eval('R' + (i - 2) + '_C2').prop("readonly", true);
-            }
-            else{
-                //----------readOnly input -----------------------
-                eval('R' + (i - 2) + '_C2').prop("readonly", false);
-            }
-            
-           
-            
-    
+ if(R1_C1.val() == "2")
+ {
+//----------clear input --------------------------
+eval(R1_C2.val(""));
 
-            
-          //  if(eval('R' + (i - 2) + '_C1').val() != "" && (eval('R' + (i - 2) + '_C1').val() < 1 || eval('R' + (i - 2) + '_C1').val() > 11)){eval('R' + (i - 2) + '_C1').val("");$.messager.alert("Eroare",msgErr + "2","error");}
-          
-         }
-    }
+
+ }  
  
  
-//  alert("Hello! I am an alert box!!"); 
+  alert("Hello! I am an alert box!!"); 
 
 
   
