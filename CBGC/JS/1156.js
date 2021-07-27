@@ -79,19 +79,374 @@ function fCBGC_Cap9_3() {
  //var a = rows.length;
  //alert(a.val());
 
- if(R1_C1.val() == "2")
- {
+ 
+    if(R1_C1.val() == "2"){
 //----------clear input --------------------------
+
 eval(R1_C2.val(""));
-
-
- }  
- 
- 
-  alert("Hello! I am an alert box!!"); 
-
-
+ //----------readOnly input -----------------------
+eval(R1_C2.prop("readonly", true));
+}  
+   else{
+ eval(R1_C2.prop("readonly", false));
+}
   
+
+if(R2_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R2_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R2_C2.prop("readonly", true));
+}  
+   else{
+ eval(R2_C2.prop("readonly", false));
+}
+
+
+
+if(R3_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R3_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R3_C2.prop("readonly", true));
+}  
+   else{
+ eval(R3_C2.prop("readonly", false));
+}
+
+
+if(R4_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R4_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R4_C2.prop("readonly", true));
+}  
+   else{
+ eval(R4_C2.prop("readonly", false));
+}
+
+
+if(R5_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R5_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R5_C2.prop("readonly", true));
+}  
+   else{
+ eval(R5_C2.prop("readonly", false));
+}
+
+
+if(R6_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R6_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R6_C2.prop("readonly", true));
+}  
+   else{
+ eval(R6_C2.prop("readonly", false));
+}
+
+
+if(R7_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R7_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R7_C2.prop("readonly", true));
+}  
+   else{
+ eval(R7_C2.prop("readonly", false));
+}
+
+
+
+
+if(R8_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R8_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R8_C2.prop("readonly", true));
+}  
+   else{
+ eval(R8_C2.prop("readonly", false));
+}
+
+
+
+if(R9_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R9_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R9_C2.prop("readonly", true));
+}  
+   else{
+ eval(R9_C2.prop("readonly", false));
+}
+
+
+
+if(R10_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R10_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R10_C2.prop("readonly", true));
+}  
+   else{
+ eval(R10_C2.prop("readonly", false));
+}
+
+
+
+if(R11_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R11_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R11_C2.prop("readonly", true));
+}  
+   else{
+ eval(R11_C2.prop("readonly", false));
+}
+
+
+
+if(R12_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R12_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R12_C2.prop("readonly", true));
+}  
+   else{
+ eval(R12_C2.prop("readonly", false));
+}
+
+
+
+
+if(R13_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R13_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R13_C2.prop("readonly", true));
+}  
+   else{
+ eval(R13_C2.prop("readonly", false));
+}
+
+
+
+if(R14_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R14_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R14_C2.prop("readonly", true));
+}  
+   else{
+ eval(R14_C2.prop("readonly", false));
+}
+
+
+if(R15_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R15_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R15_C2.prop("readonly", true));
+}  
+   else{
+ eval(R15_C2.prop("readonly", false));
+}
+
+
+if(R16_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R16_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R16_C2.prop("readonly", true));
+}  
+   else{
+ eval(R16_C2.prop("readonly", false));
+}
+
+
+if(R17_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R17_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R17_C2.prop("readonly", true));
+}  
+   else{
+ eval(R17_C2.prop("readonly", false));
+}
+
+
+
+if(R18_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R18_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R18_C2.prop("readonly", true));
+}  
+   else{
+ eval(R18_C2.prop("readonly", false));
+}
+
+
+
+
+
+if(R19_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R19_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R19_C2.prop("readonly", true));
+}  
+   else{
+ eval(R19_C2.prop("readonly", false));
+}
+
+
+if(R20_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R20_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R20_C2.prop("readonly", true));
+}  
+   else{
+ eval(R20_C2.prop("readonly", false));
+}
+
+
+if(R21_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R21_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R21_C2.prop("readonly", true));
+}  
+   else{
+ eval(R21_C2.prop("readonly", false));
+}
+
+
+if(R22_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R22_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R22_C2.prop("readonly", true));
+}  
+   else{
+ eval(R22_C2.prop("readonly", false));
+}
+
+
+if(R23_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R23_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R23_C2.prop("readonly", true));
+}  
+   else{
+ eval(R23_C2.prop("readonly", false));
+}
+
+
+
+if(R24_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R24_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R24_C2.prop("readonly", true));
+}  
+   else{
+ eval(R24_C2.prop("readonly", false));
+}
+
+
+
+if(R25_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R25_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R25_C2.prop("readonly", true));
+}  
+   else{
+ eval(R25_C2.prop("readonly", false));
+}
+
+
+
+if(R26_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R26_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R26_C2.prop("readonly", true));
+}  
+   else{
+ eval(R26_C2.prop("readonly", false));
+}
+
+
+
+if(R27_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R27_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R27_C2.prop("readonly", true));
+}  
+   else{
+ eval(R27_C2.prop("readonly", false));
+}
+
+
+
+if(R28_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R28_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R28_C2.prop("readonly", true));
+}  
+   else{
+ eval(R28_C2.prop("readonly", false));
+}
+
+
+
+if(R29_C1.val() == "2"){
+//----------clear input --------------------------
+
+eval(R29_C2.val(""));
+ //----------readOnly input -----------------------
+eval(R29_C2.prop("readonly", true));
+}  
+   else{
+ eval(R29_C2.prop("readonly", false));
+}
+
 
 }
 
