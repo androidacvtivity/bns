@@ -346,11 +346,10 @@ ORDER BY
   ON (D.CUATM=T2.NR_ROW)
 ORDER BY
   FULL_CODE
-  
-  
-  
-  
 )
+
+
+
   ;
 BEGIN
 
