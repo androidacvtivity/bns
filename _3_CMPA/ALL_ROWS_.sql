@@ -1,13 +1,13 @@
-﻿SELECT 
+SELECT 
          D.PERIOADA,
          D.UNIT_CODE,
          D.CUATM,
          CASE 
          
-              WHEN D.CAPITOL = 416 THEN 'CAP1'
-              WHEN D.CAPITOL = 417 THEN 'CAP2'
-              WHEN D.CAPITOL = 418 THEN 'Informativ'
-              WHEN D.CAPITOL = 419 THEN 'Cap. SR'
+              WHEN D.CAPITOL = 1115 THEN 'Tabelul 1'
+              WHEN D.CAPITOL = 1116 THEN 'Tabelul 2'
+              WHEN D.CAPITOL = 1117 THEN 'Tabelul 3'
+              WHEN D.CAPITOL = 1118 THEN 'Cap. SR'
          END 
           AS CAPITOL,
          D.RIND,   
@@ -39,14 +39,16 @@ FROM
   
   
 WHERE
-  --(D.PERIOADA IN (1040,1041,1042,1043))  AND   
+ -- (D.PERIOADA IN (1040,1041,1042,1043))  AND   
   (D.PERIOADA IN (1044,1045,1046,1047))  AND   
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
   (:pID_MDTABLE =:pID_MDTABLE) AND 
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
-  D.FORM IN (58)  AND
-  D.CAPITOL IN (419,416,417,418)
+  D.FORM IN (62) 
+  
+ AND
+  D.CAPITOL IN (1115,1116,1117,1118)
   
   
   GROUP BY 
