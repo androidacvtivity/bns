@@ -1,4 +1,4 @@
-﻿INSERT INTO CIS2.TABLE_OUT 
+INSERT INTO CIS2.TABLE_OUT 
 (
   PERIOADA,
   FORM,
@@ -61,7 +61,7 @@ FROM
 SELECT 
          1 AS ORDINE, 
          '250' AS RIND,
-         'Total sămînțoase' AS DENUMIRE, 
+         'Total sam�n?oase' AS DENUMIRE, 
          
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('210','220','230','240')  AND D.CUATM_FULL LIKE '%'||'1111111'||';%' THEN D.COL1 / 3 ELSE NULL END))  AS COL1,
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('210','220','230','240')  AND D.CUATM_FULL LIKE '%'||'1111111'||';%' THEN D.COL4 /3 ELSE NULL END))  AS COL2,
@@ -105,7 +105,7 @@ WHERE
   SELECT 
         2 AS ORDINE, 
          '370' AS RIND,
-         'Total sîmburoase' AS DENUMIRE, 
+         'Total s�mburoase' AS DENUMIRE, 
          
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('310','320','330','340','350','360')   AND D.CUATM_FULL LIKE '%'||'1111111'||';%' THEN D.COL1 / 3 ELSE NULL END))  AS COL1,
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('310','320','330','340','350','360')  AND D.CUATM_FULL LIKE '%'||'1111111'||';%' THEN D.COL4 /3 ELSE NULL END))  AS COL2,
@@ -150,7 +150,7 @@ WHERE
   SELECT 
           3 AS ORDINE, 
          '400' AS RIND,
-         'Plantaţii nucifere' AS DENUMIRE, 
+         'Plantatii nucifere' AS DENUMIRE, 
          
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('400')  AND D.CUATM_FULL LIKE '%'||'1111111'||';%' THEN D.COL1 /3  ELSE NULL END)) AS COL1,
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('400')  AND D.CUATM_FULL LIKE '%'||'1111111'||';%' THEN D.COL4 / 3  ELSE NULL END)) AS COL2,
@@ -197,7 +197,7 @@ WHERE
      SELECT 
           4 AS ORDINE, 
          '500' AS RIND,
-         'Pomuşoare -total ' AS DENUMIRE, 
+         'Pomusoare -total ' AS DENUMIRE, 
          
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('500')  AND D.CUATM_FULL LIKE '%'||1111111||';%' THEN D.COL1/3 ELSE NULL END)) AS COL1,
          CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN ('1113') AND D.RIND IN ('500')  AND D.CUATM_FULL LIKE '%'||1111111||';%' THEN D.COL4/3  ELSE NULL END)) AS COL2,
