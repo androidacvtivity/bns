@@ -1,49 +1,17 @@
-﻿--DECLARE
---
---  CURSOR C IS
---
---SELECT 
---    DF.PERIOADA,
---    DF.FORM,
---    DF.FORM_VERS,
---    DF.ID_MDTABLE,
---    DF.COD_CUATM,
---    DF.NR_SECTIE,
---    DF.NUME_SECTIE,
---    DF.NR_SECTIE1,
---    DF.NUME_SECTIE1,
---    DF.NR_SECTIE2,
---    DF.NUME_SECTIE2,
---    DF.NR_ROW NR_ROW,
---    DF.ORDINE,
---    DF.DECIMAL_POS,
---    DF.NUME_ROW,
---    DF.COL1,
---    DF.COL2,
---    DF.COL3,
---    DF.COL4,
---    DF.COL5,
---    DF.COL6,
---    DF.COL7,
---    DF.COL8,
---    DF.COL9
---     
---FROM 
---(
-
+﻿
     
 SELECT 
-    :pPERIOADA AS PERIOADA,
-    :pFORM AS FORM,
-    :pFORM_VERS AS FORM_VERS,
-    :pID_MDTABLE AS ID_MDTABLE,
-    :pCOD_CUATM AS COD_CUATM,
-    '0' AS  NR_SECTIE,
-    '0' AS NUME_SECTIE,
-    '0' AS NR_SECTIE1,
-    '0' AS NUME_SECTIE1,
-    '0' AS NR_SECTIE2,
-    '0' AS NUME_SECTIE2,  
+--    :pPERIOADA AS PERIOADA,
+--    :pFORM AS FORM,
+--    :pFORM_VERS AS FORM_VERS,
+--    :pID_MDTABLE AS ID_MDTABLE,
+--    :pCOD_CUATM AS COD_CUATM,
+--    '0' AS  NR_SECTIE,
+--    '0' AS NUME_SECTIE,
+--    '0' AS NR_SECTIE1,
+--    '0' AS NUME_SECTIE1,
+--    '0' AS NR_SECTIE2,
+--    '0' AS NUME_SECTIE2,  
       ROUND(COL1,0)||'~'||ROWNUM AS NR_ROW,  
       ROWNUM AS ORDINE,
      '000000000' AS DECIMAL_POS,
@@ -203,7 +171,7 @@ WHERE
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
   (:pID_MDTABLE =:pID_MDTABLE) AND 
-  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND -------
   D.FORM IN (58)  AND
   D.CAPITOL IN (416)
   AND MR.RIND IN ('060','070','080','090')
@@ -214,57 +182,3 @@ WHERE
   )
     
 
---  ) DF
---  
---  ;
---   
---    BEGIN
---
---  FOR CR IN C
---  
---  LOOP
---   
---    INSERT INTO  CIS2.TABLE_OUT
---    (
---      PERIOADA,
---      FORM,
---      FORM_VERS,
---      ID_MDTABLE,
---      COD_CUATM,
---      NR_SECTIE,
---      NUME_SECTIE,
---      NR_SECTIE1,
---      NUME_SECTIE1,
---      NR_SECTIE2,
---      NUME_SECTIE2,
---      NR_ROW,
---      ORDINE,
---      DECIMAL_POS,
---      NUME_ROW,
---       
---      COL1, COL2, COL3,  COL4, COL5, COL6, COL7, COL8, COL9
---    )
---    VALUES
---    (
---      CR.PERIOADA,
---      CR.FORM,
---      CR.FORM_VERS,
---      CR.ID_MDTABLE,
---      CR.COD_CUATM,
---      CR.NR_SECTIE,
---      CR.NUME_SECTIE,
---      CR.NR_SECTIE1,
---      CR.NUME_SECTIE1,
---      CR.NR_SECTIE2,
---      CR.NUME_SECTIE2,
---      CR.NR_ROW,
---      CR.ORDINE,
---      CR.DECIMAL_POS,
---      CR.NUME_ROW,
---       
---      CR.COL1, CR.COL2, CR.COL3, CR.COL4 , CR.COL5 , CR.COL6, CR.COL7, CR.COL8, CR.COL9 
---    );
---  END LOOP;
---END;
---  
---  
