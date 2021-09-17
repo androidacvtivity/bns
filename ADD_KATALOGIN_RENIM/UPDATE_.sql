@@ -5,9 +5,8 @@
  
                  VB.DENUMIRE,
                  VB.CUATM,
-                 VB.CFP,
-                 VB.CFOJ,
-                 VB.CAEM2                       --7
+                 VB.CFP
+                                       --7
  
   ) 
             = 
@@ -17,11 +16,10 @@
  
                  C.DENUMIRE,
                  C.CUATM,
-                 C.CFP,
-                 C.CFOJ,
-                 C.CAEM2                          --7
+                 C.CFP
+                                        --7
  
-  FROM RENIM_2009 C
+  FROM USER_BANCU.KAT_4_RSF1 C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -31,7 +29,7 @@
                 
                 (
                     SELECT *
-                    FROM RENIM_2009 C
+                    FROM USER_BANCU.KAT_4_RSF1 C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
