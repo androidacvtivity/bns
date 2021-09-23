@@ -1,0 +1,86 @@
+SELECT
+
+'Perioada Curenta - Cap.IV RIND  - '|| L.RIND ||' - COL7  - '|| L.COL7 || 
+
+' Perioada Precedenta -  Cap.IV RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
+AS REZULTAT
+
+FROM 
+
+
+(
+SELECT 
+D.NR_GOSP, 
+D.RIND,
+SUM(D.COL7) AS COL7 
+
+
+FROM
+  CIS2.VW_DATA_ALL_GC D  
+        
+WHERE
+  (D.PERIOADA IN  (:PERIOADA)         OR :PERIOADA = -1) AND
+  (D.NR_GOSP=:NR_GOSP               OR :NR_GOSP = -1) AND
+  (D.UNIT_CODE_VERS=:UNIT_CODE_VERS    OR :UNIT_CODE_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL <> :CAPITOL) AND
+  (:CAPITOL_VERS=:CAPITOL_VERS OR  :CAPITOL_VERS <>  :CAPITOL_VERS ) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+ 
+  D.FORM IN (61)  AND
+  D.CAPITOL IN (1113)  
+  AND D.RIND NOT IN ('710','720','-') 
+
+
+GROUP BY 
+D.NR_GOSP, 
+D.RIND
+ 
+  ) L LEFT JOIN   ( 
+  
+  SELECT 
+D.NR_GOSP, 
+D.RIND,
+SUM(D.COL1) AS COL1 
+
+
+FROM
+  CIS2.VW_DATA_ALL_GC D  
+        
+WHERE
+  (D.PERIOADA IN  (:PERIOADA-1)         OR :PERIOADA = -1) AND
+  (D.NR_GOSP=:NR_GOSP               OR :NR_GOSP = -1) AND
+  (D.UNIT_CODE_VERS=:UNIT_CODE_VERS    OR :UNIT_CODE_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL <> :CAPITOL) AND
+  (:CAPITOL_VERS=:CAPITOL_VERS OR  :CAPITOL_VERS <>  :CAPITOL_VERS ) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+ 
+  D.FORM IN (61)  AND
+  D.CAPITOL IN (1113)  
+  AND D.RIND NOT IN ('710','720','-') 
+
+
+GROUP BY 
+D.NR_GOSP, 
+D.RIND
+
+) R ON  R.NR_GOSP = L.NR_GOSP AND R.RIND = L.RIND
+
+
+GROUP BY
+L.RIND,
+R.RIND,
+L.COL7,
+R.COL1
+
+
+HAVING 
+
+R.RIND IS NULL
+
+AND 
+
+(L.COL7 IS NOT NULL OR L.COL7 <> 0)   
