@@ -1,0 +1,51 @@
+﻿SELECT  
+'Completati '||
+DECODE(CC.NR_COLUMN, '1', 'COL1 ','2', 'COL2 ', '3', 'COL3 ', '4', 'COL4 ', '5', 'COL5 ', '6', 'COL6 ', '7', 'COL7 ', '8', 'COL8 ', '9', 'COL9 ', '10', 'COL10 ', '11', 'COL11 ')|| 'Rind.400'
+
+  AS REZULTAT
+
+FROM
+  CIS2.VW_DATA_ALL_GC D  ,             
+       (                               
+       SELECT '1' AS NR_COLUMN FROM DUAL UNION
+       SELECT '2' AS NR_COLUMN FROM DUAL UNION
+       SELECT '3' AS NR_COLUMN FROM DUAL UNION
+       SELECT '4' AS NR_COLUMN FROM DUAL UNION
+       SELECT '5' AS NR_COLUMN FROM DUAL UNION
+       SELECT '6' AS NR_COLUMN FROM DUAL UNION
+       SELECT '7' AS NR_COLUMN FROM DUAL UNION
+       SELECT '8' AS NR_COLUMN FROM DUAL UNION
+       SELECT '9' AS NR_COLUMN FROM DUAL UNION
+       SELECT '10' AS NR_COLUMN FROM DUAL UNION
+       SELECT '11' AS NR_COLUMN FROM DUAL 
+                                                                             
+       ) CC             
+        
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.NR_GOSP=:NR_GOSP               OR :NR_GOSP = -1) AND
+  (D.UNIT_CODE_VERS=:UNIT_CODE_VERS    OR :UNIT_CODE_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL <> :CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+--  
+  D.FORM IN (61)  AND
+  D.CAPITOL IN (1113)   
+  
+GROUP BY
+  CC.NR_COLUMN
+ 
+  
+HAVING
+  
+  (CIS2.NVAL(SUM(CASE WHEN D.RIND IN ('400') THEN DECODE(CC.NR_COLUMN, '1', D.COL1,'2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, 
+  '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11)  ELSE NULL END)) =0
+  
+   AND 
+   
+  CIS2.NVAL(SUM(CASE WHEN D.RIND  IN ('401') THEN DECODE(CC.NR_COLUMN, '1', D.COL1,'2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, 
+  '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11)  ELSE NULL END))>0)
+  
+     ORDER BY  CC.NR_COLUMN
