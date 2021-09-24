@@ -1,8 +1,8 @@
 SELECT
 
-'Perioada Curenta - Cap.IV RIND  - '|| L.RIND ||' - COL7  - '|| L.COL7 || 
+'Perioada Curenta - Cap.IV RIND  - '|| L.RIND ||' - COL8  - '|| L.COL8 || 
 
-' Perioada Precedenta -  Cap.IV RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
+' Perioada Precedenta -  Cap.IV RIND - '|| R.RIND ||' - COL2 - '|| R.COL2  ||' - COL3 - '|| R.COL3 
 AS REZULTAT
 
 FROM 
@@ -12,7 +12,7 @@ FROM
 SELECT 
 D.NR_GOSP, 
 D.RIND,
-SUM(D.COL7) AS COL7 
+SUM(D.COL8) AS COL8 
 
 
 FROM
@@ -42,7 +42,8 @@ D.RIND
   SELECT 
 D.NR_GOSP, 
 D.RIND,
-SUM(D.COL1) AS COL1 
+SUM(D.COL2) AS COL2,
+SUM(D.COL3) AS COL3  
 
 
 FROM
@@ -73,8 +74,9 @@ D.RIND
 GROUP BY
 L.RIND,
 R.RIND,
-L.COL7,
-R.COL1
+L.COL8,
+R.COL2,
+R.COL3
 
 
 HAVING 
@@ -83,4 +85,19 @@ R.RIND IS NULL
 
 AND 
 
-(L.COL7 IS NOT NULL OR L.COL7 <> 0)   
+(L.COL8 IS NOT NULL OR L.COL8 <> 0)   
+
+AND 
+
+
+
+
+(
+
+(R.COL2 IS NULL OR R.COL2 =  0)
+
+AND 
+
+(R.COL3 IS NULL OR R.COL3 =  0)
+
+) 

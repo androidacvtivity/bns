@@ -1,0 +1,65 @@
+<table cellspacing="0"  width="80%" id='Tab_Data' border='1' cellpadding="0" >
+  <tr>
+    <td width="88" rowspan="3" align="center">&nbsp; </td>
+	<td width="42" rowspan="3" align="center">Nr. Rind </td>
+    <td width="112" rowspan="3" align="center">Total profesori </td>
+    <td colspan="22" align="center">Din care la specialitatea de baz&#259;</td>
+  </tr>
+  <tr>
+    <td colspan="6"  align="center">Limba si literatura&nbsp;&nbsp;&nbsp;&nbsp; <br /></td>
+    <td width="67" rowspan="2" align="center">
+    
+    ă<br>l<br>a<br>s<br>r<br>e<br>v<br>i<br>n<br>u<br><br>i<br>ş<br><br>r<br>o<br>l<br>i<br>n<br>â<br>m<br>o<br>r<br><br>a<br>i<br>r<br>o<br>t<br>s<br>i   <br /> </td>
+    
+    
+    <td width="72" rowspan="2" align="center">informatic&#259;</td>
+    <td width="67" rowspan="2" align="center">matematic</td>
+    <td width="45" rowspan="2" align="center"> fizic&#259;  </td>
+    <td width="46" rowspan="2" align="center">chimie </td>
+    <td width="64" rowspan="2" align="center">geografie <br /> </td>
+    <td width="56" rowspan="2" align="center">biologie <br /></td>
+    <td width="48" rowspan="2" align="center">limba englez&#259;</td>
+    <td width="60" rowspan="2" align="center">limba german&#259; <br /></td>
+    <td width="55" rowspan="2" align="center">limba&nbsp; francez&#259;<br /></td>
+    <td width="45" rowspan="2" align="center">alt&#259; limb&#259; str&#259;in&#259;<br /></td>
+    <td width="79" rowspan="2" align="center">educa&#355;ia&nbsp;&nbsp; tehnologic&#259; <br /></td>
+    <td width="63" rowspan="2" align="center">educa&#355;ia&nbsp; muzical&#259;<br /></td>
+    <td width="63" rowspan="2" align="center">educa&#355;ia&nbsp; plastic&#259;<br /></td>
+    <td width="63" rowspan="2" align="center">educa&#355;ia&nbsp; fizic&#259;<br /></td>
+    <td width="60" rowspan="2" align="center">alte obiecte<br /></td>
+  </tr>
+  <tr>
+    <td width="49" align="center">ă<br>n<br>â<br>m<br>o<br>r</td>
+    <td width="41" align="center">ă<br>s<br>u<br>r</td>
+    <td width="64" align="center">ă<br>n<br>a<br>e<br>n<br>i<br>a<br>r<br>c<br>u</td>
+    <td width="58" align="center">ă<br>z<br>u<br>ă<br>g<br>ă<br>g</rtd>
+    <td width="52" align="center">ă<br>r<br>a<br>g<br>l<br>u<br>b</td>
+    <td width="41" align="center">e<br>t<br>l<br>a<br /></td>
+  </tr>
+  <tr>
+    <td width="88" align="center">A</td>
+    <td width="42" align="center">B</td>    
+    <td width="112" align="center">1</td>
+    <td width="49" align="center">2</td>
+    <td width="41" align="center">3</td>
+    <td width="64" align="center">4</td>
+    <td width="58" align="center">5</td>
+    <td width="52" align="center">6</td>
+    <td width="41" align="center">7</td>
+    <td width="67" align="center">8</td>
+    <td width="72" align="center">9</td>
+    <td width="67" align="center">10</td>
+    <td width="45" align="center">11</td>
+    <td width="46" align="center">12</td>
+    <td width="64" align="center">13</td>
+    <td width="56" align="center">14</td>
+    <td width="48" align="center">15</td>
+    <td width="60" align="center">16</td>
+    <td width="55" align="center">17</td>
+    <td width="45" align="center">18</td>
+    <td width="79" align="center">19</td>
+    <td width="63" align="center">20</td>
+    <td width="63" align="center">21</td>
+    <td width="63" align="center">22</td>
+    <td width="60" align="center">23</td>
+  </tr>

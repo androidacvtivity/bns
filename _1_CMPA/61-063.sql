@@ -1,8 +1,8 @@
 SELECT
 
-' CAP 3 RIND - '|| L.RIND ||' - COL2 - '|| L.COL2 || 
+' CAP 3 RIND - '|| L.RIND ||' - COL4 - '|| L.COL4 || 
 
-' - CAP 2 RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
+' - CAP 2 RIND - '|| R.RIND ||' - COL2 - '|| R.COL2  
 AS REZULTAT
 
 FROM 
@@ -12,7 +12,7 @@ FROM
 SELECT 
 D.NR_GOSP, 
 D.RIND,
-SUM(D.COL2) AS COL2 
+SUM(D.COL4) AS COL4 
 
 
 FROM
@@ -39,13 +39,15 @@ WHERE
 GROUP BY 
 D.NR_GOSP, 
 D.RIND
+
+
  
   ) L LEFT JOIN   ( 
   
   SELECT 
 D.NR_GOSP, 
 D.RIND,
-SUM(D.COL1) AS COL1 
+SUM(D.COL2) AS COL2 
 
 
 FROM
@@ -79,10 +81,14 @@ D.RIND
 GROUP BY
 L.RIND,
 R.RIND,
-L.COL2,
-R.COL1
+L.COL4,
+R.COL2
 
 
 HAVING 
 
 R.RIND IS NULL
+
+AND 
+
+(L.COL4 IS NOT NULL OR L.COL4 <> 0)   
