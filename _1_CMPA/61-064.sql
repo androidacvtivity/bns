@@ -1,8 +1,8 @@
 SELECT
 
-' CAP 3 RIND - '|| L.RIND ||' - COL2 - '|| L.COL2 || 
+'Perioada Curenta - Cap.IV RIND  - '|| L.RIND ||' - COL7  - '|| L.COL7 || 
 
-' - CAP 2 RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
+' Perioada Precedenta -  Cap.IV RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
 AS REZULTAT
 
 FROM 
@@ -12,7 +12,7 @@ FROM
 SELECT 
 D.NR_GOSP, 
 D.RIND,
-SUM(D.COL2) AS COL2 
+SUM(D.COL7) AS COL7 
 
 
 FROM
@@ -29,11 +29,8 @@ WHERE
   (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
  
   D.FORM IN (61)  AND
-  D.CAPITOL IN (1112)  
-  AND D.RIND IN ('010','011','012','013','014','015',
-  '016','017','020','021','022','023','024','030','040','041','042','043','044','045',
-'046','047','048','049','050','051','052','053','054',
-'060','070','071','072','080','081','082','083') 
+  D.CAPITOL IN (1113)  
+  AND D.RIND NOT IN ('710','720','-') 
 
 
 GROUP BY 
@@ -62,11 +59,8 @@ WHERE
   (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
  
   D.FORM IN (61)  AND
-  D.CAPITOL IN (1111)  
-  AND D.RIND IN ('010','011','012','013','014','015',
-  '016','017','020','021','022','023','024','030','040','041','042','043','044','045',
-'046','047','048','049','050','051','052','053','054',
-'060','070','071','072','080','081','082','083') 
+  D.CAPITOL IN (1113)  
+  AND D.RIND NOT IN ('710','720','-') 
 
 
 GROUP BY 
@@ -79,7 +73,7 @@ D.RIND
 GROUP BY
 L.RIND,
 R.RIND,
-L.COL2,
+L.COL7,
 R.COL1
 
 
@@ -89,4 +83,9 @@ R.RIND IS NULL
 
 AND 
 
-(L.COL2 IS NOT NULL OR L.COL2 <> 0)   
+(L.COL7 IS NOT NULL OR L.COL7 <> 0)   
+
+AND 
+
+
+(R.COL1 IS NULL OR R.COL1 =  0) 
