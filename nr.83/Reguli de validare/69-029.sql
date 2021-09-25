@@ -1,11 +1,17 @@
 ﻿SELECT DISTINCT
 
-'RIND ' ||D.RIND||' [' || SUM(DECODE(D.COL1,null,0,D.COL1))||' < '||
+'RIND ' ||D.RIND||' [' || 
 
-        SUM(DECODE(D.COL3,NULL,0,D.COL3)) ||']' AS REZULTAT
+NVAL(SUM(D.COL1))||' <> '|| 
+SUM(NVAL(D.COL3) + NVAL(D.COL5)  + NVAL(D.COL7)   + NVAL(D.COL9)  + NVAL(D.COL11)  + NVAL(D.COL13) + NVAL(D.COL15) + NVAL(D.COL17)  + NVAL(D.COL19) + NVAL(D.COL21) )  
+
+
+||']'
+        
+ AS REZULTAT
     
 FROM
-VW_DATA_ALL D                                  
+VW_DATA_ALL  D                                  
 WHERE
   (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
   (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
@@ -18,10 +24,10 @@ WHERE
  
  
   D.FORM = 69
-  AND D.CAPITOL = 1171
+  AND D.CAPITOL = 1175
   
 GROUP BY D.RIND
 
 HAVING
-
-SUM(DECODE(D.COL1,null,0,D.COL1)) < SUM( DECODE(D.COL3,NULL,0,D.COL3))
+NVAL(SUM(D.COL1))  <>  
+SUM(NVAL(D.COL3) + NVAL(D.COL5)  + NVAL(D.COL7)   + NVAL(D.COL9)  + NVAL(D.COL11)  + NVAL(D.COL13) + NVAL(D.COL15) + NVAL(D.COL17)  + NVAL(D.COL19) + NVAL(D.COL21) )  
