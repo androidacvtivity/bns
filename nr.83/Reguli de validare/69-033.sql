@@ -3,13 +3,19 @@ SELECT
   D.RIND ||    
   DECODE(CC.NR_COLUMN, '1', ' COL1 ', '2', ' COL2 ')||
 '['||
-   SUM(CASE WHEN D.CAPITOL IN (1171)    THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2',  NVAL(D.COL2))  ELSE 0 END) ||' <> '||
-   SUM(CASE WHEN D.CAPITOL IN (1175)   THEN DECODE(CC.NR_COLUMN, '1',  NVAL(D.COL1), '2',  NVAL(D.COL2))  ELSE 0 END)||' ]' || ' Cap.IV '
+   SUM(CASE WHEN D.CAPITOL IN (1171)    THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2',  NVAL(D.COL2))  ELSE 0 END) 
    
+   ||' <> '||
+   SUM(CASE WHEN D.CAPITOL IN (1175)   THEN DECODE(CC.NR_COLUMN, '1',  NVAL(D.COL1), '2',  NVAL(D.COL2))  ELSE 0 END)||' ' || ' Cap.IV '
+   
+   ||' <> '||
+   SUM(CASE WHEN D.CAPITOL IN (1173)   THEN DECODE(CC.NR_COLUMN, '1',  NVAL(D.COL1), '2',  NVAL(D.COL2))  ELSE 0 END)||' ]' || ' Cap.II '
+   
+      
   AS REZULTAT
 
 FROM
-  VW_DATA_ALL_TEMP D,             
+  VW_DATA_ALL D,             
        (                                                                        
        SELECT '1' AS NR_COLUMN FROM DUAL UNION                                  
        SELECT '2' AS NR_COLUMN FROM DUAL                                         
@@ -27,7 +33,7 @@ WHERE
   (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
   
   D.FORM IN (69)  AND
-  D.CAPITOL IN (1171,1175) AND   
+  D.CAPITOL IN (1171,1175,1173) AND   
   D.RIND IN ('01','02','03','04','05','06','07','08')
       
   GROUP BY
@@ -36,9 +42,30 @@ WHERE
 
 HAVING
 
+   (
    SUM(CASE WHEN D.CAPITOL IN (1171)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END)  <>
-   SUM(CASE WHEN D.CAPITOL IN (1175)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END)
    
+   SUM(CASE WHEN D.CAPITOL IN (1175)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END)  )
+   
+   OR 
+   
+   
+   (
+   SUM(CASE WHEN D.CAPITOL IN (1175)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END)  
+   
+   <>
+   SUM(CASE WHEN D.CAPITOL IN (1173)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END )
+   )
+
+OR 
+   
+   
+   (
+   SUM(CASE WHEN D.CAPITOL IN (1171)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END)  
+   
+   <>
+   SUM(CASE WHEN D.CAPITOL IN (1173)   THEN DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2))  ELSE 0 END )
+   )
 
 
         ORDER BY 
