@@ -1,15 +1,15 @@
-﻿                INSERT INTO CIS2.SYS_USER_ACCES (
-                
-                 ID_USER,
-                 CUATM,
-                 FORM,
-                 FORM_VERS,
-                 ISADMIN,
-                 ACCES_TYPE,
-                 CAPITOL_ACCES,
-                 DATA_REG  
-                
-                )
+﻿--                INSERT INTO CIS2.SYS_USER_ACCES (
+--                
+--                 ID_USER,
+--                 CUATM,
+--                 FORM,
+--                 FORM_VERS,
+--                 ISADMIN,
+--                 ACCES_TYPE,
+--                 CAPITOL_ACCES,
+--                 DATA_REG  
+--                
+--                )
 
 
 
@@ -34,7 +34,7 @@ FROM
                 
                  ID_USER,
                  CUATM,
-                 66 FORM,
+                 69 FORM,
                  FORM_VERS,
                  ISADMIN,
                  ACCES_TYPE,
@@ -46,7 +46,7 @@ FROM
                     
                     WHERE 
                     
-                    FORM = 57
+                    FORM = 40
                     
                     AND FORM_VERS = 2000
                    -- AND ID_USER NOT IN (734,693)
@@ -68,7 +68,7 @@ FROM
                     
                     WHERE 
                     
-                    FORM = 66
+                    FORM = 69
                     
                     ) R ON R.ID_USER = L.ID_USER 
                     
