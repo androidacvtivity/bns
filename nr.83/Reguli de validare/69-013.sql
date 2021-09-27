@@ -20,6 +20,8 @@ WHERE
   D.FORM = 69
   AND D.CAPITOL = 1171
   
+  AND D.RIND NOT IN ('02','03')
+  
 GROUP BY D.RIND
  
 

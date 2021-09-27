@@ -1,4 +1,4 @@
-﻿SELECT DISTINCT
+SELECT DISTINCT
 DECODE(CC.NR_COLUMN, '1', 'COL1 ', '2', 'COL2 ', '3', 'COL3 ', '4', 'COL4 ', '5', 'COL5 ', '6', 'COL6 ','7', 'COL7 ', '8', 'COL8', '9', 'COL9 ', '10', 'COL10 ', '11', 'COL11 ', '12', 'COL12 ')||
 ' ['|| 
 
