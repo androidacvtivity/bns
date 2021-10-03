@@ -27,7 +27,7 @@
                          AND D.CAPITOL IN (371) AND 
                          
                          D.RIND IN ('89') AND 
-                         (CIS2.NVAL(D.COL6) <> 0) 
+                         (CIS2.NVAL(D.COL1) <> 0) 
                          
                          
                          GROUP BY 
