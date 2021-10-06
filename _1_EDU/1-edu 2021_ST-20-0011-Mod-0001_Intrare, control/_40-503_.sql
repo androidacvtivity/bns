@@ -1,27 +1,13 @@
 ﻿SELECT DISTINCT 
-DECODE(CC.NR_COLUMN, '1', 'COL1 ','3', 'COL3 ', '4', 'COL4 ', '5', 'COL5 ', '6', 'COL6 ', '7', 'COL7 ', '8', 'COL8 ','9','COL9 ','10','COL10 ','11','COL11 ','12','COL12 ','13','COL13 ','14', 'COL14 ')||': '||
-    'Rind.22= '||CIS2.NVAL(SUM(CASE WHEN D.RIND IN('22') THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11, '12', D.COL12, '13', D.COL13, '14', D.COL14) ELSE 0 END))|| ' <> Rind.19= ' ||
-    CIS2.NVAL(SUM(CASE WHEN D.RIND IN('19') THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11, '12', D.COL12, '13', D.COL13, '14', D.COL14) ELSE 0 END))
+     'Rind = '|| D.RIND|| ' .COL12 - '||
+     SUM(NVAL(D.COL12))|| '  -   COL13 - ' || SUM(NVAL(D.COL13))
+    
   
   AS REZULTAT
 
 FROM
-  CIS2.VW_DATA_ALL_TEMP D,             
-       (                                                                        
-       SELECT '1'  AS NR_COLUMN FROM DUAL  UNION                                                                    
-       SELECT '3'  AS NR_COLUMN FROM DUAL  UNION
-       SELECT '4'  AS NR_COLUMN FROM DUAL  UNION                                  
-       SELECT '5'  AS NR_COLUMN FROM DUAL  UNION                                  
-       SELECT '6'  AS NR_COLUMN FROM DUAL  UNION                                  
-       SELECT '7'  AS NR_COLUMN FROM DUAL  UNION                                  
-       SELECT '8'  AS NR_COLUMN FROM DUAL  UNION
-       SELECT '9'  AS NR_COLUMN FROM DUAL  UNION
-       SELECT '10' AS NR_COLUMN FROM DUAL  UNION
-       SELECT '11' AS NR_COLUMN FROM DUAL  UNION
-       SELECT '12' AS NR_COLUMN FROM DUAL  UNION
-       SELECT '13' AS NR_COLUMN FROM DUAL  UNION
-       SELECT '14' AS NR_COLUMN FROM DUAL                             
-       ) CC  
+  CIS2.VW_DATA_ALL_TEMP D           
+ 
 WHERE
   (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
   (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
@@ -33,10 +19,43 @@ WHERE
   (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
   
   D.FORM IN (40)  AND
-  D.CAPITOL IN (1022) AND
-  D.RIND IN ('19','22')
+  D.CAPITOL IN (1026) AND
+  D.RIND IN ('12','13','14','15','16','17','18')
 GROUP BY
-  CC.NR_COLUMN
+  D.RIND
 HAVING
-   CIS2.NVAL(SUM(CASE WHEN D.RIND IN('22') THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11, '12', D.COL12, '13', D.COL13, '14', D.COL14) ELSE 0 END)) <> 0 AND
-   CIS2.NVAL(SUM(CASE WHEN D.RIND IN('19') THEN DECODE(CC.NR_COLUMN, '1', D.COL1, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6, '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11, '12', D.COL12, '13', D.COL13, '14', D.COL14) ELSE 0 END)) = 0
+SUM(NVALSELECT DISTINCT 
+     'Rind = '|| D.RIND|| ' .COL12 - '||
+     SUM(NVAL(D.COL12))|| '  -   COL13 - ' || SUM(NVAL(D.COL13))
+    
+  
+  AS REZULTAT
+
+FROM
+  CIS2.VW_DATA_ALL_TEMP D           
+ 
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (40)  AND
+  D.CAPITOL IN (1026) AND
+  D.RIND IN ('12','13','14','15','16','17','18')
+GROUP BY
+  D.RIND
+HAVING
+SUM(NVAL(D.COL12)) > 0 
+
+AND 
+  
+SUM(NVAL(D.COL13)) =  0 D.COL12)) > 0 
+
+AND 
+  
+SUM(NVAL(D.COL13)) =  0 

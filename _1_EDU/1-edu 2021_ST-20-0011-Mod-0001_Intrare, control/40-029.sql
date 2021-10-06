@@ -1,12 +1,20 @@
-﻿SELECT DISTINCT 
-     'Rind = '|| D.RIND|| ' .COL12 - '||
-     SUM(NVAL(D.COL12))|| '  -   COL13 - ' || SUM(NVAL(D.COL13))
-    
+﻿SELECT 
+
+
+'RIND '||R.RIND || ' (Col.12) - '||R.COL12 || ' <> (Col.13) - '|| R.COL13   AS REZULTAT
+FROM 
+
+(
+SELECT 
+
+  D.RIND,
+  SUM(NVAL(D.COL12) ) AS COL12, 
+  SUM(NVAL(D.COL13) ) AS COL13
   
-  AS REZULTAT
+
 
 FROM
-  CIS2.VW_DATA_ALL_TEMP D           
+  CIS2.VW_DATA_ALL D           
  
 WHERE
   (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
@@ -14,18 +22,68 @@ WHERE
   (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
   (D.FORM = :FORM               OR :FORM = -1) AND
   (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
-  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  ( :CAPITOL=:CAPITOL           OR :CAPITOL<>:CAPITOL) AND
   (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
   (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
   
   D.FORM IN (40)  AND
-  D.CAPITOL IN (1027) AND
-  D.RIND IN ('12','13','14','15','16','17','18')
-GROUP BY
+  D.CAPITOL IN (1026) AND  D.RIND IN ('11','12','13','14','15','16','17','18')
+  
+  GROUP BY 
   D.RIND
-HAVING
-SUM(NVAL(D.COL12)) > 0 
+
+ ) L LEFT JOIN (
+ 
+ SELECT 
+
+  D.RIND,
+  SUM(NVAL(D.COL12) ) AS COL12, 
+  SUM(NVAL(D.COL13) ) AS COL13
+  
+
+
+FROM
+  CIS2.VW_DATA_ALL D           
+ 
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  ( :CAPITOL=:CAPITOL           OR :CAPITOL<>:CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (40)  AND
+  D.CAPITOL IN (1027) AND  D.RIND IN ('11','12','13','14','15','16','17','18')
+  
+  GROUP BY 
+  D.RIND
+ 
+ ) R ON R.RIND = L.RIND 
+
+GROUP BY
+
+L.RIND,
+L.COL12,
+L.COL13,
+
+R.RIND,
+R.COL12,
+R.COL13
+
+HAVING 
+
+L.COL12 = L.COL13
 
 AND 
+
+(R.COL12 <>  R.COL13
+
+OR 
+
+(R.COL12 = 0  AND R.COL13 = 0 )
+) 
   
-SUM(NVAL(D.COL13)) =  0 
+
