@@ -1,7 +1,4 @@
---INSERT INTO  CIS2.RENIM
---
---(
---
+--INSERT INTO CIS2.RENIM (
 --CUIIO,
 --    CUIIO_VERS,
 --    DENUMIRE,
@@ -36,13 +33,15 @@
 --    RENIM_PERS,
 --    ORGANE_COND,
 --    GEN_INSTITUTIE,
---     IDNO
---)
+--    IDNO
+--
+--) 
+--
 
 
-SELECT 
+    SELECT 
     CUIIO,
-    CUIIO_VERS,
+    1050  CUIIO_VERS,
     DENUMIRE,
     EDIT_USER,
     STATUT,
@@ -76,19 +75,23 @@ SELECT
     ORGANE_COND,
     GEN_INSTITUTIE,
     IDNO
-
-FROM --USER_BANCU.VW_MAX_RENIM_CIS2  
---USER_BANCU.VW_MAX_RENIM_299_CIS2
-        USER_BANCU.VW_MAX_RENIM_TRIM_CIS2
-WHERE 
-
-CUIIO IN (
- SELECT
-            CUIIO
+            FROM USER_BANCU.VW_MAX_RENIM_TRIM_CIS2
             
-            FROM USER_BANCU.KAT_5_CON
-) 
+            WHERE 
+            
+            CUIIO IN (
+           20199647,
+37621041,
+38829913,
+39011706,
+40048502,
+39015839,
+38980685,
+39009655,
+40270198,
+2490965
 
-
-AND CUIIO_VERS =   1050
---AND CUIIO <> 7028102
+            
+            )
+            
+            AND CUIIO_VERS =  1050 

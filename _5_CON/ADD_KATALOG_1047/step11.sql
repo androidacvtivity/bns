@@ -22,11 +22,11 @@ SELECT FC.CUIIO,
              WHERE FC.FORM IN (18) AND FC.STATUT <> '3' ) FC 
              
              
-                                  LEFT  JOIN USER_BANCU.KAT_5_CON_1047_F R ON R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS 
+                                  LEFT  JOIN USER_BANCU.KAT_5_CON R ON R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS 
                                   
                                   
-                                  WHERE 
-                                  
-                                  R.CUIIO IS NOT  NULL
+--                                  WHERE 
+--                                  
+--                                  R.CUIIO IS    NULL
                                   
                               --    AND R.CUIIO_VERS = 1047 

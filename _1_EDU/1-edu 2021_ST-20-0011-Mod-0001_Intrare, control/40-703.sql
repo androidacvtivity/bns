@@ -1,0 +1,43 @@
+SELECT DISTINCT 
+     'Rind = '|| D.RIND|| ' .COL1 - '||
+     SUM(NVAL(D.COL1))|| '  -   COL2 - ' || SUM(NVAL(D.COL2))
+    
+  
+  AS REZULTAT
+
+FROM
+  CIS2.VW_DATA_ALL D           
+ 
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               OR :FORM = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (40)  AND
+  D.CAPITOL IN (1028) AND
+  D.RIND IN ('01')
+GROUP BY
+  D.RIND
+HAVING
+
+
+(SUM(NVAL(D.COL1)) > 0 
+
+AND 
+  
+SUM(NVAL(D.COL2)) =  0 )
+
+
+OR 
+
+(SUM(NVAL(D.COL1)) = 0 
+
+AND 
+  
+SUM(NVAL(D.COL2)) >  0 )
+ 
