@@ -42,7 +42,7 @@
 
 SELECT 
     CUIIO,
-    1047 CUIIO_VERS,
+    CUIIO_VERS,
     DENUMIRE,
     EDIT_USER,
     STATUT,
@@ -86,9 +86,9 @@ CUIIO IN (
  SELECT
             CUIIO
             
-            FROM USER_BANCU.KAT_5_CON_1047
+            FROM USER_BANCU.KAT_5_CON
 ) 
 
 
-AND CUIIO_VERS <>  1047
+AND CUIIO_VERS =   1050
 --AND CUIIO <> 7028102

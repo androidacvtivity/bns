@@ -1,0 +1,11 @@
+﻿SELECT 
+CUIIO,
+COUNT (CUIIO) AS CNT
+
+    FROM USER_BANCU.KAT_5_CON
+    
+    GROUP BY 
+    CUIIO 
+    
+    HAVING 
+    COUNT (CUIIO) =  1  ; --
