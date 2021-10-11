@@ -2,10 +2,12 @@ SELECT
 CUIIO,
 COUNT (CUIIO) AS CNT
 
-    FROM USER_BANCU.KAT_5_CON_1047
+    FROM USER_BANCU.KAT_5_CON
     
     GROUP BY 
     CUIIO 
     
     HAVING 
-    COUNT (CUIIO) = 1  ; --
+    COUNT (CUIIO) = 1  
+    
+    ; --

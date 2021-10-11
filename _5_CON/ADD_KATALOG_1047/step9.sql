@@ -33,4 +33,4 @@ FROM USER_BANCU.KAT_5_CON L
             
             WHERE 
             
-            R.CUIIO IS NOT   NULL 
+            R.CUIIO IS NOT NULL 

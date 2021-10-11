@@ -21,7 +21,7 @@ UPDATE CIS2.RENIM VB
                  C.CAEM2,
                  C.IDNO                          --7
  
-  FROM USER_BANCU.KAT_5_CON_1047_F C
+  FROM USER_BANCU.KAT_5_CON C
   
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
@@ -33,7 +33,7 @@ UPDATE CIS2.RENIM VB
                 (
                     SELECT *
                     
-                    FROM USER_BANCU.KAT_5_CON_1047_F C
+                    FROM USER_BANCU.KAT_5_CON C
                     
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
