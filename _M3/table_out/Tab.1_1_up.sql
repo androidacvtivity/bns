@@ -1,42 +1,10 @@
-﻿--INSERT INTO TABLE_OUT 
---(
---  PERIOADA,
---  FORM,
---  FORM_VERS,
---  ID_MDTABLE,
---  COD_CUATM,
---  NR_SECTIE,
---  NUME_SECTIE,
---  NR_SECTIE1,
---  NUME_SECTIE1,
---  NR_SECTIE2,
---  NUME_SECTIE2,
---  NR_ROW,
---  ORDINE,
---  DECIMAL_POS,
---  NUME_ROW,
---  
---  COL1, COL2, COL3,  COL4, COL5, COL6, COL7, COL8, COL9, COL10, COL11, COL12, COL13, COL14, COL15, COL16
---)
-----------------------------------------------------------------
+
 SELECT
---  :pPERIOADA AS PERIOADA,
---  :pFORM AS FORM,
---  :pFORM_VERS AS FORM_VERS,
---  :pID_MDTABLE AS ID_MDTABLE,
---  :pCOD_CUATM AS COD_CUATM,
---  
---         
---  '0' AS NR_SECTIE,
---  '0' AS NUME_SECTIE,
---  '0' AS NR_SECTIE1,
---  '0' AS NUME_SECTIE1,
---  '0' AS NR_SECTIE2,
---  '0' AS NUME_SECTIE2,
---   CAEM2 AS NR_ROW,
---   ROWNUM AS ORDINE,
--- -- '0111111111100000' AS DECIMAL_POS,
-   DENUMIRE AS NUME_ROW,  
+
+  
+         
+
+    DENUMIRE AS NUME_ROW,  
     ROUND(COL1,0) AS COL1,
     ROUND(COL2,1) AS COL2,
     ROUND(COL3,1) AS COL3,
@@ -111,10 +79,6 @@ WHERE
   
   D.FORM = 3 AND
   D.CAPITOL IN(301)
-  
-  AND D.CUIIO = 9202
-  
-  
 GROUP BY
   D.CUIIO,
   D.FILIAL,
@@ -147,8 +111,6 @@ WHERE
   D.FORM = 3 AND
   D.CAPITOL IN(302,100) AND
   D.RIND IN ('1','2','3','4','01')
-  
-  AND D.CUIIO = 9202
 GROUP BY
   D.CUIIO,
   D.FILIAL,
@@ -158,9 +120,7 @@ GROUP BY
   D.CAPITOL_DEN,
   D.RIND
 -------------------------------------------------------------------------------
-) 
-
-D 
+) D 
   INNER JOIN VW_CL_CAEM2 C  ON(D.CAEM2=C.NUM_CODE)
   INNER JOIN VW_CL_CAEM2 CR ON(C.FULL_CODE LIKE '%'||CR.CODUL||';%') 
 WHERE 
