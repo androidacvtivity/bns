@@ -18,7 +18,7 @@
 --  
 --  COL1, COL2, COL3,  COL4, COL5, COL6, COL7, COL8, COL9, COL10, COL11, COL12, COL13, COL14, COL15, COL16, COL17, COL18, COL19, COL20
 --)
-------------------------------------------------------------------
+----------------------------------------------------------------
 SELECT
   :pPERIOADA AS PERIOADA,
   :pFORM AS FORM,
@@ -82,6 +82,8 @@ FROM
     ROUND(NOZERO(D.COL1)/NOZERO(T1.COL9)*1000/12,1) AS COL18,
     ROUND(T2.COL18,1) AS COL19,
     ROUND(((NOZERO(D.COL1)/NOZERO(T1.COL9)*1000/12)/NOZERO(T2.COL18))*100,1) AS COL20
+    
+    
 FROM
 (
 SELECT 
@@ -196,7 +198,9 @@ ORDER BY
   CFP
     
     ) D
-    LEFT JOIN (SELECT NR_ROW, COL9, ID_MDTABLE FROM TABLE_OUT  
+    LEFT JOIN (
+    
+    SELECT NR_ROW, COL9, ID_MDTABLE FROM TABLE_OUT  
   
   WHERE  ID_MDTABLE =(CASE WHEN :pPERIOADA>=2002 THEN CASE WHEN :pPERIOADA>=2007 THEN 9789 ELSE 5661 END ELSE NULL END) AND
     FORM IN (3)              AND 
@@ -205,6 +209,9 @@ ORDER BY
     PERIOADA = :pPERIOADA
   ORDER BY
     ORDINE
+    
+    
+    
     ) T1
      
   ON (D.CAEM2||'~'||CUIIO||'_'||FILIAL=T1.NR_ROW)
