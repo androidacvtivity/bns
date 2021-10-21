@@ -12,6 +12,7 @@
               WHERE 
               OWNER IN ('USER_BANCU') 
               AND TABLE_NAME LIKE 'CIS%'
+              ----
     
     )
     
