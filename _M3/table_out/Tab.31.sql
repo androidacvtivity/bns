@@ -1,0 +1,83 @@
+INSERT INTO TABLE_OUT 
+(
+  PERIOADA,
+  FORM,
+  FORM_VERS,
+  ID_MDTABLE,
+  COD_CUATM,
+  NR_SECTIE,
+  NUME_SECTIE,
+  NR_SECTIE1,
+  NUME_SECTIE1,
+  NR_SECTIE2,
+  NUME_SECTIE2,
+  NR_ROW,
+  ORDINE,
+  DECIMAL_POS,
+  NUME_ROW,
+  
+  COL1, COL2, COL3, COL4, COL5, COL6, COL7
+)
+----------------------------------------------------------------
+
+SELECT
+    :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+                 
+    T.NR_SECTIE,
+    T.NUME_SECTIE,
+    T.NR_SECTIE1,
+    T.NUME_SECTIE1,
+    T.NR_SECTIE2,              
+    T.NUME_SECTIE2,
+    T.NR_ROW,
+    MAX(T.ORDINE) AS ORDINE,
+    '1111111' AS DECIMAL_POS,
+    T.NUME_ROW,
+    
+    ROUND(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL1 END), 1) AS COL1,
+               
+    ROUND(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL2 END), 1) AS COL2,          
+    
+    ROUND(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL7 END) ,1) AS COL3,
+               
+    ROUND(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL8 END), 1) AS COL4,           
+               
+    ROUND(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL9 END), 1) AS COL5,        
+               
+    ROUND((NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5674) THEN T.COL6 END)) +
+               NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5674) THEN T.COL9 END))), 1) AS COL6,
+               
+    ROUND
+             (NOZERO(NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL2 END)) -
+                            NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL7 END)) -
+                            NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL8 END)) -
+                            NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5729) THEN T.COL9 END)) ) /
+               NOZERO((NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5674) THEN T.COL6 END)) +
+                              NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5674) THEN T.COL9 END)))),1) AS COL7
+    
+                    
+    
+   
+    
+FROM
+    TABLE_OUT T
+WHERE
+    T.ID_MDTABLE IN (5674,5729) AND
+    T.FORM IN (3)              AND 
+    T.FORM_VERS = :PFORM_VERS  AND    
+    T.COD_CUATM IN (:pCOD_CUATM) AND
+    T.PERIOADA = :pPERIOADA
+GROUP BY
+    T.NR_SECTIE,
+    T.NUME_SECTIE,
+    T.NR_SECTIE1,
+    T.NUME_SECTIE1,
+    T.NR_SECTIE2,              
+    T.NUME_SECTIE2,
+    T.NR_ROW,
+--    T.ORDINE,
+    T.NUME_ROW
