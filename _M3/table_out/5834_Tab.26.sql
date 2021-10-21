@@ -1,0 +1,126 @@
+--INSERT INTO TABLE_OUT 
+--(
+--  PERIOADA,
+--  FORM,
+--  FORM_VERS,
+--  ID_MDTABLE,
+--  COD_CUATM,
+--  NR_SECTIE,
+--  NUME_SECTIE,
+--  NR_SECTIE1,
+--  NUME_SECTIE1,
+--  NR_SECTIE2,
+--  NUME_SECTIE2,
+--  NR_ROW,
+--  ORDINE,
+--  DECIMAL_POS,
+--  NUME_ROW,
+--  
+--  COL1, COL2, COL3, COL4
+--)
+----------------------------------------------------------------------
+SELECT
+    :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+                 
+    A.NR_SECTIE,
+    A.NUME_SECTIE,
+    A.NR_SECTIE1,
+    A.NUME_SECTIE1,
+    A.NR_SECTIE2,              
+    A.NUME_SECTIE2,
+    A.NR_ROW,
+    A.ORDINE,
+    '1111' AS DECIMAL_POS,
+    A.NUME_ROW,
+    A.COL1,
+    A.COL2,
+    B.COL3,
+    NOZERO(A.COL2)/NOZERO(B.COL3) AS COL4
+    
+FROM
+(SELECT
+    :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+                 
+    T.NR_SECTIE,
+    T.NUME_SECTIE,
+    T.NR_SECTIE1,
+    T.NUME_SECTIE1,
+    T.NR_SECTIE2,              
+    T.NUME_SECTIE2,
+    T.NR_ROW,
+    T.ORDINE,
+    T.NUME_ROW,
+    NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5684) THEN T.COL1 END)) AS COL1,
+    NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5684) THEN T.COL2 END)) AS COL2
+   
+FROM
+    TABLE_OUT T
+WHERE
+    T.ID_MDTABLE IN (5684) AND
+    T.FORM IN (3)              AND 
+    T.FORM_VERS = :PFORM_VERS  AND    
+    T.COD_CUATM IN (:pCOD_CUATM) AND
+    T.PERIOADA = :pPERIOADA
+GROUP BY
+    T.NR_SECTIE,
+    T.NUME_SECTIE,
+    T.NR_SECTIE1,
+    T.NUME_SECTIE1,
+    T.NR_SECTIE2,              
+    T.NUME_SECTIE2,
+    T.NR_ROW,
+    T.ORDINE,
+    T.NUME_ROW
+    
+    
+    
+    ) A
+    
+INNER JOIN
+
+
+(SELECT
+    :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+                 
+    T.NR_SECTIE,
+    T.NUME_SECTIE,
+    T.NR_SECTIE1,
+    T.NUME_SECTIE1,
+    T.NR_SECTIE2,              
+    T.NUME_SECTIE2,
+    T.NR_ROW,
+    T.ORDINE,
+    T.NUME_ROW,
+    NVAL(SUM(CASE WHEN T.ID_MDTABLE IN (5650) THEN T.COL6 END)+SUM(CASE WHEN T.ID_MDTABLE IN (5650) THEN T.COL9 END)) AS COL3
+    
+    
+FROM
+    TABLE_OUT T
+WHERE
+    T.ID_MDTABLE IN (5650) AND
+    T.FORM IN (3)              AND 
+    T.FORM_VERS = :PFORM_VERS  AND    
+    T.COD_CUATM IN (:pCOD_CUATM) AND
+    T.PERIOADA = :pPERIOADA
+    GROUP BY
+        T.NR_SECTIE,
+    T.NUME_SECTIE,
+    T.NR_SECTIE1,
+    T.NUME_SECTIE1,
+    T.NR_SECTIE2,              
+    T.NUME_SECTIE2,
+    T.NR_ROW,
+    T.ORDINE,
+    T.NUME_ROW) B ON (A.NR_ROW||'~'=B.NR_ROW OR A.NR_ROW=B.NR_ROW)
