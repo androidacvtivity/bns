@@ -307,6 +307,8 @@ ORDER BY
   ORDER BY
     ORDINE
     ) T1
+    
+    ---
      
   ON (D.CUATM=T1.NR_ROW)
    LEFT JOIN (
