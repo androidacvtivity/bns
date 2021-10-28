@@ -2,3 +2,6 @@ select *
 
 FROM CIS2.VW_CL_SPEC_2EDU
 
+WHERE 
+
+CODUL LIKE '%714026%'
