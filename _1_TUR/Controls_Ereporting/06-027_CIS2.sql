@@ -9,7 +9,7 @@ DECODE(CC.NR_COLUMN, '1', 'COL.1', '2', 'COL.2')||', Rind.'||D.RIND||': '||
   AS REZULTAT
 
 FROM
-  CIS2.VW_DATA_ALL_TEMP D,             
+  CIS2.VW_DATA_ALL D,             
        (                                                                        
        SELECT '1' AS NR_COLUMN FROM DUAL UNION                                  
        SELECT '2' AS NR_COLUMN FROM DUAL                                  
