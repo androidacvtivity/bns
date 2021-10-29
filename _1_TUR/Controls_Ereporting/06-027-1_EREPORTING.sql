@@ -1,11 +1,11 @@
 SELECT DISTINCT   
-                DECODE(CC.NR_COLUMN, '1', 'COL.1', '2', 'COL.2', '3', 'COL.3', '4', 'COL.4', '5', 'COL.5') ||', Rind.'|| D.RIND||': '||
+                DECODE(CC.NR_COLUMN, '1', 'COL.1', '2', 'COL.2') ||', Rind.'|| D.RIND||': '||
                 
-                NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(DD.COL1), '2', NVAL(DD.COL2), '3', NVAL(DD.COL3), '4', NVAL(DD.COL4), '5', NVAL(DD.COL5)) ELSE 0 END))
+                NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(DD.COL1), '2', NVAL(DD.COL2)) ELSE 0 END))
                 
                 ||' < '||
                 
-               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2), '3', NVAL(D.COL3), '4', NVAL(D.COL4), '5', NVAL(D.COL5)) ELSE 0 END))
+               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2)) ELSE 0 END))
                  
                 
                 
@@ -18,10 +18,8 @@ SELECT DISTINCT
                 
                                    (                                                                        
        SELECT '1' AS NR_COLUMN FROM DUAL UNION                                  
-       SELECT '2' AS NR_COLUMN FROM DUAL UNION 
-       SELECT '3' AS NR_COLUMN FROM DUAL UNION 
-       SELECT '4' AS NR_COLUMN FROM DUAL UNION 
-       SELECT '5' AS NR_COLUMN FROM DUAL                                  
+       SELECT '2' AS NR_COLUMN FROM DUAL  
+                            
        ) CC                                      
 
                 
@@ -37,9 +35,9 @@ SELECT DISTINCT
                (:CAPITOL_VERS    = :CAPITOL_VERS   OR :CAPITOL_VERS = -1) 
                
                AND D.FORM = 6 
-               AND D.CAPITOL = 315
+               AND D.CAPITOL = 316  
+         
                AND  DD.ID_SCHEMA IN (2)
-               AND D.RIND NOT IN '16'
                 
                GROUP BY
                CC.NR_COLUMN, 
@@ -50,9 +48,9 @@ SELECT DISTINCT
 
                HAVING 
                
-               NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(DD.COL1), '2', NVAL(DD.COL2), '3', NVAL(DD.COL3), '4', NVAL(DD.COL4), '5', NVAL(DD.COL5)) ELSE 0 END))  
+               NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(DD.COL1), '2', NVAL(DD.COL2)) ELSE 0 END))  
                <
-               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2), '3', NVAL(D.COL3), '4', NVAL(D.COL4), '5', NVAL(D.COL5)) ELSE 0 END))
+               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2)) ELSE 0 END))
                
                
                

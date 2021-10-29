@@ -1,11 +1,11 @@
 ﻿SELECT DISTINCT   
                 DECODE(CC.NR_COLUMN, '1', 'COL.1', '2', 'COL.2') ||', Rind.'|| D.RIND||': '||
                 
-                NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', DD.COL1, '2', DD.COL2) ELSE 0 END))
+                NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(DD.COL1), '2', NVAL(DD.COL2)) ELSE 0 END))
                 
                 ||' < '||
                 
-               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2) ELSE 0 END))
+               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2)) ELSE 0 END))
                  
                 
                 
@@ -48,9 +48,9 @@
 
                HAVING 
                
-               NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', DD.COL1, '2', DD.COL2) ELSE 0 END))  
+               NVAL(SUM(CASE WHEN DD.PERIOADA= :PERIOADA   AND DD.NUM IN (2,3,4) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(DD.COL1), '2', NVAL(DD.COL2)) ELSE 0 END))  
                <
-               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', D.COL1, '2', D.COL2) ELSE 0 END))
+               NVAL(SUM(CASE WHEN D.PERIOADA= :PERIOADA-1   AND D.NUM IN (1,2,3) THEN  DECODE(CC.NR_COLUMN, '1', NVAL(D.COL1), '2', NVAL(D.COL2)) ELSE 0 END))
                
                
                

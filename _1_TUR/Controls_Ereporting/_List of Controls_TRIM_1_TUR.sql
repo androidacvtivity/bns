@@ -47,3 +47,7 @@ SELECT
          
          ORDER BY 
           B.CONTROL ) L
+          
+          
+          WHERE 
+           L.CONTROL IN ('06-026','06-027','06-027-1')
