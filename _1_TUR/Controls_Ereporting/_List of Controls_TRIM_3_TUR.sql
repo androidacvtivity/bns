@@ -1,0 +1,9 @@
+
+
+
+
+
+
+SELECT *
+
+from USER_EREPORTING.DATA_ALL_FOR_VALIDATE
