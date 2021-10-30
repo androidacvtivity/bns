@@ -1,7 +1,4 @@
-﻿
-
-
-    BEGIN 
+﻿BEGIN 
     
     FOR REC IN (
     
@@ -11,7 +8,14 @@
               
               WHERE 
               OWNER IN ('USER_BANCU') 
-              AND TABLE_NAME LIKE 'CIS%'
+              AND 
+              
+              (
+              TABLE_NAME LIKE 'CIS%'
+              OR 
+              TABLE_NAME LIKE 'CIS%'
+              
+              )
               ----
     
     )
