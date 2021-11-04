@@ -1,0 +1,10 @@
+
+
+
+CREATE TABLE MD_CONTROL_TEST
+
+    AS 
+    
+    SELECT *
+    
+    FROM CIS2.MD_CONTROL;
