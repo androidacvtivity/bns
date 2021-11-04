@@ -1,0 +1,25 @@
+SELECT D.*
+
+
+    FROM CIS2.MD_CONTROL D
+    
+    WHERE 
+    
+    D.FORM = 69
+    
+    AND D.SQL_TEXT NOT LIKE '%VW_DATA_ALL_TEMP%';
+    
+    
+    SELECT D.SQL_TEXT,
+        
+    REPLACE(SQL_TEXT,'VW_DATA_ALL','VW_DATA_ALL_TEMP')  SQL_TEXT_MODIF
+
+
+    FROM CIS2.MD_CONTROL D
+    
+    WHERE 
+    
+    D.FORM = 69
+    
+    AND D.SQL_TEXT NOT LIKE '%VW_DATA_ALL_TEMP%';
+    

@@ -19,6 +19,8 @@ BEGIN
   /* ----------------------------------------------------------------------- */
   
    --1 TUR FORM = 6  AND PERIOADA = 1050
+   
+    --1 TUR FORM = 6  AND PERIOADA = 1050
      
      CIS2.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
   
