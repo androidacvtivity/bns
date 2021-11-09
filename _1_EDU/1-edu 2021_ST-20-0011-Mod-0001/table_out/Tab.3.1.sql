@@ -146,7 +146,7 @@ SELECT '19'             AS NR_ROW, 'Total'                                      
 SELECT '20'             AS NR_ROW, 'elevi cu cerinte educationale speciale'             AS NUME_ROW, 7 AS ORDINE FROM DUAL UNION
 SELECT '21'             AS NR_ROW, 'elevi cu dizabilitati'                              AS NUME_ROW, 8 AS ORDINE FROM DUAL UNION 
 SELECT '21.a'           AS NR_ROW, 'inclusiv: elevi cu dizabilitati ?are au nevoie de scolarizare adaptata deficien?elor'                              AS NUME_ROW, 8.1 AS ORDINE FROM DUAL UNION  
-SELECT '22'             AS NR_ROW, 'numarul de clase (fara clase cu predare simultana)' AS NUME_ROW, 9 AS ORDINE FROM DUAL 
+SELECT '22'             AS NR_ROW, 'Numarul de clase' AS NUME_ROW, 9 AS ORDINE FROM DUAL 
 ) B
 
 
@@ -261,7 +261,7 @@ SELECT '19'             AS NR_ROW, 'Total'                                      
 SELECT '20'             AS NR_ROW, 'elevi cu cerinte educationale speciale'             AS NUME_ROW, 7 AS ORDINE FROM DUAL UNION
 SELECT '21'             AS NR_ROW, 'elevi cu dizabilitati'                              AS NUME_ROW, 8 AS ORDINE FROM DUAL UNION 
 SELECT '21.a'           AS NR_ROW, 'inclusiv: elevi cu dizabilitati ?are au nevoie de scolarizare adaptata deficien?elor'                              AS NUME_ROW, 8.1 AS ORDINE FROM DUAL UNION  
-SELECT '22'             AS NR_ROW, 'numarul de clase (fara clase cu predare simultana)' AS NUME_ROW, 9 AS ORDINE FROM DUAL 
+SELECT '22'             AS NR_ROW, 'Numarul de clase'  AS NUME_ROW, 9 AS ORDINE FROM DUAL 
 ) B
 
 
