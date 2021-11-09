@@ -18,11 +18,11 @@ BEGIN
      - 2015 = (2003);
   /* ----------------------------------------------------------------------- */
   
-   --1 TUR FORM = 6  AND PERIOADA = 1050
+   --1 TUR FORM = 44  AND PERIOADA = 1050
    
-    --1 TUR FORM = 5  AND PERIOADA = 1050
+    
      
-     CIS.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
+     CIS2.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
   
   
   
