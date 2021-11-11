@@ -1,22 +1,22 @@
-INSERT INTO TABLE_OUT 
-(
-  PERIOADA,
-  FORM,
-  FORM_VERS,
-  ID_MDTABLE,
-  COD_CUATM,
-  NR_SECTIE,
-  NUME_SECTIE,
-  NR_SECTIE1,
-  NUME_SECTIE1,
-  NR_SECTIE2,
-  NUME_SECTIE2,
-  NR_ROW,
-  ORDINE,
-  DECIMAL_POS,
-  NUME_ROW,  
- COL1, COL2, COL3, COL4, COL5, COL6, COL7, COL8, COL9, COL10, COL11, COL12
-)
+--INSERT INTO TABLE_OUT 
+--(
+--  PERIOADA,
+--  FORM,
+--  FORM_VERS,
+--  ID_MDTABLE,
+--  COD_CUATM,
+--  NR_SECTIE,
+--  NUME_SECTIE,
+--  NR_SECTIE1,
+--  NUME_SECTIE1,
+--  NR_SECTIE2,
+--  NUME_SECTIE2,
+--  NR_ROW,
+--  ORDINE,
+--  DECIMAL_POS,
+--  NUME_ROW,  
+-- COL1, COL2, COL3, COL4, COL5, COL6, COL7, COL8, COL9, COL10, COL11, COL12
+--)
 
 SELECT
    PERIOADA,
@@ -144,6 +144,7 @@ FROM
 CROSS JOIN
 (
 
+
 SELECT '01+02'          AS NR_ROW, '5-6 ani'                                            AS NUME_ROW, 1 AS ORDINE FROM DUAL UNION
 SELECT '03+04+05+06'    AS NR_ROW, '7-10 ani'                                           AS NUME_ROW, 2 AS ORDINE FROM DUAL UNION
 SELECT '07+08+09+10-11' AS NR_ROW, '11-15 ani'                                          AS NUME_ROW, 3 AS ORDINE FROM DUAL UNION
@@ -151,9 +152,9 @@ SELECT '12+13+14'       AS NR_ROW, '16-18 ani'                                  
 SELECT '15+16+17+18'    AS NR_ROW, '19 ani si peste'                                    AS NUME_ROW, 5 AS ORDINE FROM DUAL UNION
 SELECT '19'             AS NR_ROW, 'Total'                                              AS NUME_ROW, 6 AS ORDINE FROM DUAL UNION
 SELECT '20'             AS NR_ROW, 'elevi cu cerinte educationale speciale'             AS NUME_ROW, 7 AS ORDINE FROM DUAL UNION
-SELECT '21'             AS NR_ROW, 'elevi cu dizabilitati'                              AS NUME_ROW, 8 AS ORDINE FROM DUAL UNION 
+SELECT '21'             AS NR_ROW, 'elevi cu dizabilitati'                              AS NUME_ROW, 8 AS ORDINE FROM DUAL UNION
 SELECT '21.a'           AS NR_ROW, 'inclusiv: elevi cu dizabilitati ?are au nevoie de scolarizare adaptata deficien?elor'                              AS NUME_ROW, 8.1 AS ORDINE FROM DUAL UNION  
-SELECT '22'             AS NR_ROW, 'Numarul de clase' AS NUME_ROW, 9 AS ORDINE FROM DUAL 
+SELECT '22'             AS NR_ROW, 'numarul de clase (fara clase cu predare simultana)' AS NUME_ROW, 9 AS ORDINE FROM DUAL 
 ) B
 
 
