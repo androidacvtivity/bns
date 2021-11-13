@@ -1,0 +1,8 @@
+1.  Am verificat catalogul ASA pentru anul 2020 la CFP. 
+Toate CUIIO au CFP. 
+
+2. In fragmentul codului 
+  '06',(CASE WHEN D.COL2 > 0 THEN D.CD END),
+am adaugat NVAL 
+ '06',(CASE WHEN NVAL(D.COL2) > 0 THEN D.CD END),
+
