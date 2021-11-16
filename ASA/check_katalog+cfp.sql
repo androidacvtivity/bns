@@ -1,9 +1,13 @@
     SELECT 
+    
     DISTINCT CFP 
         FROM USER_BANCU.VW_KATALOG_ASA_2009
         
         WHERE 
         1=1
+        ---AND CFP IS NOT NULL
+        
+        
        -- CFP IN ('00','10','11','14','16')
         
 --        CFP IN (
@@ -14,3 +18,5 @@
 --
 --       FROM  CIS2.VW_CL_CFP
 --        )
+ORDER BY 
+CFP
