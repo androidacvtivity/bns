@@ -23,7 +23,7 @@ AND CAPITOL = 1129
 
 
 --AND D.CAPITOL IN (1129) AND D.RIND IN ('5')
- AND RIND = '8'
+ AND RIND = '5'
  
  )
  
