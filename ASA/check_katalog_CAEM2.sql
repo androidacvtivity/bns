@@ -1,0 +1,25 @@
+/* Formatted on 11/16/2021 11:20:35 AM (QP5 v5.326) */
+ 
+
+SELECT 
+
+L.CUIIO, 
+L.COL31
+
+FROM 
+
+(
+ SELECT DISTINCT CUIIO, COL31
+    FROM (SELECT CUIIO, COL31
+            FROM CIS2.VW_DATA_ALL
+           WHERE     FORM = 64
+                 AND PERIOADA = 2009
+             
+                 AND RIND = '8')
+
+GROUP BY CUIIO, COL31
+HAVING 
+COL31 IS NOT NULL  -- 12273
+
+ORDER BY COL31
+) L LEFT JOIN 
