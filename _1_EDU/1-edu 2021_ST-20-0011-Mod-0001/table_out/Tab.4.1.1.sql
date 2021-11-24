@@ -79,6 +79,7 @@ SELECT
     
     AND RIND_VERS =  2010
     
+    
     ) J
     
 WHERE
@@ -89,8 +90,11 @@ WHERE
   (D.CUATM_FULL LIKE '%' ||:pCOD_CUATM||';%') AND
    D.FORM = 40 AND
    D.CAPITOL = 1022 AND
+   
    C.PRGS IN ('2') AND
    R.NFI = 1
+   
+   AND D.CAPITOL_VERS = 2010
    
 GROUP BY
   C.FULL_CODE,
