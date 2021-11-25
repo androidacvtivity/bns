@@ -1,43 +1,42 @@
-﻿--DROP VIEW USER_BANCU.VW_KATALOG_29_AGRO_TRIM_4;
---
---/* Formatted on 11/11/2020 10:50:50 AM (QP5 v5.326) */
---CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_29_AGRO_TRIM_3_2020
---(
---    CUIIO,
---    CUIIO_VERS,
---    DENUMIRE,
---    EDIT_USER,
---    STATUT,
---    CUATM,
---    CFP,
---    CFOJ,
---    COCM,
---    CAEM,
---    BUGET,
---    TIP,
---    PROD,
---    FOR_CUB,
---    GENMUZEE,
---    TIPMUZEE,
---    TIP_LOCAL,
---    TIP_INST,
---    CAEM2,
---    N85_NTL,
---    N85_NTIIP,
---    N85_NDIIP,
---    N85_NPDS,
---    N85_NRIIP,
---    N85_NSIIP,
---    GENMUZEE2,
---    NFI,
---    NTII,
---    NPDS,
---    ORGANE,
---    TIP_INV,
---    RENIM_PERS,
---    ORGANE_COND
---)
---AS
+﻿
+CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_29_AGRO_1051
+(
+    CUIIO,
+    CUIIO_VERS,
+    DENUMIRE,
+    EDIT_USER,
+    STATUT,
+    CUATM,
+    CFP,
+    CFOJ,
+    COCM,
+    CAEM,
+    BUGET,
+    TIP,
+    PROD,
+    FOR_CUB,
+    GENMUZEE,
+    TIPMUZEE,
+    TIP_LOCAL,
+    TIP_INST,
+    CAEM2,
+    N85_NTL,
+    N85_NTIIP,
+    N85_NDIIP,
+    N85_NPDS,
+    N85_NRIIP,
+    N85_NSIIP,
+    GENMUZEE2,
+    NFI,
+    NTII,
+    NPDS,
+    ORGANE,
+    TIP_INV,
+    RENIM_PERS,
+    ORGANE_COND
+)
+AS
+
    SELECT R.CUIIO,
            R.CUIIO_VERS,
            R.DENUMIRE,
@@ -79,7 +78,7 @@
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1046
+                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1051
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
@@ -88,4 +87,4 @@
                ON (R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS)
      WHERE 
      1=1  
-     AND R.CFOJ IS NOT NULL;
+     AND R.CFOJ <> '685';

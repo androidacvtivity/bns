@@ -1,7 +1,5 @@
-DROP VIEW USER_BANCU.VW_KATALOG_9_AGRO_2007;
 
-/* Formatted on 11/11/2020 1:08:34 PM (QP5 v5.326) */
-CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_9_AGRO_2009
+CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_KATALOG_9_AGRO_2010
 (
     CUIIO,
     CUIIO_VERS,
@@ -81,7 +79,7 @@ AS
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (39) AND CUIIO_VERS <= 2009
+                                  WHERE FORM IN (39) AND CUIIO_VERS <= 2010
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
