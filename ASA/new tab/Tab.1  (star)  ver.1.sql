@@ -1,24 +1,24 @@
-﻿--BEGIN
---INSERT INTO CIS2.TABLE_OUT 
---(
---  PERIOADA,
---  FORM,
---  FORM_VERS,
---  ID_MDTABLE,
---  COD_CUATM,
---  NR_SECTIE,
---  NUME_SECTIE,
---  NR_SECTIE1,
---  NUME_SECTIE1,
---  NR_SECTIE2,
---  NUME_SECTIE2,
---  NR_ROW,
---  ORDINE,
---  DECIMAL_POS,
---  NUME_ROW,
---  
---  COL1, COL2, COL3, COL4, COL5, COL6
---)
+BEGIN
+INSERT INTO CIS2.TABLE_OUT 
+(
+  PERIOADA,
+  FORM,
+  FORM_VERS,
+  ID_MDTABLE,
+  COD_CUATM,
+  NR_SECTIE,
+  NUME_SECTIE,
+  NR_SECTIE1,
+  NUME_SECTIE1,
+  NR_SECTIE2,
+  NUME_SECTIE2,
+  NR_ROW,
+  ORDINE,
+  DECIMAL_POS,
+  NUME_ROW,
+  
+  COL1, COL2, COL3, COL4, COL5, COL6
+)
 
 SELECT 
   :pPERIOADA AS PERIOADA,
@@ -227,10 +227,10 @@ WHERE
   
    CROSS JOIN
   ( 
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-9 persoane'              AS NUME_ROW, '01' AS NR_ROW, 0 AS PERS_FROM, 9 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-49 persoane'             AS NUME_ROW, '02' AS NR_ROW, 0 AS PERS_FROM, 49 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-249 persoane'            AS NUME_ROW, '03' AS NR_ROW, 0 AS PERS_FROM, 249 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 250 şi mai mult persoane'  AS NUME_ROW, '04' AS NR_ROW, 250 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-9 persoane'              AS NUME_ROW, '01' AS NR_ROW, 0 AS PERS_FROM, 9 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-49 persoane'             AS NUME_ROW, '02' AS NR_ROW, 0 AS PERS_FROM, 49 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-249 persoane'            AS NUME_ROW, '03' AS NR_ROW, 0 AS PERS_FROM, 249 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 250 si mai mult persoane'  AS NUME_ROW, '04' AS NR_ROW, 250 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL UNION
     SELECT 'Total republica Moldova'                                         AS NUME_ROW, '05' AS NR_ROW, 0 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL
         
     
@@ -344,10 +344,10 @@ WHERE
  
    CROSS JOIN
   ( 
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-9 persoane'              AS NUME_ROW, '01' AS NR_ROW, 0 AS PERS_FROM, 9 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-49 persoane'             AS NUME_ROW, '02' AS NR_ROW, 0 AS PERS_FROM, 49 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-249 persoane'            AS NUME_ROW, '03' AS NR_ROW, 0 AS PERS_FROM, 249 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 250 şi mai mult persoane'  AS NUME_ROW, '04' AS NR_ROW, 250 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-9 persoane'              AS NUME_ROW, '01' AS NR_ROW, 0 AS PERS_FROM, 9 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-49 persoane'             AS NUME_ROW, '02' AS NR_ROW, 0 AS PERS_FROM, 49 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-249 persoane'            AS NUME_ROW, '03' AS NR_ROW, 0 AS PERS_FROM, 249 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 250 si mai mult persoane'  AS NUME_ROW, '04' AS NR_ROW, 250 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL UNION
     SELECT 'Total republica Moldova'                                         AS NUME_ROW, '05' AS NR_ROW, 0 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL
         
     
@@ -460,13 +460,16 @@ SELECT
 FROM  (
 
 SELECT 
-DISTINCT D.CUIIO,D. CUATM, CASE WHEN D.CFP_AJUSTAT IS NULL THEN D.CFP ELSE D.CFP_AJUSTAT END AS CFP,
+DISTINCT D.CUIIO,D. CUATM, 
+
+--CASE WHEN D.CFP_AJUSTAT IS NULL THEN D.CFP ELSE D.CFP_AJUSTAT END AS CFP,
+D.CFP,
 D.COL1, D.COL2,D.PERS
  FROM (
 SELECT 
  DISTINCT D.CUIIO,D.CUATM,
  D.CFP AS CFP,
- MAX(CASE WHEN D.CAPITOL IN (1129) AND D.RIND IN ('5') THEN D.COL31 ELSE NULL END) AS CFP_AJUSTAT,
+ --MAX(CASE WHEN D.CAPITOL IN (1129) AND D.RIND IN ('5') THEN D.COL31 ELSE NULL END) AS CFP_AJUSTAT,
  
 CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN (1124) AND D.RIND IN ('150','160','170') THEN  CIS2.NVAL(D.COL1) END))- 
  CIS2.NVAL(SUM(CASE WHEN D.CAPITOL IN (1125) AND D.RIND IN ('200') THEN CIS2.NVAL(D.COL1) END))+
@@ -502,6 +505,7 @@ SUM(CASE WHEN D.CAPITOL IN (100)  AND D.RIND IN ('CD') THEN  D.COL1 ELSE 0 END) 
 
 FROM   
     CIS2.VW_DATA_ALL_COEF D  
+    INNER JOIN CIS2.VW_CL_CFP VC ON (D.CFP = VC.CODUL)
 WHERE
   D.FORM IN (64)             AND 
   D.FORM_VERS = :PFORM_VERS  AND      
@@ -513,14 +517,19 @@ WHERE
  GROUP BY D.CUIIO,D.CUATM, D.CFP,D.PERIOADA,D.FORM
  
  HAVING
- SUM(CASE WHEN D.CAPITOL IN (100)  AND D.RIND IN ('CD') THEN  D.COL1 ELSE 0 END)>0)D)D
+ SUM(CASE WHEN D.CAPITOL IN (100)  AND D.RIND IN ('CD') THEN  D.COL1 ELSE 0 END)>0)D
+ 
+ 
+ 
+ 
+ )D
  
    CROSS JOIN
   ( 
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-9 persoane'              AS NUME_ROW, '01' AS NR_ROW, 0  AS PERS_FROM, 9   AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-49 persoane'             AS NUME_ROW, '02' AS NR_ROW, 0  AS PERS_FROM, 49  AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 0-249 persoane'            AS NUME_ROW, '03' AS NR_ROW, 0  AS PERS_FROM, 249 AS PERS_TO, NULL AS PERS FROM DUAL UNION
-    SELECT 'Întreprinderile cu numărul de salariaţi 250 şi mai mult persoane'  AS NUME_ROW, '04' AS NR_ROW, 250 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-9 persoane'              AS NUME_ROW, '01' AS NR_ROW, 0  AS PERS_FROM, 9   AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-49 persoane'             AS NUME_ROW, '02' AS NR_ROW, 0  AS PERS_FROM, 49  AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 0-249 persoane'            AS NUME_ROW, '03' AS NR_ROW, 0  AS PERS_FROM, 249 AS PERS_TO, NULL AS PERS FROM DUAL UNION
+    SELECT '�ntreprinderile cu numarul de salariati 250 si mai mult persoane'  AS NUME_ROW, '04' AS NR_ROW, 250 AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL UNION
     SELECT 'Total republica Moldova'                                         AS NUME_ROW, '05' AS NR_ROW, 0   AS PERS_FROM, 99999999 AS PERS_TO, NULL AS PERS FROM DUAL
 
         
@@ -528,8 +537,8 @@ WHERE
   
    CROSS JOIN
   ( 
-    SELECT 'Valoarea producţiei: VP'  AS NUME_ROW, '600' AS NR_ROW FROM DUAL UNION     
-    SELECT 'Valoarea adăugată brută la costul factorilor: VAFC'  AS NUME_ROW, '700' AS NR_ROW FROM DUAL 
+    SELECT 'Valoarea productiei: VP'  AS NUME_ROW, '600' AS NR_ROW FROM DUAL UNION     
+    SELECT 'Valoarea adaugata bruta la costul factorilor: VAFC'  AS NUME_ROW, '700' AS NR_ROW FROM DUAL 
  ) R
   
   GROUP BY 
@@ -545,8 +554,8 @@ WHERE NVAL(COL1)>0 OR NVAL( COL2)>0 OR  NVAL(COL3)>0 OR  NVAL(COL4)>0 OR NVAL(CO
 
 
 
-ORDER BY
-NR_ROW, 
-ORDINE 
---
---;END;
+--ORDER BY
+--NR_ROW, 
+--ORDINE 
+
+;END;
