@@ -1,5 +1,9 @@
-﻿--INSERT INTO CIS2.RENIM (
---     CUIIO,
+--        
+--        INSERT INTO CIS2.RENIM
+--        
+--        (
+--        
+--        CUIIO,
 --    CUIIO_VERS,
 --    DENUMIRE,
 --    EDIT_USER,
@@ -32,15 +36,15 @@
 --    TIP_INV,
 --    RENIM_PERS,
 --    ORGANE_COND,
---    GEN_INSTITUTIE
---
---)
-
-
-SELECT 
-                  
+--    GEN_INSTITUTIE,
+--    IDNO
+--        
+--        ) 
+--        
+        
+        SELECT 
     CUIIO,
-    CUIIO_VERS,
+   CUIIO_VERS,
     DENUMIRE,
     EDIT_USER,
     STATUT,
@@ -72,22 +76,29 @@ SELECT
     TIP_INV,
     RENIM_PERS,
     ORGANE_COND,
-    GEN_INSTITUTIE
+    GEN_INSTITUTIE,
+    IDNO
+              FROM  USER_BANCU.VW_MAX_RENIM_CIS2
+               
+              
+              WHERE 
+              CUIIO IN (
 
-    FROM USER_BANCU.VW_MAX_RENIM_CIS2  
-    
-    WHERE 
-    
-    CUIIO IN (
+SELECT 
+    L.CUIIO
+   
+FROM 
+(
+SELECT 
+    L.CUIIO,
+    L.CUIIO_VERS
+FROM RENIM_2010 L 
 
-    
-    SELECT 
-                 FC.CUIIO
-                
-          
-      FROM (
-      
-      SELECT FC.CUIIO,
+        LEFT JOIN CIS2.RENIM R ON R.CUIIO = L.CUIIO AND R.CUIIO_VERS = L.CUIIO_VERS 
+        
+        ) L  LEFT JOIN (
+        
+         SELECT FC.CUIIO,
                    FC.CUIIO_VERS,
                    FC.FORM,
                    FC.FORM_VERS,
@@ -99,18 +110,16 @@ SELECT
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (39) AND FC.STATUT <> '3') FC ) 
-             
-             
-            AND CUIIO_VERS =   2010
-    
+             WHERE FC.FORM IN (39) 
+             AND FC.STATUT <> '3'
+        
+        ) R ON (R.CUIIO = L.CUIIO AND  R.CUIIO_VERS = L.CUIIO_VERS AND R.FORM =  39)  
+        
+        
+        WHERE 
+        R.CUIIO IS NOT  NULL 
+)
 
 
 
-
-
-
-
-
-
-
+--AND CUIIO_VERS =  2010

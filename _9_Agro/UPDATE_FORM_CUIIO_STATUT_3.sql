@@ -1,14 +1,4 @@
-﻿
-               
---               INSERT INTO CIS2.FORM_CUIIO FC (
---                FC.CUIIO,
---                   FC.CUIIO_VERS,
---                   FC.FORM,
---                   FC.FORM_VERS,
---                   FC.STATUT
---               
---               )
---               
+
                
                SELECT           
                    FC.CUIIO,
@@ -40,4 +30,4 @@
                                                 
                                                 WHERE 
                                                 
-                                                R.CUIIO IS NOT   NULL 
+                                                R.CUIIO IS   NULL 

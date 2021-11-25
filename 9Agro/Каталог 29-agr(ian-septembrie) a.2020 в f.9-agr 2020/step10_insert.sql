@@ -24,7 +24,7 @@ FROM
 SELECT 
     L.CUIIO,
     L.CUIIO_VERS
-FROM RENIM_2009 L 
+FROM RENIM_2010 L 
 
         LEFT JOIN CIS2.RENIM R ON R.CUIIO = L.CUIIO AND R.CUIIO_VERS = L.CUIIO_VERS 
         
@@ -38,7 +38,7 @@ FROM RENIM_2009 L
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (39) AND CUIIO_VERS <= 2009
+                                  WHERE FORM IN (39) AND CUIIO_VERS <= 2010
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)

@@ -1,16 +1,7 @@
-﻿
-               
---               INSERT INTO CIS2.FORM_CUIIO FC (
---                FC.CUIIO,
---                   FC.CUIIO_VERS,
---                   FC.FORM,
---                   FC.FORM_VERS,
---                   FC.STATUT
---               
---               )
---               
-               
-               SELECT           
+DECLARE -- ====================================================================
+
+  CURSOR C IS
+        SELECT           
                    FC.CUIIO,
                    FC.CUIIO_VERS,
                    FC.FORM,
@@ -40,4 +31,20 @@
                                                 
                                                 WHERE 
                                                 
-                                                R.CUIIO IS NOT   NULL 
+                                                R.CUIIO IS   NULL 
+  ;
+
+BEGIN -- ======================================================================
+  FOR CR IN C
+  LOOP
+    UPDATE CIS2.FORM_CUIIO SET 
+      STATUT = CR.NEW_STATUT
+    WHERE 
+      CUIIO = CR.CUIIO AND
+      CUIIO_VERS = CR.CUIIO_VERS AND
+      FORM = CR.FORM AND
+      FORM_VERS = CR.FORM_VERS 
+    
+    ;
+  END LOOP;
+END; -- =======================================================================

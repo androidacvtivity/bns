@@ -1,8 +1,8 @@
 SELECT
 
-'Perioada Curenta - Cap.IV RIND  - '|| L.RIND ||' - COL7  - '|| L.COL7 || 
+'P.C - Cap.IV RIND  - '|| L.RIND ||' - COL7  - '|| L.COL7 || 
 
-' Perioada Precedenta -  Cap.IV RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
+' P.P -  Cap.IV RIND - '|| R.RIND ||' - COL1 - '|| R.COL1  
 AS REZULTAT
 
 FROM 
@@ -83,7 +83,7 @@ R.RIND IS NULL
 
 AND 
 
-(L.COL7 IS NOT NULL OR L.COL7 <> 0)   
+(L.COL7 IS NOT NULL AND  L.COL7 <> 0   )   
 
 AND 
 
