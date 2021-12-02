@@ -1,7 +1,7 @@
 ﻿SELECT
-   CII.ITEM_CODE AS CODUL,
-   CII.NAME AS DENUMIRE,
-   CII.ITEM_PATH,
+   CI.ITEM_CODE AS CODUL,
+   CI.DENUMIRE,
+   CI.ITEM_PATH,
    B.NR_ROW,
    B.ORDINE,
    B.ORDINE_2,
@@ -26,6 +26,7 @@ FROM CIS2.VW_DATA_ALL D
        SELECT
                   CI.ITEM_CODE,
                   CI.ITEM_PATH,
+                  CI.NAME DENUMIRE,
                   MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
                 FROM
                   VW_CLS_CLASS_ITEM CI
@@ -34,10 +35,11 @@ FROM CIS2.VW_DATA_ALL D
                   CI.ITEM_CODE_VERS <= :pPERIOADA
                 GROUP BY
                   CI.ITEM_CODE,
-                  CI.ITEM_PATH
+                  CI.ITEM_PATH,
+                  CI.NAME
        ) CI ON E.COCM =  CI.ITEM_CODE
  
- INNER JOIN VW_CLS_CLASS_ITEM CII ON (CII.CLASS_CODE IN ('COCM') AND CI.ITEM_CODE_VERS=CII.ITEM_CODE_VERS AND CI.ITEM_PATH LIKE '%'||CII.ITEM_CODE||';%')
+ 
   
 
         CROSS JOIN
@@ -74,14 +76,14 @@ WHERE
    AND  CI.ITEM_CODE IN ('8704','7094','4874','7614','7774','7994','8064','9994')
   
  GROUP BY
-  CII.ITEM_CODE_VERS,
-  CII.ITEM_CODE,
-  CII.NAME,
-  CII.ITEM_PATH,
+
+  CI.ITEM_CODE,
+ CI.DENUMIRE,
+  CI.ITEM_PATH,
   B.ORDINE,
   B.ORDINE_2,
   B.NUME_ROW,
   B.NR_ROW
   
-  ORDER BY 
-  CII.ITEM_CODE
+--  ORDER BY 
+--  CII.ITEM_CODE
