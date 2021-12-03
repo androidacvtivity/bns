@@ -1,10 +1,10 @@
 ﻿SELECT DISTINCT 
-  'Rind.'||D.RIND||'  COL1 - '||SUM(D.COL1) 
+  'Rind.'||D.RIND||'  COL1 - '||SUM(D.COL1)||'  COL7 - '||SUM(D.COL7)
   
   AS REZULTAT
 
 FROM
-  VW_DATA_ALL_TEMP D                                     
+  VW_DATA_ALL D                                     
 
 
 WHERE
