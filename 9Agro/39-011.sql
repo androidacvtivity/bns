@@ -29,8 +29,20 @@ WHERE
 
 HAVING 
 
+(
 SUM(D.COL1) > 0 
 
 AND 
 
 SUM(D.COL7) IS NULL 
+)
+OR 
+
+
+(
+SUM(D.COL1) IS NULL  
+
+AND 
+
+SUM(D.COL7)  > 0 
+)
