@@ -33,7 +33,7 @@ function f19_AGR() {
   
     //------------------------------------------------------------------------------------
 
-   //  R25_C2.val(Number(parseFloat(Number(R26_C2.val())) + parseFloat(Number(R27_C2.val())) +  parseFloat(Number(R28_C2.val())) + parseFloat(Number(R29_C2.val())) + parseFloat(Number(R30_C2.val())) ).toFixed(2));       
+     R25_C2.val(Number(parseFloat(Number(R26_C2.val())) + parseFloat(Number(R27_C2.val())) +  parseFloat(Number(R28_C2.val())) + parseFloat(Number(R29_C2.val())) + parseFloat(Number(R30_C2.val())) ).toFixed(2));       
     
 	
 	// R25_C2.val(Number(parseFloat(Number(R26_C2.val())) + parseFloat(Number(R27_C2.val()))).toFixed(5));     
