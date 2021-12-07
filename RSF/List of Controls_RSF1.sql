@@ -45,7 +45,7 @@ SELECT
          AND B.FORM  = 57
          AND B.STATUT <> '3'
                
-         
+         ---
          
          ORDER BY 
           B.CONTROL ) L
