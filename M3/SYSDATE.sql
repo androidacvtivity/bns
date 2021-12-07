@@ -1,0 +1,5 @@
+﻿SELECT 
+SYSDATE 
+
+FROM DUAL
+
