@@ -37,7 +37,7 @@
 FROM
   CIS2.VW_DATA_ALL_GC  D
   
-  
+  ----
   
 WHERE
   --(D.PERIOADA IN (1040,1041,1042,1043))  AND   
