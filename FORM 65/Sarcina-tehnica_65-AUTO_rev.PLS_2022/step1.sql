@@ -1,0 +1,17 @@
+
+
+
+
+
+SELECT 
+  PERIOADA,
+  TIP_PERIOADA,
+  ANUL,
+  NUM,
+  STATUT
+  
+  FROM CIS2.MD_PERIOADA
+  
+  WHERE 
+  
+  ANUL = 2021
