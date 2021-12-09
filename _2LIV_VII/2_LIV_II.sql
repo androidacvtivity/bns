@@ -81,3 +81,4 @@ AS
                           WHERE TO_CHAR (CUIIO_VERS) LIKE '18%'
                        GROUP BY CUIIO) A
                ON (A.CUIIO = R.CUIIO AND A.CUIIO_VERS = R.CUIIO_VERS);
+               --
