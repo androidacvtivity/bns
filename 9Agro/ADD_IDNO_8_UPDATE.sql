@@ -22,13 +22,18 @@
              AND FC.STATUT <> '3'
              AND FC.CUIIO_VERS = 2010 ) FC
              
+             LEFT JOIN (
+             SELECT 
+            CUIIO
+            
+               FROM  USER_BANCU.KAT_9_AGRO 
+             
+             ) R ON R.CUIIO = FC.CUIIO 
+             
              
              WHERE 
              
-             FC.CUIIO IN (
-             SELECT 
-            L.CUIIO
-            
-               FROM  USER_BANCU.KAT_9_AGRO L
+             R.CUIIO IS NOT NULL
              
-             )
+             
+           

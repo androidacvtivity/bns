@@ -1,8 +1,4 @@
-﻿DECLARE -- ====================================================================
-
-  CURSOR C IS
-        
-              SELECT 
+SELECT 
             L.CUIIO,
             L.CUIIO_VERS,
             TO_NUMBER(L.IDNO) NEW_IDNO,
@@ -19,19 +15,3 @@
                         ORDER BY
                         R.IDNO
           
-          
-  ;
-
-BEGIN -- ======================================================================
-  FOR CR IN C
-  LOOP
-    UPDATE CIS2.RENIM SET 
-      IDNO = CR.NEW_IDNO
-    WHERE 
-      CUIIO = CR.CUIIO AND
-      CUIIO_VERS = CR.CUIIO_VERS 
-      
-      
-    ;
-  END LOOP;
-END; -- =======================================================================

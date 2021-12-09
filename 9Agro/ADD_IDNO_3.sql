@@ -13,7 +13,7 @@
                            
                         AND 
                         
-                        R.IDNO IS NOT  NULL
+                        R.IDNO IS    NULL
                         
                         
                         
