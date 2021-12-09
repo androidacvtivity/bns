@@ -17,7 +17,7 @@
 
 SELECT 
    L.CONTROL,
-   2010 CONTROL_VERS,
+   L.CONTROL_VERS,
    L.FORM,
    L.FORM_VERS,
    L.CAPITOL,
@@ -61,7 +61,7 @@ SELECT
          1=1
          AND A.FORM  = 57
          AND A.FORM_VERS = 2009
-         AND A.CONTROL_VERS = 2009
+--         AND A.CONTROL_VERS = 2009
                
          GROUP BY 
           A.CONTROL
