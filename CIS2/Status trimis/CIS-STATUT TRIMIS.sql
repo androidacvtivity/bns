@@ -20,7 +20,7 @@ BEGIN
   
    --1 TUR FORM = 44  AND PERIOADA = 1050
    
-    
+    --
      
      CIS.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
   
