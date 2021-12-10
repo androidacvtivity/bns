@@ -19,7 +19,10 @@ WHERE
   
   D.FORM IN (57)  AND
   D.CAPITOL IN (1090)   
-
+ 
+ AND D.RIND NOT IN ('550', '560', '570', '580')
+ 
+ 
 GROUP BY 
 D.RIND
   
