@@ -1,21 +1,19 @@
-﻿--INSERT INTO    CIS2.SYS_USER_ACCES
---    (
---  ID_USER,        
---  CUATM,          
---  FORM,           
---  FORM_VERS,      
---  ISADMIN,        
---  ACCES_TYPE,     
---  CAPITOL_ACCES,  
---  DATA_REG       
---  )
---  
 
-
+INSERT INTO    CIS2.SYS_USER_ACCES
+    (
+  ID_USER,        
+  CUATM,          
+  FORM,           
+  FORM_VERS,      
+  ISADMIN,        
+  ACCES_TYPE,     
+  CAPITOL_ACCES,  
+  DATA_REG       
+  )
 
 
 SELECT
-  4 ID_USER,        
+  L.ID_USER,        
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -26,27 +24,26 @@ SELECT
 
 FROM
 
-( 
-  SELECT
-  ID_USER,        
-  CUATM,          
+
+(
+SELECT
+   4 ID_USER,        
+  '0000000' CUATM,          
   FORM,           
   FORM_VERS,      
-  ISADMIN,        
-  ACCES_TYPE,     
-  CAPITOL_ACCES,  
-  DATA_REG 
+  '0'   ISADMIN,        
+  '1'   ACCES_TYPE,     
+  NULL CAPITOL_ACCES,  
+  sysdate  DATA_REG 
   
-     FROM CIS2.SYS_USER_ACCES
+     FROM CIS2.MD_FORM
   
   
         WHERE
         
-        ID_USER IN (734)
+        1=1
         
-        ORDER BY FORM
-        
-        
+        ORDER BY FORM 
         
         ) L  LEFT JOIN  (
         
@@ -76,6 +73,7 @@ FROM
         
 
 GROUP BY 
+  L.ID_USER,
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -91,8 +89,6 @@ GROUP BY
       ORDER BY 
         L.FORM
 
-
-  
- 
+        
         
   
