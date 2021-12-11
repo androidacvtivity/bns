@@ -1,4 +1,4 @@
-﻿--INSERT INTO    CIS2.SYS_USER_ACCES
+--INSERT INTO    CIS2.SYS_USER_ACCES
 --    (
 --  ID_USER,        
 --  CUATM,          
@@ -9,7 +9,7 @@
 --  CAPITOL_ACCES,  
 --  DATA_REG       
 --  )
---  
+  
 
 
 
