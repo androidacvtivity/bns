@@ -1,0 +1,60 @@
+﻿SELECT DISTINCT
+   'Fililal='|| D.FILIAL ||'; Rindul '|| D.RIND ||':'||
+ROUND((
+   nval(SUM(CASE WHEN D.CAPITOL IN ('303') THEN  D.COL2 ELSE 0 END))*1000 /
+   NOZERO(nval(SUM(CASE WHEN D.CAPITOL IN ('301') THEN  D.COL3 ELSE 0 END))))/12   
+     
+   )
+   
+     
+  ||'  nu apartine intervalului [2200-15000]'  
+  
+ AS REZULTAT
+
+FROM
+
+VW_DATA_ALL D
+                                   
+WHERE
+  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  (D.CAPITOL=:CAPITOL OR :CAPITOL=-1)  AND
+   D.CAPITOL IN (301,303) AND 
+  (:FORM = :FORM) AND D.FORM IN (3) AND D.BUGET IN (1)
+GROUP BY
+  D.RIND,
+  D.FILIAL
+  
+  
+--HAVING
+--
+--( 
+--ROUND((
+--   nval(SUM(CASE WHEN D.CAPITOL IN ('303') THEN  D.COL2 ELSE 0 END))*1000 /
+--   NOZERO(nval(SUM(CASE WHEN D.CAPITOL IN ('301') THEN  D.COL3 ELSE 0 END))))/12) >15000
+-- 
+--AND
+-- 
+--ROUND((
+--   nval(SUM(CASE WHEN D.CAPITOL IN ('303') THEN  D.COL2 ELSE 0 END))*1000 /
+--   NOZERO(nval(SUM(CASE WHEN D.CAPITOL IN ('301') THEN  D.COL3 ELSE 0 END))))/12)> 0
+--)
+--   
+--  OR 
+--   
+--(
+--
+--ROUND((
+--   nval(SUM(CASE WHEN D.CAPITOL IN ('303') THEN  D.COL2 ELSE 0 END))*1000 /
+--   NOZERO(nval(SUM(CASE WHEN D.CAPITOL IN ('301') THEN  D.COL3 ELSE 0 END))))/12) <2200 
+--   
+--   AND
+--  
+--ROUND((
+--   nval(SUM(CASE WHEN D.CAPITOL IN ('303') THEN  D.COL2 ELSE 0 END))*1000 /
+--   NOZERO(nval(SUM(CASE WHEN D.CAPITOL IN ('301') THEN  D.COL3 ELSE 0 END))))/12)> 0)
+--  
