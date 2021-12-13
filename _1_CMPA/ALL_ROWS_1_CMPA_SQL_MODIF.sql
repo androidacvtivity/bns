@@ -1,0 +1,42 @@
+SELECT 
+   
+         D.UNIT_CODE,
+         D.CUATM,
+         D.RIND,   
+         SUM(CASE WHEN D.PERIOADA = 1051 AND D.CAPITOL = 1112  THEN D.COL2 ELSE NULL END)  AS TRIM4_CAPIII_COL2,
+         SUM(CASE WHEN D.PERIOADA = 1049 AND D.CAPITOL = 1111  THEN D.COL1 ELSE NULL END)  AS TRIM2_CAPII_COL1
+        
+       
+        
+        
+FROM
+  CIS2.VW_DATA_ALL_GC  D
+  
+  ----
+  -----
+WHERE
+  --(D.PERIOADA IN (1040,1041,1042,1043))  AND   
+  (D.PERIOADA IN (1051,1049))  AND   
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+  (:pID_MDTABLE =:pID_MDTABLE) AND 
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (61) 
+  
+ AND
+  D.CAPITOL IN (1112,1111)
+  
+
+  
+  GROUP BY 
+
+   D.UNIT_CODE,
+   D.CUATM,
+--   D.CAPITOL,
+   D.RIND  
+  
+    ORDER BY 
+     D.CUATM,
+   D.UNIT_CODE,
+--   D.CAPITOL,
+   D.RIND
