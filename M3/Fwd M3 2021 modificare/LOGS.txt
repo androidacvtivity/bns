@@ -1,5 +1,26 @@
-03-013 - Done
-03-013-1 - Done
-03-014 
+03-013    - Modificat
+03-013-1  - Eliminat
+03-014    - Eliminat
+03-014-1  - Eliminat
+03-015    - Modificat
+03-027    - Modificat
+03-031    - Modificat
+03-087    - Eliminat
+03-093    - Modificat
+03-094    - Modificat
+03-114    - Modificat
+03-139    - Modificat
+03-156    - Modificat
+03-028    - Modificat
+03-028-1  - Eliminat
+03-030    - Eliminat
+03-085    - Modificat
+03-085-1  - Modificat
+03-110    - Modificat
+03-127    - Modificat
+03-127-1  - Modificat
+
+
+
 
 
