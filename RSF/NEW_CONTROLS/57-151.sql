@@ -7,8 +7,7 @@
 FROM VW_DATA_ALL_FR D
 
 
---Anexa1 rd.60 col.4 anul curent= Anexa1 rd. 20 col.5 anul precedent
-
+--Anexa1 rd.560 col.4 anul curent= Anexa1 rd.(550+560+570+580) col.5 anul precedent
 WHERE
   (D.PERIOADA IN (:PERIOADA,:PERIOADA-1 ))   AND
   (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND 
