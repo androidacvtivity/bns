@@ -1,0 +1,8 @@
+SELECT 
+L.CUIIO
+        FROM USER_BANCU.VW_KATALOG_RSF_PRESCURTAT_2010 L
+        
+                LEFT JOIN USER_BANCU.VW_KATALOG_RSF_2010 R ON R.CUIIO = L.CUIIO
+                
+                WHERE 
+                R.CUIIO IS NOT NULL;
