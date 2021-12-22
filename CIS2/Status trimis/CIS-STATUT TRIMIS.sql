@@ -22,9 +22,25 @@ BEGIN
    
     --
      
-     CIS.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
+     CIS2.PRC_STATUT_TRIMIS(:pPERIOADA,:pFORM);
   
-  
+--  5
+--6
+--11
+--13
+--15
+--18
+--19
+--26
+--29
+--33
+--44
+--45
+--58
+--61
+--62
+--101
+
   
    
   
