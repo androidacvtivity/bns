@@ -1,0 +1,9 @@
+Salut Oxana
+Am facut modificarile, acum sunt 3 Capitole
+Verifica vizual si ma anunti daca este corect si  eu incep sa modific regulile de vaidare. 
+
+
+Cap. I - Transporturi de mărfuri pentru terţi
+Cap. II - Transporturi de pasageri
+Cap. III - INFORMATIV: Cheltuielile pentru procurarea combustibilului si lubrifiantilor de catre unitatea raportoare de la nerezidenti
+
