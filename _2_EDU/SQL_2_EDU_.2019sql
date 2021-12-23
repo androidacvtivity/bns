@@ -8,7 +8,7 @@ COL6,
 COL7,
 COL8
 FROM
-
+--------------------
 (
 SELECT 
 D.CUIIO,
