@@ -1,28 +1,4 @@
 
-
-
-
-
-
-       SELECT 
-       CUIIO,
-       DENUMIRE,
-       CUATM,
-       CAEM2 
-
-       FROM USER_BANCU.VW_KATALOG_EI_78_1050
-       
-       
-       WHERE 
-       
-       CUIIO IN (
-       SELECT
-
-CUIIO
-
-FROM 
- 
-(
 SELECT
 DISTINCT D.CUIIO,
 COUNT(CASE WHEN D.FORM = 46 AND  D.PERIOADA IN (2008) AND CAPITOL IN (1) THEN 1 END) AS E_2019,
@@ -46,18 +22,5 @@ AND D.CAPITOL IN (14,1,404)
 AND D.RIND IN('05','02','03')
 AND NVAL(D.COL1) = 1)
 
-
-
-
 GROUP BY
 D.CUIIO
-
-)
-
-
-WHERE 
-
-NVAL(E_2019) + NVAL(I_2019) + NVAL(E_2020) + NVAL(I_2020) + NVAL(E_TRIM_1) + NVAL(E_TRIM_2) + NVAL(E_TRIM_3) + NVAL(I_TRIM_1) + NVAL(I_TRIM_2) + NVAL(I_TRIM_3) = 10
-       
-       )
-       

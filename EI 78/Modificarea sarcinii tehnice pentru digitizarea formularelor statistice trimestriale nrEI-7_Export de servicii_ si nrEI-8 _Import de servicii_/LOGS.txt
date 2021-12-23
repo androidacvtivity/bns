@@ -1,0 +1,13 @@
+Salut Vasile. 
+
+1. Create chapters. 
+
+Din 4 capitole care sunt acum in EI 7,8 vor ramane 2 capitole. Vreau sa fac in felul urmator. 
+
+I want make next steps. 
+1.1 I will  create CAPITOL - 405 with CAPTOL_VERS  1052. (Export de servicii)
+1.2 I will  create CAPITOL - 406 with CAPITOL_VERS 1052 and change STATUT IN 3. 
+1.3 I will  create CAPITOL - 407 with CAPTOL_VERS  1052. (Import de servicii)
+1.4 I will  create CAPITOL - 408 with CAPITOL_VERS 1052 and change STATUT IN 3. 
+
+WHAT DO YOU THINK  ? 
