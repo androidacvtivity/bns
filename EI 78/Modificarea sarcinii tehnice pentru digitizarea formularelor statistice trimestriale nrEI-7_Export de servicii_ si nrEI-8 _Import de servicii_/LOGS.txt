@@ -11,3 +11,5 @@ I want make next steps.
 1.4 I will  create CAPITOL - 408 with CAPITOL_VERS 1052 and change STATUT IN 3. 
 
 WHAT DO YOU THINK  ? 
+
+Task is it completed successfully. 
