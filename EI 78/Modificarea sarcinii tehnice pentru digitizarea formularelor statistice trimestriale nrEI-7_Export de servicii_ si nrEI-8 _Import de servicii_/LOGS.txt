@@ -13,3 +13,6 @@ I want make next steps.
 WHAT DO YOU THINK  ? 
 
 Task is it completed successfully. 
+
+2. Modify controls in the statistical report.
+ 

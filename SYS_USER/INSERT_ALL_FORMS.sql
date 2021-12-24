@@ -1,4 +1,3 @@
-
 INSERT INTO    CIS2.SYS_USER_ACCES
     (
   ID_USER,        
@@ -27,11 +26,11 @@ FROM
 
 (
 SELECT
-   4 ID_USER,        
+   639 ID_USER,        
   '0000000' CUATM,          
   FORM,           
   FORM_VERS,      
-  '0'   ISADMIN,        
+  '1'   ISADMIN,        
   '1'   ACCES_TYPE,     
   NULL CAPITOL_ACCES,  
   sysdate  DATA_REG 
@@ -62,7 +61,7 @@ SELECT
   
         WHERE
         
-        ID_USER IN (4)
+        ID_USER IN (639)
         
         ) R ON R.FORM = L.FORM
 
