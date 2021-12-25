@@ -16,3 +16,20 @@ Task is it completed successfully.
 
 2. Modify controls in the statistical report.
  
+EI 7,8
+Partea de intrare a fost finalizata. 
+Regulile de valifare au fost modificate si / sau eliminatea si / sau adugate. 
+Nu a fost adaugat 
+Clasificatorul  Statistic al Produselor (Bunurilor și Serviciilor) - CSPM Rev.2, .
+Regulile de valifare in care participa --- Clasificatorul  Statistic al Produselor (Bunurilor și Serviciilor) - CSPM Rev.2 --
+nu sunt functionale. 
+Siminovici solicita sa fie inclus si IDNO in filtru.
+
+
+Numarul de ordine pentru regulile de validare a fost reatribuit. 
+Lista regulilor de validarea este anexata. Verificati Va rog. 
+
+
+
+
+
