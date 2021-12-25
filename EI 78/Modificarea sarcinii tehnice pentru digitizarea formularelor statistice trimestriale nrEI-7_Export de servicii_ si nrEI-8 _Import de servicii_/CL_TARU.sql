@@ -1,0 +1,8 @@
+SELECT 
+    TO_NUMBER(CODUL)  AS CODUL
+  FROM 
+    CIS2.CL_TARI 
+    
+    WHERE 
+    
+    CODUL IN ('051','031','112','398','417','643','762','795','860','998','804') 
