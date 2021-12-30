@@ -1,0 +1,29 @@
+
+SELECT 
+L.CUIIO,
+L.CUIIO_VERS,
+L.DENUMIRE,
+L.CUATM,
+L.CFP,
+L.CAEM2,
+L.IDNO
+
+FROM 
+
+(
+SELECT 
+         TRIM(L.CUIIO)  CUIIO,
+         TRIM(L.CUIIO_VERS) CUIIO_VERS,
+         TRIM(L.DENUMIRE) DENUMIRE,
+         CASE WHEN LENGTH(TRIM(L.CUATM)) = 6 THEN '0'||TRIM(L.CUATM) ELSE TRIM(L.CUATM) END    CUATM,
+         TRIM(L.CFP)    CFP,
+         TRIM(L.CAEM2)  CAEM2,
+         TRIM(L.IDNO)   IDNO
+            FROM USER_BANCU.TUR_1 L
+            ) L
+            
+             LEFT   JOIN  CIS2.VW_CL_CUATM C ON TRIM(C.CODUL) = TRIM(L.CUATM)  
+             
+             WHERE 
+             C.CODUL IS NOT    NULL 
+ 
