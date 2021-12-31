@@ -1,0 +1,14 @@
+
+
+CREATE TABLE MD_CONTROL
+
+AS
+
+SELECT *
+
+FROM CIS2.MD_CONTROL
+
+where 
+
+FORM = 8
+

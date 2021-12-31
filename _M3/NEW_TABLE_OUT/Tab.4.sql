@@ -1,24 +1,24 @@
-﻿--INSERT INTO TABLE_OUT 
---(
---  PERIOADA,
---  FORM,
---  FORM_VERS,
---  ID_MDTABLE,
---  COD_CUATM,
---  NR_SECTIE,
---  NUME_SECTIE,
---  NR_SECTIE1,
---  NUME_SECTIE1,
---  NR_SECTIE2,
---  NUME_SECTIE2,
---  NR_ROW,
---  ORDINE,
---  DECIMAL_POS,
---  NUME_ROW,
---  
---  COL1, COL2, COL3,  COL4, COL5, COL6, COL7, COL8, COL9, COL10, COL11, COL12, COL13, COL14, COL15, COL16
---)
---------------------------------------------------------------
+﻿INSERT INTO TABLE_OUT 
+(
+  PERIOADA,
+  FORM,
+  FORM_VERS,
+  ID_MDTABLE,
+  COD_CUATM,
+  NR_SECTIE,
+  NUME_SECTIE,
+  NR_SECTIE1,
+  NUME_SECTIE1,
+  NR_SECTIE2,
+  NUME_SECTIE2,
+  NR_ROW,
+  ORDINE,
+  DECIMAL_POS,
+  NUME_ROW,
+  
+  COL1, COL2, COL3,  COL4, COL5, COL6, COL7, COL8, COL9, COL10, COL11, COL12, COL13, COL14, COL15, COL16
+)
+----------------------------------------------------------
 SELECT
   :pPERIOADA AS PERIOADA,
   :pFORM AS FORM,
@@ -50,11 +50,11 @@ SELECT
     ROUND(COL4,1) AS COL4,
     ROUND(COL5,1) AS COL5,
     ROUND(COL6,1) AS COL6,
-   -- ROUND(COL7,1) AS COL7,
+   
     NULL AS COL7,
     ROUND(COL7,1) AS COL8,
     ROUND(COL8,1) AS COL9,
-  --  ROUND(COL10,1) AS COL10,
+   
      NULL AS COL10,
     
     ROUND(NOZERO(D.COL2)/NOZERO(T1.COL2)*1000/12,1) AS COL11,
@@ -85,7 +85,7 @@ SELECT
  
 FROM
 (
------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
 SELECT DISTINCT
   D.CUIIO,
@@ -130,7 +130,7 @@ GROUP BY
   D.CUATM_FULL,
   C.COL,
   CASE WHEN D.RIND LIKE '%T' AND S.SEX LIKE 'F' THEN SUBSTR(D.RIND,1,3)||'F' ELSE D.RIND END
------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 ) D 
   INNER JOIN VW_CL_CAEM2 C  ON(D.CAEM2=C.NUM_CODE)
   INNER JOIN VW_CL_CAEM2 CR ON(C.FULL_CODE LIKE '%'||CR.CODUL||';%')
