@@ -1,0 +1,4 @@
+﻿create table USER_BANCU.DATA_ALL_FOR_VALIDATE_FR
+as 
+select *
+FROM DATA_ALL_FOR_VALIDATE_FR;
