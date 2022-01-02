@@ -94,4 +94,5 @@ SELECT
   
   WHERE 
   
-  CUIIO = 278114
+  FORM = 63 
+  AND PERIOADA = 2010
