@@ -1,5 +1,5 @@
 SELECT
-  'Rind.'||R.RIND||':   '|| SUM(R.COL1) ||' <> '|| SUM(L.COL1) AS REZULTAT
+  'Rind.'||L.RIND||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
  
 FROM 
 
@@ -17,13 +17,17 @@ WHERE
   
   (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
   (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
-  (D.CUIIO_VERS      = :CUIIO_VERS       OR :CUIIO_VERS = -1)  AND 
-  (D.FORM            = :FORM             OR :FORM = -1)        AND 
-  (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
-  (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
-  (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
-  AND D.FORM = 63 
-  AND D.CAPITOL IN (1121)
+  (:CUIIO_VERS       = :CUIIO_VERS     OR :CUIIO_VERS   <>  :CUIIO_VERS)  AND 
+  (:FORM             = :FORM           OR :FORM  <>  :FORM )        AND 
+  (:FORM_VERS        = :FORM_VERS      OR :FORM_VERS  <> :FORM_VERS)   AND 
+  (:CAPITOL          = :CAPITOL        OR :CAPITOL  <> :CAPITOL  )   AND 
+  (:CAPITOL_VERS     = :CAPITOL_VERS   OR :CAPITOL_VERS  <> :CAPITOL_VERS) 
+
+  
+  AND D.FORM = 59 
+  AND D.CAPITOL IN (1105)
+  AND D.RIND NOT IN ('200', '210', '240')
+  
  
   GROUP BY
   D.CUIIO, 
@@ -43,9 +47,9 @@ D.RIND,
 SUM(D.COL1) AS COL1 
 FROM
 
-     --USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE_FR D 
+     USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE_FR D 
      
-      USER_BANCU.FOR_VALIDATE_FR D
+    --  USER_BANCU.FOR_VALIDATE_FR D
       
 WHERE
   
@@ -56,8 +60,11 @@ WHERE
   (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
   (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
   (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
-  AND D.FORM = 63 
-  AND D.CAPITOL IN (1121)            
+  AND D.FORM = 59 
+  AND D.CAPITOL IN (1105)
+  AND D.RIND NOT IN ('200', '210', '240')
+ 
+              
   AND D.ID_SCHEMA IN (2) 
   
   
