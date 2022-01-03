@@ -1,5 +1,5 @@
 ﻿
-CREATE OR REPLACE FORCE VIEW USER_BANCU.VW_DATA_ALL_FOR_VALIDATE_FR
+CREATE OR REPLACE FORCE VIEW USER_BANCU.FOR_VALIDATE_FR
 (
     PERIOADA,
     ANUL,
@@ -124,25 +124,25 @@ AS
            D.COL29,
            D.COL30
       FROM USER_BANCU.DATA_ALL_FOR_VALIDATE_FR  D
-           LEFT JOIN RENIM RN
+           LEFT JOIN CIS2.RENIM RN
                ON     D.CUIIO = RN.CUIIO
                   AND D.CUIIO_VERS = RN.CUIIO_VERS
                --   AND D.ID_SCHEMA = RN.ID_SCHEMA
            --                           LEFT JOIN
            --                              VW_CL_CUATM CT
            --                           ON RN.CUATM = CT.CODUL
-           LEFT JOIN MD_RIND MR
+           LEFT JOIN CIS2.MD_RIND MR
                ON D.ID_MD = MR.ID_MD 
                
                ---AND D.ID_SCHEMA = MR.ID_SCHEMA
-           LEFT JOIN MD_FORM MF
+           LEFT JOIN CIS2.MD_FORM MF
                ON     MR.FORM = MF.FORM
                   AND MR.FORM_VERS = MF.FORM_VERS
                 --  AND D.ID_SCHEMA = MF.ID_SCHEMA
-           LEFT JOIN MD_CAPITOL MC
+           LEFT JOIN CIS2.MD_CAPITOL MC
                ON     MR.CAPITOL = MC.CAPITOL
                   --AND D.ID_SCHEMA = MC.ID_SCHEMA
                   AND MR.CAPITOL_VERS = MC.CAPITOL_VERS
-           LEFT JOIN MD_PERIOADA MP ON D.PERIOADA = MP.PERIOADA
+           LEFT JOIN CIS2.MD_PERIOADA MP ON D.PERIOADA = MP.PERIOADA
 
 
