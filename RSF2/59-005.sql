@@ -1,80 +1,95 @@
-SELECT DISTINCT
-
-SUM(CASE WHEN D.PERIOADA IN (:PERIOADA)   THEN NVAL(D.COL1) ELSE 0 END) ||'<>'||
-SUM(CASE WHEN D.PERIOADA IN (:PERIOADA-1) THEN NVAL(D.COL1) ELSE 0 END)
-AS REZULTAT 
-FROM
-(
-
-
-SELECT DISTINCT 
-  SUM(D.COL2) AS COL1,
-  D.PERIOADA
+SELECT
+  'Rind.'||L.RIND||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
+ 
 FROM 
-  CIS2.VW_DATA_ALL_FR D
-WHERE   
-  (D.PERIOADA IN(:PERIOADA-1))AND 
-  (D.CUIIO           = :CUIIO          OR :CUIIO= -1)        AND 
+
+
+(
+SELECT 
+D.CUIIO,
+D.RIND,
+SUM(D.COL2) AS COL1 
+FROM
+
+     CIS2.VW_DATA_ALL_FR D 
+      
+WHERE
+  
+  (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
+  (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
   (:CUIIO_VERS       = :CUIIO_VERS     OR :CUIIO_VERS   <>  :CUIIO_VERS)  AND 
   (:FORM             = :FORM           OR :FORM  <>  :FORM )        AND 
   (:FORM_VERS        = :FORM_VERS      OR :FORM_VERS  <> :FORM_VERS)   AND 
   (:CAPITOL          = :CAPITOL        OR :CAPITOL  <> :CAPITOL  )   AND 
   (:CAPITOL_VERS     = :CAPITOL_VERS   OR :CAPITOL_VERS  <> :CAPITOL_VERS) 
+
+  
   AND D.FORM = 59 
-  AND D.CAPITOL IN (1105)
-  AND D.RIND  IN ('200','210','240')
+  AND D.CAPITOL IN (1106)
 
-  GROUP BY D.PERIOADA
-UNION
-
-SELECT DISTINCT 
-SUM(DD.COL1) AS COL1,
- DD.PERIOADA
- FROM
--- CIS2.VW_DATA_ALL_FR DD
-  USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE_FR DD 
-  -- USER_BANCU.FOR_VALIDATE_FR DD
+  
  
-WHERE
-  (DD.PERIOADA IN(:PERIOADA))AND 
-  (DD.CUIIO           = :CUIIO          OR :CUIIO= -1)        AND 
-  (:CUIIO_VERS        = :CUIIO_VERS     OR  :CUIIO_VERS        <> :CUIIO_VERS )  AND 
-  (DD.FORM            = :FORM           OR :FORM = -1)        AND 
-  (DD.FORM_VERS       = :FORM_VERS      OR :FORM_VERS = -1)   AND 
-  (DD.CAPITOL         = :CAPITOL        OR :CAPITOL = -1  )   AND 
-  (DD.CAPITOL_VERS    = :CAPITOL_VERS   OR :CAPITOL_VERS = -1) 
-  AND DD.FORM = 59 
-  AND DD.CAPITOL IN (1105)
-  AND DD.RIND NOT IN ('240')
-  AND DD.ID_SCHEMA IN (2)
-  
-   
-  GROUP BY DD.PERIOADA
-  
-  
-  )D
-  
-  HAVING
+  GROUP BY
+  D.CUIIO, 
+  D.RIND 
  
-SUM(CASE WHEN D.PERIOADA IN (:PERIOADA)   THEN NVAL(D.COL1) ELSE 0 END) <> 
-SUM(CASE WHEN D.PERIOADA IN (:PERIOADA-1) THEN NVAL(D.COL1)ELSE 0 END)
+HAVING  
+  
+ D.CUIIO IS NOT NULL
+ 
+ 
+  ) L LEFT JOIN (
 
 
-   AND
-   
-   
-  (
- SELECT
-  DISTINCT
-  D.CUIIO
+SELECT 
+D.CUIIO,
+D.RIND,
+SUM(D.COL1) AS COL1 
 FROM
-  CIS2.VW_DATA_ALL_FR D
+
+     USER_EREPORTING.VW_DATA_ALL_FOR_VALIDATE_FR D 
+     
+    --  USER_BANCU.FOR_VALIDATE_FR D
+      
 WHERE
-  (D.PERIOADA IN (:PERIOADA-1)) AND
-  (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
-  D.FORM  IN(59) AND     
-  D.CAPITOL IN(1105)
+  
+  (D.PERIOADA        =:PERIOADA          OR :PERIOADA = -1) AND
+  (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
+  (D.CUIIO_VERS      = :CUIIO_VERS       OR :CUIIO_VERS = -1)  AND 
+  (D.FORM            = :FORM             OR :FORM = -1)        AND 
+  (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
+  (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
+  (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
+   AND D.FORM = 59 
+  AND D.CAPITOL IN (1106)
+ 
+              
+  AND D.ID_SCHEMA IN (2) 
+  
+  
+ 
+
+  GROUP BY
+  D.CUIIO, 
+  D.RIND
+  
+  
+  ) R ON (R.CUIIO = L.CUIIO   AND L.RIND = R.RIND) -- AND L.COL1 = R.COL1)   
+   
+  
+  WHERE 
+  1=1
+  
+  GROUP BY
+  L.RIND,
+  R.RIND
+  
+  HAVING 
+  NVAL(SUM(L.COL1))  <>   NVAL(SUM(R.COL1))
+  
+  
+ 
   
   
   
-  ) IS NOT NULL
+  
