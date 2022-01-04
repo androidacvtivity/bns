@@ -27,8 +27,8 @@ WHERE
 
   
   AND D.FORM = 66 
-  AND D.CAPITOL IN (1132)
-  AND D.RIND NOT IN ('200', '210', '230')
+  AND D.CAPITOL IN (1133)
+ -- AND D.RIND NOT IN ('200', '210', '230')
   
  
   GROUP BY
@@ -63,8 +63,8 @@ WHERE
   (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
   (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
   AND D.FORM = 66 
-  AND D.CAPITOL IN (1132)
-  AND D.RIND NOT IN ('200', '210', '230')
+  AND D.CAPITOL IN (1133)
+  --AND D.RIND NOT IN ('200', '210', '230')
  
               
   AND D.ID_SCHEMA IN (2) 
