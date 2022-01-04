@@ -1,5 +1,7 @@
 SELECT
-  'Rind.'||L.RIND||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
+ 
+  
+    'Rind.'|| (CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
  
 FROM 
 
@@ -24,9 +26,9 @@ WHERE
   (:CAPITOL_VERS     = :CAPITOL_VERS   OR :CAPITOL_VERS  <> :CAPITOL_VERS) 
 
   
-  AND D.FORM = 59 
-  AND D.CAPITOL IN (1105)
-  AND D.RIND NOT IN ('200', '210', '240')
+  AND D.FORM = 66 
+  AND D.CAPITOL IN (1132)
+  AND D.RIND NOT IN ('200', '210', '230')
   
  
   GROUP BY
@@ -60,9 +62,9 @@ WHERE
   (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
   (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
   (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
-  AND D.FORM = 59 
-  AND D.CAPITOL IN (1105)
-  AND D.RIND NOT IN ('200', '210', '240')
+  AND D.FORM = 66 
+  AND D.CAPITOL IN (1132)
+  AND D.RIND NOT IN ('200', '210', '230')
  
               
   AND D.ID_SCHEMA IN (2) 
