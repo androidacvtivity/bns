@@ -1,0 +1,95 @@
+﻿SELECT
+ 'Rind.'||SUBSTR(L.RIND, 1, 3)||', Tara. '|| (CASE WHEN L.COL1 IS NULL THEN R.COL1  ELSE L.COL1 END) 
+||':  '|| SUM(NVAL(L.COL2)) ||' <> '||SUM(NVAL(R.COL2))    AS REZULTAT
+FROM 
+(
+SELECT 
+D.CUIIO,
+D.RIND,
+D.COL1,
+SUM(D.COL2) AS COL2 
+FROM
+
+     CIS2.VW_DATA_ALL D 
+      
+WHERE
+
+  (D.PERIOADA        =:PERIOADA          OR :PERIOADA = -1) AND
+  (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
+  (D.CUIIO_VERS      = :CUIIO_VERS       OR :CUIIO_VERS = -1)  AND 
+  (D.FORM            = :FORM             OR :FORM = -1)        AND 
+  (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
+  (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
+  (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
+  AND D.FORM = 67 
+  AND D.CAPITOL IN (1139)
+  AND D.RIND NOT IN ('010','020','030','040','050','060','070','080','090')
+  GROUP BY
+  D.CUIIO, 
+  D.RIND,
+  D.COL1 
+--HAVING 
+--NVAL(D.COL1) + NVAL(SUM(D.COL2)) > 0 
+ 
+ 
+ 
+ 
+  ) L LEFT JOIN (
+
+
+SELECT 
+
+D.CUIIO,
+D.RIND,
+D.COL1,
+SUM(D.COL2) AS COL2 
+
+
+FROM
+  CIS2.VW_DATA_ALL D
+  INNER JOIN CIS2.VW_MD_PERIOADA P ON (D.PERIOADA=P.PERIOADA)   
+WHERE
+  (D.CUIIO=:CUIIO                OR :CUIIO = -1) AND
+  (D.CUIIO_VERS<>:CUIIO_VERS     OR D.CUIIO_VERS=:CUIIO_VERS) AND
+  (D.FORM <> :FORM               OR D.FORM =:FORM) AND
+  (D.FORM_VERS<>:FORM_VERS       OR D.FORM_VERS=:FORM_VERS) AND
+  (D.CAPITOL<>:CAPITOL           OR D.CAPITOL=:CAPITOL) AND
+  (D.CAPITOL_VERS<>:CAPITOL_VERS OR D.CAPITOL_VERS=:CAPITOL_VERS) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  P.PERIOADA_ANULA = :PERIOADA AND
+  D.FORM = 13
+  AND D.CAPITOL = 337
+  AND D.RIND NOT IN ('010','020','030','040','050','060','070','080','090')
+  AND D.NUM = 3
+ 
+  GROUP BY
+  D.CUIIO, 
+  D.RIND,
+  D.COL1 
+HAVING 
+NVAL(D.COL1) + NVAL(SUM(D.COL2)) > 0
+  
+  
+  ) R ON (R.CUIIO = L.CUIIO   AND L.COL1 = R.COL1)    
+   
+  
+  WHERE 
+  1=1
+  
+  GROUP BY
+  L.RIND,
+  R.RIND,
+  L.COL1,
+  R.COL1
+
+  
+  HAVING 
+  NVAL(SUM(NVAL(L.COL2)))  <>   NVAL(SUM(NVAL(R.COL2)))
+  
+  
+ 
+  
+  
+  
+  
