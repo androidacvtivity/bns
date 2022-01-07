@@ -28,8 +28,8 @@ WHERE
   D.CUIIO, 
   D.RIND,
   D.COL1 
-HAVING 
-NVAL(D.COL1) + NVAL(SUM(D.COL2)) > 0 
+--HAVING 
+--NVAL(D.COL1) + NVAL(SUM(D.COL2)) > 0 
  
  
  
