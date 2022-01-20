@@ -1,0 +1,11 @@
+
+
+SELECT 
+  CUIIO,
+  CUIIO_VERS, 
+  DENUMIRE,
+  REPLACE(CUATM,'O','0')  CUATM,
+  CFP,        
+  CFOJ,      
+  CAEM2      
+FROM USER_BANCU.KAT_CAEM2;
