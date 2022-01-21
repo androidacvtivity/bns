@@ -1,7 +1,5 @@
 SELECT
- 
-  
-      'Rind.'|| (CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
+    'Rind.'|| (CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
  
 FROM 
 
@@ -27,8 +25,9 @@ WHERE
   (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
   
   
+  
   AND D.FORM = 57 
-  AND D.CAPITOL IN (1094)
+  AND D.CAPITOL IN (1092)
  
   GROUP BY
   D.CUIIO, 
@@ -62,7 +61,7 @@ WHERE
   (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
   (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
   AND D.FORM=57 
-  AND D.CAPITOL IN 1094            
+  AND D.CAPITOL IN 1092            
   AND D.ID_SCHEMA IN (2) 
   
   
@@ -84,7 +83,7 @@ WHERE
   R.RIND
   
   HAVING 
-  NVAL(SUM(L.COL1)) <>  NVAL(SUM(R.COL1))
+  NVAL(SUM(L.COL1)) <> NVAL(SUM(R.COL1))
   
   
  
