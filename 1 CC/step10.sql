@@ -1,5 +1,5 @@
 ﻿
---
+
 --    INSERT INTO CIS2.RENIM (
 --    
 --      CUIIO,
@@ -29,7 +29,7 @@ SELECT
 --  A.CAEM2   
 
         A.CUIIO,
-        2009  CUIIO_VERS,
+        2010  CUIIO_VERS,
         A.DENUMIRE,        
         0 EDIT_USER,       
        '0' STATUT,          
@@ -40,10 +40,10 @@ SELECT
        '0' TIP,              
         A.CAEM2
 
-FROM USER_BANCU.KAT_1_CC_FINAL A 
+FROM USER_BANCU.KAT_1_CC A 
 
 
             LEFT JOIN CIS2.RENIM R ON R.CUIIO = A.CUIIO AND R.CUIIO_VERS = A.CUIIO_VERS 
             
             WHERE 
-            R.CUIIO IS NULL 
+            R.CUIIO IS NOT NULL 

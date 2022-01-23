@@ -23,7 +23,7 @@
                  C.CFP,
                  C.CAEM2                          --7
  
-  FROM USER_BANCU.KAT_1_CC_FINAL C
+  FROM USER_BANCU.KAT_1_CC C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -33,7 +33,7 @@
                 
                 (
                     SELECT *
-                    FROM USER_BANCU.KAT_1_CC_FINAL C
+                    FROM USER_BANCU.KAT_1_CC C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS

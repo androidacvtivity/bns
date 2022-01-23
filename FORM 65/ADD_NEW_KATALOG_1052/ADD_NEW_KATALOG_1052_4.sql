@@ -1,4 +1,4 @@
-﻿--INSERT INTO  CIS2.RENIM
+--INSERT INTO  CIS2.RENIM
 --
 --(
 --
@@ -77,9 +77,9 @@ SELECT
     GEN_INSTITUTIE,
     IDNO
 
-FROM USER_BANCU.VW_MAX_RENIM_CIS2  
+FROM --USER_BANCU.VW_MAX_RENIM_CIS2  
 --USER_BANCU.VW_MAX_RENIM_299_CIS2
-       --  USER_BANCU.VW_MAX_RENIM_TRIM_CIS2
+         USER_BANCU.VW_MAX_RENIM_TRIM_CIS2
 WHERE 
 
 CUIIO IN (
@@ -88,12 +88,13 @@ SELECT FC.CUIIO
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (12) AND CUIIO_VERS <= :pPERIOADA
+                                  WHERE FORM IN (19) AND CUIIO_VERS <= :pPERIOADA
                                GROUP BY CUIIO) BB
-                       ON (    BB.CUIIO = FC.CUIIO
+                      ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (12) AND FC.STATUT <> '3'
+             WHERE FC.FORM IN (19) AND FC.STATUT <> '3'
+                        AND FC.CUIIO_VERS <>  1052
 ) 
 
 
-AND CUIIO_VERS = 2010
+           

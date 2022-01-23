@@ -1,0 +1,14 @@
+
+
+SELECT *
+
+FROM USER_EREPORTING.CONTROL
+
+    WHERE 
+    
+    FORM = 57 
+    AND PERIOADA = 2010
+    AND REZULTAT <> 'OK'
+    
+    ORDER BY 
+    DATA_REG DESC

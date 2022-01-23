@@ -1,16 +1,16 @@
-﻿INSERT INTO USER_BANCU.KAT_1_CC_FINAL A
-
-(
-
-  A.CUIIO,
-  A.CUIIO_VERS,
-  A.DENUMIRE,
-  A.CUATM,
-  A.CFOJ,
-  A.CFP,
-  A.CAEM2   
-
-)
+﻿--INSERT INTO USER_BANCU.KAT_1_CC_FINAL A
+--
+--(
+--
+--  A.CUIIO,
+--  A.CUIIO_VERS,
+--  A.DENUMIRE,
+--  A.CUATM,
+--  A.CFOJ,
+--  A.CFP,
+--  A.CAEM2   
+--
+--)
 
 
 
@@ -32,17 +32,17 @@ FROM USER_BANCU.KAT_1_CC A
   LEFT JOIN CIS2.VW_CL_CFP CFP ON  (CFP.CODUL = A.CFP)
   
   WHERE 
-  C.CODUL IS NOT  NULL 
+  C.CODUL IS NOT    NULL 
   
   OR  
   
-  CA.CODUL IS  NOT  NULL 
+  CA.CODUL IS  NOT   NULL 
   
   OR  
   
-  CF.CODUL IS   NOT  NULL 
+   CF.CODUL IS   NOT   NULL 
 
 
   OR  
   
-  CFP.CODUL IS   NOT  NULL 
+   CFP.CODUL IS   NOT   NULL 
