@@ -12,7 +12,7 @@
                 
                 SELECT             
                    FC.CUIIO,
-                   2009 CUIIO_VERS,
+                   FC.CUIIO_VERS,
                    FC.FORM,
                    FC.FORM_VERS,
                    FC.STATUT
@@ -32,5 +32,5 @@ SELECT FC.CUIIO,
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
              WHERE FC.FORM IN (12) AND FC.STATUT <> '3'
              
-             AND FC.CUIIO_VERS <> 2009
+            -- AND FC.CUIIO_VERS =  2010
              ) FC 
