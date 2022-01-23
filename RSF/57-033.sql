@@ -17,11 +17,13 @@ WHERE
   
   (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
   (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
-  (D.CUIIO_VERS      = :CUIIO_VERS       OR :CUIIO_VERS = -1)  AND 
+  (:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
   (D.FORM            = :FORM             OR :FORM = -1)        AND 
   (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
-  (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
-  (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
+  (:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
+  (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
+  
+  
   AND D.FORM = 57 
   AND D.CAPITOL IN (1090)
  
