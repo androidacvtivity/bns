@@ -12,7 +12,9 @@
 
 
 
-SELECT             A.CUIIO,
+SELECT             
+
+                   A.CUIIO,
                    A.CUIIO_VERS,
                    12 FORM,
                    2000 FORM_VERS,
