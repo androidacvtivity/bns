@@ -91,3 +91,15 @@
                
                WHERE 
                 R.CAEM2 IS NOT NULL
+                
+                AND R.CUIIO IN (
+
+37717678,
+40996529,
+40882984
+
+
+
+
+
+                )
