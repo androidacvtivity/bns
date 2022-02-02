@@ -1,4 +1,4 @@
-﻿--INSERT INTO CIS2.RENIM (
+--INSERT INTO CIS2.RENIM (
 --        
 --               CUIIO,
 --               CUIIO_VERS,
@@ -33,19 +33,18 @@
 --               TIP_INV,
 --               RENIM_PERS,
 --               ORGANE_COND,
---               GEN_INSTITUTIE,
---               IDNO  
+--               GEN_INSTITUTIE  
 --        
 --        
 --        )     
---
---
---    
+
+
+    
 
 
 
 
-          SELECT 
+                SELECT 
                 
                CUIIO,
                CUIIO_VERS,
@@ -80,10 +79,9 @@
                TIP_INV,
                RENIM_PERS,
                ORGANE_COND,
-               GEN_INSTITUTIE,
-               IDNO  
+               GEN_INSTITUTIE  
                 
-                    FROM USER_BANCU.VW_MAX_RENIM_CIS2
+                    FROM USER_BANCU.VW_MAX_RENIM_TRIM_CIS2
                     
                     
                     
@@ -96,21 +94,15 @@
                     
                      DISTINCT  CUIIO 
                 
-                    FROM USER_BANCU.KATALOG_2_INVEST_ANUL_READY
+                    FROM USER_BANCU.EI_78_1040
                     
                     )
                     
                     
-                   AND 
-                   
-                   CUIIO_VERS =  2010 
-                   
-                   --AND  CUIIO_VERS <> 2011)
-                 
-                 ORDER BY 
-              --   CUIIO,
-                 CUIIO_VERS ASC;
+                   AND CUIIO_VERS IN (1040)
                     
                     
-                  
+                    ORDER BY 
+                    
+                    CUIIO_VERS
                     
