@@ -1,13 +1,11 @@
-SELECT
- 
-  DISTINCT 
-      'Rind.'|| (CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
+﻿SELECT
+DISTINCT 
+  'Rind.'||(CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| SUM(NVAL(L.COL1)) ||' <> '|| SUM(NVAL(R.COL1)) AS REZULTAT
  
 FROM 
 
 
 (
-
 SELECT 
 D.CUIIO,
 D.RIND,
@@ -18,17 +16,17 @@ FROM
       
 WHERE
   
-  (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
-  (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
-  (:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
-  (D.FORM            = :FORM             OR :FORM = -1)        AND 
-  (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
-  (:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
-  (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
-  
-  
-  AND D.FORM = 57 
-  AND D.CAPITOL IN (1094)
+  (D.PERIOADA IN(:PERIOADA-1))AND 
+  (D.CUIIO           = :CUIIO          OR :CUIIO= -1)        AND 
+  (:CUIIO_VERS       = :CUIIO_VERS     OR :CUIIO_VERS   <>  :CUIIO_VERS)  AND 
+  (:FORM             = :FORM           OR :FORM  <>  :FORM )        AND 
+  (:FORM_VERS        = :FORM_VERS      OR :FORM_VERS  <> :FORM_VERS)   AND 
+  (:CAPITOL          = :CAPITOL        OR :CAPITOL  <> :CAPITOL  )   AND 
+  (:CAPITOL_VERS     = :CAPITOL_VERS   OR :CAPITOL_VERS  <> :CAPITOL_VERS) 
+  AND D.FORM = 63 
+  AND D.CAPITOL = 1121
+  AND D.RIND IN ('010', '020', '040', '050', '060', '070')
+
  
   GROUP BY
   D.CUIIO, 
@@ -40,9 +38,9 @@ HAVING
  
  
   ) L LEFT JOIN (
-
-
-SELECT 
+  
+  
+  SELECT 
 D.CUIIO,
 D.RIND,
 SUM(D.COL1) AS COL1 
@@ -62,9 +60,9 @@ WHERE
   (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
   (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
   AND D.FORM=57 
-  AND D.CAPITOL IN 1094            
+  AND D.CAPITOL IN 1092            
   AND D.ID_SCHEMA IN (2) 
-  
+  AND D.RIND IN ('010', '020', '040', '050', '060', '070')
   
  
 
@@ -84,10 +82,9 @@ WHERE
   R.RIND
   
   HAVING 
+  SUM(NVAL(L.COL1))  <>   SUM(NVAL(R.COL1))
   
-  NVAL(SUM(L.COL1)) <>  NVAL(SUM(R.COL1))
-  
-  AND
+ AND
   (
  SELECT
   DISTINCT
@@ -97,28 +94,20 @@ FROM
 WHERE
   (D.PERIOADA IN (:PERIOADA-1)) AND
   (D.CUIIO=:CUIIO OR :CUIIO = -1) AND
-   D.FORM  IN (57)
-   
-   
-   
-   ) IS NOT NULL
-
+   D.FORM  IN (63)) IS NOT NULL
  
-  
-  
+ 
   
   UNION 
   
   SELECT
- 
-  DISTINCT 
-      'Rind.'|| (CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| NVAL(SUM(R.COL1)) ||' <> '|| NVAL(SUM(L.COL1)) AS REZULTAT
+DISTINCT 
+  'Rind.'||(CASE WHEN R.RIND IS NULL THEN L.RIND  ELSE R.RIND END)||':   '|| SUM(NVAL(L.COL1)) ||' <> '|| SUM(NVAL(R.COL1)) AS REZULTAT
  
 FROM 
 
 
 (
-
 SELECT 
 D.CUIIO,
 D.RIND,
@@ -129,17 +118,17 @@ FROM
       
 WHERE
   
-  (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
-  (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
-  (:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
-  (D.FORM            = :FORM             OR :FORM = -1)        AND 
-  (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
-  (:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
-  (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
-  
-  
-  AND D.FORM = 57 
-  AND D.CAPITOL IN (1094)
+  (D.PERIOADA IN(:PERIOADA-1))AND 
+  (D.CUIIO           = :CUIIO          OR :CUIIO= -1)        AND 
+  (:CUIIO_VERS       = :CUIIO_VERS     OR :CUIIO_VERS   <>  :CUIIO_VERS)  AND 
+  (:FORM             = :FORM           OR :FORM  <>  :FORM )        AND 
+  (:FORM_VERS        = :FORM_VERS      OR :FORM_VERS  <> :FORM_VERS)   AND 
+  (:CAPITOL          = :CAPITOL        OR :CAPITOL  <> :CAPITOL  )   AND 
+  (:CAPITOL_VERS     = :CAPITOL_VERS   OR :CAPITOL_VERS  <> :CAPITOL_VERS) 
+  AND D.FORM = 63 
+  AND D.CAPITOL = 1121
+  AND D.RIND IN ('010', '020', '040', '050', '060', '070')
+
  
   GROUP BY
   D.CUIIO, 
@@ -151,9 +140,9 @@ HAVING
  
  
   ) L RIGHT JOIN (
-
-
-SELECT 
+  
+  
+  SELECT 
 D.CUIIO,
 D.RIND,
 SUM(D.COL1) AS COL1 
@@ -173,9 +162,9 @@ WHERE
   (D.CAPITOL         = :CAPITOL          OR :CAPITOL = -1  )   AND 
   (D.CAPITOL_VERS    = :CAPITOL_VERS     OR :CAPITOL_VERS = -1  ) 
   AND D.FORM=57 
-  AND D.CAPITOL IN 1094            
+  AND D.CAPITOL IN 1092            
   AND D.ID_SCHEMA IN (2) 
-  
+  AND D.RIND IN ('010', '020', '040', '050', '060', '070')
   
  
 
@@ -195,8 +184,7 @@ WHERE
   R.RIND
   
   HAVING 
-  NVAL(SUM(L.COL1)) <>  NVAL(SUM(R.COL1))
-  
+ SUM(NVAL(L.COL1))  <>   SUM(NVAL(R.COL1))
   
 AND
   (
@@ -208,12 +196,11 @@ FROM
 WHERE
   (D.PERIOADA IN (:PERIOADA-1)) AND
   (D.CUIIO=:CUIIO OR :CUIIO = -1) AND
-   D.FORM  IN (57)
-   
-   
-   
-   ) IS NOT NULL
+   D.FORM  IN (63)) IS NOT NULL
+  
  
+  
+  
   
   
   

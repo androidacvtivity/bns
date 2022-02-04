@@ -1,21 +1,21 @@
-﻿--INSERT INTO    CIS2.SYS_USER_ACCES
---    (
---  ID_USER,        
---  CUATM,          
---  FORM,           
---  FORM_VERS,      
---  ISADMIN,        
---  ACCES_TYPE,     
---  CAPITOL_ACCES,  
---  DATA_REG       
---  )
---  
+﻿INSERT INTO    CIS2.SYS_USER_ACCES
+    (
+  ID_USER,        
+  CUATM,          
+  FORM,           
+  FORM_VERS,      
+  ISADMIN,        
+  ACCES_TYPE,     
+  CAPITOL_ACCES,  
+  DATA_REG       
+  )
+  
 
 
 
 
 SELECT
-  4 ID_USER,        
+  251 ID_USER,        
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -42,7 +42,7 @@ FROM
   
         WHERE
         
-        ID_USER IN (734)
+        ID_USER IN (463)
         
         ORDER BY FORM
         
@@ -65,7 +65,7 @@ FROM
   
         WHERE
         
-        ID_USER IN (4)
+        ID_USER IN (251)
         
         ) R ON R.FORM = L.FORM
 
