@@ -1,7 +1,7 @@
-
-
-SELECT *
-
+SELECT CONTROL,
+        CUIIO,
+        REZULTAT,    
+        DATA_REG  
 FROM USER_EREPORTING.CONTROL
 
     WHERE 
