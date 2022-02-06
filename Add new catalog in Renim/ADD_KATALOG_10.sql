@@ -1,13 +1,19 @@
-    
-            SELECT 
-             CUIIO,
-              COUNT (CUIIO) AS CNT
-            FROM USER_BANCU.KATALOG_2_INVEST_ANUL_READY
+      SELECT 
+--             CUIIO,
+--             IDNO,
+             CUIIO||'-'||IDNO  AS CNT,
+            COUNT (CUIIO||'-'||IDNO) AS COUNT_
+            FROM --USER_BANCU.KAT_2010_1_INVEST
+                       USER_BANCU.KATALOG_2010
             
             
             GROUP BY 
-            CUIIO
+            CUIIO||'-'||IDNO 
+--            CUIIO,
+--            IDNO
             
             HAVING 
-            
-           COUNT  (CUIIO)  =  1  
+--            
+--           COUNT  (CUIIO)  = 1
+
+COUNT (CUIIO||'-'||IDNO) >= 1

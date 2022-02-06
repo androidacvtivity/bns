@@ -38,9 +38,9 @@
 --        
 --        
 --        )     
---
---
---    
+
+
+    
 
 
 
@@ -96,16 +96,16 @@
                     
                      DISTINCT  CUIIO 
                 
-                    FROM USER_BANCU.KATALOG_2_INVEST_ANUL_READY
+                    FROM USER_BANCU.KAT_2010_1_INVEST
                     
                     )
                     
                     
-                   AND 
-                   
-                   CUIIO_VERS =  2010 
-                   
-                   --AND  CUIIO_VERS <> 2011)
+--                   AND 
+--                   
+                  -- AND (CUIIO_VERS <>  2010 and  CUIIO_VERS <>  2011)  
+--                   
+                 --  AND  CUIIO_VERS  <>  2010
                  
                  ORDER BY 
               --   CUIIO,
