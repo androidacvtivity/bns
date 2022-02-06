@@ -1,16 +1,12 @@
-﻿UPDATE CIS2.RENIM VB
+--UPDATE CIS2.RENIM VB
         
  SET     (
 
  
---                 VB.DENUMIRE,
---                 VB.CUATM,
---                 VB.CFP
---                 
-                 ---------------------------------
+
                   VB.DENUMIRE,
                   VB.CUATM,
-                  VB.CFP.
+                  VB.CFP,
                   VB.CFOJ,
                   VB.CAEM2,
                   VB.IDNO                   
@@ -24,13 +20,13 @@
  
                   C.DENUMIRE,
                   C.CUATM,
-                  C.CFP.
+                  C.CFP,
                   C.CFOJ,
                   C.CAEM2,
                   C.IDNO                   
                                          --7
  
-  FROM USER_BANCU.KAT_4_RSF1 C
+  FROM USER_BANCU.KAT_2010_1_INVEST C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -40,7 +36,7 @@
                 
                 (
                     SELECT *
-                    FROM USER_BANCU.KAT_4_RSF1 C
+                    FROM USER_BANCU.KAT_2010_1_INVEST C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
