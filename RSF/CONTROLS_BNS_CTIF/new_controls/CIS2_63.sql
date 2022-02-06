@@ -8,7 +8,7 @@
             
             WHERE
             D.PERIOADA = 2010
-            AND D.FORM = 57
+            AND D.FORM = 63
             
             GROUP BY
             D.CUIIO

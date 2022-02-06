@@ -14,8 +14,8 @@
 --                    idno
 --            
 --            )
---
---
+
+
 
 
 
@@ -41,7 +41,7 @@
                     
                     
                 
-                    FROM USER_BANCU.KAT_2010_1_INVEST A 
+                    FROM USER_BANCU.KAT_5_CON_1051 A 
                     
                     
                             LEFT JOIN CIS2.RENIM R ON  R.CUIIO = A.CUIIO AND R.CUIIO_VERS = A.CUIIO_VERS 
@@ -49,4 +49,4 @@
                             
                             WHERE 
                             1=1 
-                            AND R.CUIIO IS   NULL
+                            AND R.CUIIO IS   NOT NULL

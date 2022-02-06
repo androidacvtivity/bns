@@ -47,7 +47,7 @@
                     
                     
                         
-                  FROM USER_BANCU.KAT_2010_1_INVEST D
+                  FROM USER_BANCU.KAT_5_CON_1051 D
                   
                   
                             LEFT JOIN CIS2.VW_CL_CAEM2 C ON C.CODUL = D.CAEM2 
