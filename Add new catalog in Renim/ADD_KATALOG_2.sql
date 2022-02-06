@@ -83,7 +83,8 @@
                GEN_INSTITUTIE,
                IDNO  
                 
-                    FROM USER_BANCU.VW_MAX_RENIM_CIS2
+                    FROM --USER_BANCU.VW_MAX_RENIM_CIS2
+                         USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
                     
                     
                     
@@ -96,7 +97,7 @@
                     
                      DISTINCT  CUIIO 
                 
-                    FROM USER_BANCU.KAT_2010_1_INVEST
+                    FROM USER_BANCU.KAT_5_CON_1051
                     
                     )
                     

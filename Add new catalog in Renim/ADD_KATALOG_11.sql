@@ -1,21 +1,21 @@
 
-INSERT INTO CIS2.FORM_CUIIO (
-                    CUIIO,
-                    CUIIO_VERS,
-                    FORM,
-                    FORM_VERS,
-                    STATUT 
-)
+--INSERT INTO CIS2.FORM_CUIIO (
+--                    CUIIO,
+--                    CUIIO_VERS,
+--                    FORM,
+--                    FORM_VERS,
+--                    STATUT 
+--)
 
 
 SELECT 
                     L.CUIIO,
                     L.CUIIO_VERS,
-                    67 FORM,
-                    2000 FORM_VERS,
+                    18 FORM,
+                    1004 FORM_VERS,
                     '1'   STATUT 
                 
-                    FROM USER_BANCU.KAT_2010_1_INVEST L
+                    FROM USER_BANCU.KAT_5_CON_1051 L
                     
                                 LEFT   JOIN (
                                 
@@ -62,7 +62,7 @@ SELECT
                                 
                                 
                                 WHERE 
-                                R.CUIIO IS  NULL
+                                R.CUIIO IS NOT  NULL
                                 
                       
                                      
