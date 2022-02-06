@@ -1,14 +1,14 @@
-INSERT INTO  USER_BANCU.KATALOG_2_INVEST_ANUL_READY
-(
-   
-                    CUIIO,
-                    CUIIO_VERS,
-                    DENUMIRE,
-                    CUATM,
-                    CAEM2,
-                    CFP,
-                    CFOJ
-)
+--INSERT INTO  USER_BANCU.KATALOG_2_INVEST_ANUL_READY
+--(
+--   
+--                    CUIIO,
+--                    CUIIO_VERS,
+--                    DENUMIRE,
+--                    CUATM,
+--                    CAEM2,
+--                    CFP,
+--                    CFOJ
+--)
 
 
                
@@ -47,7 +47,7 @@ INSERT INTO  USER_BANCU.KATALOG_2_INVEST_ANUL_READY
                     
                     
                         
-                  FROM USER_BANCU.KATALOG_2_INVEST_ANUL D
+                  FROM USER_BANCU.KAT_2010_1_INVEST D
                   
                   
                             LEFT JOIN CIS2.VW_CL_CAEM2 C ON C.CODUL = D.CAEM2 
@@ -72,21 +72,21 @@ INSERT INTO  USER_BANCU.KATALOG_2_INVEST_ANUL_READY
                    
                    WHERE 
                    
-                   C.CODUL IS NOT  NULL
+                    C.CODUL IS    NULL
                    
                    AND 
                    
-                   CA.CODUL IS NOT  NULL
+                   CA.CODUL IS   NULL
                    
                    AND 
                    
-                   CF.CODUL IS NOT  NULL
+                   CF.CODUL IS   NULL
 
                    
                    
---                      AND 
---                   
---                   CFJ.CODUL IS  NULL 
+                      AND 
+                  
+                   CFJ.CODUL IS   NULL 
 
 
 
