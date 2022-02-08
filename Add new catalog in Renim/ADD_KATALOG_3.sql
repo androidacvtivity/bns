@@ -47,7 +47,7 @@
                     
                     
                         
-                  FROM USER_BANCU.KAT_5_CON_1051 D
+                  FROM USER_BANCU.KAT_RSF2_2010 D
                   
                   
                             LEFT JOIN CIS2.VW_CL_CAEM2 C ON C.CODUL = D.CAEM2 
@@ -72,21 +72,21 @@
                    
                    WHERE 
                    
-                    C.CODUL IS    NULL
+                    C.CODUL IS  NOT   NULL
                    
                    AND 
                    
-                   CA.CODUL IS   NULL
+                   CA.CODUL IS NOT   NULL
                    
                    AND 
                    
-                   CF.CODUL IS   NULL
+                   CF.CODUL IS NOT   NULL
 
                    
                    
                       AND 
                   
-                   CFJ.CODUL IS   NULL 
+                   CFJ.CODUL IS  NOT  NULL 
 
 
 
