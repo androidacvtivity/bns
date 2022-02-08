@@ -38,7 +38,7 @@
 --        
 --        
 --        )     
-
+--
 
     
 
@@ -83,8 +83,8 @@
                GEN_INSTITUTIE,
                IDNO  
                 
-                    FROM --USER_BANCU.VW_MAX_RENIM_CIS2
-                         USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
+                    FROM  USER_BANCU.VW_MAX_RENIM_CIS2
+                       --  USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
                     
                     
                     
@@ -97,7 +97,7 @@
                     
                      DISTINCT  CUIIO 
                 
-                    FROM USER_BANCU.KAT_5_CON_1051
+                    FROM USER_BANCU.KAT_RSF2_2010
                     
                     )
                     
@@ -106,7 +106,7 @@
 --                   
                   -- AND (CUIIO_VERS <>  2010 and  CUIIO_VERS <>  2011)  
 --                   
-                 --  AND  CUIIO_VERS  <>  2010
+                   AND  CUIIO_VERS  =   2010
                  
                  ORDER BY 
               --   CUIIO,
