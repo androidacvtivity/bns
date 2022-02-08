@@ -26,7 +26,7 @@
                   C.IDNO                   
                                          --7
  
-  FROM USER_BANCU.KAT_2010_1_INVEST C
+  FROM USER_BANCU.KAT_RSF2_2010 C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -36,7 +36,7 @@
                 
                 (
                     SELECT *
-                    FROM USER_BANCU.KAT_2010_1_INVEST C
+                    FROM USER_BANCU.KAT_RSF2_2010 C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
