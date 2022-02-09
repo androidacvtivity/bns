@@ -34,4 +34,4 @@ SELECT
             
             WHERE
             1=1 
-            
+          --  AND FC.CUIIO_VERS =  1052

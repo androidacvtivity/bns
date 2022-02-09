@@ -11,11 +11,11 @@
 SELECT 
                     L.CUIIO,
                     L.CUIIO_VERS,
-                    59 FORM,
-                    2000 FORM_VERS,
+                    44 FORM,
+                    1004 FORM_VERS,
                     '1'   STATUT 
                 
-                    FROM USER_BANCU.KAT_RSF2_2010 L
+                    FROM USER_BANCU.KAT_EI_78_1052_V1 L
                     
                                 LEFT   JOIN (
                                 
@@ -62,7 +62,7 @@ SELECT
                                 
                                 
                                 WHERE 
-                                R.CUIIO IS NOT    NULL
+                                R.CUIIO IS NOT NULL
                                 
                       
                                      
