@@ -4,7 +4,7 @@
              CUIIO||'-'||IDNO  AS CNT,
             COUNT (CUIIO||'-'||IDNO) AS COUNT_
             FROM --USER_BANCU.KAT_2010_1_INVEST
-                       USER_BANCU.KAT_5_CON_1051
+                       USER_BANCU.KAT_EI_78_1052
             
             
             GROUP BY 
@@ -16,4 +16,4 @@
 --            
 --           COUNT  (CUIIO)  = 1
 
-COUNT (CUIIO||'-'||IDNO) > 1
+COUNT (CUIIO||'-'||IDNO) =  1

@@ -1,23 +1,25 @@
-SELECT *
-
-       FROM CIS2.FORM_CUIIO 
+--SELECT *
+--
+--       FROM CIS2.FORM_CUIIO 
        
---       UPDATE  CIS2.FORM_CUIIO
---       
---         SET STATUT = '3'
-        
+       UPDATE  CIS2.FORM_CUIIO
+       
+         SET STATUT = '3'
+--        
             WHERE 
-            FORM = 8
-            AND FORM_VERS = 2000
-            AND CUIIO_VERS = 2010
+            FORM = 44
+            AND FORM_VERS = 1004
+            AND CUIIO_VERS = 1052
             AND STATUT = '1'
             AND 
             CUIIO IN (
             SELECT 
                     R.CUIIO
-                  
+                    
+-- R_CUIIO,
+--                    L.CUIIO L_CUIIO
                 
-                    FROM USER_BANCU.KATALOG_2_INVEST_ANUL_READY L
+                    FROM USER_BANCU.KAT_EI_78_1052_V1 L
                     
                                 RIGHT  JOIN (
                                 
@@ -69,7 +71,7 @@ SELECT *
                                 
                                 
                                 WHERE 
-                                L.CUIIO IS NOT  NULL
+                                L.CUIIO IS  NULL
                                 
                       
 --AND 

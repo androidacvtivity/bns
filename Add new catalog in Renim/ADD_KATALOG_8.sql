@@ -34,14 +34,7 @@
                     A.CAEM2,
                     A.IDNO
                     
-                   
-               
- 
-  
-                    
-                    
-                
-                    FROM USER_BANCU.KAT_RSF2_2010 A 
+                    FROM USER_BANCU.KAT_EI_78_1052_V1 A 
                     
                     
                             LEFT JOIN CIS2.RENIM R ON  R.CUIIO = A.CUIIO AND R.CUIIO_VERS = A.CUIIO_VERS 
@@ -49,4 +42,4 @@
                             
                             WHERE 
                             1=1 
-                            AND R.CUIIO IS  NOT   NULL
+                            AND R.CUIIO IS NOT NULL;
