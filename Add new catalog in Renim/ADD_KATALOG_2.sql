@@ -83,8 +83,8 @@
                GEN_INSTITUTIE,
                IDNO  
                 
-                    FROM  USER_BANCU.VW_MAX_RENIM_CIS2
-                       --  USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
+                    FROM -- USER_BANCU.VW_MAX_RENIM_CIS2
+                          USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
                     
                     
                     
@@ -93,11 +93,40 @@
                     CUIIO IN (
                     
                     
-                    SELECT 
-                    
-                     DISTINCT  CUIIO 
-                
-                    FROM USER_BANCU.KAT_RSF2_2010
+                 
+SELECT 
+                  FC.CUIIO
+               
+                  
+             FROM (
+SELECT 
+                  FC.CUIIO,
+                  FC.CUIIO_VERS,
+                  FC.FORM,
+                  FC.FORM_VERS,
+                  FC.STATUT
+                  
+             FROM CIS2.FORM_CUIIO FC
+                  INNER JOIN (  SELECT CUIIO, 
+                                      MAX (CUIIO_VERS) CUIIO_VERS,
+                                      MAX (FORM_VERS)  form_VERS
+                                  FROM CIS2.FORM_CUIIO
+                                 WHERE FORM IN (:pFORM) AND CUIIO_VERS <= :pPERIOADA
+                                 AND FORM_VERS in (:pFORM_VERS)
+                              GROUP BY CUIIO
+                              
+                              ) BB
+                     ON (BB.CUIIO = FC.CUIIO
+                         AND BB.CUIIO_VERS = FC.CUIIO_VERS and  BB.FORM_VERS = FC.form_VERS )
+            WHERE 
+            FC.FORM IN (:pFORM) 
+            AND FC.FORM_VERS in (:pFORM_VERS)
+            
+            AND FC.STATUT <> '3' ) FC 
+            
+            WHERE
+            1=1 
+           -- AND FC.CUIIO_VERS <> 1052
                     
                     )
                     
@@ -106,7 +135,7 @@
 --                   
                   -- AND (CUIIO_VERS <>  2010 and  CUIIO_VERS <>  2011)  
 --                   
-                   AND  CUIIO_VERS  =   2010
+                  AND  CUIIO_VERS  =   1052
                  
                  ORDER BY 
               --   CUIIO,
