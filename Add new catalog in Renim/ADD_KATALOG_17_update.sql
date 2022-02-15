@@ -1,4 +1,4 @@
-UPDATE CIS.RENIM VB
+UPDATE CIS2.RENIM VB
         
  SET     (
 
@@ -6,8 +6,8 @@ UPDATE CIS.RENIM VB
 
                   --VB.DENUMIRE,
                  -- VB.CUATM
-                  VB.CFP
-                 -- VB.CFOJ,
+                --  VB.CFP
+                 VB.CFOJ 
                   --VB.CAEM2,
                   --VB.IDNO                   
                                        --7
@@ -20,16 +20,19 @@ UPDATE CIS.RENIM VB
  
                   --C.DENUMIRE,
                   --C.CUATM
-                  C.CFP
-                 -- C.CFOJ,
+               --   C.CF
+               
+                 C.CFOJ
                   --C.CAEM2,
                   --C.IDNO                   
                                          --7
  
-  FROM USER_BANCU.PRODMOLD_2010 C
+  FROM USER_BANCU."29_AGRO_1052" C
        WHERE
-                   C.CUATM IS NOT NULL
-                   AND  VB.CUIIO       = C.CUIIO AND 
+--                   C.CUATM IS NOT NULL
+--                   AND  
+                   
+                   VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
                    
                 )   
@@ -37,12 +40,14 @@ UPDATE CIS.RENIM VB
                 
                 (
                     SELECT C.*
-                    FROM USER_BANCU.PRODMOLD_2010 C
+                    FROM USER_BANCU."29_AGRO_1052" C
                    WHERE
                    
 
-                   C.CFP IS NOT NULL
-
-                   AND VB.CUIIO       = C.CUIIO AND 
+--                   C.CFP IS NOT NULL
+--
+--                   AND 
+                   
+                   VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
                 );
