@@ -1,38 +1,24 @@
-﻿
+UPDATE USER_BANCU."UPDATE"
 
-        UPDATE CIS.RENIM R 
-        
-        SET (
-        
-        R.CAEM2 
-        
-        )
-        
-         = 
-         (
-         
-           SELECT 
-             VB.CAEM2 
-              
-              FROM USER_BANCU.VW_PRODMOLD_2006 VB 
-              
-              WHERE 
-              VB.CUIIO        = R.CUIIO AND 
-              VB.CUIIO_VERS   = R.CUIIO_VERS  
-              
-              
-        )
-        
-        WHERE EXISTS   
-        
-         (
-         
-         SELECT  * 
-             
-              
-              FROM USER_BANCU.VW_PRODMOLD_2006 VB 
-              
-              WHERE 
-              VB.CUIIO        = R.CUIIO AND 
-              VB.CUIIO_VERS   = R.CUIIO_VERS  
-         );
+SET CUATM = CASE WHEN (LENGTH(CUATM) = 6 AND (SUBSTR(CUATM,1,1) = 1  OR SUBSTR(CUATM,1,1) = 3 )) THEN '0'||CUATM ELSE CUATM END;
+
+
+
+
+SELECT *
+FROM USER_BANCU."UPDATE";
+
+
+;
+
+UPDATE  USER_BANCU."UPDATE" 
+
+SET CUIIO_VERS = 2010;
+
+
+SELECT *
+FROM USER_BANCU."UPDATE"
+
+WHERE 
+
+CUATM IS NOT NULL
