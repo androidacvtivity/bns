@@ -1,5 +1,7 @@
 ﻿SELECT 
       L.CONTROL,
+      L.CONTROL_VERS,
+      L.CAPITOL,
       L.FORMULA,
       L.PRIORITATEA,
       L.STATUT
@@ -11,6 +13,8 @@
 ( 
 SELECT 
       B.CONTROL,
+      B.CONTROL_VERS,
+      B.CAPITOL,
       B.FORMULA,
       B.PRIORITATEA,
       B.STATUT
@@ -27,7 +31,7 @@ SELECT
         
          WHERE
          1=1
-         AND A.FORM  = 3
+         AND A.FORM  = 47
                
          GROUP BY 
           A.CONTROL
@@ -40,7 +44,7 @@ SELECT
         
          WHERE
          1=1
-         AND B.FORM  = 3
+         AND B.FORM  = 47
          AND B.STATUT <> '3'
                
          

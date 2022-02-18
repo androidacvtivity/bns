@@ -12,30 +12,28 @@ D.RIND,
 SUM(D.COL2) AS COL1 
 FROM
 
-     CIS2.VW_DATA_ALL_FR  D 
+     CIS2.VW_DATA_ALL_FR D 
       
 WHERE
   
   (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
   (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
-  (:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
+  --(:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
   (D.FORM            = :FORM             OR :FORM = -1)        AND 
   (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
-  (:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
-  (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
+  --(:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
+  --(:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
   
   
   
-  AND D.FORM = 57 
+  --AND 
+  D.FORM = 57 
   AND D.CAPITOL IN (1092)
  
   GROUP BY
   D.CUIIO, 
   D.RIND 
  
-HAVING  
-  
- D.CUIIO IS NOT NULL
  
  
   ) L LEFT JOIN (
@@ -75,8 +73,6 @@ WHERE
   ) R ON (R.CUIIO = L.CUIIO   AND L.RIND = R.RIND) -- AND L.COL1 = R.COL1)   
    
   
-  WHERE 
-  1=1
   
   GROUP BY
   L.RIND,
@@ -91,7 +87,7 @@ AND
   DISTINCT
   D.CUIIO
 FROM
-  CIS2.VW_DATA_ALL_FR  D
+  CIS2.DATA_ALL_FR D
 WHERE
   (D.PERIOADA IN (:PERIOADA-1)) AND
   (D.CUIIO=:CUIIO OR :CUIIO = -1) AND
@@ -119,30 +115,31 @@ D.RIND,
 SUM(D.COL2) AS COL1 
 FROM
 
-     CIS2.VW_DATA_ALL_FR_TEMP  D 
+     CIS2.VW_DATA_ALL_FR D 
       
 WHERE
   
   (D.PERIOADA        = :PERIOADA -1          OR :PERIOADA = -1) AND
   (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
-  (:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
+--  (:CUIIO_VERS      = :CUIIO_VERS        OR :CUIIO_VERS      <> :CUIIO_VERS)  AND 
   (D.FORM            = :FORM             OR :FORM = -1)        AND 
   (D.FORM_VERS       = :FORM_VERS        OR :FORM_VERS = -1)   AND 
-  (:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
-  (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
+ -- (:CAPITOL         = :CAPITOL           OR :CAPITOL  <> :CAPITOL )   AND 
+ -- (:CAPITOL_VERS    = :CAPITOL_VERS      OR :CAPITOL_VERS    <> :CAPITOL_VERS  ) 
   
   
   
-  AND D.FORM = 57 
+  --AND 
+  D.FORM = 57 
   AND D.CAPITOL IN (1092)
  
   GROUP BY
   D.CUIIO, 
   D.RIND 
  
-HAVING  
-  
- D.CUIIO IS NOT NULL
+--HAVING  
+--  
+-- D.CUIIO IS NOT NULL
  
  
   ) L RIGHT JOIN (
@@ -182,8 +179,8 @@ WHERE
   ) R ON (R.CUIIO = L.CUIIO   AND L.RIND = R.RIND) -- AND L.COL1 = R.COL1)   
    
   
-  WHERE 
-  1=1
+--  WHERE 
+--  1=1
   
   GROUP BY
   L.RIND,
@@ -198,7 +195,7 @@ WHERE
   DISTINCT
   D.CUIIO
 FROM
-  CIS2.VW_DATA_ALL_FR_TEMP  D
+  CIS2.DATA_ALL_FR D
 WHERE
   (D.PERIOADA IN (:PERIOADA-1)) AND
   (D.CUIIO=:CUIIO OR :CUIIO = -1) AND

@@ -1,21 +1,21 @@
---INSERT INTO    CIS.SYS_USER_ACCES
---    (
---  ID_USER,        
---  CUATM,          
---  FORM,           
---  FORM_VERS,      
---  ISADMIN,        
---  ACCES_TYPE,     
---  CAPITOL_ACCES,  
---  DATA_REG       
---  )
---  
+INSERT INTO    CIS2.SYS_USER_ACCES
+    (
+  ID_USER,        
+  CUATM,          
+  FORM,           
+  FORM_VERS,      
+  ISADMIN,        
+  ACCES_TYPE,     
+  CAPITOL_ACCES,  
+  DATA_REG       
+  )
+  
 
 
 
 
 SELECT
-  1203 ID_USER,        
+  619 ID_USER,        
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -37,12 +37,12 @@ FROM
   CAPITOL_ACCES,  
   DATA_REG 
   
-     FROM CIS.SYS_USER_ACCES
+     FROM CIS2.SYS_USER_ACCES
   
   
         WHERE
         
-        ID_USER IN (620) 
+        ID_USER IN (59) 
         
         ORDER BY FORM
         
@@ -60,12 +60,12 @@ FROM
   CAPITOL_ACCES,  
   DATA_REG 
   
-     FROM CIS.SYS_USER_ACCES
+     FROM CIS2.SYS_USER_ACCES
   
   
         WHERE
         
-        ID_USER IN (1203)
+        ID_USER IN (619)
         
         ) R ON R.FORM = L.FORM
 
