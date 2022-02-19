@@ -4,10 +4,10 @@ UPDATE CIS2.RENIM VB
 
  
 
-                  --VB.DENUMIRE,
-                 -- VB.CUATM
-                --  VB.CFP
-                 VB.CFOJ 
+                  VB.DENUMIRE,
+                  VB.CUATM,
+                  VB.CFP,
+                  VB.CFOJ 
                   --VB.CAEM2,
                   --VB.IDNO                   
                                        --7
@@ -18,16 +18,17 @@ UPDATE CIS2.RENIM VB
   SELECT 
 
  
-                  --C.DENUMIRE,
-                  --C.CUATM
-               --   C.CF
-               
-                 C.CFOJ
+                  C.DENUMIRE,
+                  C.CUATM,
+                  C.CFP,
+                  C.CFOJ
+                  
+                  
                   --C.CAEM2,
                   --C.IDNO                   
                                          --7
  
-  FROM USER_BANCU."29_AGRO_1052" C
+  FROM USER_BANCU."UPDATE" C
        WHERE
 --                   C.CUATM IS NOT NULL
 --                   AND  
@@ -40,7 +41,9 @@ UPDATE CIS2.RENIM VB
                 
                 (
                     SELECT C.*
-                    FROM USER_BANCU."29_AGRO_1052" C
+                    FROM USER_BANCU."UPDATE" C
+                    
+                    
                    WHERE
                    
 

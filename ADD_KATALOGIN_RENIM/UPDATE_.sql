@@ -2,14 +2,16 @@
         
  SET     (
 
+
+
+                   VB.DENUMIRE
+                  -- VB.CUATM,
+                   --VB.CFP,
+                  -- VB.CFOJ
  
---                 VB.DENUMIRE,
---                 VB.CUATM,
---                 VB.CFP
---                 
-                 ---------------------------------
+                ---------------------------------
                   --VB.DENUMIRE,
-                    VB.CFP
+                    --VB.CFP
                    -- VB.CFP
 --                  VB.CFOJ,
 --                  VB.CAEM2,
@@ -22,19 +24,19 @@
   SELECT 
 
  
-               --   C.DENUMIRE,
-                   C.CFP
-                  --C.CFP
---                  C.CFOJ,
+                   C.DENUMIRE
+                   --C.CUATM,
+                   --C.CFP,
+                   --C.CFOJ
 --                  C.CAEM2,
 --                  C.IDNO                   
                                          --7
  
   FROM USER_BANCU."UPDATE" C
        WHERE
-       C.CFP IS NOT NULL 
+      -- C.CFP IS NOT NULL 
        
-       AND 
+    --   AND 
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
                    
@@ -43,13 +45,14 @@
                 
                 (
                     
-                    SELECT *
+                    SELECT C.*
                     FROM USER_BANCU."UPDATE" C
                     WHERE
                    
-                     C.CFP IS NOT NULL
+                  --   C.CFP IS NOT NULL
                    
                    
-                   AND VB.CUIIO   = C.CUIIO AND 
+                   --AND 
+                   VB.CUIIO   = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
                 );
