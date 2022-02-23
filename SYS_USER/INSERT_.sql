@@ -1,0 +1,65 @@
+--
+--insert INTO CIS2.SYS_USER_ACCES (
+--  ID_USER, 
+--  CUATM,
+--  FORM,
+--  FORM_VERS,
+--  ISADMIN,
+--  ACCES_TYPE,     
+--  CAPITOL_ACCES,
+--  DATA_REG    
+--
+--
+--)
+
+
+select 
+  
+  L.ID_USER, 
+  l.CUATM,
+  44 FORM,
+  l.FORM_VERS,
+  L.ISADMIN,
+  L.ACCES_TYPE,     
+  l.CAPITOL_ACCES,
+  SYSDATE DATA_REG    
+
+FROM
+(
+SELECT L.*
+FROM CIS2.SYS_USER_ACCES L
+
+WHERE 
+
+
+ID_USER IN (
+
+209,
+1230,
+1289,
+1273,
+1212
+)
+AND FORM = 13 ) l LEFT JOIN (
+
+SELECT L.*
+FROM CIS2.SYS_USER_ACCES L
+
+WHERE 
+
+
+ID_USER IN (
+
+209,
+1230,
+1289,
+1273,
+1212
+)
+AND FORM = 44 
+
+)  R on R.id_USER = l.ID_USER 
+
+wHERE 
+
+R.ID_USER is null
