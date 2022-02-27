@@ -1,23 +1,5 @@
---
---INSERT INTO CIS2.FORM_CUIIO (
---                    CUIIO,
---                    CUIIO_VERS,
---                    FORM,
---                    FORM_VERS,
---                    STATUT 
---)
-
 
 SELECT 
-                    FC.CUIIO,
-                    2010 CUIIO_VERS,
-                    67  FORM,
-                    2000 FORM_VERS,
-                    '1'   STATUT 
-                    FROM
-(
-                                
-           SELECT 
                   FC.CUIIO,
                   FC.CUIIO_VERS,
                   FC.FORM,
@@ -52,13 +34,4 @@ SELECT
             
             WHERE
             1=1 
-            
-            
-AND FC.CUIIO_VERS <> 2010
-) FC 
-
-
-            
-                                
-                      
-                                     
+            AND FC.CUIIO_VERS <>  2010 --84573

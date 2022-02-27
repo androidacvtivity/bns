@@ -1,0 +1,32 @@
+DECLARE -- ====================================================================
+
+CURSOR C IS
+
+SELECT 
+D.PERIOADA,
+D.FORM,
+D.FORM_VERS,
+D.CUIIO,
+D.CUIIO_VERS 
+FROM DATA_ALL_FR_TEST D
+
+WHERE 
+D.PERIOADA = 2010 AND 
+D.FORM = 63 AND 
+D.FORM_VERS = 2000 AND
+D.CUIIO_VERS <> 2010
+;
+
+BEGIN -- ======================================================================
+FOR CR IN C
+LOOP
+UPDATE DATA_ALL_FR_TEST SET
+CUIIO_VERS = 2010
+WHERE
+CUIIO = CR.CUIIO  AND 
+CUIIO_VERS =  CR.CUIIO_VERS AND 
+PERIOADA  = CR.PERIOADA AND 
+FORM = CR.FORM AND 
+FORM_VERS = CR.FORM_VERS ;
+END LOOP;
+END; 

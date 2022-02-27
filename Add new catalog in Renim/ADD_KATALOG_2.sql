@@ -1,5 +1,52 @@
-﻿INSERT INTO CIS2.RENIM (
-        
+﻿--INSERT INTO CIS2.RENIM (
+--        
+--               CUIIO,
+--               CUIIO_VERS,
+--               DENUMIRE,
+--               EDIT_USER,
+--               STATUT,
+--               CUATM,
+--               CFP,
+--               CFOJ,
+--               COCM,
+--               CAEM,
+--               BUGET,
+--               TIP,
+--               PROD,
+--               FOR_CUB,
+--               GENMUZEE,
+--               TIPMUZEE,
+--               TIP_LOCAL,
+--               TIP_INST,
+--               CAEM2,
+--               N85_NTL,
+--               N85_NTIIP,
+--               N85_NDIIP,
+--               N85_NPDS,
+--               N85_NRIIP,
+--               N85_NSIIP,
+--               GENMUZEE2,
+--               NFI,
+--               NTII,
+--               NPDS,
+--               ORGANE,
+--               TIP_INV,
+--               RENIM_PERS,
+--               ORGANE_COND,
+--               GEN_INSTITUTIE,
+--               IDNO  
+--        
+--        
+--        )     
+
+
+    
+
+
+
+
+          SELECT 
+                
                CUIIO,
                CUIIO_VERS,
                DENUMIRE,
@@ -35,56 +82,9 @@
                ORGANE_COND,
                GEN_INSTITUTIE,
                IDNO  
-        
-        
-        )     
-
-
-    
-
-
-
-
-          SELECT 
                 
-               CUIIO,
-               1051 CUIIO_VERS,
-               DENUMIRE,
-               EDIT_USER,
-               STATUT,
-               CUATM,
-               CFP,
-               CFOJ,
-               COCM,
-               CAEM,
-               BUGET,
-               TIP,
-               PROD,
-               FOR_CUB,
-               GENMUZEE,
-               TIPMUZEE,
-               TIP_LOCAL,
-               TIP_INST,
-               CAEM2,
-               N85_NTL,
-               N85_NTIIP,
-               N85_NDIIP,
-               N85_NPDS,
-               N85_NRIIP,
-               N85_NSIIP,
-               GENMUZEE2,
-               NFI,
-               NTII,
-               NPDS,
-               ORGANE,
-               TIP_INV,
-               RENIM_PERS,
-               ORGANE_COND,
-               GEN_INSTITUTIE,
-               IDNO  
-                
-                    FROM -- USER_BANCU.VW_MAX_RENIM_CIS2
-                          USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
+                    FROM  USER_BANCU.VW_MAX_RENIM_CIS2
+                         -- USER_BANCU.VW_MAX_RENIM_TRIM_CIS2 
                     
                     
                     
@@ -93,79 +93,11 @@
                     
 CUIIO IN (
 
-
-
-SELECT 
-                  FC.CUIIO
-                  FROM
-
-
-(
-
-
-SELECT 
-                  FC.CUIIO,
-                  FC.CUIIO_VERS,
-                  FC.FORM,
-                  FC.FORM_VERS,
-                  FC.STATUT
-                  
-             FROM (
-SELECT 
-                  FC.CUIIO,
-                  FC.CUIIO_VERS,
-                  FC.FORM,
-                  FC.FORM_VERS,
-                  FC.STATUT
-                  
-             FROM CIS2.FORM_CUIIO FC
-                  INNER JOIN (  SELECT CUIIO, 
-                                      MAX (CUIIO_VERS) CUIIO_VERS,
-                                      MAX (FORM_VERS)  form_VERS
-                                  FROM CIS2.FORM_CUIIO
-                                 WHERE FORM IN (:pFORM) AND CUIIO_VERS <= :pPERIOADA
-                                 AND FORM_VERS in (:pFORM_VERS)
-                              GROUP BY CUIIO
-                              
-                              ) BB
-                     ON (BB.CUIIO = FC.CUIIO
-                         AND BB.CUIIO_VERS = FC.CUIIO_VERS and  BB.FORM_VERS = FC.form_VERS )
-            WHERE 
-            FC.FORM IN (:pFORM) 
-            AND FC.FORM_VERS in (:pFORM_VERS)
-            
-            AND FC.STATUT <> '3' ) FC 
-            
-            WHERE
-            1=1 
-          --  AND FC.CUIIO_VERS =  1052
-            AND FC.CUIIO IN (
-            
-
-
-
-        SELECT 
-        
-        CUIIO 
-        
-        FROM USER_BANCU."_5_CON_1052"
-            
-            )
-          
-          ) FC
-
-                    
-                    )
-                    
-                    
-          -- AND  CUIIO)VERS = 2                  
-              --    AND (CUIIO_VERS <>  2010 and  CUIIO_VERS <>  2011)  
-----                   
-         --AND  CUIIO_VERS  <>  1052
---                 
-                 ORDER BY 
-              --   CUIIO,
-                 CUIIO_VERS ASC;
+SELECT CUIIO
+FROM USER_BANCU.KAT_2010_1_INVEST
+)
+ AND (CUIIO_VERS <>  2010 AND  CUIIO_VERS <>  2011)  
+ 
                     
                     
                   
