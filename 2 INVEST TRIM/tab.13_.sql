@@ -58,25 +58,21 @@
                
                THEN
                
-               ROUND((D.COL7 / P.COL2) * 100,1)
+               ROUND((D.COL7 / P.COL3) * 100,1)
                
                
                WHEN D.NR_ROW IN ('441','440','450')
                
                THEN
                
-               ROUND((D.COL7 / P.COL3) * 100,1)
+               ROUND((D.COL7 / P.COL2) * 100,1)
                
                
               
                
                ELSE NULL
                
-               END AS COL7,
-               
-               NULL as COL8,
-               null AS col9
-               
+               END AS COL7
                   FROM 
 
 (
@@ -100,9 +96,7 @@ SUM(CASE WHEN D.PERIOADA IN :pPERIOADA-4 AND  R.RIND =  MR.RIND THEN D.COL2 ELSE
 
 
 SUM(CASE WHEN D.PERIOADA IN :pPERIOADA AND  R.RIND =  MR.RIND THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END)  /
- CIS.NOZERO(SUM(CASE WHEN D.PERIOADA IN :pPERIOADA - 4 AND  MR.RIND =  R.RIND THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END)) AS COL7,
-  null AS col8,
-  null AS C
+ CIS.NOZERO(SUM(CASE WHEN D.PERIOADA IN :pPERIOADA - 4 AND  MR.RIND =  R.RIND THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END)) AS COL7
   
 
              
@@ -128,79 +122,6 @@ FROM
       RIND_VERS =  1040 AND
       STATUT = '1'  
     
-
-
-UNION 
-
-SELECT 
-             R.RIND AS NR_ROW,
-             R.ORDINE AS ORDINE,
-         
-             R.DENUMIRE AS NUME_ROW,
-
-NULL AS COL1,
-NULL AS COL2,
-NULL AS COL3,
-NULL AS COL4,
-NULL AS COL5,
-NULL AS COL6,
-NULL AS COL7,
- 
-SUM(CASE WHEN D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA AND R.RIND =  MR.RIND THEN D.COL1 ELSE 0 END)/
-   
-  NOZERO(SUM(CASE WHEN D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4 AND R.RIND =  MR.RIND THEN D.COL1 ELSE 0 END)) AS COL8,
-  
-  
-  SUM(CASE WHEN D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA AND R.RIND =  MR.RIND THEN D.COL2 ELSE 0 END)/
-   
-  NOZERO(SUM(CASE WHEN D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4 AND R.RIND =  MR.RIND THEN D.COL2 ELSE 0 END)) AS COL9
-
-FROM 
-  CIS.DATA_ALL D
-   INNER JOIN CIS.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
-   INNER JOIN CIS.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
-   INNER JOIN CIS.VW_CL_CUATM C ON C.CODUL = RR.CUATM
-  CROSS JOIN (
-  SELECT   
-    
-     DENUMIRE,
-     RIND,
-     ORDINE
-    FROM 
-     CIS.MD_RIND
-  
-   WHERE
-     CAPITOL = 31 AND    
-      RIND NOT IN ('-') AND
-      RIND_VERS =  1040 AND
-      STATUT = '1'  
-    
-      ) R     
-      
-           
-WHERE
- (D.FORM=:pFORM) AND
- (D.FORM_VERS=:pFORM_VERS) AND
- (:pID_MDTABLE=:pID_MDTABLE) AND
- (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND   
-  (
-  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)
-  OR 
-  (D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4)
-  )
-  
-  
-  
-  
-  AND
-  D.FORM = 6 AND
-  MR.CAPITOL = 31
-  GROUP BY
-    R.DENUMIRE,
-    R.RIND,
-    R.ORDINE 
-
-
       ) R     
       
            

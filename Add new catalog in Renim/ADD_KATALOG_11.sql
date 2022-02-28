@@ -10,52 +10,67 @@
 
 SELECT 
                     FC.CUIIO,
-                    2010 CUIIO_VERS,
-                    67  FORM,
-                    2000 FORM_VERS,
+                    1052 CUIIO_VERS,
+                    13  FORM,
+                    1004 FORM_VERS,
                     '1'   STATUT 
-                    FROM
-(
-                                
-           SELECT 
-                  FC.CUIIO,
-                  FC.CUIIO_VERS,
-                  FC.FORM,
-                  FC.FORM_VERS,
-                  FC.STATUT
-                  
-             FROM (
-SELECT 
-                  FC.CUIIO,
-                  FC.CUIIO_VERS,
-                  FC.FORM,
-                  FC.FORM_VERS,
-                  FC.STATUT
-                  
-             FROM CIS2.FORM_CUIIO FC
-                  INNER JOIN (  SELECT CUIIO, 
-                                      MAX (CUIIO_VERS) CUIIO_VERS,
-                                      MAX (FORM_VERS)  form_VERS
-                                  FROM CIS2.FORM_CUIIO
-                                 WHERE FORM IN (:pFORM) AND CUIIO_VERS <= :pPERIOADA
-                                 AND FORM_VERS in (:pFORM_VERS)
-                              GROUP BY CUIIO
-                              
-                              ) BB
-                     ON (BB.CUIIO = FC.CUIIO
-                         AND BB.CUIIO_VERS = FC.CUIIO_VERS and  BB.FORM_VERS = FC.form_VERS )
-            WHERE 
-            FC.FORM IN (:pFORM) 
-            AND FC.FORM_VERS in (:pFORM_VERS)
-            
-            AND FC.STATUT <> '3' ) FC 
-            
-            WHERE
-            1=1 
-            
-            
-AND FC.CUIIO_VERS <> 2010
-) FC 
+                    FROM CIS2.RENIM  FC
+                    
+                    WHERE 
+                    
+                    CUIIO IN (
+41399528,
+40150815,
+41401231,
+41420381,
+9775292,
+40240045,
+41400450,
+41135491,
+40332261,
+41059548,
+41301908,
+41414950,
+40332261,
+40863082,
+40170232,
+41424093,
+37387821,
+40050338,
+40246188,
+40545146,
+40688408,
+40974829,
+40980563,
+41080873,
+41117926,
+41420085,
+41429057,
+38828820,
+15859932,
+41379425,
+41358771,
+41200024,
+41277245,
+41385064,
+41429548,
+40804458,
+41072164,
+41200053,
+40725960,
+40849432,
+41072164,
+38831465,
+40413522,
+41072164,
+41286304
+
+)
+
+AND CUIIO_VERS IN (1052)
+
+
+
 
 
             
