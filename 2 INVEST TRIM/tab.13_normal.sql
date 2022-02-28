@@ -20,17 +20,17 @@
 
 
                   SELECT 
-                  :pPERIOADA AS PERIOADA,
-  :pFORM AS FORM,
-  :pFORM_VERS AS FORM_VERS,
-  :pID_MDTABLE AS ID_MDTABLE,
-  :pCOD_CUATM AS COD_CUATM,    
-  '0' AS NR_SECTIE,
-  '0' AS NUME_SECTIE,
-  '0' AS NR_SECTIE1,
-  '0' AS NUME_SECTIE1,
-  '0' AS NR_SECTIE2,
-  '0' AS NUME_SECTIE2,
+--                  :pPERIOADA AS PERIOADA,
+--  :pFORM AS FORM,
+--  :pFORM_VERS AS FORM_VERS,
+--  :pID_MDTABLE AS ID_MDTABLE,
+--  :pCOD_CUATM AS COD_CUATM,    
+--  '0' AS NR_SECTIE,
+--  '0' AS NUME_SECTIE,
+--  '0' AS NR_SECTIE1,
+--  '0' AS NUME_SECTIE1,
+--  '0' AS NR_SECTIE2,
+--  '0' AS NUME_SECTIE2,
                   D.NR_ROW,
                   D.ORDINE,
                    '0000000' AS DECIMAL_POS,
@@ -58,14 +58,14 @@
                
                THEN
                
-               ROUND((D.COL7 /0.973) * 100,1)
+               ROUND((D.COL7 / 1.091) * 100,1)
                
                
                WHEN D.NR_ROW IN ('441','440','450')
                
                THEN
                
-               ROUND((D.COL7 / 1.091) * 100,1)
+               ROUND((D.COL7 / 0.973) * 100,1)
                
                
               
@@ -138,5 +138,4 @@ WHERE
     R.RIND,
     R.ORDINE ) D 
     
-    ORDER BY 
-    D.ORDINE
+    
