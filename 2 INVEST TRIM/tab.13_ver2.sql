@@ -1,23 +1,23 @@
-INSERT INTO TABLE_OUT 
-(
-  PERIOADA,
-  FORM,
-  FORM_VERS,
-  ID_MDTABLE,
-  COD_CUATM,
-  NR_SECTIE,
-  NUME_SECTIE,
-  NR_SECTIE1,
-  NUME_SECTIE1,
-  NR_SECTIE2,
-  NUME_SECTIE2,
-  NR_ROW,
-  ORDINE,
-  DECIMAL_POS,
-  NUME_ROW,  
- COL1, COL2, COL3,COL4,COL5,COL6,COL7
-)
-
+----INSERT INTO TABLE_OUT 
+----(
+----  PERIOADA,
+----  FORM,
+----  FORM_VERS,
+----  ID_MDTABLE,
+----  COD_CUATM,
+----  NR_SECTIE,
+----  NUME_SECTIE,
+----  NR_SECTIE1,
+----  NUME_SECTIE1,
+----  NR_SECTIE2,
+----  NUME_SECTIE2,
+----  NR_ROW,
+----  ORDINE,
+----  DECIMAL_POS,
+----  NUME_ROW,  
+---- COL1, COL2, COL3,COL4,COL5,COL6,COL7
+----)
+--
 
                   SELECT 
                   :pPERIOADA AS PERIOADA,
@@ -51,21 +51,21 @@ INSERT INTO TABLE_OUT
                    D.NR_ROW  NOT IN ('410','420','430','440','441','450','-')
                
                THEN
-               ROUND((D.COL7 / P.COL1) * 100,1)
+               ROUND((D.COL7 / 1.043) * 100,1)
                
                
                WHEN D.NR_ROW IN ('410','420','430') 
                
                THEN
                
-               ROUND((D.COL7 / P.COL3) * 100,1)
+               ROUND((D.COL7 / 1.091) * 100,1)
                
                
                WHEN D.NR_ROW IN ('441','440','450')
                
                THEN
                
-               ROUND((D.COL7 / P.COL2) * 100,1)
+               ROUND((D.COL7 / 0.973) * 100,1)
                
                
               
@@ -108,7 +108,6 @@ FROM
    INNER JOIN CIS.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
    INNER JOIN CIS.VW_CL_CUATM C ON C.CODUL = RR.CUATM
  
-      
            
 WHERE
  (D.FORM=:pFORM) AND
@@ -118,78 +117,16 @@ WHERE
   D.PERIOADA IN (:pPERIOADA, :pPERIOADA-4) AND
   D.FORM = 6 AND
   MR.CAPITOL = 31
-  AND MR.RIND NOT IN ('-') 
+  AND  MR.RIND NOT IN ('-') 
+  
+  
   GROUP BY
     MR.DENUMIRE,
     MR.RIND,
     MR.ORDINE 
     
-    ) D 
-    
-    CROSS JOIN (
-    
-    SELECT DISTINCT
-                   SUM(CASE WHEN MR.RIND IN ('04') THEN   D.COL1 ELSE NULL END)  AS COL1,
-                   SUM(CASE WHEN MR.RIND IN ('05') THEN   D.COL1 ELSE NULL END)  AS COL2,
-                   SUM(CASE WHEN MR.RIND IN ('06') THEN   D.COL1 ELSE NULL END)  AS COL3,
-                   SUM(CASE WHEN MR.RIND IN ('03') THEN   D.COL1 ELSE NULL END)  AS COL4  
-  
-FROM 
-  CIS.DATA_ALL D
-     INNER JOIN CIS.MD_PERIOADA MP ON (MP.PERIOADA = D.PERIOADA)   
-     INNER JOIN CIS.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
-     INNER JOIN CIS.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
-     
-     
-  INNER JOIN (
-  
-  SELECT DISTINCT
-  D.ANUL,
-  SUM(CASE 
-  WHEN D.NUM IN 1 THEN DD.COL1
-  WHEN D.NUM IN 2 THEN DD.COL2
-  WHEN D.NUM IN 3 THEN DD.COL3
-  WHEN D.NUM IN 4 THEN DD.COL4 END) AS JIP
-  
-  
-  
-FROM 
-  CIS.MD_PERIOADA D
-  INNER JOIN (
-  
-  SELECT DISTINCT
-  ANUL,
-  CASE WHEN NUM IN 3  THEN PERIOADA ELSE 0 END AS COL1,
-  CASE WHEN NUM IN 6  THEN PERIOADA ELSE 0 END AS COL2,
-  CASE WHEN NUM IN 9  THEN PERIOADA ELSE 0 END AS COL3,
-  CASE WHEN NUM IN 12 THEN PERIOADA ELSE 0 END AS COL4
-  
-FROM 
-  CIS.MD_PERIOADA
-  
-WHERE TIP_PERIOADA = 4
-
-
-  ) DD ON DD.ANUL = D.ANUL
-  
-WHERE
-  PERIOADA = :pPERIOADA
-
-GROUP BY
-  D.ANUL
-  
-  
-) P ON P.ANUL = MP.ANUL
-  
-WHERE 
-  D.PERIOADA = P.JIP AND
-  MR.CAPITOL = 37 AND
-  D.FORM = 100 AND 
-  MR.RIND IN ('04','05','06','03') 
-  AND  D.CUIIO = 4 
-    ) P 
     
     
+      ) D 
     
-    ORDER BY 
-    D.ORDINE
+    
