@@ -1,37 +1,16 @@
 
-SELECT 
-                  FC.CUIIO,
-                  FC.CUIIO_VERS,
-                  FC.FORM,
-                  FC.FORM_VERS,
-                  FC.STATUT
-                  
-             FROM (
-SELECT 
-                  FC.CUIIO,
-                  FC.CUIIO_VERS,
-                  FC.FORM,
-                  FC.FORM_VERS,
-                  FC.STATUT
-                  
-             FROM CIS2.FORM_CUIIO FC
-                  INNER JOIN (  SELECT CUIIO, 
-                                      MAX (CUIIO_VERS) CUIIO_VERS,
-                                      MAX (FORM_VERS)  form_VERS
-                                  FROM CIS2.FORM_CUIIO
-                                 WHERE FORM IN (:pFORM) AND CUIIO_VERS <= :pPERIOADA
-                                 AND FORM_VERS in (:pFORM_VERS)
-                              GROUP BY CUIIO
-                              
-                              ) BB
-                     ON (BB.CUIIO = FC.CUIIO
-                         AND BB.CUIIO_VERS = FC.CUIIO_VERS and  BB.FORM_VERS = FC.form_VERS )
-            WHERE 
-            FC.FORM IN (:pFORM) 
-            AND FC.FORM_VERS in (:pFORM_VERS)
-            
-            AND FC.STATUT <> '3' ) FC 
-            
-            WHERE
-            1=1 
-          --  AND FC.CUIIO_VERS =  1052
+SELECT D.CUIIO,
+D.CAEM2
+FROM USER_BANCU.VW_KATALOG_ASA_2010 D
+
+
+WHERE 
+1=1
+AND 
+        (
+                SUBSTR(D.CAEM2,2,5) LIKE '45%'
+                OR 
+                SUBSTR(D.CAEM2,2,5) LIKE '46%'
+                OR 
+                SUBSTR(D.CAEM2,2,5) LIKE '47%'
+)

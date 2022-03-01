@@ -1,0 +1,321 @@
+INSERT INTO TABLE_OUT 
+(
+  PERIOADA,
+  FORM,
+  FORM_VERS,
+  ID_MDTABLE,
+  COD_CUATM,
+  NR_SECTIE,
+  NUME_SECTIE,
+  NR_SECTIE1,
+  NUME_SECTIE1,
+  NR_SECTIE2,
+  NUME_SECTIE2,
+  NR_ROW,
+  ORDINE,
+  DECIMAL_POS,
+  NUME_ROW,   
+ COL1, COL2, COL3,COL4,COL5,COL6,COL7,COL8, COL9
+)
+
+
+ SELECT 
+  :pPERIOADA AS PERIOADA,
+  :pFORM AS FORM,
+  :pFORM_VERS AS FORM_VERS,
+  :pID_MDTABLE AS ID_MDTABLE,
+  :pCOD_CUATM AS COD_CUATM,    
+  '0' AS NR_SECTIE,
+  '0' AS NUME_SECTIE,
+  '0' AS NR_SECTIE1,
+  '0' AS NUME_SECTIE1,
+  '0' AS NR_SECTIE2,
+  '0' AS NUME_SECTIE2,
+                 D.NR_ROW||'~'||sum(ROWNUM) AS NR_ROW ,
+                  D.ORDINE,
+                   '000000000' AS DECIMAL_POS,
+                  D.NUME_ROW,
+                  
+                  
+                  SUM(D.COL1) AS COL1,
+                  sum(D.COL2) as COL2,
+                  sum(D.COL3) as COL3,
+                  sum(D.COL4) AS col4,
+                  SUM(D.COL5) AS col5,
+                  SUM(D.COL6) AS col6,
+                  
+                  SUM(CASE 
+               
+               
+               WHEN 
+                   D.NR_ROW  NOT IN ('410','420','430','440','441','450','-')
+               
+               THEN
+            
+                ROUND((D.COL7 / P.COL1) * 100,1)
+               
+               WHEN D.NR_ROW IN ('410','420','430') 
+               
+               THEN
+               
+               ROUND((D.COL7 / P.COL3) * 100,1)
+               
+               
+               WHEN D.NR_ROW IN ('441','440','450')
+               
+               THEN
+               
+              ROUND((D.COL7 / P.COL2) * 100,1)
+               
+               
+              
+               
+               ELSE NULL
+               
+               END) AS COL7,
+               
+               
+               
+               SUM(CASE 
+               
+               
+               WHEN 
+                   D.NR_ROW  NOT IN ('410','420','430','440','441','450','-')
+               
+               THEN
+               ROUND((D.COL8 / P.COL1) * 100,1)
+               
+               
+               WHEN D.NR_ROW IN ('410','420','430') 
+               
+               THEN
+               
+                 ROUND((D.COL8 / P.COL3) * 100,1)
+               
+               
+               WHEN D.NR_ROW IN ('441','440','450')
+               
+               THEN
+               
+                 ROUND((D.COL8 / P.COL2) * 100,1)
+           
+               ELSE NULL
+               
+               END) AS COL8,
+               
+               SUM(CASE 
+               
+               
+               WHEN 
+                   D.NR_ROW  NOT IN ('410','420','430','440','441','450','-')
+               
+               THEN
+                ROUND((D.COL9 / P.COL1) * 100,1)
+               
+               
+               WHEN D.NR_ROW IN ('410','420','430') 
+               
+               THEN
+               
+                 ROUND((D.COL9 / P.COL3) * 100,1)
+               
+               
+               WHEN D.NR_ROW IN ('441','440','450')
+               
+               THEN
+               
+                 ROUND((D.COL9 / P.COL2) * 100,1)
+               
+               
+               ELSE NULL
+               
+               END) AS COL9
+               
+               
+               
+               
+               
+                  FROM 
+
+(
+SELECT 
+       MR.RIND AS NR_ROW,
+       MR.ORDINE AS ORDINE,
+       MR.DENUMIRE AS NUME_ROW,
+
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA  THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END) AS COL1,
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA  THEN D.COL1 ELSE 0 END) AS COL2,
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA  THEN D.COL2 ELSE 0 END) AS COL3,
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA - 4  THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END) AS COL4,
+
+
+
+  
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA-4  THEN D.COL1 ELSE 0 END) AS COL5,
+  
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA-4  THEN D.COL2 ELSE 0 END) AS COL6,
+
+
+SUM(CASE WHEN D.PERIOADA IN :pPERIOADA  THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END)  /
+ CIS.NOZERO(SUM(CASE WHEN D.PERIOADA IN :pPERIOADA - 4    THEN NVAL(D.COL1) + NVAL(D.COL2) ELSE 0 END)) AS COL7,
+ NULL AS COL8,
+ NULL AS COL9
+  
+
+             
+             
+
+FROM 
+  CIS.DATA_ALL D
+   INNER JOIN CIS.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+   INNER JOIN CIS.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+   INNER JOIN CIS.VW_CL_CUATM C ON C.CODUL = RR.CUATM
+ 
+      
+           
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND   
+  D.PERIOADA IN (:pPERIOADA, :pPERIOADA-4) AND
+  D.FORM = 6 AND
+  MR.CAPITOL = 31
+  AND  MR.RIND NOT IN ('-') 
+  GROUP BY
+    MR.DENUMIRE,
+    MR.RIND,
+    MR.ORDINE 
+    
+    
+  UNION 
+  
+  SELECT 
+             MR.RIND AS NR_ROW,
+             MR.ORDINE AS ORDINE,
+         
+             MR.DENUMIRE AS NUME_ROW,
+
+NULL AS COL1,
+NULL AS COL2,
+NULL AS COL3,
+NULL AS COL4,
+NULL AS COL5,
+NULL AS COL6,
+NULL AS COL7,
+ 
+SUM(CASE WHEN D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA  THEN D.COL1 ELSE 0 END)/
+   
+  NOZERO(SUM(CASE WHEN D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4  THEN D.COL1 ELSE 0 END)) AS COL8,
+  
+  
+  SUM(CASE WHEN D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA  THEN D.COL2 ELSE 0 END)/
+   
+  NOZERO(SUM(CASE WHEN D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4  THEN D.COL2 ELSE 0 END)) AS COL9
+
+FROM 
+  CIS.DATA_ALL D
+   INNER JOIN CIS.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+   INNER JOIN CIS.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+   INNER JOIN CIS.VW_CL_CUATM C ON C.CODUL = RR.CUATM
+     
+      
+           
+WHERE
+ (D.FORM=:pFORM) AND
+ (D.FORM_VERS=:pFORM_VERS) AND
+ (:pID_MDTABLE=:pID_MDTABLE) AND
+ (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND   
+  (
+  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)
+  OR 
+  (D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4)
+  )
+  
+  
+  
+  
+  AND
+  D.FORM = 6 AND
+  MR.CAPITOL = 31
+  AND  MR.RIND NOT IN ('-') 
+  GROUP BY
+    MR.DENUMIRE,
+    MR.RIND,
+    MR.ORDINE 
+  
+
+
+      ) D 
+    
+    CROSS JOIN (
+    
+    SELECT DISTINCT
+                   SUM(CASE WHEN MR.RIND IN ('04') THEN   D.COL1 ELSE NULL END)  AS COL1,
+                   SUM(CASE WHEN MR.RIND IN ('05') THEN   D.COL1 ELSE NULL END)  AS COL2,
+                   SUM(CASE WHEN MR.RIND IN ('06') THEN   D.COL1 ELSE NULL END)  AS COL3,
+                   SUM(CASE WHEN MR.RIND IN ('03') THEN   D.COL1 ELSE NULL END)  AS COL4  
+  
+FROM 
+  CIS.DATA_ALL D
+     INNER JOIN CIS.MD_PERIOADA MP ON (MP.PERIOADA = D.PERIOADA)   
+     INNER JOIN CIS.MD_RIND MR ON (MR.ID_MD=D.ID_MD)
+     INNER JOIN CIS.RENIM RR ON (RR.CUIIO = D.CUIIO AND RR.CUIIO_VERS = D.CUIIO_VERS)
+     
+     
+  INNER JOIN (
+  
+  SELECT DISTINCT
+  D.ANUL,
+  SUM(CASE 
+  WHEN D.NUM IN 1 THEN DD.COL1
+  WHEN D.NUM IN 2 THEN DD.COL2
+  WHEN D.NUM IN 3 THEN DD.COL3
+  WHEN D.NUM IN 4 THEN DD.COL4 END) AS JIP
+  
+  
+  
+FROM 
+  CIS.MD_PERIOADA D
+  INNER JOIN (
+  
+  SELECT DISTINCT
+  ANUL,
+  CASE WHEN NUM IN 3  THEN PERIOADA ELSE 0 END AS COL1,
+  CASE WHEN NUM IN 6  THEN PERIOADA ELSE 0 END AS COL2,
+  CASE WHEN NUM IN 9  THEN PERIOADA ELSE 0 END AS COL3,
+  CASE WHEN NUM IN 12 THEN PERIOADA ELSE 0 END AS COL4
+  
+FROM 
+  CIS.MD_PERIOADA
+  
+WHERE TIP_PERIOADA = 4
+
+
+  ) DD ON DD.ANUL = D.ANUL
+  
+WHERE
+  PERIOADA = :pPERIOADA
+
+GROUP BY
+  D.ANUL
+  
+  
+) P ON P.ANUL = MP.ANUL
+  
+WHERE 
+  D.PERIOADA = P.JIP AND
+  MR.CAPITOL = 37 AND
+  D.FORM = 100 AND 
+  MR.RIND IN ('04','05','06','03') 
+  AND  D.CUIIO = 4 
+    ) P 
+
+group BY 
+
+   D.NR_ROW,
+   D.ORDINE,
+   D.NUME_ROW
+   
+   ORDER BY 
+    D.ORDINE
