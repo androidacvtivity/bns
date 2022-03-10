@@ -3,9 +3,9 @@
 --      FROM CIS2.FORM_REG_UNIT_GC  FC
       
       
---      UPDATE CIS2.FORM_REG_UNIT_GC  FC
---
---SET  FC.STATUT = '3' 
+      UPDATE CIS2.FORM_REG_UNIT_GC  FC
+
+SET  FC.STATUT = '3' 
       
      WHERE 
      
@@ -57,7 +57,7 @@ FC.STATUT
                )
  WHERE FC.FORM IN (61) AND FC.STATUT <> '3') FC 
  
-                                              LEFT JOIN  USER_BANCU.CMPA1_v1 D  ON FC.UNIT_CODE = D.UNIT_CODE  
+                                              LEFT JOIN  USER_BANCU.CMPA1_1052_FINAL D  ON FC.UNIT_CODE = D.UNIT_CODE  
                                               
                                               
                                               WHERE 
@@ -71,7 +71,7 @@ FC.STATUT
      
      )
      
-     AND FC.UNIT_CODE_VERS  = 1048
+     AND FC.UNIT_CODE_VERS  = 1052
      AND FC.FORM = 61
-     AND FC.UNIT_CODE_VERS = 1048
+     AND FC.UNIT_CODE_VERS = 1052
      AND FC.STATUT = '1' 
