@@ -1,6 +1,6 @@
 SELECT 
        D.CUIIO,
-       R.DENUMIRE,
+       MAX(R.DENUMIRE) DENUMIRE ,
        C.FULL_CODE,
        SUM(CASE WHEN D.PERIOADA IN (2008) AND D.CAPITOL = 103 AND D.RIND IN ('290')  THEN  D.COL1 ELSE NULL END ) AS COL1,
        SUM(CASE WHEN D.PERIOADA IN (2009) AND D.CAPITOL = 103 AND D.RIND IN ('290')  THEN  D.COL1 ELSE NULL END ) AS COL2,
@@ -18,7 +18,8 @@ SELECT
             
             WHERE 
 
-            D.FORM IN (1)
+            D.FORM IN (1) 
+         --   AND D.cuiio = 20388147
         
            AND D.PERIOADA IN (2008,2009,2010)
 
@@ -28,7 +29,7 @@ SELECT
         GROUP BY 
         
         D.CUIIO,
-        R.DENUMIRE,
+      --  R.DENUMIRE,
         C.FULL_CODE
         
         ORDER BY 
