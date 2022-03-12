@@ -1,29 +1,29 @@
-﻿INSERT INTO REG_UNIT_GC
-
-(
-
-UNIT_CODE,
-  UNIT_CODE_VERS,
-  NR_GOSP,
-  NR_MAPS,         
-  SURNAME,         
-  NAME,            
-  PATRONIMIC,      
-  CUATM,           
-  ADDRESS_1,       
-  ADDRESS_2,       
-  ADDRESS_3,       
-  ADDRESS_4,       
-  ENVIRONMENT,     
-  CSID,            
-  EDIT_USER 
-)
+﻿--INSERT INTO REG_UNIT_GC
+--
+--(
+--
+--UNIT_CODE,
+--  UNIT_CODE_VERS,
+--  NR_GOSP,
+--  NR_MAPS,         
+--  SURNAME,         
+--  NAME,            
+--  PATRONIMIC,      
+--  CUATM,           
+--  ADDRESS_1,       
+--  ADDRESS_2,       
+--  ADDRESS_3,       
+--  ADDRESS_4,       
+--  ENVIRONMENT,     
+--  CSID,            
+--  EDIT_USER 
+--)
 
 
 
 SELECT 
   UNIT_CODE,
-  1052 UNIT_CODE_VERS,
+  UNIT_CODE_VERS,
   NR_GOSP,
   NR_MAPS,         
   SURNAME,         
@@ -45,8 +45,8 @@ SELECT
     
      SELECT 
             UNIT_CODE
-            FROM USER_BANCU.CMPA2_1052_FINAL
+            FROM USER_BANCU.CMPA3_1052_FINAL
     
     )
     
-    AND UNIT_CODE_VERS <>  1052
+    AND UNIT_CODE_VERS <> 1052
