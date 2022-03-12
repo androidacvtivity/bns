@@ -18,7 +18,7 @@
 --  CSID,            
 --  EDIT_USER 
 --)
-
+--
 
 
 
@@ -40,7 +40,7 @@ SELECT
   D.CSID,            
   D.EDIT_USER 
             
-            FROM USER_BANCU.CMPA1_v1 D
+            FROM USER_BANCU.CMPA2_1052_FINAL D
             
                             LEFT JOIN REG_UNIT_GC RN
                         ON     D.UNIT_CODE = RN.UNIT_CODE
@@ -51,4 +51,4 @@ SELECT
                   
                   WHERE 
                   
-                  RN.UNIT_CODE IS  NOT  NULL
+                  RN.UNIT_CODE IS NULL
