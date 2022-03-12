@@ -1,22 +1,22 @@
-﻿INSERT INTO USER_BANCU.CMPA2_1052_FINAL (
-  UNIT_CODE,
-  UNIT_CODE_VERS,
-  NR_GOSP,
-  NR_MAPS,         
-  SURNAME,         
-  NAME,            
-  PATRONIMIC,      
-  CUATM,           
-  ADDRESS_1,       
-  ADDRESS_2,       
-  ADDRESS_3,       
-  ADDRESS_4,       
-  ENVIRONMENT,     
-  CSID,            
-  EDIT_USER 
-
-
-)
+﻿--INSERT INTO USER_BANCU.CMPA3_1052_FINAL (
+--  UNIT_CODE,
+--  UNIT_CODE_VERS,
+--  NR_GOSP,
+--  NR_MAPS,         
+--  SURNAME,         
+--  NAME,            
+--  PATRONIMIC,      
+--  CUATM,           
+--  ADDRESS_1,       
+--  ADDRESS_2,       
+--  ADDRESS_3,       
+--  ADDRESS_4,       
+--  ENVIRONMENT,     
+--  CSID,            
+--  EDIT_USER 
+--
+--
+--)
 
 
 SELECT 
@@ -69,7 +69,7 @@ SELECT
             
            
             
-            FROM USER_BANCU.CMPA2_1052 D
+            FROM USER_BANCU.CMPA3_1052 D
 
 )
 
@@ -79,5 +79,5 @@ LEFT   JOIN  CIS2.VW_CL_CUATM C ON C.CODUL = D.CUATM
   
   WHERE 
   
-  C.CODUL IS NOT  NULL ;
+  C.CODUL IS NOT   NULL ;
            

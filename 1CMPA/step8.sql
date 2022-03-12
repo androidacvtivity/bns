@@ -21,7 +21,7 @@ FC.STATUT
        NR_GOSP,
        NR_MAPS
                        FROM CIS2.FORM_REG_UNIT_GC
-                      WHERE FORM IN (61) AND UNIT_CODE_VERS <= :pPERIOADA
+                      WHERE FORM IN (:pFORM) AND UNIT_CODE_VERS <= :pPERIOADA
                       
                       
                    GROUP BY 
@@ -42,7 +42,7 @@ FC.STATUT
                
                
                )
- WHERE FC.FORM IN (61) AND FC.STATUT <> '3'
+ WHERE FC.FORM IN (:pFORM) AND FC.STATUT <> '3'
  
  
  
