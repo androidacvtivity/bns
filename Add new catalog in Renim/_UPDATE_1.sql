@@ -8,8 +8,8 @@ UPDATE CIS2.RENIM VB
                   VB.CUATM,
                   VB.CFP,
                   VB.CFOJ, 
-                  VB.CAEM2,
-                  VB.IDNO                    --5
+                  VB.CAEM2
+                                    --5
   
   
   ) 
@@ -21,10 +21,10 @@ UPDATE CIS2.RENIM VB
                   C.CUATM,
                   C.CFP,
                   C.CFOJ, 
-                  C.CAEM2,
-                  C.IDNO        
+                  C.CAEM2
+                       
   
-  FROM USER_BANCU.KAT_2010_1_INVEST  C
+  FROM USER_BANCU.AGRO_34  C
         WHERE
                                                  VB.CUIIO             =  C.CUIIO          AND 
                                                  VB.CUIIO_VERS        =  C.CUIIO_VERS     
@@ -36,7 +36,7 @@ UPDATE CIS2.RENIM VB
                 
                 (
                     SELECT *
-                    FROM USER_BANCU.KAT_2010_1_INVEST  C
+                    FROM USER_BANCU.AGRO_34  C
                      WHERE
                      
                       VB.CUIIO             =  C.CUIIO          AND 
