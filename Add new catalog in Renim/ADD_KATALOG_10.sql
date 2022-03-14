@@ -1,9 +1,28 @@
-      SELECT 
+     
+UPDATE USER_BANCU.AGRO_34
+
+SET CUIIO_vers = 2010;
+
+select * FROM 
+
+USER_BANCU.AGRO_34;
+
+select cuiio  FROM 
+
+USER_BANCU.AGRO_34;
+
+
+
+
+
+
+
+ SELECT 
 
              CUIIO 
             
             FROM 
-                       USER_BANCU."UPDATE"
+                       USER_BANCU.AGRO_34
             
             
             GROUP BY 
@@ -13,7 +32,7 @@
             HAVING
             
             
-COUNT (CUIIO) = 1;
+COUNT (CUIIO) > 1;
 
 
 --SELECT *
