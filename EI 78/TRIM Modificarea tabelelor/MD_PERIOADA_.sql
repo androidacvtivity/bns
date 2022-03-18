@@ -1,0 +1,11 @@
+SELECT
+D.PERIOADA 
+
+        FROM CIS2.MD_PERIOADA D
+        
+        WHERE 
+        
+        
+    --   (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)
+        
+        (D.PERIOADA BETWEEN (FLOOR(:pPERIOADA/4)*4)-4 AND :pPERIOADA-4)
