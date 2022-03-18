@@ -5,10 +5,6 @@
         
         WHERE 
          1=1 
-         
-         AND CUIIO IN (
-41466584
 
-         )
          
          
