@@ -1,0 +1,129 @@
+--INSERT INTO  CIS2.TABLE_OUT
+--    (
+--      PERIOADA,
+--      FORM,
+--      FORM_VERS,
+--      ID_MDTABLE,
+--      COD_CUATM,
+--      NR_SECTIE,
+--      NUME_SECTIE,
+--      NR_SECTIE1,
+--      NUME_SECTIE1,
+--      NR_SECTIE2,
+--      NUME_SECTIE2,
+--      NR_ROW,
+--      ORDINE,
+--      DECIMAL_POS,
+--      NUME_ROW,
+--       
+--      COL1, COL2, COL3,  COL4, COL5 , COL6, COL7, COL8, COL9, COL10, COL11, COL12, COL13
+--    )
+
+
+
+
+    SELECT 
+       :pPERIOADA AS PERIOADA,
+       :pFORM AS FORM,
+       :pFORM_VERS AS FORM_VERS,
+       :pID_MDTABLE AS ID_MDTABLE,
+       :pCOD_CUATM AS COD_CUATM,
+       '0' AS NR_SECTIE,
+       '0' AS NUME_SECTIE,
+       '0' AS NR_SECTIE1, 
+       '0' AS NUME_SECTIE1,
+        '0' AS NR_SECTIE2,
+        '0' AS NUME_SECTIE2,
+         MR.RIND AS NR_ROW, 
+         MR.ordine ORDINE, 
+        '2222222222222' AS DECIMAL_POS,  
+         MR.DENUMIRE NUME_ROW, 
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL1  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END),2)          AS COL1,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL2  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END),2)          AS COL2,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL3  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END) ,2)         AS COL3,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL4  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END) ,2)         AS COL4,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL5  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END) ,2)         AS COL5,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL6  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END) ,2)         AS COL6,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL7  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)  ,2)        AS COL7,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL8  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)   ,2)       AS COL8,
+
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL9  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)   ,2)       AS COL9,
+         
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL10  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)  ,2)        AS COL10,
+         
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL11  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)  ,2)        AS COL11,
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL12  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)   ,2)       AS COL12,
+         
+         
+         ROUND(SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1117) AND   D.RIND = MR.RIND     THEN    D.COL13  ELSE NULL END) /
+         SUM(CASE WHEN  D.FORM IN (62)  AND D.CAPITOL IN (1118) AND   D.RIND IN  ('0')     THEN    D.COL1  ELSE NULL END)  ,2)        AS COL13
+         
+
+         
+        
+       
+        
+FROM
+  VW_DATA_ALL_GC  D
+ 
+  
+  CROSS JOIN (
+  SELECT 
+            
+            RIND,
+            DENUMIRE,
+            ORDINE    
+           
+            FROM    MD_RIND
+            
+            WHERE 
+            
+            form = 62
+            
+            AND CAPITOL = 1117
+            
+            ORDER BY 
+            ORDINE
+       
+  ) MR
+
+WHERE
+  (D.PERIOADA IN (:pPERIOADA))  AND   
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+  (:pID_MDTABLE =:pID_MDTABLE) AND
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+
+  D.FORM IN (62) 
+ 
+
+  
+  GROUP BY 
+  MR.RIND,
+  MR.ORDINE,
+  MR.DENUMIRE
+  
+  ORDER BY
+  MR.ORDINE 
