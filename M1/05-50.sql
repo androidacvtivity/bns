@@ -1,22 +1,23 @@
 SELECT DISTINCT 
-'r.10 = '||
+' Col.'||N.NR_COLUMN||
+' r.10 = '||
 SUM( CASE WHEN DECODE(N.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6,
                                    '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', (CASE WHEN D.COL11 = 0 THEN  NULL ELSE D.COL11 END) , '12', D.COL12) IS NOT NULL AND D.RIND IN ('20') 
           THEN DECODE(N.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6,
                                    '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', (CASE WHEN D.COL11 = 0 THEN  NULL ELSE D.COL11 END), '12', D.COL12)ELSE NULL END)
                                    
-                                   ||', r.20 =  '||
+                                   ||','||' Col.'||N.NR_COLUMN|| ' r.20 =  '||
 SUM( CASE WHEN DECODE(N.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6,
                                    '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', D.COL11, '12', D.COL12) IS NOT NULL AND D.RIND IN ('10') 
           THEN DECODE(N.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6,
                                    '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', (CASE WHEN D.COL11 = 0 THEN  NULL ELSE D.COL11 END), '12', D.COL12) ELSE NULL END) 
                                    
-                                   ||' , r.30 = '||
+                                   ||','||' Col.'||N.NR_COLUMN|| ' r.30 = '||
                                    
                                    SUM( CASE WHEN DECODE(N.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6,
                                    '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', (CASE WHEN D.COL11 = 0 THEN  NULL ELSE D.COL11 END) , '12', D.COL12) IS NOT NULL AND D.RIND IN ('30') 
           THEN DECODE(N.NR_COLUMN, '1', D.COL1, '2', D.COL2, '3', D.COL3, '4', D.COL4, '5', D.COL5, '6', D.COL6,
-                                   '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', (CASE WHEN D.COL11 = 0 THEN  NULL ELSE D.COL11 END), '12', D.COL12)ELSE 0  END) ||' Col.'||N.NR_COLUMN
+                                   '7', D.COL7, '8', D.COL8, '9', D.COL9, '10', D.COL10, '11', (CASE WHEN D.COL11 = 0 THEN  NULL ELSE D.COL11 END), '12', D.COL12)ELSE 0  END) 
                                    
           AS REZULTAT
 FROM VW_DATA_ALL D,
