@@ -1,9 +1,9 @@
 ﻿
 
- UPDATE USER_BANCU.CMPA3_1052
+ UPDATE USER_BANCU.CMPA1
             
-            SET UNIT_CODE_VERS = 1052;
+            SET UNIT_CODE_VERS = 1048;
             
             
             SELECT *
-            FROM USER_BANCU.CMPA3_1052;
+            FROM USER_BANCU.CMPA1;
