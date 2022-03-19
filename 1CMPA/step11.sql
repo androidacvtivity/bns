@@ -29,7 +29,7 @@ FC.STATUT
        NR_GOSP,
        NR_MAPS
                        FROM CIS2.FORM_REG_UNIT_GC
-                      WHERE FORM IN (:pFORM) AND UNIT_CODE_VERS <= :pPERIOADA
+                      WHERE FORM IN (61) AND UNIT_CODE_VERS <= :pPERIOADA
                       
                       
                    GROUP BY 
@@ -48,15 +48,15 @@ FC.STATUT
                AND BB.NR_MAPS = FC.NR_MAPS
                
                )
- WHERE FC.FORM IN (:pFORM) AND FC.STATUT <> '3') FC 
+ WHERE FC.FORM IN (61) AND FC.STATUT <> '3') FC 
  
-                                              LEFT JOIN  USER_BANCU.CMPA3_1052_FINAL D  ON FC.UNIT_CODE = D.UNIT_CODE  
+                                              LEFT JOIN  USER_BANCU.CMPA1_v1 D  ON FC.UNIT_CODE = D.UNIT_CODE  
                                               
                                               
                                               WHERE 
                                               
-                                              D.UNIT_CODE IS     NULL 
+                                              D.UNIT_CODE IS NOT  NULL 
  
  
-  
--- AND FC.UNIT_CODE_VERS  = 1052
+-- WHERE 
+-- FC.UNIT_CODE_VERS = 1048

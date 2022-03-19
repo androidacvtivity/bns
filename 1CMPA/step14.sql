@@ -17,13 +17,13 @@ D.UNIT_CODE,
 D.UNIT_CODE_VERS,
 D.NR_GOSP,
 D.NR_MAPS,
-62 FORM,
+61 FORM,
 1004 FORM_VERS,
 '1' STATUT
             
            
             
-            FROM USER_BANCU.CMPA3_1052_FINAL D
+            FROM USER_BANCU.CMPA1_v1 D
             
                             LEFT JOIN REG_UNIT_GC RN
                         ON     D.UNIT_CODE = RN.UNIT_CODE
