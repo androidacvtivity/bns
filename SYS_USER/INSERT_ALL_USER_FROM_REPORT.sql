@@ -1,8 +1,23 @@
+--INSERT INTO    CIS2.SYS_USER_ACCES
+--    (
+--  ID_USER,        
+--  CUATM,          
+--  FORM,           
+--  FORM_VERS,      
+--  ISADMIN,        
+--  ACCES_TYPE,     
+--  CAPITOL_ACCES,  
+--  DATA_REG       
+--  )
+--  
+--
+
+
 SELECT 
 
   L.ID_USER,        
   L.CUATM,          
-  L.FORM,           
+  71 FORM,           
   L.FORM_VERS,      
   L.ISADMIN,        
   L.ACCES_TYPE,     
@@ -52,3 +67,19 @@ SELECT
      
      R.ID_USER IS  NULL
     
+GROUP BY 
+
+      
+      ROWNUM,
+       L.ID_USER,        
+  L.CUATM,          
+  L.FORM,           
+  L.FORM_VERS,      
+  L.ISADMIN,        
+  L.ACCES_TYPE,     
+  L.CAPITOL_ACCES 
+      
+ HAVING 
+      
+      ROWNUM <= 15  
+      
