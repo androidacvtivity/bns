@@ -1,5 +1,3 @@
-
-
 SELECT CONTROL,
         CUIIO,
         REZULTAT,    
