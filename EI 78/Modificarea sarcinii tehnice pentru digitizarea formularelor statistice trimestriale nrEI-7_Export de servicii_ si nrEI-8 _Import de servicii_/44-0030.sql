@@ -1,4 +1,4 @@
-SELECT  
+﻿SELECT  
           
 
         ' Codul - '||D.COL31||' si codul  '||D.COL3|| ' se repeta.  '        
@@ -26,7 +26,7 @@ WHERE
   D.FORM IN (44)  AND
   
   D.RIND NOT IN ('1') AND 
-  D.CAPITOL IN (405) 
+  D.CAPITOL IN (407) 
   
   
  
