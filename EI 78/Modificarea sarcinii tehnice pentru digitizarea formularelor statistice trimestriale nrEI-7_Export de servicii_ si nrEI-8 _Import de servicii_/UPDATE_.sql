@@ -1,0 +1,13 @@
+--UPDATE cis2.MD_RIND
+--set COL_ACTIV = 'tXt1'
+
+SELECT *
+
+FROM  cis2.MD_RIND
+
+wHERE 
+
+CAPITOL = 407
+ AND CAPITOL_VERS = 1052
+ 
+ AND rind NOT in ('1','--')
