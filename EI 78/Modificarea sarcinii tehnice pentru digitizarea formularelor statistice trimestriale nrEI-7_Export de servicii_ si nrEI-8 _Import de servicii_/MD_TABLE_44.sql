@@ -1,4 +1,4 @@
---        insert INTO 
+--        insert INTO CIS2.MD_TABLES
 --        (
 --        ID_MDTABLE,   
 --  TABELE,      
@@ -20,11 +20,11 @@
 --  UM,            
 --  CREATING    
 --        )
---        
+        
 SELECT 
   ID_MDTABLE,   
   ROWNUM  TABELE,      
-  TABELE_VERS,   
+  1052 TABELE_VERS,   
   FORM,         
   FORM_VERS,     
   DENUMIRE,      

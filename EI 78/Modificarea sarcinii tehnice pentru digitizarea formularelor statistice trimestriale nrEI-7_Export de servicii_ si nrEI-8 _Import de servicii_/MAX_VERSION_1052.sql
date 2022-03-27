@@ -1,10 +1,12 @@
-﻿SELECT 
-   L.CONTROL
-      
-        
-        FROM
-
-( 
+﻿--SELECT 
+--   L.CONTROL,
+--   B.CONTROL_VERS,
+--   B.FORMULA,
+--      
+--        
+--        FROM
+--
+--( 
 SELECT 
    B.CONTROL,
    B.CONTROL_VERS,
@@ -55,7 +57,9 @@ SELECT
          
          
          ORDER BY 
-          B.CONTROL ) L
+          B.CONTROL 
+          
+--          ) L
           
           
           
