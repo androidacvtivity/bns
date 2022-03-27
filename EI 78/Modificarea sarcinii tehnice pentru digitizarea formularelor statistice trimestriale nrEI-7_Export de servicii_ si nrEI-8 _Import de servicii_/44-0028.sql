@@ -1,6 +1,6 @@
-﻿SELECT 
+SELECT 
 
-'Rind. '||L.RIND||' - nu exista asa cod in clasificatorul tarilor = ['||CIS2.NVAL(L.COL3)||']'
+'Rind. '||L.RIND||' - nu exista asa cod in clasificatorul  = ['||L.COL33||']'
  AS REZULTAT
 
 
@@ -8,13 +8,13 @@ FROM
 (
 SELECT   
 D.RIND,
-D.COL3
+D.COL33
    FROM
   CIS2.VW_DATA_ALL D  
  
 
 WHERE
-  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.PERIOADA=:PERIOADA          ) AND
   (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
   (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
   (D.FORM = :FORM               OR :FORM = -1) AND
@@ -29,24 +29,21 @@ WHERE
   
 GROUP BY 
   D.RIND, 
-  D.COL3
+  D.COL33
 
 ) L LEFT JOIN (
 
-  SELECT 
-    TO_NUMBER(LTRIM(CODUL,'0')) AS CODUL
-    
-    
-  FROM 
-    CIS2.CL_TARI 
+  SELECT D.RIND CODUL
+FROM CIS2.MD_RIND_OUT D
 
-    WHERE 
-   
-   CODUL  NOT IN ('555','000','444')
-
-) R ON L.COL3 = R.CODUL
+WHERE
+ D.ID_MDTABLE = 12100
+ 
+ ORDER BY
+ D.ORDINE
+) R ON L.COL33 = R.CODUL
  
 
 WHERE 
 
-R.CODUL IS  NULL;
+R.CODUL IS NULL
