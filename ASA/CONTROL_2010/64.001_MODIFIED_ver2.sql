@@ -1,5 +1,6 @@
 SELECT 
-    -- L.CUIIO,
+
+
      L.COL1||' <> '||R.COL2||' <> '||R.COL1 
      
      AS REZULTAT
@@ -15,7 +16,7 @@ SUM(CASE WHEN  D.RIND IN ('150')
    
     FROM
  CIS2.VW_DATA_ALL D 
- --40637090
+
 
 WHERE
   (D.PERIOADA=:PERIOADA        ) AND
@@ -42,7 +43,7 @@ ROUND(SUM(CASE WHEN   D.FORM||'.'||D.CAPITOL||'.'||D.RIND IN ('57.1092.010') THE
     
     FROM
  CIS2.VW_DATA_ALL_FR D 
- --40637090
+
 
 WHERE
   (D.PERIOADA=:PERIOADA ) AND
@@ -66,27 +67,29 @@ WHERE
 
 
 GROUP BY
---L.CUIIO,
+
 L.COL1,
 L.COL2,
 R.COL1,
 R.COL2
 
 HAVING
- 
- CASE WHEN L.COL1  <> R.COL2 THEN  L.COL1 - L.COL2 <> R.COL2 ELSE 0 END <> 0
+
+(
+CASE WHEN 
+ ( L.COL1 = R.COL2) OR (L.COL1 =  R.COL1) THEN 1 
+   WHEN 
+   (L.COL1 <> R.COL2 AND  (L.COL1 - L.COL2) = R.COL2)
+   OR    
+   (L.COL1 <> R.COL1 AND  (L.COL1 - L.COL2) = R.COL1)
+  
+  THEN 1
+  ELSE 0 END 
+  
+  
+  ) = 0 
  
  
  
  
 
---
---(CASE 
---
---
---      
---      
---      WHEN (
---      ((L.COL1 )   <> R.COL2 ) OR  ((L.COL1) <> R.COL1)) THEN 2
---      
---     END ) = 2
