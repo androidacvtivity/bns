@@ -1,0 +1,15 @@
+SELECT CONTROL,
+        CUIIO,
+        REZULTAT,    
+        DATA_REG  
+FROM USER_EREPORTING.CONTROL
+
+    WHERE 
+    
+    FORM = 66 
+    AND PERIOADA = 2010
+    AND REZULTAT <> 'OK'
+   -- AND CONTROL IN ('57-028')
+    
+    ORDER BY 
+    DATA_REG DESC
