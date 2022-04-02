@@ -1,5 +1,5 @@
 SELECT DISTINCT 
-'CODUL - '||L.COL31||' este introdus  de '||NVAL(L.CNT)||' ori in capitol Export in Capitol Import de '||NVAL(R.CNT) ||' ori '  AS REZULTAT 
+'CODUL - '||R.COL31||' este introdus  de '||NVAL(R.CNT)||' ori in capitol Importn in Capitol Export de '||NVAL(L.CNT) ||' ori '  AS REZULTAT 
 FROM
 (
 SELECT 
@@ -46,7 +46,7 @@ L.COL31,
 L.COL33 
 
 
-)  L LEFT JOIN (
+)  L RIGHT JOIN (
 
 
 SELECT 
