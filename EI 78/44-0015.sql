@@ -65,19 +65,29 @@ WHERE
   
   ))
 
-  AND
-  (
- SELECT
-  DISTINCT
-  D.CUIIO
-FROM
-  CIS2.VW_DATA_ALL D
-WHERE
-  (D.PERIOADA IN (:PERIOADA-1)) AND
-  (D.CUIIO=:CUIIO OR :CUIIO = -1) AND
-   D.FORM IN (44)  AND
-   D.CAPITOL IN (1)
-   
-   
-   
-   ) IS NOT NULL
+--  AND
+--  (
+-- SELECT
+--  DISTINCT
+--  D.CUIIO  
+--FROM
+--  CIS2.VW_DATA_ALL D
+--WHERE
+--  (D.PERIOADA IN (:PERIOADA,:PERIOADA-1)) AND
+--  (D.CUIIO=:CUIIO OR :CUIIO = -1) AND
+--   D.FORM IN (44)  AND
+--   D.CAPITOL IN (1)
+--   AND D.RIND IN ('01','05')
+--   
+--   GROUP BY
+--   D.CUIIO
+--   
+--   HAVING 
+--   SUM(CASE WHEN D.PERIOADA IN (:PERIOADA) THEN NVAL(D.COL1) ELSE 0 END ) > 0
+--   
+--   AND 
+--   SUM(CASE WHEN D.PERIOADA IN (:PERIOADA-1) THEN NVAL(D.COL1) ELSE 0 END ) >0
+--   
+--   
+--   
+--   ) IS NOT NULL
