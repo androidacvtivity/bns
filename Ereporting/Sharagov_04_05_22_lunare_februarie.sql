@@ -1,3 +1,7 @@
+SELECT  
+  *
+FROM
+(
 SELECT 
     DISTINCT  
     F.DEN_SHORT,
@@ -25,3 +29,7 @@ GROUP BY
 --ORDER BY 
 --  F.DEN_SHORT,
 --  D.CUIIO
+  )
+  ORDER BY
+    DEN_SHORT,
+    CUIIO;
