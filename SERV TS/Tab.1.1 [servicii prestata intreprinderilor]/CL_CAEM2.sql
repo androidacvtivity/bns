@@ -1,0 +1,7 @@
+SELECT 
+       C.CODUL,
+       C.DENUMIRE, 
+       C.FULL_CODE 
+
+FROM CIS.VW_CL_CAEM2 C 
+
