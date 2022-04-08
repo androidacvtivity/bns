@@ -1,41 +1,31 @@
 SELECT
-  'Cap. SR Export si Cap. SR Import nu are date.' AS REZULTAT
-FROM
-  DUAL DL LEFT JOIN
-  (
-    SELECT
-      D.CUIIO
+    'Cap. SR Export si/sau Cap. SR Import nu are date.' AS REZULTAT
     FROM
-      CIS2.VW_DATA_ALL D
+      CIS2.VW_DATA_ALL_TEMP D
     WHERE
       (D.PERIOADA=:PERIOADA          ) AND
       (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
       (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
       (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
-      (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+      (:CAPITOL_VERS = :CAPITOL_VERS OR :CAPITOL_VERS <>  :CAPITOL_VERS) AND
       (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
-      (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+      (:CAPITOL=:CAPITOL            OR CAPITOL <> :CAPITOL) AND
       :FORM = :FORM AND
-       D.FORM IN (44)  AND
-      D.CAPITOL IN(1,14)
-      
-     UNION 
-     SELECT
-      D.CUIIO
-    FROM
-      CIS2.VW_DATA_ALL D
-    WHERE
-      (D.PERIOADA=:PERIOADA          ) AND
-      (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
-      (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
-      (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
-      (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
-      (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
-      (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
-      :FORM = :FORM AND
-       D.FORM IN (44)  AND
-      D.CAPITOL IN(405,407)
-      
-  ) D ON(1=1)
-WHERE
-  D.CUIIO IS NULL
+       D.FORM IN (44)  
+       
+       
+       GROUP BY 
+       D.CUIIO,
+      D.CAPITOL
+
+     HAVING 
+    ( 
+     SUM(CASE WHEN D.CAPITOL = 405 THEN NVAL(D.COL31) + NVAL(D.COL33) + NVAL(D.COL4) ELSE 0 END)
+     + SUM(CASE WHEN D.CAPITOL = 407 THEN NVAL(D.COL31) + NVAL(D.COL33) + NVAL(D.COL4) ELSE 0 END)      
+ >  0
+ )
+ 
+ AND 
+ 
+  SUM(CASE WHEN D.CAPITOL = 1 THEN NVAL(D.COL1)  ELSE 0 END)
+     + SUM(CASE WHEN D.CAPITOL = 14 THEN NVAL(D.COL1) ELSE 0 END)  =   0
