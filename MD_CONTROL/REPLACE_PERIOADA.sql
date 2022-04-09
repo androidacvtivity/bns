@@ -1,0 +1,14 @@
+UPDATE CIS.MD_CONTROL
+set  SQL_TEXT = REPLACE(D.SQL_TEXT,'OR :PERIOADA = -1',' ')
+
+--SELECT D.CONTROL,
+--       REPLACE(D.SQL_TEXT,'OR :PERIOADA = -1',' ')   SQL_TEXT
+
+
+--    FROM CIS.MD_CONTROL D
+    
+    WHERE 
+    
+    FORM = 1
+    
+    AND SQL_TEXT  LIKE '%OR :PERIOADA = -1%'
