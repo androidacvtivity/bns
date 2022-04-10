@@ -1,4 +1,4 @@
-SELECT 
+     SELECT 
 ORDINE,
 NR_ROW,
     
@@ -13,9 +13,10 @@ FROM
 
 
 (
+
 SELECT 
-    ROWNUM +2  ORDINE,
-    ROWNUM +2 NR_ROW,
+    ROWNUM + 110  ORDINE,
+    ROWNUM + 110 NR_ROW,
     CODUL,
       DENUMIRE,
      FULL_CODE,
@@ -100,58 +101,19 @@ AND (
 WHERE
 1=1 AND 
 (
-  CC.CODUL LIKE 'H49%'
-  OR 
-  CC.CODUL LIKE 'H50%'
-  OR 
-  CC.CODUL LIKE 'H51%'
-  OR 
-  CC.CODUL LIKE 'H52%'
-  OR 
-  CC.CODUL LIKE 'H53%'
-  OR 
-  C.CODUL LIKE 'J58%'
-   OR 
-  C.CODUL LIKE 'J61%'
-  OR 
-  CC.CODUL LIKE 'J62%'
-  OR 
-  C.CODUL LIKE 'J63%'
-  OR 
-  C.CODUL LIKE 'L68%'
-  OR 
-  C.CODUL LIKE 'M69%'
-  OR 
-  C.CODUL LIKE 'M70%'
-  OR 
-  C.CODUL LIKE 'M71%'
-    OR 
-  C.CODUL LIKE 'M72%'
-     OR 
-  C.CODUL LIKE 'M73%'
-       OR 
-  C.CODUL LIKE 'M74%'
-         OR 
   C.CODUL LIKE 'N77%'
-           OR 
+  OR 
   C.CODUL LIKE 'N78%'
-             OR 
+  
+  OR 
   C.CODUL LIKE 'N80%'
+  
+  OR 
+  C.CODUL LIKE 'N81%'
+  
   OR 
   C.CODUL LIKE 'N82%'
-  ----------------------------
-  
-  
-  OR 
-  C.CODUL LIKE  'N811%'
-  
-   OR 
-  C.CODUL LIKE   'N812%'
-  
-     OR 
-  C.CODUL LIKE  'N813%'
-  
-  ) 
+)
 
 
 AND CC.CODUL NOT IN '00000'
@@ -164,5 +126,4 @@ CC.CODUL,
 ORDER BY 
 CC.FULL_CODE
 
-) 
-)
+) )
