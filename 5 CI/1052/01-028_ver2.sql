@@ -12,7 +12,7 @@ FROM
   ) C
 
 WHERE
-  (D.PERIOADA=:PERIOADA         OR :PERIOADA = -1) AND
+  (D.PERIOADA=:PERIOADA         ) AND
   (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
   (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
   (D.FORM = :FORM               OR :FORM = -1) AND
