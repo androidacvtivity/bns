@@ -6,7 +6,7 @@ FROM
 (
 SELECT 
 D.CUIIO,
-D.RIND,
+SUBSTR(D.RIND, 1, 3) RIND,
 D.COL1,
 SUM(D.COL2) AS COL2 
 FROM
@@ -15,7 +15,7 @@ FROM
       
 WHERE
 
-  (D.PERIOADA        =:PERIOADA          OR :PERIOADA = -1) AND
+  (D.PERIOADA        =:PERIOADA          ) AND
   (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
   (D.CUIIO_VERS      = :CUIIO_VERS       OR :CUIIO_VERS = -1)  AND 
   (D.FORM            = :FORM             OR :FORM = -1)        AND 
@@ -29,7 +29,7 @@ WHERE
   
   GROUP BY
   D.CUIIO, 
-  D.RIND,
+SUBSTR(D.RIND, 1, 3),
   D.COL1 
   
   
@@ -47,7 +47,7 @@ AND D.COL1 IS NOT NULL
 SELECT 
 
 D.CUIIO,
-D.RIND,
+ SUBSTR(D.RIND, 1, 3)  RIND,
 D.COL1,
 SUM(D.COL2) AS COL2 
 
@@ -72,7 +72,7 @@ WHERE
  
   GROUP BY
   D.CUIIO, 
-  D.RIND,
+ SUBSTR(D.RIND, 1, 3),
   D.COL1 
 HAVING 
 NVAL(D.COL1) + NVAL(SUM(D.COL2)) > 0 
@@ -81,11 +81,10 @@ AND D.COL1 IS NOT NULL
 
   
   
-  ) R ON (R.CUIIO = L.CUIIO   AND L.COL1 = R.COL1)    
+  ) R ON (R.CUIIO = L.CUIIO  AND L.RIND = R.RIND   AND L.COL1 = R.COL1)    
    
   
-  WHERE 
-  1=1
+ 
   
   GROUP BY
   L.RIND,
@@ -109,7 +108,7 @@ WHERE
   P.PERIOADA_ANULA = :PERIOADA AND
   D.FORM = 13
   AND P.NUM = 3
-   
+  AND D.CAPITOL = 1020 
    
    ) IS NOT NULL
   
@@ -118,13 +117,13 @@ WHERE
   
   SELECT
   DISTINCT 
- 'Rind.'||SUBSTR(L.RIND, 1, 3)||', Tara. '|| (CASE WHEN L.COL1 IS NULL THEN R.COL1  ELSE L.COL1 END) 
+ 'Rind.'||SUBSTR(R.RIND, 1, 3)||', Tara. '|| (CASE WHEN L.COL1 IS NULL THEN R.COL1  ELSE L.COL1 END) 
 ||':  '|| SUM(NVAL(L.COL2)) ||' <> '||SUM(NVAL(R.COL2))    AS REZULTAT
 FROM 
 (
 SELECT 
 D.CUIIO,
-D.RIND,
+SUBSTR(D.RIND, 1, 3) RIND,
 D.COL1,
 SUM(D.COL2) AS COL2 
 FROM
@@ -133,7 +132,7 @@ FROM
       
 WHERE
 
-  (D.PERIOADA        =:PERIOADA          OR :PERIOADA = -1) AND
+  (D.PERIOADA        =:PERIOADA          ) AND
   (D.CUIIO           =:CUIIO             OR :CUIIO = -1) AND
   (D.CUIIO_VERS      = :CUIIO_VERS       OR :CUIIO_VERS = -1)  AND 
   (D.FORM            = :FORM             OR :FORM = -1)        AND 
@@ -147,7 +146,7 @@ WHERE
   
   GROUP BY
   D.CUIIO, 
-  D.RIND,
+  SUBSTR(D.RIND, 1, 3),
   D.COL1 
   
   
@@ -165,7 +164,7 @@ AND D.COL1 IS NOT NULL
 SELECT 
 
 D.CUIIO,
-D.RIND,
+SUBSTR(D.RIND, 1, 3) RIND,
 D.COL1,
 SUM(D.COL2) AS COL2 
 
@@ -190,7 +189,7 @@ WHERE
  
   GROUP BY
   D.CUIIO, 
-  D.RIND,
+SUBSTR(D.RIND, 1, 3),
   D.COL1 
 HAVING 
 NVAL(D.COL1) + NVAL(SUM(D.COL2)) > 0 
@@ -199,12 +198,10 @@ AND D.COL1 IS NOT NULL
 
   
   
-  ) R ON (R.CUIIO = L.CUIIO   AND L.COL1 = R.COL1)    
+  ) R ON (R.CUIIO = L.CUIIO AND L.RIND = R.RIND  AND L.COL1 = R.COL1)    
    
   
-  WHERE 
-  1=1
-  
+ 
   GROUP BY
   L.RIND,
   R.RIND,
@@ -227,7 +224,7 @@ WHERE
   P.PERIOADA_ANULA = :PERIOADA AND
   D.FORM = 13
   AND P.NUM = 3
-   
+   AND D.CAPITOL = 1020
    
    ) IS NOT NULL
   
