@@ -1,6 +1,7 @@
        
        SELECT 
        DISTINCT 
+       D.ANUL,
        D.CUIIO,
        D.CUATM,
        MD.DEN_SHORT,
@@ -28,7 +29,7 @@
                INNER JOIN CIS2.CL_N85_NDIIP ND ON (RN.N85_NDIIP=ND.CODUL) -- care (NIÎP).(Col.7) = 1 ---ND.CODUL = 1 
                
                    WHERE  
-               (D.PERIOADA =:pPERIOADA) AND
+               (D.PERIOADA IN (2009,2010)) AND
                (D.FORM =:pFORM) AND
                (D.FORM_VERS =:pFORM_VERS) AND
                (:pID_MDTABLE=:pID_MDTABLE) AND
@@ -38,6 +39,7 @@
             
                
                GROUP BY 
+                 D.ANUL,
           D.CUIIO,
           D.CUATM,
        MD.DEN_SHORT,
