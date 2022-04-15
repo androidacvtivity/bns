@@ -1,11 +1,17 @@
 SELECT
 DISTINCT 
-    'Cap. SR Export si/sau Cap. SR Import nu are date.' AS REZULTAT
+    'Cap. SR Export si/sau Cap. SR Import nu are date.' AS REZULTAT,
+  
+    
+     SUM(CASE WHEN D.CAPITOL = 1 THEN NVAL(D.COL1)  ELSE 0 END)
+     + SUM(CASE WHEN D.CAPITOL = 14 THEN NVAL(D.COL1) ELSE 0 END) AS COL1
+     
+     
     FROM
       CIS2.VW_DATA_ALL D
     WHERE
       (D.PERIOADA=:PERIOADA          ) AND
-      (D.CUIIO=:CUIIO               OR :CUIIO = -1) AND
+      (D.CUIIO=:CUIIO                ) AND
       (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
       (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
       (:CAPITOL_VERS = :CAPITOL_VERS OR :CAPITOL_VERS <>  :CAPITOL_VERS) AND
@@ -16,8 +22,8 @@ DISTINCT
        
        
        GROUP BY 
-       D.CUIIO,
-      D.CAPITOL
+       D.CUIIO
+
 
      HAVING 
     ( 
@@ -30,3 +36,6 @@ DISTINCT
  
   SUM(CASE WHEN D.CAPITOL = 1 THEN NVAL(D.COL1)  ELSE 0 END)
      + SUM(CASE WHEN D.CAPITOL = 14 THEN NVAL(D.COL1) ELSE 0 END)  =   0
+--     
+
+      
