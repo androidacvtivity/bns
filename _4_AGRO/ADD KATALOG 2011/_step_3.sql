@@ -1,0 +1,11 @@
+--
+--UPDATE  AGRO_4
+--
+--SET CUIIO_VERS = 2011;
+
+SELECT CUIIO
+
+FROM AGRO_4
+
+
+;
