@@ -10,4 +10,4 @@
             
             HAVING 
             
-           COUNT  (CUIIO)  = 1   
+           COUNT  (CUIIO)  > 1   

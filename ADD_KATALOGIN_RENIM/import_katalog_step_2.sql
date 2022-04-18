@@ -22,7 +22,7 @@
                     A.CUIIO_VERS,
                     A.DENUMIRE,
                     A.CUATM,
-                    CA.CODUL  CAEM2,
+                --    CA.CODUL  CAEM2,
                     A.CFP
                     
                     FROM

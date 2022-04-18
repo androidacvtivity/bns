@@ -30,5 +30,5 @@ SELECT
             
             AND FC.STATUT <> '3') FC 
             
-            WHERE 
-            FC.CUIIO_VERS = 2011
+--            WHERE 
+--            FC.CUIIO_VERS = 2011
