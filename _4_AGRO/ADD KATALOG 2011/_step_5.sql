@@ -1,5 +1,16 @@
+
 SELECT 
-                    FC.CUIIO,
+                  FC.CUIIO,
+                  FC.CUIIO_VERS,
+                  FC.FORM,
+                  FC.FORM_VERS,
+                  FC.STATUT
+                  
+
+FROM
+(
+SELECT 
+                  FC.CUIIO,
                   FC.CUIIO_VERS,
                   FC.FORM,
                   FC.FORM_VERS,
@@ -17,4 +28,7 @@ SELECT
             WHERE 
             FC.FORM IN (:pFORM) 
             
-            AND FC.STATUT <> '3'
+            AND FC.STATUT <> '3') FC 
+            
+            WHERE 
+            FC.CUIIO_VERS = 2011
