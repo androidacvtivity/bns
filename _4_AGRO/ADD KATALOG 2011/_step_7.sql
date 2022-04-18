@@ -1,4 +1,4 @@
-﻿
+
 
 
 --CREATE OR REPLACE FORCE VIEW USER_BANCU.EI_78_2008
@@ -22,7 +22,7 @@
                     A.CUIIO_VERS,
                     A.DENUMIRE,
                     A.CUATM,
-                --    CA.CODUL  CAEM2,
+                  --  CA.CODUL  CAEM2,
                     A.CFP
                     
                     FROM
@@ -35,7 +35,7 @@
                     
                         
                      D.CUIIO,
-                     2008 CUIIO_VERS,
+                     2011 CUIIO_VERS,
                      D.DENUMIRE,
                      CASE WHEN (LENGTH(D.CUATM) = 6 AND (SUBSTR(D.CUATM,1,1) = 1  OR SUBSTR(D.CUATM,1,1) = 3 )) THEN '0'||D.CUATM ELSE CUATM END CUATM,
                      
@@ -47,7 +47,7 @@
                     
                     
                         
-                  FROM USER_BANCU.KATALOG_EI_78 D
+                  FROM AGRO_4 D
                   
                   
                             LEFT JOIN CIS2.VW_CL_CAEM2 C ON C.CODUL = D.CAEM2 
@@ -62,26 +62,18 @@
                    ) A  LEFT JOIN CIS2.VW_CL_CUATM C ON C.CODUL = A.CUATM
                    
                    
-                       LEFT JOIN CIS2.VW_CL_CAEM2 CA ON CA.NUM_CODE = A.CAEM2    
-                   
-                   
-                       LEFT JOIN CIS2.VW_CL_CFP CF ON CF.CODUL = A.CFP  
+--                       LEFT JOIN CIS2.VW_CL_CAEM2 CA ON CA.NUM_CODE = A.CAEM2    
+--                   
+--                   
+--                       LEFT JOIN CIS2.VW_CL_CFP CF ON CF.CODUL = A.CFP  
                         
                    
                    
                    WHERE 
                    
                    C.CODUL IS NOT NULL
-                   
-                   AND 
-                   
-                   CA.CODUL IS NOT NULL
-                   
-                   AND 
-                   
-                   CF.CODUL IS NOT NULL
 
-                    
+              
 
 
 
