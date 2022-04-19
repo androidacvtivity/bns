@@ -36,7 +36,7 @@
 --    GEN_INSTITUTIE,
 --    IDNO 
 --    )
-
+--
 
 SELECT 
     CUIIO,
@@ -105,5 +105,5 @@ SELECT R.CUIIO
 
 
 
-AND CUIIO_VERS =   1822
+AND CUIIO_VERS <>  1824
 
