@@ -1,9 +1,6 @@
+UPDATE CIS2.FORM_CUIIO
 
-
-
---UPDATE CIS2.FORM_CUIIO
---
---SET STATUT = '3'
+SET STATUT = '3'
 
 
 
@@ -36,7 +33,7 @@ SELECT FC.CUIIO,
            
            
            
-          AND CUIIO_VERS = 1822
+          AND CUIIO_VERS = 1824
            
            AND FORM = 37 
            AND FORM_VERS = 1800

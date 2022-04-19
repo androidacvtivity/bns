@@ -1,26 +1,4 @@
---DECLARE CURSOR C IS
---SELECT 
---    DF.PERIOADA,
---    DF.FORM,
---    DF.FORM_VERS,
---    DF.ID_MDTABLE,
---    DF.COD_CUATM,
---    DF.NR_SECTIE,
---    DF.NUME_SECTIE,
---    DF.NR_SECTIE1,
---    DF.NUME_SECTIE1,
---    DF.NR_SECTIE2,
---    DF.NUME_SECTIE2,
---    DF.NR_ROW NR_ROW,
---    DF.ORDINE,
---    DF.DECIMAL_POS,
---    DF.NUME_ROW,
---    DF.COL1,
---    DF.COL2,
---    DF.COL3,
---    DF.COL4
---    FROM  ( 
---    
+   
     SELECT
    :pPERIOADA AS PERIOADA,
     :pFORM AS FORM,
@@ -51,8 +29,8 @@
           INNER  JOIN MD_RIND MR ON D.ID_MD = MR.ID_MD
           INNER  JOIN MD_CAPITOL MC ON MR.CAPITOL = MC.CAPITOL AND MR.CAPITOL_VERS = MC.CAPITOL_VERS
           
-          --INNER JOIN   CIS2.VW_CL_TARI TT  ON (TT.CODUL=D.COL3)
-           INNER JOIN   CIS2.VW_CL_TARI TT ON  ((LTRIM(TT.CODUL,'0') )=D.COL3)   
+  
+           INNER JOIN   CIS2.VW_CL_TARI TT ON  (TT.CODUL=D.COL33)   
           
           
           INNER JOIN   CIS2.VW_CL_TARI TTT ON (TT.FULL_CODE LIKE '%' ||TTT.CODUL||';%' )  
@@ -77,7 +55,7 @@ WHERE
   (:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)  AND
-  MC.CAPITOL IN (405,406,407,408)   AND  MC.CAPITOL_VERS  = 1040
+  MC.CAPITOL IN (405,406,407,408)  
   GROUP BY
   TTT.ORDINE,
   TTT.FULL_CODE,
@@ -85,47 +63,3 @@ WHERE
   CR.COL1 
   
   
---  ) DF;
---  BEGIN
---  FOR CR IN C
---  LOOP
---    INSERT INTO  CIS2.TABLE_OUT (
---      PERIOADA,
---      FORM,
---      FORM_VERS,
---      ID_MDTABLE,
---      COD_CUATM,
---      NR_SECTIE,
---      NUME_SECTIE,
---      NR_SECTIE1,
---      NUME_SECTIE1,
---      NR_SECTIE2,
---      NUME_SECTIE2,
---      NR_ROW,
---      ORDINE,
---      DECIMAL_POS,
---      NUME_ROW,
---      COL1, COL2, COL3,  COL4 )
---    VALUES
---    (
---      CR.PERIOADA,
---      CR.FORM,
---      CR.FORM_VERS,
---      CR.ID_MDTABLE,
---      CR.COD_CUATM,
---      CR.NR_SECTIE,
---      CR.NUME_SECTIE,
---      CR.NR_SECTIE1,
---      CR.NUME_SECTIE1,
---      CR.NR_SECTIE2,
---      CR.NUME_SECTIE2,
---      CR.NR_ROW,
---      CR.ORDINE,
---      CR.DECIMAL_POS,
---      CR.NUME_ROW,
---      CR.COL1, CR.COL2, CR.COL3, CR.COL4
---    );
---  END LOOP;
---END;
---  
---  
