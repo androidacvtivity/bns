@@ -1,0 +1,5 @@
+--SELECT * 
+--FROM USER_BANCU.AER;
+--
+--update USER_BANCU.AER
+--SET CUIIO_VERS = 2010;

@@ -6,8 +6,8 @@ FROM USER_EREPORTING.CONTROL
 
     WHERE 
     
-    FORM = 67 
-    AND PERIOADA = 2010
+    FORM = 1
+    AND PERIOADA = 1052
     AND REZULTAT <> 'OK'
    -- AND CONTROL IN ('57-028')
     
