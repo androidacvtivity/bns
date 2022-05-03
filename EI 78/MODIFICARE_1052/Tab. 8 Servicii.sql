@@ -47,10 +47,7 @@ SELECT
                   
              ) CI ON (TRIM(D.COL31)=TRIM(CI.ITEM_CODE))
          
-          INNER JOIN VW_CLS_CLASS_ITEM CII ON (CII.CLASS_CODE IN ('CSPM2')
-          
-     
-          AND CI.ITEM_PATH LIKE '%'||CII.ITEM_CODE||';%')
+          INNER JOIN VW_CLS_CLASS_ITEM CII ON (CII.CLASS_CODE IN ('CSPM2') AND CI.ITEM_PATH LIKE '%'||CII.ITEM_CODE||';%')
    
         -------------------------------------------------------------------------------
         CROSS JOIN (
@@ -70,7 +67,7 @@ SELECT
   (D.PERIOADA =:pPERIOADA) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
-  (:pID_MDTABLE =:pID_MDTABLE) AND
+ -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND MC.CAPITOL IN (405,407) 
