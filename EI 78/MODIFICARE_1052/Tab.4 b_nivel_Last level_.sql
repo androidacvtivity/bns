@@ -5,22 +5,25 @@ SELECT
     00000000 AS CUIIO,
     NULL DENUMIRE_CUIIO, 
     NULL RIND,
-    SSS.DENUMIRE DENUMIRE,
+    CII.NAME DENUMIRE,
     '9' AS ORDINE, 
     NULL AS COL1,
     NULL AS COL2,
     
    
-    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','2','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
-    +
-    SUM(CASE WHEN  MR.CAPITOL IN (406)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END ))
+    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    
+    
+    )
     AS COL3,
     ---------------------------------------------------------------------------------------------------------------------
   
     
-    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','2','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
-    +
-    SUM(CASE WHEN  MR.CAPITOL IN (406)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )) / CR.COL1
+    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    
+    
+    
+    ) / CR.COL1
     AS COL4,
     
     
@@ -36,9 +39,35 @@ FROM CIS2.DATA_ALL D
         INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
         INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%' )
         
-    INNER JOIN CIS2.VW_CL_SERVICII SS ON (rtrim(SS.CODUL, '0')=D.COL1 )
     
-    INNER JOIN   CIS2.VW_CL_SERVICII SSS ON (SS.FULL_CODE LIKE '%' ||SSS.CODUL||';%' )
+    
+    
+    
+   INNER JOIN (
+         
+         SELECT
+                  CI.ITEM_CODE,
+                  CI.ITEM_PATH,
+                  CI.NAME,
+                  CI.SHOW_ORDER,
+                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
+                FROM
+                  VW_CLS_CLASS_ITEM CI
+                WHERE
+                  CI.CLASS_CODE IN ('CSPM2') 
+    
+                GROUP BY
+                  CI.ITEM_CODE,
+                  CI.ITEM_PATH,
+                  CI.NAME,
+                  CI.SHOW_ORDER
+                  
+             ) CI ON (TRIM(D.COL31)=TRIM(CI.ITEM_CODE))
+         
+          INNER JOIN VW_CLS_CLASS_ITEM CII ON (CII.CLASS_CODE IN ('CSPM2')
+          
+     
+          AND CI.ITEM_PATH LIKE '%'||CII.ITEM_CODE||';%')
         
         -------------------------------------------------------------------------------
         CROSS JOIN (
@@ -64,11 +93,11 @@ FROM CIS2.DATA_ALL D
   D.FORM IN (44) AND
   MR.CAPITOL IN (405,406)
    
-  AND  SSS.CODUL IN ('0000000')
+  AND  CII.ITEM_CODE IN ('00.00.00')
   -------------------------------------------------
   GROUP BY 
   CC.CODUL,
   CC.FULL_CODE,
   CC.DENUMIRE, 
-  SSS.DENUMIRE,
+  CII.NAME,
   CR.COL1
