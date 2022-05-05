@@ -60,14 +60,14 @@ SELECT
                           INNER  JOIN MD_RIND MR ON D.ID_MD = MR.ID_MD
                       
                         WHERE
-                           (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)  AND              
+                             (D.PERIOADA =:pPERIOADA) AND               
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
                               AND MR.RIND IN ('01') ) CR
         ------------------------------------------------------------------------------       
    WHERE 
-   (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)  AND              
+  (D.PERIOADA =:pPERIOADA) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
   (:pID_MDTABLE =:pID_MDTABLE) AND
