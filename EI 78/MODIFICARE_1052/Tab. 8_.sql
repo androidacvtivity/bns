@@ -1,20 +1,23 @@
-   
+﻿    
+    
+    
+    
+       
     SELECT
---   :pPERIOADA AS PERIOADA,
---    :pFORM AS FORM,
---    :pFORM_VERS AS FORM_VERS,
---    :pID_MDTABLE AS ID_MDTABLE,
---    :pCOD_CUATM AS COD_CUATM,
---    '0' AS NR_SECTIE,
---    '0' AS NUME_SECTIE,
---    '0' AS NR_SECTIE1,
---    '0' AS NUME_SECTIE1,
---    '0' AS NR_SECTIE2,
---    '0' AS NUME_SECTIE2,
-TTT.CODUL,
+   :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+    '0' AS NR_SECTIE,
+    '0' AS NUME_SECTIE,
+    '0' AS NR_SECTIE1,
+    '0' AS NUME_SECTIE1,
+    '0' AS NR_SECTIE2,
+    '0' AS NUME_SECTIE2,
         ''||'~'||TTT.SHOW_ORDER||SUM(ROWNUM)  AS NR_ROW, 
      TTT.SHOW_ORDER  AS ORDINE,  
---     '1111' AS DECIMAL_POS,
+     '1111' AS DECIMAL_POS,
      TTT.NAME NUME_ROW, 
      ROUND((SUM(CASE WHEN  MC.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-')  THEN CIS2.NVAL(D.COL4) ELSE 0 END)   
      
@@ -47,7 +50,7 @@ TTT.CODUL,
           
   
            INNER JOIN   (
-             SELECT
+           SELECT
                   CI.ITEM_CODE,
                   CI.ITEM_PATH,
                   CI.NAME,
@@ -63,13 +66,12 @@ TTT.CODUL,
                   CI.ITEM_PATH,
                   CI.NAME,
                   CI.SHOW_ORDER
-                  
-           ) TT ON  (TT.ITEM_CODE=D.COL33)   
+           ) 
+           
+           TT ON  (TT.ITEM_CODE=D.COL33)
           
           
-        --  INNER JOIN   CIS2.VW_CL_TARI TTT ON (TT.FULL_CODE LIKE '%' ||TTT.CODUL||';%' )  
-          
-           INNER JOIN VW_CLS_CLASS_ITEM TTT ON (TTT.CLASS_CODE IN ('TARI_ISO') AND TT.ITEM_PATH LIKE '%'||TTT.ITEM_CODE||';%')
+        INNER JOIN VW_CLS_CLASS_ITEM TTT ON (TTT.CLASS_CODE IN ('TARI_ISO') AND TT.ITEM_PATH LIKE '%'||TTT.ITEM_CODE||';%')
         -------------------------------------------------------------------------------
         CROSS JOIN (
          SELECT
@@ -92,15 +94,12 @@ WHERE
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)  AND
   MC.CAPITOL IN (405,407)  
- -- AND TTT.CODUL IN ('075') 
- AND D.CUIIO = 43038
   GROUP BY
   TTT.ITEM_CODE,
   TTT.SHOW_ORDER,
   TTT.NAME,
   CR.COL1 
-  
-  
-  ORDER BY
-   CII.SHOW_ORDER
+    ORDER BY
+  TTT.SHOW_ORDER
+
   

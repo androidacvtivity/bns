@@ -1,0 +1,28 @@
+SELECT DISTINCT
+
+'RIND ' ||D.RIND||' [' || NVAL(SUM(D.COL4))||' < '|| SUM(NVAL(D.COL5) + NVAL(D.COL6) + NVAL(D.COL7)) ||']'
+        
+ AS REZULTAT
+    
+FROM
+VW_DATA_ALL  D                                  
+WHERE
+  (D.PERIOADA=:PERIOADA          ) AND
+  (D.CUIIO=:CUIIO                ) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS ) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+ 
+ 
+  D.FORM = 73
+  AND D.CAPITOL = 1196
+  AND D.RIND IN ('010','020','030','040','050','060','070','081','082','083','090','0100','0110')
+  
+GROUP BY D.RIND
+
+HAVING
+
+NVAL(SUM(D.COL4)) <  SUM(NVAL(D.COL5) + NVAL(D.COL6) + NVAL(D.COL7))

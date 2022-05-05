@@ -110,6 +110,7 @@ FROM CIS2.DATA_ALL D
   D.FORM IN (44) AND
   MR.CAPITOL IN (405)
   AND MR.RIND NOT IN ('1','-')
+  AND D.CUIIO = 43038 
   
   -------------------------------------------------
   GROUP BY 
@@ -184,6 +185,7 @@ FROM CIS2.DATA_ALL D
   D.FORM IN (44) AND
   MR.CAPITOL IN (405)
   AND MR.RIND NOT IN ('1','-')
+    AND D.CUIIO = 43038 
    
   -------------------------------------------------
   GROUP BY 

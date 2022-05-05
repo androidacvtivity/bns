@@ -1,5 +1,3 @@
-﻿
-
 SELECT 
     :pPERIOADA AS PERIOADA,
     :pFORM AS FORM,
@@ -16,7 +14,7 @@ SELECT
  ROWNUM  AS ORDINE,
  '000004' AS DECIMAL_POS,
 
-   TRIM(A.DENUMIRE)||' - '||TRIM(A.COL1) NUME_ROW,
+   TRIM(A.DENUMIRE)||' - '||(CASE WHEN TRIM(A.COL1) IS NOT NULL THEN TRIM(A.COL1) ELSE TRIM(A.COL2) END)  NUME_ROW,
     A.COL7   COL1,
     REPLACE(A.COL1,'.','')   COL2,
     A.COL2   COL3,
@@ -323,7 +321,7 @@ FROM CIS2.DATA_ALL D
     D.CUIIO,
     R.DENUMIRE DENUMIRE_CUIIO, 
     MR.RIND,
-    TT.DENUMIRE,
+    TT.NAME  DENUMIRE,
     4||'_'||D.COL31||'_'||D.COL33 AS ORDINE, 
     NULL   AS  COL1,
     D.COL33 AS  COL2,
@@ -362,7 +360,26 @@ FROM CIS2.DATA_ALL D
         ------------------------------------------------------------------------------   
         
        
-        INNER JOIN   CIS2.VW_CL_TARI TT  ON (TT.CODUL=TRIM(D.COL33))
+        INNER JOIN  (
+        SELECT
+                  CI.ITEM_CODE,
+                  CI.ITEM_PATH,
+                  CI.NAME,
+                  CI.SHOW_ORDER,
+                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
+                FROM
+                  VW_CLS_CLASS_ITEM CI
+                WHERE
+                  CI.CLASS_CODE IN ('TARI_ISO') 
+    
+                GROUP BY
+                  CI.ITEM_CODE,
+                  CI.ITEM_PATH,
+                  CI.NAME,
+                  CI.SHOW_ORDER
+           ) 
+           
+           TT ON  (TT.ITEM_CODE=D.COL33)
         
    WHERE 
   (D.PERIOADA =:pPERIOADA) AND 
@@ -379,7 +396,7 @@ FROM CIS2.DATA_ALL D
   CC.CODUL,
   CC.FULL_CODE,
   CC.DENUMIRE, 
-  TT.DENUMIRE,
+  TT.NAME,
   D.CUIIO,
   R.DENUMIRE,
   MR.RIND,
