@@ -1,9 +1,10 @@
 
 
 SELECT 
+     
     :pPERIOADA AS PERIOADA,
     :pFORM AS FORM,
-    :pFORM_VERS AS FORM_VERS,   
+    :pFORM_VERS AS FORM_VERS,
     :pID_MDTABLE AS ID_MDTABLE,
     :pCOD_CUATM AS COD_CUATM,
      NR_SECTIE   AS NR_SECTIE,
@@ -14,29 +15,12 @@ SELECT
     '0' AS NUME_SECTIE2, 
  A.CUIIO||'~'||ROWNUM NR_ROW,
  ROWNUM  AS ORDINE,
- '000004' AS DECIMAL_POS,
-
-    TRIM(A.DENUMIRE)||' - '||(CASE WHEN TRIM(A.COL1) IS NOT NULL THEN TRIM(A.COL1) ELSE TRIM(A.COL2) END)  NUME_ROW,
-    A.COL7   COL1,
-    REPLACE(A.COL1,'.','')   COL2,
-    A.COL2   COL3,
-    A.COL3   COL4,
- 
-  
-    ---------------------
-    ROUND(A.COL4,0)   COL5,
-   (SELECT
-            SUM(D.COL1) AS COL1            
-                  FROM DATA_ALL D
-                          INNER  JOIN CIS2.MD_RIND MR ON D.ID_MD = MR.ID_MD
-                      
-                        WHERE
-                             (D.PERIOADA =:pPERIOADA) AND               
-                              D.FORM IN (101)
-                              AND D.CUIIO IN (5)
-                              AND MR.CAPITOL IN (10002)
-                              AND MR.RIND IN ('01'))  AS  COL6 
-    
+ '0000' AS DECIMAL_POS,
+ TRIM(A.DENUMIRE)||' - '||(CASE WHEN TRIM(A.COL1) IS NOT NULL THEN TRIM(A.COL1) ELSE TRIM(A.COL2) END)  NUME_ROW,
+    REPLACE(A.COL1,'.','')   COL1,
+    A.COL2   COL2,
+    A.COL3   COL3,
+    ROUND(A.COL4,0)  COL4
     --------------------
     
     
@@ -95,13 +79,13 @@ FROM CIS2.DATA_ALL D
         INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%' )
         
    WHERE 
-  (D.PERIOADA =:pPERIOADA) AND 
+  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
 --  (:pID_MDTABLE =:pID_MDTABLE) AND
   (CC.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (1)
+  MR.CAPITOL IN (14)
   AND MR.RIND NOT  IN ('0')
   -------------------------------------------------
   GROUP BY 
@@ -154,7 +138,7 @@ FROM CIS2.DATA_ALL D
                           INNER  JOIN CIS2.MD_RIND MR ON D.ID_MD = MR.ID_MD
                       
                         WHERE
-                             (D.PERIOADA =:pPERIOADA) AND               
+                             (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND               
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
@@ -162,13 +146,13 @@ FROM CIS2.DATA_ALL D
         ------------------------------------------------------------------------------   
         
    WHERE 
-  (D.PERIOADA =:pPERIOADA) AND 
+  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
  -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (405)
+  MR.CAPITOL IN (407)
   
   AND MR.RIND  IN ('1')
   -------------------------------------------------
@@ -261,7 +245,7 @@ FROM CIS2.DATA_ALL D
                           INNER  JOIN CIS2.MD_RIND MR ON D.ID_MD = MR.ID_MD
                       
                         WHERE
-                             (D.PERIOADA =:pPERIOADA) AND               
+                             (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND               
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
@@ -291,13 +275,13 @@ FROM CIS2.DATA_ALL D
              ) CI ON (TRIM(D.COL31)=TRIM(CI.ITEM_CODE))
         
    WHERE 
-  (D.PERIOADA =:pPERIOADA) AND 
+  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
  -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (405)
+  MR.CAPITOL IN (407)
   AND MR.RIND NOT IN ('1','-')
   
   -------------------------------------------------
@@ -354,7 +338,7 @@ FROM CIS2.DATA_ALL D
                           INNER  JOIN CIS2.MD_RIND MR ON D.ID_MD = MR.ID_MD
                       
                         WHERE
-                             (D.PERIOADA =:pPERIOADA) AND               
+                             (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND               
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
@@ -384,13 +368,13 @@ FROM CIS2.DATA_ALL D
            TT ON  (TT.ITEM_CODE=D.COL33)
         
    WHERE 
-  (D.PERIOADA =:pPERIOADA) AND 
+  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
   (:pID_MDTABLE =:pID_MDTABLE) AND
   (CC.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (405)
+  MR.CAPITOL IN (407)
   AND MR.RIND NOT IN ('1','-')
    
   -------------------------------------------------
@@ -450,7 +434,7 @@ SELECT
     NULL AS COL2,
     
    
-    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    (SUM(CASE WHEN  MR.CAPITOL IN (407)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
     
     
     )
@@ -458,7 +442,7 @@ SELECT
     ---------------------------------------------------------------------------------------------------------------------
   
     
-    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    (SUM(CASE WHEN  MR.CAPITOL IN (407)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
     
     
     
@@ -516,7 +500,7 @@ FROM CIS2.DATA_ALL D
                           INNER  JOIN CIS2.MD_RIND MR ON D.ID_MD = MR.ID_MD
                       
                         WHERE
-                             (D.PERIOADA =:pPERIOADA) AND               
+                             (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND               
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
@@ -524,13 +508,13 @@ FROM CIS2.DATA_ALL D
         ------------------------------------------------------------------------------   
         
    WHERE 
-  (D.PERIOADA =:pPERIOADA) AND 
+  (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA                 ) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
   --(:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (405)
+  MR.CAPITOL IN (407)
    
   AND  CII.ITEM_CODE IN ('00.00.00')
   -------------------------------------------------
