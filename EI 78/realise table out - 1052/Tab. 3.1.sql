@@ -88,7 +88,7 @@ SELECT
                               AND MR.RIND IN ('01') ) CR 
              
  WHERE 
-  (D.PERIOADA =:pPERIOADA) AND 
+ (D.PERIOADA BETWEEN FLOOR(:pPERIOADA/4)*4 AND :pPERIOADA)  AND  
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
  -- (:pID_MDTABLE =:pID_MDTABLE) AND
