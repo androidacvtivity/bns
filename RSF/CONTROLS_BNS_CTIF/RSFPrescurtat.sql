@@ -1,13 +1,14 @@
 SELECT
         DISTINCT CUIIO,
+        FORM,
     
         DATA_REG  
 FROM USER_EREPORTING.VW_DATA_ALL_FR_PRIMIT
 
     WHERE 
     
-    FORM = 63 
-    AND PERIOADA = 2010
+     
+    PERIOADA = 2010
    
    
     
