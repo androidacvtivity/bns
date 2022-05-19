@@ -1,4 +1,5 @@
 ﻿
+
 SELECT 
  
     :pPERIOADA AS PERIOADA,
@@ -15,10 +16,12 @@ SELECT
  A.CUIIO||'~'||ROWNUM NR_ROW,
  ROWNUM  AS ORDINE,
  '0000004' AS DECIMAL_POS,
-  TRIM(A.DENUMIRE) NUME_ROW,
+  --TRIM(A.DENUMIRE) NUME_ROW,
+  TRIM(A.DENUMIRE)||' - '||(CASE WHEN TRIM(A.COL1) IS NOT NULL THEN TRIM(A.COL1) ELSE TRIM(A.COL2) END)  NUME_ROW,
     A.COL8   COL1,
     A.COL7   COL2,
-    A.COL1   COL3,
+    --A.COL1   COL3,
+    REPLACE(A.COL1,'.','') AS COL3,
     A.COL2   COL4,
  
   
@@ -472,7 +475,7 @@ FROM CIS2.DATA_ALL D
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
   (:pID_MDTABLE =:pID_MDTABLE) AND
-  (CC.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
+  (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
   MR.CAPITOL IN (405)
   AND MR.RIND NOT IN ('1','-')
@@ -719,3 +722,60 @@ INNER JOIN (
     '9603000'
 )
 
+
+
+--) DF
+--;
+--   
+--    BEGIN
+--
+--  FOR CR IN C
+--  
+--  LOOP
+--    INSERT INTO   USER_BANCU.TABLE_OUT_TEST 
+--    
+--  --  CIS2.TABLE_OUT
+--    (
+--      PERIOADA,
+--      FORM,
+--      FORM_VERS,
+--
+--      ID_MDTABLE,
+--      COD_CUATM,
+--      NR_SECTIE,
+--      NUME_SECTIE,
+--      NR_SECTIE1,
+--      NUME_SECTIE1,
+--      NR_SECTIE2,
+--      NUME_SECTIE2,
+--      NR_ROW,
+--      ORDINE,
+--      DECIMAL_POS,
+--      NUME_ROW,
+--       
+--      COL1, COL2, COL3,  COL4,  COL5, COL6, COL7
+--    )
+--    VALUES
+--    (
+--      CR.PERIOADA,
+--      CR.FORM,
+--      CR.FORM_VERS,
+--      CR.ID_MDTABLE,
+--      CR.COD_CUATM,
+--      CR.NR_SECTIE,
+--      CR.NUME_SECTIE,
+--      CR.NR_SECTIE1,
+--      CR.NUME_SECTIE1,
+--      CR.NR_SECTIE2,
+--      CR.NUME_SECTIE2,
+--      CR.NR_ROW,
+--      CR.ORDINE,
+--      CR.DECIMAL_POS,
+--      CR.NUME_ROW,
+--       
+--      CR.COL1, CR.COL2, CR.COL3, CR.COL4, CR.COL5, CR.COL6, CR.COL7
+--    );
+--  END LOOP;
+--END;
+--  
+  
