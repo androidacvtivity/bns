@@ -1,9 +1,10 @@
 ﻿
+
+
 SELECT 
- 
     :pPERIOADA AS PERIOADA,
     :pFORM AS FORM,
-    :pFORM_VERS AS FORM_VERS,
+    :pFORM_VERS AS FORM_VERS,   
     :pID_MDTABLE AS ID_MDTABLE,
     :pCOD_CUATM AS COD_CUATM,
      NR_SECTIE   AS NR_SECTIE,
@@ -14,23 +15,17 @@ SELECT
     '0' AS NUME_SECTIE2, 
  A.CUIIO||'~'||ROWNUM NR_ROW,
  ROWNUM  AS ORDINE,
- '0000004' AS DECIMAL_POS,
-  TRIM(A.DENUMIRE) NUME_ROW,
---    A.COL7   COL1,
---    A.COL1   COL2,
---    A.COL2   COL3,
---    A.COL3   COL4,
---   ROUND(A.COL4,0)   COL5,
+ '000004' AS DECIMAL_POS,
 
-    A.COL8   COL1,
-    A.COL7   COL2,
-    A.COL1   COL3,
-    A.COL2   COL4,
+    TRIM(A.DENUMIRE)||' - '||(CASE WHEN TRIM(A.COL1) IS NOT NULL THEN TRIM(A.COL1) ELSE TRIM(A.COL2) END)  NUME_ROW,
+    A.COL7   COL1,
+    REPLACE(A.COL1,'.','')   COL2,
+    A.COL2   COL3,
+    A.COL3   COL4,
  
   
     ---------------------
-    ROUND(A.COL3,0)   COL5,
-    ROUND(A.COL4,0)   COL6,
+    ROUND(A.COL4,0)   COL5,
    (SELECT
             SUM(D.COL1) AS COL1            
                   FROM DATA_ALL D
@@ -41,7 +36,12 @@ SELECT
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
-                              AND MR.RIND IN ('01'))  AS  COL7 
+                              AND MR.RIND IN ('01'))  AS  COL6 
+    
+    --------------------
+    
+    
+    
 FROM 
 (
 SELECT 
@@ -58,10 +58,10 @@ SELECT
     SUM(COL4)  COL4,
     SUM(COL5)  COL5,
     MAX(COL6)  COL6,
-    MAX(COL7)  COL7,
-    MAX(COL8)  COL8
+    MAX(COL7)  COL7
 FROM
 (
+--  '1' AS ORDINE, 
 SELECT 
     CC.CODUL,
     CC.FULL_CODE,
@@ -77,16 +77,15 @@ SELECT
     NULL   AS  COL4,
     NULL   AS  COL5,
     D.CUIIO   AS  COL6,
-    MAX(CASE WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('01') AND   CIS2.NVAL(D.COL1) = 1 THEN  1  
-             WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('02') AND   CIS2.NVAL(D.COL1) = 1 THEN  2
-             WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('03') AND   CIS2.NVAL(D.COL1) = 1 THEN  3
-             WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('04') AND   CIS2.NVAL(D.COL1) = 1 THEN  4
-             WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('05') AND   CIS2.NVAL(D.COL1) = 1 THEN  5
-             WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('06') AND   CIS2.NVAL(D.COL1) = 1 THEN  6
-             WHEN  MR.CAPITOL IN (14) AND MR.RIND IN ('07') AND   CIS2.NVAL(D.COL1) = 1 THEN  7  
+    MAX(CASE WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('01') AND   CIS2.NVAL(D.COL1) = 1 THEN  1  
+             WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('02') AND   CIS2.NVAL(D.COL1) = 1 THEN  2
+             WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('03') AND   CIS2.NVAL(D.COL1) = 1 THEN  3
+             WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('04') AND   CIS2.NVAL(D.COL1) = 1 THEN  4
+             WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('05') AND   CIS2.NVAL(D.COL1) = 1 THEN  5
+             WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('06') AND   CIS2.NVAL(D.COL1) = 1 THEN  6
+             WHEN  MR.CAPITOL IN (1) AND MR.RIND IN ('07') AND   CIS2.NVAL(D.COL1) = 1 THEN  7  
     
-    END) COL7,
-    D.PACHET AS COL8 
+    END) COL7
 
 FROM CIS2.DATA_ALL D 
         
@@ -100,11 +99,10 @@ FROM CIS2.DATA_ALL D
   (D.PERIOADA =:pPERIOADA) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
-  (:pID_MDTABLE =:pID_MDTABLE) AND
+--  (:pID_MDTABLE =:pID_MDTABLE) AND
   (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (14)
-  
+  MR.CAPITOL IN (1)
   AND MR.RIND NOT  IN ('0')
   -------------------------------------------------
   GROUP BY 
@@ -114,12 +112,12 @@ FROM CIS2.DATA_ALL D
   D.CUIIO,
   R.DENUMIRE,
   MR.RIND,
-  MR.DENUMIRE,
-  D.PACHET
+  MR.DENUMIRE
   
-  
+  --  END '1' AS ORDINE, 
   UNION 
   
+   --  '2' AS ORDINE,
   SELECT 
     CC.CODUL,
     CC.FULL_CODE,
@@ -138,15 +136,14 @@ FROM CIS2.DATA_ALL D
     NULL AS COL5,
     ------------------------------
     NULL AS COL6,
-    NULL AS COL7,
-    D.PACHET 
+    NULL AS COL7
 
 FROM CIS2.DATA_ALL D 
         
         INNER JOIN CIS2.RENIM R ON R.CUIIO=D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS
         INNER JOIN CIS2.VW_CL_CUATM C ON R.CUATM = C.CODUL
         INNER JOIN CIS2.MD_RIND MR ON MR.ID_MD = D.ID_MD
-       -- INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
+      --  INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
         INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%' )
         
         
@@ -169,11 +166,11 @@ FROM CIS2.DATA_ALL D
   (D.PERIOADA =:pPERIOADA) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
-  (:pID_MDTABLE =:pID_MDTABLE) AND
+ -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (407)
- 
+  MR.CAPITOL IN (405)
+  
   AND MR.RIND  IN ('1')
   -------------------------------------------------
   GROUP BY 
@@ -184,15 +181,13 @@ FROM CIS2.DATA_ALL D
   R.DENUMIRE,
   MR.RIND,
   MR.DENUMIRE,
-  CR.COL1,
-  D.PACHET  
+  CR.COL1 
   
-  
-  
-  
+     --   END '2' AS ORDINE,
   UNION 
---------------------------------------------------------------------------------  
-
+  
+  
+     --   START  '4' AS ORDINE,
 SELECT 
 CODUL,
 FULL_CODE,
@@ -208,8 +203,7 @@ COL3,
 COL4,
 COL5,
 NULL COL6,
-NULL AS COL7,
- COL8
+NULL AS COL7
 FROM 
 (
 SELECT
@@ -226,10 +220,10 @@ SELECT
   COL2,
   SUM(COL3) COL3,
   SUM(COL4) COL4,
-  SUM(COL5) COL5,
-  COL8
+  SUM(COL5) COL5
 FROM
 (
+
 SELECT 
     CC.CODUL,
     CC.FULL_CODE,
@@ -237,7 +231,7 @@ SELECT
     D.CUIIO,
     R.DENUMIRE DENUMIRE_CUIIO, 
     MR.RIND,
-     CI.NAME DENUMIRE,
+    CI.NAME DENUMIRE,
     4||'_'||D.COL31 AS ORDINE, 
     D.COL31 AS COL1,
     NULL AS COL2,
@@ -249,15 +243,14 @@ SELECT
     
     
     NULL AS COL6,
-    NULL AS COL7,
-    D.PACHET AS COL8
+    NULL AS COL7
 
 FROM CIS2.DATA_ALL D 
         
         INNER JOIN CIS2.RENIM R ON R.CUIIO=D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS
         INNER JOIN CIS2.VW_CL_CUATM C ON R.CUATM = C.CODUL
         INNER JOIN CIS2.MD_RIND MR ON MR.ID_MD = D.ID_MD
-       -- INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
+      --  INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
         INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%' )
         
         
@@ -276,9 +269,8 @@ FROM CIS2.DATA_ALL D
                               AND MR.RIND IN ('01') ) CR
         ------------------------------------------------------------------------------   
         
-      --  INNER JOIN CIS2.VW_CL_SERVICII SS ON (rtrim(SS.CODUL, '0')=D.COL1 )
-      
-       INNER JOIN (
+
+        INNER JOIN (
          
          SELECT
                   CI.ITEM_CODE,
@@ -306,9 +298,9 @@ FROM CIS2.DATA_ALL D
  -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (407)
-
+  MR.CAPITOL IN (405)
   AND MR.RIND NOT IN ('1','-')
+  
   -------------------------------------------------
   GROUP BY 
   CC.CODUL,
@@ -320,9 +312,8 @@ FROM CIS2.DATA_ALL D
   MR.RIND,
   MR.DENUMIRE,
   CR.COL1,
-   D.COL31,
-  D.COL33,
-  D.PACHET 
+  D.COL31,
+  D.COL33 
   
   UNION 
   
@@ -333,7 +324,7 @@ FROM CIS2.DATA_ALL D
     D.CUIIO,
     R.DENUMIRE DENUMIRE_CUIIO, 
     MR.RIND,
-     TT.NAME DENUMIRE,
+    TT.NAME  DENUMIRE,
     4||'_'||D.COL31||'_'||D.COL33 AS ORDINE, 
     NULL   AS  COL1,
     D.COL33 AS  COL2,
@@ -345,8 +336,7 @@ FROM CIS2.DATA_ALL D
     
     
     NULL AS COL6,
-    NULL AS COL7,
-     D.PACHET AS COL8
+    NULL AS COL7
 
 FROM CIS2.DATA_ALL D 
         
@@ -373,9 +363,7 @@ FROM CIS2.DATA_ALL D
         ------------------------------------------------------------------------------   
         
        
-       -- INNER JOIN   CIS2.VW_CL_TARI TT  ON (TT.CODUL=D.COL3)
-       
-       INNER JOIN  (
+        INNER JOIN  (
         SELECT
                   CI.ITEM_CODE,
                   CI.ITEM_PATH,
@@ -403,23 +391,22 @@ FROM CIS2.DATA_ALL D
   --(:pID_MDTABLE =:pID_MDTABLE) AND
   (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (407)
-  
+  MR.CAPITOL IN (405)
   AND MR.RIND NOT IN ('1','-')
+   
   -------------------------------------------------
   GROUP BY 
   CC.CODUL,
   CC.FULL_CODE,
   CC.DENUMIRE, 
- TT.NAME,
+  TT.NAME,
   D.CUIIO,
   R.DENUMIRE,
   MR.RIND,
   MR.DENUMIRE,
   CR.COL1,
   D.COL31,
-  D.COL33 ,
-  D.PACHET
+  D.COL33
   
   
   
@@ -432,8 +419,7 @@ GROUP BY
   DENUMIRE,
   ORDINE,
   COL1,
-  COL2,
-   COL8
+  COL2
 ORDER BY
   CODUL,
   FULL_CODE,
@@ -446,14 +432,10 @@ ORDER BY
   
   )
   
+  --   END   '4' AS ORDINE,
   
-  
---------------------------------------------------------------------------------  
-    
-  
- UNION 
-  
-  
+
+UNION 
 
 
 SELECT 
@@ -463,13 +445,13 @@ SELECT
     00000000 AS CUIIO,
     NULL DENUMIRE_CUIIO, 
     NULL RIND,
-     CII.NAME DENUMIRE,
+    CII.NAME DENUMIRE,
     '9' AS ORDINE, 
     NULL AS COL1,
     NULL AS COL2,
     
    
-    (SUM(CASE WHEN  MR.CAPITOL IN (407)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
     
     
     )
@@ -477,7 +459,7 @@ SELECT
     ---------------------------------------------------------------------------------------------------------------------
   
     
-    (SUM(CASE WHEN  MR.CAPITOL IN (407)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
+    (SUM(CASE WHEN  MR.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-') AND D.COL4 IS NOT NULL THEN D.COL4 ELSE 0 END )  
     
     
     
@@ -487,23 +469,21 @@ SELECT
     
     NULL AS COL5,
     NULL AS COL6,
-    NULL AS COL7,
-      NULL AS COL8
+    NULL AS COL7
 
 FROM CIS2.DATA_ALL D 
         
         INNER JOIN CIS2.RENIM R ON R.CUIIO=D.CUIIO AND R.CUIIO_VERS=D.CUIIO_VERS
         INNER JOIN CIS2.VW_CL_CUATM C ON R.CUATM = C.CODUL
         INNER JOIN CIS2.MD_RIND MR ON MR.ID_MD = D.ID_MD
-       -- INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
+      --  INNER  JOIN VW_CL_CUATM CT ON R.CUATM = CT.CODUL
         INNER JOIN CIS2.VW_CL_CUATM CC ON (C.FULL_CODE LIKE '%'||CC.CODUL ||';%' )
         
---    INNER JOIN CIS2.VW_CL_SERVICII SS ON (rtrim(SS.CODUL, '0')=D.COL1 )
---    
---    INNER JOIN   CIS2.VW_CL_SERVICII SSS ON (SS.FULL_CODE LIKE '%' ||SSS.CODUL||';%' )
-
-
-INNER JOIN (
+    
+    
+    
+    
+   INNER JOIN (
          
          SELECT
                   CI.ITEM_CODE,
@@ -548,17 +528,18 @@ INNER JOIN (
   (D.PERIOADA =:pPERIOADA) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
-  (:pID_MDTABLE =:pID_MDTABLE) AND
+  --(:pID_MDTABLE =:pID_MDTABLE) AND
   (C.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44) AND
-  MR.CAPITOL IN (407)
+  MR.CAPITOL IN (405,406)
+   
   AND  CII.ITEM_CODE IN ('00.00.00')
   -------------------------------------------------
   GROUP BY 
   CC.CODUL,
   CC.FULL_CODE,
   CC.DENUMIRE, 
-   CII.NAME,
+  CII.NAME,
   CR.COL1
 
   
@@ -649,5 +630,12 @@ INNER JOIN (
 )
 
 
+
   
+
+
   
+
+
+  
+

@@ -1,0 +1,15 @@
+SELECT
+        DISTINCT CUIIO,
+    
+        DATA_REG  
+FROM USER_EREPORTING.VW_DATA_ALL_FR_PRIMIT
+
+    WHERE 
+    
+    FORM = 57 
+    AND PERIOADA = 2010
+   
+   
+    
+    ORDER BY 
+    DATA_REG DESC
