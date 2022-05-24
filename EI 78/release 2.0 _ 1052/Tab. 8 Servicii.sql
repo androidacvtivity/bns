@@ -1,6 +1,3 @@
-
-    
-    
 SELECT 
 --    :pPERIOADA AS PERIOADA,
 --    :pFORM AS FORM,
@@ -13,7 +10,7 @@ SELECT
 --    '0' AS NUME_SECTIE1,
 --    '0' AS NR_SECTIE2,
 --    '0' AS NUME_SECTIE2,
-     CII.ITEM_CODE||'~'||CII.SHOW_ORDER  AS NR_ROW,  
+    (CASE WHEN  CII.ITEM_CODE = '98' THEN '99' ELSE CII.ITEM_CODE END) ||'~'||CII.SHOW_ORDER  AS NR_ROW,  
      CII.SHOW_ORDER   AS ORDINE,  
     '1111' AS DECIMAL_POS,
      CII.NAME NUME_ROW,
@@ -50,7 +47,7 @@ SELECT
                   
              ) CI ON (TRIM(D.COL31)=TRIM(CI.ITEM_CODE))
          
-          INNER JOIN VW_CLS_CLASS_ITEM CII ON (CII.CLASS_CODE IN ('CSPM2') AND CI.ITEM_PATH LIKE '%'||CII.ITEM_CODE||';%')
+          INNER JOIN VW_CLS_CLASS_ITEM CII ON  (CII.CLASS_CODE IN ('CSPM2') AND REPLACE(' '||CI.ITEM_PATH,';','; ') LIKE '% '||TRIM(CII.ITEM_CODE)||';%')
    
         -------------------------------------------------------------------------------
         CROSS JOIN (
@@ -60,7 +57,7 @@ SELECT
                           INNER  JOIN MD_RIND MR ON D.ID_MD = MR.ID_MD
                       
                         WHERE
-                             (D.PERIOADA =:pPERIOADA) AND               
+                          (D.PERIOADA =:pPERIOADA) AND               
                               D.FORM IN (101)
                               AND D.CUIIO IN (5)
                               AND MR.CAPITOL IN (10002)
@@ -70,7 +67,7 @@ SELECT
   (D.PERIOADA =:pPERIOADA) AND 
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
- -- (:pID_MDTABLE =:pID_MDTABLE) AND
+  --(:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND MC.CAPITOL IN (405,407) 
@@ -81,16 +78,11 @@ SELECT
   CII.NAME,
   CR.COL1
   
-  ORDER  BY
-  CII.SHOW_ORDER
+  ORDER BY
+  CII.SHOW_ORDER 
 
-    
-    
-    
-    
-    
 
-    
-    
-    
-    
+
+ 
+
+

@@ -1,0 +1,63 @@
+SELECT 
+L.CUIIO,
+'Rind. '||L.RIND||' - nu exista asa cod in clasificatorul tarilor = ['||L.COL33||']'
+ AS REZULTAT
+
+
+FROM
+(
+SELECT 
+D.CUIIO,  
+D.RIND,
+D.COL33
+   FROM
+  CIS2.VW_DATA_ALL D  
+ 
+
+WHERE
+  (D.PERIOADA=:PERIOADA          ) AND
+ -- (D.CUIIO=:CUIIO                ) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS  ) AND
+  (D.CAPITOL=:CAPITOL           OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (44)  AND
+  D.RIND NOT IN ('1') AND 
+  D.CAPITOL IN (407) 
+  
+GROUP BY
+  D.CUIIO, 
+  D.RIND, 
+  D.COL33
+
+) L LEFT JOIN (
+
+SELECT 
+ITEM_CODE CODUL
+
+FROM CIS2.VW_CLS_CLASS_ITEM
+
+WHERE 
+
+CLASS_CODE =   'TARI_ISO'
+
+AND ITEM_CODE NOT IN ('000','444','55')
+) R ON L.COL33 = R.CODUL
+ 
+
+
+
+
+WHERE 
+
+R.CODUL IS NULL
+AND L.COL33 IS NOT NULL
+
+
+GROUP BY
+L.CUIIO,
+L.RIND,
+L.COL33
