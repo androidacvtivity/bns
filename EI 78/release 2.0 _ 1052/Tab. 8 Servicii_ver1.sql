@@ -1,21 +1,8 @@
-
-    
-    
 SELECT 
---    :pPERIOADA AS PERIOADA,
---    :pFORM AS FORM,
---    :pFORM_VERS AS FORM_VERS,
---    :pID_MDTABLE AS ID_MDTABLE,
---    :pCOD_CUATM AS COD_CUATM,
---    '0' AS NR_SECTIE,
---    '0' AS NUME_SECTIE,
---    '0' AS NR_SECTIE1,
---    '0' AS NUME_SECTIE1,
---    '0' AS NR_SECTIE2,
---    '0' AS NUME_SECTIE2,
-     CII.ITEM_CODE||'~'||CII.SHOW_ORDER  AS NR_ROW,  
+--  (CASE WHEN CII.ITEM_CODE = '98' THEN '99' ELSE  CII.ITEM_CODE END) ||'~'||CII.SHOW_ORDER  AS NR_ROW,  
+   
+     (CASE WHEN CII.ITEM_CODE = '98' THEN '99' ELSE  CII.ITEM_CODE END)    AS NR_ROW,  
      CII.SHOW_ORDER   AS ORDINE,  
-    '1111' AS DECIMAL_POS,
      CII.NAME NUME_ROW,
      ROUND((SUM(CASE WHEN  MC.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-')  THEN CIS2.NVAL(D.COL4) ELSE 0 END))/1000,1) AS COL1,
      ROUND(((SUM(CASE WHEN  MC.CAPITOL IN (405)  AND MR.RIND NOT IN ('1','-')  THEN CIS2.NVAL(D.COL4) ELSE 0 END) ) / CR.COL1 )/1000,1) AS COL2,
@@ -50,7 +37,29 @@ SELECT
                   
              ) CI ON (TRIM(D.COL31)=TRIM(CI.ITEM_CODE))
          
-          INNER JOIN VW_CLS_CLASS_ITEM CII ON (CII.CLASS_CODE IN ('CSPM2') AND CI.ITEM_PATH LIKE '%'||CII.ITEM_CODE||';%')
+         -- INNER JOIN VW_CLS_CLASS_ITEM CI ON (CI.CLASS_CODE IN ('CSPM2') AND (TRIM(D.COL31)=TRIM(CI.ITEM_CODE)))
+
+          INNER JOIN (
+          
+            SELECT
+                  CI.ITEM_CODE,
+                  CI.ITEM_PATH,
+                  CI.NAME,
+                  CI.SHOW_ORDER,
+                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
+                FROM
+                  VW_CLS_CLASS_ITEM CI
+                WHERE
+                  CI.CLASS_CODE IN ('CSPM2') 
+    
+                GROUP BY
+                  CI.ITEM_CODE,
+                  CI.ITEM_PATH,
+                  CI.NAME,
+                  CI.SHOW_ORDER
+          
+          
+          ) CII ON (REPLACE(CI.ITEM_PATH,';','; ') LIKE '% '||TRIM(CII.ITEM_CODE)||';%')
    
         -------------------------------------------------------------------------------
         CROSS JOIN (
@@ -72,8 +81,11 @@ SELECT
   (D.FORM_VERS =:pFORM_VERS) AND 
  -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (CT.FULL_CODE LIKE '%'||:pCOD_CUATM||';%') AND
-  D.FORM IN (44)
+  D.FORM IN (44)--
   AND MC.CAPITOL IN (405,407) 
+  
+  
+--AND CII.ITEM_CODE =  '3.1.2'
   
   GROUP BY 
   CII.ITEM_CODE,
@@ -94,3 +106,6 @@ SELECT
     
     
     
+    
+   
+  
