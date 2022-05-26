@@ -1,5 +1,5 @@
 SELECT DISTINCT 
-'CODUL CSPM2  - '||L.COL31||' si CODUL TARI_ISO - ' ||L.COL33||' este introdus  de '||NVAL(L.CNT)||' ori in capitol Export in Capitol Import de '||NVAL(R.CNT) ||' ori '  AS REZULTAT 
+'CODUL CSPM2  - '||R.COL31||' si CODUL TARI_ISO - ' ||R.COL33||' este introdus  de '||NVAL(R.CNT)||' ori in Capitol Import  in Capitol Export de '||NVAL(L.CNT) ||' ori '  AS REZULTAT 
 FROM
 (
 SELECT 
@@ -46,7 +46,7 @@ L.COL31,
 L.COL33 
 
 
-)  L LEFT JOIN (
+)  L RIGHT JOIN (
 
 
 SELECT 
