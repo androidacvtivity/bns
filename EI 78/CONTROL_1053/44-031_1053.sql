@@ -1,0 +1,203 @@
+SELECT DISTINCT 
+'CODUL CSPM2  - '||L.COL31||' si CODUL TARI_ISO - ' ||L.COL33||' este introdus  de '||NVAL(L.CNT)||' ori in capitol Export in Capitol Import de '||NVAL(R.CNT) ||' ori '  AS REZULTAT 
+FROM
+(
+SELECT 
+COUNT(TO_NUMBER(TO_NUMBER(REPLACE(L.COL31,'.',''))||TO_NUMBER(L.COL33))) AS CNT,
+L.COL31,
+L.COL33 
+FROM 
+(
+SELECT  
+       D.RIND,
+       D.COL31,
+       D.COL33 
+  
+FROM
+  CIS2.VW_DATA_ALL D  
+
+
+WHERE
+  (D.PERIOADA=:PERIOADA          ) AND
+  (D.CUIIO=:CUIIO                ) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS  ) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL<>:CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (44)  AND
+  D.CAPITOL IN (405)
+  
+  GROUP BY 
+    D.RIND,
+        D.COL31,
+        D.COL33
+        
+    
+HAVING 
+TRIM(D.COL31) IN ('49.39.11','49.39.12','49.39.13','49.31.2')
+
+) L 
+
+GROUP BY
+L.COL31,
+L.COL33 
+
+
+)  L LEFT JOIN (
+
+
+SELECT 
+COUNT(TO_NUMBER(TO_NUMBER(REPLACE(L.COL31,'.',''))||TO_NUMBER(L.COL33))) AS CNT,
+L.COL31,
+L.COL33 
+FROM 
+(
+SELECT  
+       D.RIND,
+       D.COL31,
+       D.COL33 
+  
+FROM
+  CIS2.VW_DATA_ALL D  
+
+
+WHERE
+  (D.PERIOADA=:PERIOADA          ) AND
+  (D.CUIIO=:CUIIO                ) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS  ) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL<>:CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (44)  AND
+  D.CAPITOL IN (407)
+  
+  GROUP BY 
+    D.RIND,
+        D.COL31,
+        D.COL33
+        
+    
+HAVING 
+TRIM(D.COL31) IN ('49.39.11','49.39.12','49.39.13','49.31.2')
+
+) L 
+
+GROUP BY 
+L.COL31,
+L.COL33 
+
+) R ON 
+
+TRIM(L.COL31) = TRIM(R.COL31) AND TRIM(L.COL33) = TRIM(R.COL33)
+
+WHERE 
+NVAL(R.CNT) <> NVAL(L.CNT)
+
+UNION 
+
+SELECT DISTINCT 
+'CODUL CSPM2  - '||R.COL31||' si CODUL TARI_ISO - ' ||R.COL33||' este introdus  de '||NVAL(R.CNT)||' ori in Capitol Import  in Capitol Export de '||NVAL(L.CNT) ||' ori '  AS REZULTAT 
+FROM
+(
+SELECT 
+COUNT(TO_NUMBER(TO_NUMBER(REPLACE(L.COL31,'.',''))||TO_NUMBER(L.COL33))) AS CNT,
+L.COL31,
+L.COL33 
+FROM 
+(
+SELECT  
+       D.RIND,
+       D.COL31,
+       D.COL33 
+  
+FROM
+  CIS2.VW_DATA_ALL D  
+
+
+WHERE
+  (D.PERIOADA=:PERIOADA          ) AND
+  (D.CUIIO=:CUIIO                ) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS  ) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL<>:CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (44)  AND
+  D.CAPITOL IN (405)
+  
+  GROUP BY 
+    D.RIND,
+        D.COL31,
+        D.COL33
+        
+    
+HAVING 
+TRIM(D.COL31) IN ('49.39.11','49.39.12','49.39.13','49.31.2')
+
+) L 
+
+GROUP BY
+L.COL31,
+L.COL33 
+
+
+)  L RIGHT JOIN (
+
+
+SELECT 
+COUNT(TO_NUMBER(TO_NUMBER(REPLACE(L.COL31,'.',''))||TO_NUMBER(L.COL33))) AS CNT,
+L.COL31,
+L.COL33 
+FROM 
+(
+SELECT  
+       D.RIND,
+       D.COL31,
+       D.COL33 
+  
+FROM
+  CIS2.VW_DATA_ALL D  
+
+
+WHERE
+  (D.PERIOADA=:PERIOADA          ) AND
+  (D.CUIIO=:CUIIO                ) AND
+  (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS  ) AND
+  (:CAPITOL=:CAPITOL            OR :CAPITOL<>:CAPITOL) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+  
+  D.FORM IN (44)  AND
+  D.CAPITOL IN (407)
+  
+  GROUP BY 
+    D.RIND,
+        D.COL31,
+        D.COL33
+        
+    
+HAVING 
+TRIM(D.COL31) IN ('49.39.11','49.39.12','49.39.13','49.31.2')
+
+) L 
+
+GROUP BY 
+L.COL31,
+L.COL33 
+
+) R ON 
+
+TRIM(L.COL31) = TRIM(R.COL31) AND TRIM(L.COL33) = TRIM(R.COL33)
+
+WHERE 
+NVAL(R.CNT) <> NVAL(L.CNT)
