@@ -3,3 +3,9 @@ Tab. 6  5233320.5	289223.2	2445045.5	135127.2
 Tab. 8 Servicii 
 
 03-082 - 7037737, 4500142
+
+link - https://edecbns-test.sfs.md/user/login
+
+User - natalia.siminovici
+
+Password - 1234567890
