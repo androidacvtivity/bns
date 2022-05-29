@@ -1,8 +1,3 @@
-﻿
-
-
-
-
 SELECT 
 --    :pPERIOADA AS PERIOADA,
 --    :pFORM AS FORM,

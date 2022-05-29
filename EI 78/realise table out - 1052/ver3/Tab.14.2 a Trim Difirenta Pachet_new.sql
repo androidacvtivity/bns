@@ -1,20 +1,15 @@
-﻿
-
-
-
-
 SELECT 
---    :pPERIOADA AS PERIOADA,
---    :pFORM AS FORM,
---    :pFORM_VERS AS FORM_VERS,
---    :pID_MDTABLE AS ID_MDTABLE,
---    :pCOD_CUATM AS COD_CUATM,
---    '0' AS NR_SECTIE,
---   '0' AS  NUME_SECTIE,
---    '0' AS NR_SECTIE1,
---    '0' AS NUME_SECTIE1,
---    '0' AS NR_SECTIE2,
---    '0' AS NUME_SECTIE2,
+    :pPERIOADA AS PERIOADA,
+    :pFORM AS FORM,
+    :pFORM_VERS AS FORM_VERS,
+    :pID_MDTABLE AS ID_MDTABLE,
+    :pCOD_CUATM AS COD_CUATM,
+    '0' AS NR_SECTIE,
+   '0' AS  NUME_SECTIE,
+    '0' AS NR_SECTIE1,
+    '0' AS NUME_SECTIE1,
+    '0' AS NR_SECTIE2,
+    '0' AS NUME_SECTIE2,
      CUIIO||'-'||SERV_CODUL||'-'||SERV_CODUL_OLD||'~'||ROWNUM NR_ROW,
      ROWNUM  AS ORDINE,
      '00000' AS DECIMAL_POS,
@@ -113,32 +108,10 @@ SELECT
      CIS2.VW_DATA_ALL D 
      
   
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  
+       ON (CI.CLASS_CODE IN ('CSPM2') AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
              
-             TRIM(D.COL31)=TRIM(CI.ITEM_CODE)
              
-             )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
      
@@ -151,7 +124,7 @@ SELECT
   (D.PERIOADA IN(:pPERIOADA)) AND    
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
- -- (:pID_MDTABLE =:pID_MDTABLE) AND
+
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND  D.CAPITOL IN (405) 
@@ -170,12 +143,12 @@ CI.A01,
  CI.ITEM_CODE,
  CI.NAME
 
-  
-  
-
-  ORDER BY 
+ ORDER BY 
  C.FULL_CODE,
-  D.CUIIO  ) L LEFT JOIN (
+  D.CUIIO  
+  
+  
+  ) L LEFT JOIN (
   
   SELECT 
     D.CUIIO,
@@ -184,7 +157,7 @@ CI.A01,
     C.FULL_CODE,
     CI.ITEM_CODE    SERV_CODUL,
     CI.A01          SERV_CODUL_OLD,
-    CI.NAME  DENUMIRE,
+   CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
     
     
        (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (405)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
@@ -198,28 +171,9 @@ CI.A01,
      CIS2.VW_DATA_ALL D 
 
      
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (TRIM(D.COL1)=TRIM(CI.A01))
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+             
+             
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
       INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
@@ -228,7 +182,7 @@ CI.A01,
   (D.PERIOADA IN(:pPERIOADA-1)) AND    
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
- -- (:pID_MDTABLE =:pID_MDTABLE) AND
+
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND  D.CAPITOL IN (405,406) 
@@ -241,6 +195,7 @@ CI.A01,
 
 
  D.CUATM,
+ R.DENUMIRE,
  C.FULL_CODE,
  D.CUIIO,
 CI.A01,
@@ -364,32 +319,7 @@ SELECT
      CIS2.VW_DATA_ALL D 
      
   
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (
-             
-             TRIM(D.COL31)=TRIM(CI.ITEM_CODE)
-             
-             )
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
      
@@ -435,7 +365,7 @@ CI.A01,
     C.FULL_CODE,
     CI.ITEM_CODE    SERV_CODUL,
     CI.A01          SERV_CODUL_OLD,
-    CI.NAME  DENUMIRE,
+   CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
     
     
        (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (405)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
@@ -449,28 +379,7 @@ CI.A01,
      CIS2.VW_DATA_ALL D 
 
      
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (TRIM(D.COL1)=TRIM(CI.A01))
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
       INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
@@ -494,6 +403,7 @@ CI.A01,
  D.CUATM,
  C.FULL_CODE,
  D.CUIIO,
+ R.DENUMIRE,
 CI.A01,
  CI.ITEM_CODE,
  CI.NAME,
@@ -605,7 +515,7 @@ SELECT
     L.DENUMIRE,
     SUM(L.COL1) AS  COL1,
     SUM(R.COL2) AS  COL2, 
-   -- SUM(L.COL1) - SUM(R.COL2)  AS COL3 
+   
     
       NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
 FROM 
@@ -632,32 +542,7 @@ SELECT
      CIS2.VW_DATA_ALL D 
      
   
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (
-             
-             TRIM(D.COL31)=TRIM(CI.ITEM_CODE)
-             
-             )
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
      
@@ -703,7 +588,7 @@ CI.A01,
     C.FULL_CODE,
     CI.ITEM_CODE    SERV_CODUL,
     CI.A01          SERV_CODUL_OLD,
-    CI.NAME  DENUMIRE,
+   CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
     
     
        (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (405)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
@@ -717,31 +602,10 @@ CI.A01,
      CIS2.VW_DATA_ALL D 
 
      
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (TRIM(D.COL1)=TRIM(CI.A01))
+     INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
-      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+     INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
     
   WHERE 
   (D.PERIOADA IN(:pPERIOADA-1)) AND    
@@ -760,6 +624,7 @@ CI.A01,
 
 
  D.CUATM,
+ R.DENUMIRE,
  C.FULL_CODE,
  D.CUIIO,
 CI.A01,
@@ -864,32 +729,7 @@ SELECT
      CIS2.VW_DATA_ALL D 
      
   
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (
-             
-             TRIM(D.COL31)=TRIM(CI.ITEM_CODE)
-             
-             )
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
      
@@ -935,7 +775,7 @@ CI.A01,
     C.FULL_CODE,
     CI.ITEM_CODE    SERV_CODUL,
     CI.A01          SERV_CODUL_OLD,
-    CI.NAME  DENUMIRE,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
     
     
        (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (405)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
@@ -949,28 +789,7 @@ CI.A01,
      CIS2.VW_DATA_ALL D 
 
      
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (TRIM(D.COL1)=TRIM(CI.A01))
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
          
      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
       INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
@@ -992,6 +811,7 @@ CI.A01,
 
 
  D.CUATM,
+ R.DENUMIRE,
      D.PACHET,
  C.FULL_CODE,
  D.CUIIO,
