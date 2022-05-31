@@ -1,0 +1,1391 @@
+SELECT 
+--    :pPERIOADA AS PERIOADA,
+--    :pFORM AS FORM,
+--    :pFORM_VERS AS FORM_VERS,
+--    :pID_MDTABLE AS ID_MDTABLE,
+--    :pCOD_CUATM AS COD_CUATM,
+--    '0' AS NR_SECTIE,
+--   '0' AS  NUME_SECTIE,
+--    '0' AS NR_SECTIE1,
+--    '0' AS NUME_SECTIE1,
+--    '0' AS NR_SECTIE2,
+--    '0' AS NUME_SECTIE2,
+     CUIIO||'-'||SERV_CODUL||'-'||SERV_CODUL_OLD||'~'||ROWNUM NR_ROW,
+     
+     
+     ROWNUM  AS ORDINE,
+     '00000' AS DECIMAL_POS,
+     CUIIO||'-'||DENUMIRE NUME_ROW,
+     CUIIO,
+     SERV_CODUL,
+     SERV_CODUL_OLD,
+     
+     PACHET     COL1,
+     REPLACE(SERV_CODUL,'.','')   COL2,
+   
+    
+     COL1 COL3,
+     COL2 COL4,
+     COL3 COL5
+     FROM
+
+(
+
+
+
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM
+
+
+(
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM 
+
+(
+
+
+SELECT  
+    2 ORDINE,
+    L.CUIIO,
+    L.CUATM,
+    L.PACHET,
+
+    L.SERV_CODUL,
+    L.SERV_CODUL_OLD,
+    L.DENUMIRE,
+    SUM(L.COL1) AS  COL1,
+    SUM(R.COL2) AS  COL2, 
+
+    
+      NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
+FROM 
+
+(
+SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+    (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA) AND  D.CAPITOL IN (407)  
+    AND D.RIND NOT IN ('1','-')  THEN NVAL(D.COL4) ELSE 0 END ))  
+   
+    AS COL1
+
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+  
+      INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') 
+      AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
+      
+      
+             
+       
+             
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+     
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+            
+     
+     
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407) 
+  
+
+ -- AND D.CUIIO = 20282377
+  
+  GROUP BY 
+
+D.PACHET,
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO  
+  
+  
+  
+  ) L LEFT JOIN (
+  
+  SELECT 
+    D.CUIIO,
+ 
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+       (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (407)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
+    +
+    SUM(CASE WHEN  D.PERIOADA IN(:pPERIOADA-1) AND   D.CAPITOL IN (408)  AND D.RIND NOT IN ('1','-')  THEN  NVAL(D.COL4) ELSE 0 END ))
+    AS COL2
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+
+     
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA-1)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407,408) 
+  
+ -- AND D.CUIIO = 20282377
+
+
+  
+  GROUP BY 
+
+
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO
+  
+  
+  ) R ON R.CUIIO = L.CUIIO AND L.SERV_CODUL = R.SERV_CODUL
+  
+
+
+GROUP BY 
+
+    L.CUIIO,
+    L.PACHET,
+    L.CUATM,
+    L.SERV_CODUL,
+     L.SERV_CODUL_OLD,
+    L.DENUMIRE
+    
+    
+    HAVING 
+    
+    NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2)) >   500000
+    
+    OR
+    
+     NVAL(SUM(R.COL2)) - NVAL(SUM(L.COL1)) >   500000
+    
+    
+    ORDER BY
+
+    L.CUIIO,
+    L.SERV_CODUL
+    )
+    
+
+
+
+union 
+
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM 
+
+(
+
+
+SELECT  
+    2 ORDINE,
+    R.CUIIO,
+    R.CUATM,
+    R.PACHET,
+
+    R.SERV_CODUL,
+    R.SERV_CODUL_OLD,
+    R.DENUMIRE,
+    SUM(L.COL1) AS  COL1,
+    SUM(R.COL2) AS  COL2, 
+
+    
+      NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
+FROM 
+
+(
+SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+    (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA) AND  D.CAPITOL IN (407)  
+    AND D.RIND NOT IN ('1','-')  THEN NVAL(D.COL4) ELSE 0 END ))  
+   
+    AS COL1
+
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+  
+      INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') 
+      AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
+      
+      
+             
+       
+             
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+     
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+            
+     
+     
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407) 
+  
+
+-- AND D.CUIIO = 20282377
+  
+  GROUP BY 
+
+D.PACHET,
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO  
+  
+  
+  
+  ) L RIGHT JOIN (
+  
+  SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+       (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) 
+       AND  D.CAPITOL IN (407)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
+    +
+    SUM(CASE WHEN  D.PERIOADA IN(:pPERIOADA-1) 
+    AND   D.CAPITOL IN (408)  AND D.RIND NOT IN ('1','-')  THEN  NVAL(D.COL4) ELSE 0 END ))
+    AS COL2
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+
+     
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA-1)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407,408) 
+  
+--AND D.CUIIO = 20282377
+
+
+  
+  GROUP BY 
+
+
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+  D.PACHET,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO
+  
+  
+  ) R ON R.CUIIO = L.CUIIO AND L.SERV_CODUL = R.SERV_CODUL
+  
+
+
+GROUP BY 
+
+   R.CUIIO,
+    R.CUATM,
+    R.PACHET,
+
+    R.SERV_CODUL,
+    R.SERV_CODUL_OLD,
+    R.DENUMIRE
+    
+    
+    HAVING 
+    
+    NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2)) >   500000
+    
+    OR
+    
+     NVAL(SUM(R.COL2)) - NVAL(SUM(L.COL1)) >   500000
+    
+    
+    ORDER BY
+
+    R.CUIIO,
+    R.SERV_CODUL
+    )
+    
+
+
+ ORDER BY
+
+    CUIIO,
+    SERV_CODUL
+)
+
+
+WHERE 
+COL1 IS NOT NULL 
+AND COL2 IS NOT NULL 
+AND COL3 IS NOT NULL
+
+
+
+
+
+UNION 
+
+
+
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+MAX(SERV_CODUL) SERV_CODUL,
+SERV_CODUL_OLD,
+MAX(DENUMIRE) DENUMIRE, 
+--SUM(COL1) AS COL1,
+--SUM(COL2) AS COL2,
+--SUM(COL3) AS COL3
+
+COL1,
+COL2,
+COL3
+ 
+FROM
+
+
+(
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM 
+
+(
+
+
+SELECT  
+    2 ORDINE,
+    L.CUIIO,
+    L.CUATM,
+    L.PACHET,
+
+    L.SERV_CODUL,
+    L.SERV_CODUL_OLD,
+    L.DENUMIRE,
+    SUM(L.COL1) AS  COL1,
+    SUM(R.COL2) AS  COL2, 
+
+    
+      NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
+FROM 
+
+(
+SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+    (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA) AND  D.CAPITOL IN (407)  
+    AND D.RIND NOT IN ('1','-')  THEN NVAL(D.COL4) ELSE 0 END ))  
+   
+    AS COL1
+
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+  
+      INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') 
+      AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
+      
+      
+             
+       
+             
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+     
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+            
+     
+     
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407) 
+  
+
+  AND D.CUIIO = 37474715
+  
+  GROUP BY 
+
+D.PACHET,
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO  
+  
+  
+  
+  ) L LEFT JOIN (
+  
+  SELECT 
+    D.CUIIO,
+ 
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+       (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (407)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
+    +
+    SUM(CASE WHEN  D.PERIOADA IN(:pPERIOADA-1) AND   D.CAPITOL IN (408)  AND D.RIND NOT IN ('1','-')  THEN  NVAL(D.COL4) ELSE 0 END ))
+    AS COL2
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+
+     
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA-1)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407,408) 
+  
+ -- AND D.CUIIO = 37474715
+
+
+  
+  GROUP BY 
+
+
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO
+  
+  
+  ) R ON R.CUIIO = L.CUIIO AND L.SERV_CODUL = R.SERV_CODUL
+  
+
+
+GROUP BY 
+
+    L.CUIIO,
+    L.PACHET,
+    L.CUATM,
+    L.SERV_CODUL,
+     L.SERV_CODUL_OLD,
+    L.DENUMIRE
+    
+    
+    HAVING 
+    
+    NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2)) >   500000
+    
+    OR
+    
+     NVAL(SUM(R.COL2)) - NVAL(SUM(L.COL1)) >   500000
+    
+    
+    ORDER BY
+
+    L.CUIIO,
+    L.SERV_CODUL
+    )
+    
+
+
+
+union 
+
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM 
+
+(
+
+
+SELECT  
+    2 ORDINE,
+    R.CUIIO,
+    R.CUATM,
+    R.PACHET,
+
+    R.SERV_CODUL,
+    R.SERV_CODUL_OLD,
+    R.DENUMIRE,
+    SUM(L.COL1) AS  COL1,
+    SUM(R.COL2) AS  COL2, 
+
+    
+      NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
+FROM 
+
+(
+SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+    (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA) AND  D.CAPITOL IN (407)  
+    AND D.RIND NOT IN ('1','-')  THEN NVAL(D.COL4) ELSE 0 END ))  
+   
+    AS COL1
+
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+  
+      INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') 
+      AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
+      
+      
+             
+       
+             
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+     
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+            
+     
+     
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407) 
+  
+
+--- AND D.CUIIO = 37474715
+  
+  GROUP BY 
+
+D.PACHET,
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO  
+  
+  
+  
+  ) L RIGHT JOIN (
+  
+  SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+       (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) 
+       AND  D.CAPITOL IN (407)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
+    +
+    SUM(CASE WHEN  D.PERIOADA IN(:pPERIOADA-1) 
+    AND   D.CAPITOL IN (408)  AND D.RIND NOT IN ('1','-')  THEN  NVAL(D.COL4) ELSE 0 END ))
+    AS COL2
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+
+     
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA-1)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407,408) 
+  
+--AND D.CUIIO = 37474715
+
+
+  
+  GROUP BY 
+
+
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+  D.PACHET,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO
+  
+  
+  ) R ON R.CUIIO = L.CUIIO AND L.SERV_CODUL = R.SERV_CODUL
+  
+
+
+GROUP BY 
+
+   R.CUIIO,
+    R.CUATM,
+    R.PACHET,
+
+    R.SERV_CODUL,
+    R.SERV_CODUL_OLD,
+    R.DENUMIRE
+    
+    
+    HAVING 
+    
+    NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2)) >   500000
+    
+    OR
+    
+     NVAL(SUM(R.COL2)) - NVAL(SUM(L.COL1)) >   500000
+    
+    
+    ORDER BY
+
+    R.CUIIO,
+    R.SERV_CODUL
+    )
+    
+
+
+ ORDER BY
+
+    CUIIO,
+    SERV_CODUL
+)
+
+
+--WHERE 
+--COL1 IS  NULL 
+--AND 
+--
+--(COL2 IS NOT NULL 
+--AND COL3 IS NOT NULL)
+
+GROUP BY 
+
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+--SERV_CODUL,
+SERV_CODUL_OLD,
+--DENUMIRE
+COL1,
+COL2,
+COL3
+
+
+
+HAVING 
+COL1 IS  NULL
+
+AND 
+
+(
+COL2 IS NOT   NULL 
+
+OR 
+
+COL3 IS  NOT NULL
+)
+
+UNION 
+
+
+
+
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+MAX(SERV_CODUL) SERV_CODUL,
+SERV_CODUL_OLD,
+MAX(DENUMIRE) DENUMIRE, 
+--SUM(COL1) AS COL1,
+--SUM(COL2) AS COL2,
+--SUM(COL3) AS COL3
+
+COL1,
+COL2,
+COL3
+ 
+FROM
+
+
+(
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM 
+
+(
+
+
+SELECT  
+    2 ORDINE,
+    L.CUIIO,
+    L.CUATM,
+    L.PACHET,
+
+    L.SERV_CODUL,
+    L.SERV_CODUL_OLD,
+    L.DENUMIRE,
+    SUM(L.COL1) AS  COL1,
+    SUM(R.COL2) AS  COL2, 
+
+    
+      NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
+FROM 
+
+(
+SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+    (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA) AND  D.CAPITOL IN (407)  
+    AND D.RIND NOT IN ('1','-')  THEN NVAL(D.COL4) ELSE 0 END ))  
+   
+    AS COL1
+
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+  
+      INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') 
+      AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
+      
+      
+             
+       
+             
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+     
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+            
+     
+     
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407) 
+  
+
+ -- AND D.CUIIO = 37474715
+  
+  GROUP BY 
+
+D.PACHET,
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO  
+  
+  
+  
+  ) L LEFT JOIN (
+  
+  SELECT 
+    D.CUIIO,
+ 
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+       (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) AND  D.CAPITOL IN (407)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
+    +
+    SUM(CASE WHEN  D.PERIOADA IN(:pPERIOADA-1) AND   D.CAPITOL IN (408)  AND D.RIND NOT IN ('1','-')  THEN  NVAL(D.COL4) ELSE 0 END ))
+    AS COL2
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+
+     
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA-1)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407,408) 
+  
+  --AND D.CUIIO = 37474715
+
+
+  
+  GROUP BY 
+
+
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO
+  
+  
+  ) R ON R.CUIIO = L.CUIIO AND L.SERV_CODUL = R.SERV_CODUL
+  
+
+
+GROUP BY 
+
+    L.CUIIO,
+    L.PACHET,
+    L.CUATM,
+    L.SERV_CODUL,
+     L.SERV_CODUL_OLD,
+    L.DENUMIRE
+    
+    
+    HAVING 
+    
+    NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2)) >   500000
+    
+    OR
+    
+     NVAL(SUM(R.COL2)) - NVAL(SUM(L.COL1)) >   500000
+    
+    
+    ORDER BY
+
+    L.CUIIO,
+    L.SERV_CODUL
+    )
+    
+
+
+
+union 
+
+SELECT
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+SERV_CODUL,
+SERV_CODUL_OLD,
+DENUMIRE,
+COL1,
+COL2,
+COL3
+
+ 
+FROM 
+
+(
+
+
+SELECT  
+    2 ORDINE,
+    R.CUIIO,
+    R.CUATM,
+    R.PACHET,
+
+    R.SERV_CODUL,
+    R.SERV_CODUL_OLD,
+    R.DENUMIRE,
+    SUM(L.COL1) AS  COL1,
+    SUM(R.COL2) AS  COL2, 
+
+    
+      NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2))  AS COL3 
+FROM 
+
+(
+SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+    (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA) AND  D.CAPITOL IN (407)  
+    AND D.RIND NOT IN ('1','-')  THEN NVAL(D.COL4) ELSE 0 END ))  
+   
+    AS COL1
+
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+     
+  
+      INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') 
+      AND  TRIM(D.COL31)=TRIM(CI.ITEM_CODE) )
+      
+      
+             
+       
+             
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+     
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+            
+     
+     
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+ (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407) 
+  
+
+ --AND D.CUIIO = 37474715
+  
+  GROUP BY 
+
+D.PACHET,
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO  
+  
+  
+  
+  ) L RIGHT JOIN (
+  
+  SELECT 
+    D.CUIIO,
+    D.PACHET,
+    D.CUATM,
+    C.FULL_CODE,
+    CI.ITEM_CODE    SERV_CODUL,
+    CI.A01          SERV_CODUL_OLD,
+    CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
+    
+    
+       (SUM(CASE WHEN D.PERIOADA IN(:pPERIOADA-1) 
+       AND  D.CAPITOL IN (407)  AND D.RIND NOT IN ('1','2','-')  THEN  NVAL(D.COL4) ELSE 0 END )  
+    +
+    SUM(CASE WHEN  D.PERIOADA IN(:pPERIOADA-1) 
+    AND   D.CAPITOL IN (408)  AND D.RIND NOT IN ('1','-')  THEN  NVAL(D.COL4) ELSE 0 END ))
+    AS COL2
+   
+     
+    FROM
+    
+     CIS2.VW_DATA_ALL D 
+
+     
+       INNER JOIN  VW_CLS_CLASS_ITEM CI  ON (CI.CLASS_CODE IN ('CSPM2') AND  (TRIM(D.COL1)=TRIM(CI.A01)) )
+         
+     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
+    
+  WHERE 
+  (D.PERIOADA IN(:pPERIOADA-1)) AND    
+  (D.FORM =:pFORM) AND
+  (D.FORM_VERS =:pFORM_VERS) AND 
+
+  (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
+  D.FORM IN (44)
+  AND  D.CAPITOL IN (407,408) 
+  
+--AND D.CUIIO = 37474715
+
+
+  
+  GROUP BY 
+
+
+ D.CUATM,
+ C.FULL_CODE,
+ R.DENUMIRE,
+  D.PACHET,
+ D.CUIIO,
+CI.A01,
+ CI.ITEM_CODE,
+ CI.NAME
+  
+  
+
+  ORDER BY 
+ C.FULL_CODE,
+  D.CUIIO
+  
+  
+  ) R ON R.CUIIO = L.CUIIO AND L.SERV_CODUL = R.SERV_CODUL
+  
+
+
+GROUP BY 
+
+   R.CUIIO,
+    R.CUATM,
+    R.PACHET,
+
+    R.SERV_CODUL,
+    R.SERV_CODUL_OLD,
+    R.DENUMIRE
+    
+    
+    HAVING 
+    
+    NVAL(SUM(L.COL1)) - NVAL(SUM(R.COL2)) >   500000
+    
+    OR
+    
+     NVAL(SUM(R.COL2)) - NVAL(SUM(L.COL1)) >   500000
+    
+    
+    ORDER BY
+
+    R.CUIIO,
+    R.SERV_CODUL
+    )
+    
+
+
+ ORDER BY
+
+    CUIIO,
+    SERV_CODUL
+)
+
+
+--WHERE 
+--COL1 IS  NULL 
+--AND 
+--
+--(COL2 IS NOT NULL 
+--AND COL3 IS NOT NULL)
+
+GROUP BY 
+
+ORDINE,
+CUIIO,
+CUATM,
+PACHET,
+--SERV_CODUL,
+SERV_CODUL_OLD,
+--DENUMIRE
+COL1,
+COL2,
+COL3
+
+
+
+HAVING 
+COL2 IS  NULL
+
+AND 
+
+(
+COL1 IS NOT   NULL 
+
+OR 
+
+COL3 IS  NOT NULL
+)
+
+
+
+
+
+ ORDER BY
+
+    CUIIO,
+    SERV_CODUL
+
+
+)
