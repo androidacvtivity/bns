@@ -1,38 +1,38 @@
-
-
-
-
-
-
-
-
- SELECT 
---     :pPERIOADA AS PERIOADA,
---    :pFORM AS FORM,
---    :pFORM_VERS AS FORM_VERS,
---    :pID_MDTABLE AS ID_MDTABLE,
---    :pCOD_CUATM AS COD_CUATM,
---    '0' AS NR_SECTIE,
---   '0' AS  NUME_SECTIE,
---    '0' AS NR_SECTIE1,
---    '0' AS NUME_SECTIE1,
---    '0' AS NR_SECTIE2,
---    '0' AS NUME_SECTIE2,
- CUIIO||'-'||SERV_CODUL||'-'||SERV_CODUL_OLD||'~'||ROWNUM NR_ROW,
-  ROWNUM  AS ORDINE,
-     '00000' AS DECIMAL_POS,
-     CUIIO||'-'||DENUMIRE NUME_ROW,
-     PACHET     COL1,
-     REPLACE(SERV_CODUL,'.','')   COL2,
-   
-    
-     COL1 COL3,
-     COL2 COL4,
-     NVAL(COL1) - NVAL(COL2)  AS COL5
-     
-     
-     FROM 
-     (
+--
+--
+--
+--
+--
+--
+--
+--
+-- SELECT 
+----     :pPERIOADA AS PERIOADA,
+----    :pFORM AS FORM,
+----    :pFORM_VERS AS FORM_VERS,
+----    :pID_MDTABLE AS ID_MDTABLE,
+----    :pCOD_CUATM AS COD_CUATM,
+----    '0' AS NR_SECTIE,
+----   '0' AS  NUME_SECTIE,
+----    '0' AS NR_SECTIE1,
+----    '0' AS NUME_SECTIE1,
+----    '0' AS NR_SECTIE2,
+----    '0' AS NUME_SECTIE2,
+-- CUIIO||'-'||SERV_CODUL||'-'||SERV_CODUL_OLD||'~'||ROWNUM NR_ROW,
+--  ROWNUM  AS ORDINE,
+----     '00000' AS DECIMAL_POS,
+--     CUIIO||'-'||DENUMIRE NUME_ROW,
+--     PACHET     COL1,
+--     REPLACE(SERV_CODUL,'.','')   COL2,
+--   
+--    
+--     COL1 COL3,
+--     COL2 COL4,
+--     NVAL(COL1) - NVAL(COL2)  AS COL5
+--     
+--     
+--     FROM 
+--     (
 SELECT
   D.CUIIO,
   MAX(D.PACHET) PACHET,
@@ -53,7 +53,9 @@ WHERE
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND  D.CAPITOL IN (407,408) 
-  AND D.CUIIO IN  (20282377,37474715,40387262)
+  AND D.CUIIO IN  (
+  --20282377,37474715,
+  40387262)
 GROUP BY
   D.CUIIO, 
   CI.ITEM_CODE,
@@ -100,7 +102,11 @@ WHERE
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND  D.CAPITOL IN (407,408) 
-  AND D.CUIIO IN  (20282377,37474715,40387262)
+  AND D.CUIIO IN  (
+  
+  --20282377,37474715,
+  
+  40387262)
 GROUP BY
   CI.ITEM_CODE,
   D.CUIIO,
@@ -131,7 +137,7 @@ HAVING
     CUIIO,
     SERV_CODUL
     
-   )
+  -- )
 
 
 
