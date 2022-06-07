@@ -9,3 +9,7 @@ link - https://edecbns-test.sfs.md/user/login
 User - natalia.siminovici
 
 Password - 1234567890
+
+Warmup-1 > sumDouble
+
+3600000 - R-UL DROCHIA
