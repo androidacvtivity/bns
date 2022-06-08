@@ -48,7 +48,7 @@ SELECT
     D.CUIIO,
     D.PACHET,
     D.CUATM,
-    C.FULL_CODE,
+  
     CI.ITEM_CODE    SERV_CODUL,
     CI.A01          SERV_CODUL_OLD,
     CI.NAME||' - '||R.DENUMIRE  DENUMIRE,
@@ -65,45 +65,14 @@ SELECT
      CIS2.VW_DATA_ALL D 
      
   
-      INNER JOIN (
-         
-         SELECT
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER,
-                  MAX(CI.ITEM_CODE_VERS) AS ITEM_CODE_VERS
-                FROM
-                  VW_CLS_CLASS_ITEM CI
-                WHERE
-                  CI.CLASS_CODE IN ('CSPM2') 
-    
-                GROUP BY
-                  CI.ITEM_CODE,
-                  CI.A01,
-                  CI.ITEM_PATH,
-                  CI.NAME,
-                  CI.SHOW_ORDER
-                  
-             ) CI ON (
-             
-             TRIM(D.COL31)=TRIM(CI.ITEM_CODE)
-             
-             )
-         
-     INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
+      INNER JOIN  CIS2.VW_CLS_CLASS_ITEM  CI ON (CI.CLASS_CODE IN ('CSPM2')  AND TRIM(D.COL31)=TRIM(CI.ITEM_CODE))
+      INNER JOIN CIS2.RENIM R ON (R.CUIIO = D.CUIIO AND R.CUIIO_VERS = D.CUIIO_VERS) 
      
-      INNER JOIN CIS2.VW_CL_CUATM C ON (D.CUATM=C.CODUL) 
-            
-     
-     
-    
+
   WHERE 
   (D.PERIOADA IN(:pPERIOADA)) AND    
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
- -- (:pID_MDTABLE =:pID_MDTABLE) AND
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND  D.CAPITOL IN (405) 
@@ -115,19 +84,14 @@ SELECT
 
 D.PACHET,
  D.CUATM,
- C.FULL_CODE,
+
  R.DENUMIRE,
  D.CUIIO,
 CI.A01,
  CI.ITEM_CODE,
  CI.NAME
-
   
-  
-
-  ORDER BY 
- C.FULL_CODE,
-  D.CUIIO  ) L LEFT JOIN (
+  ) L LEFT JOIN (
   
   SELECT 
     D.CUIIO,
@@ -180,7 +144,7 @@ CI.A01,
   (D.PERIOADA IN(:pPERIOADA-1)) AND    
   (D.FORM =:pFORM) AND
   (D.FORM_VERS =:pFORM_VERS) AND 
- -- (:pID_MDTABLE =:pID_MDTABLE) AND
+
   (D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%') AND
   D.FORM IN (44)
   AND  D.CAPITOL IN (405,406) 
