@@ -35,6 +35,8 @@ SELECT
 FROM 
 
 (
+
+
 SELECT 
     D.CUIIO,
     D.PACHET,
@@ -118,7 +120,11 @@ CI.A01,
 
   ORDER BY 
  C.FULL_CODE,
-  D.CUIIO  ) L LEFT JOIN (
+  D.CUIIO  
+  
+  
+  
+  ) L LEFT JOIN (
   
   SELECT 
     D.CUIIO,
