@@ -1,0 +1,58 @@
+﻿SELECT
+--  :pPERIOADA AS PERIOADA,
+--  :pFORM AS FORM,
+--  :pFORM_VERS AS FORM_VERS,
+--  :pID_MDTABLE AS ID_MDTABLE,
+--  :pCOD_CUATM AS COD_CUATM,
+--  '0' AS NR_SECTIE,
+--  '0' AS NUME_SECTIE,
+--  '0' AS NR_SECTIE1,
+--  '0' AS NUME_SECTIE1,
+--  '0' AS NR_SECTIE2,
+--  '0' AS NUME_SECTIE2,
+  C.CODUL AS NR_ROW,
+  '0' AS ORDINE,
+  '0' AS DECIMAL_POS,
+  C.DENUMIRE AS NUME_ROW,
+  COUNT(DISTINCT D.CUIIO) AS COL1
+
+FROM
+  (
+    SELECT '00'   AS CODUL, 'TOTAL-Numarul de intreprinderi' AS DENUMIRE FROM DUAL 
+    
+--    UNION
+--    SELECT R.RIND AS CODUL, R.DENUMIRE FROM MD_RIND R WHERE R.FORM =10 AND R.CAPITOL =46 AND R.DENUMIRE NOT LIKE '%Receptionat%' AND RIND NOT IN ('-')
+  ) C LEFT JOIN
+  (
+    SELECT 
+      D.CUIIO,
+      D.CUIIO_VERS,
+      D.RIND,
+      D.COL1
+    FROM VW_DATA_ALL_CALC D
+    WHERE D.PERIOADA = :pPERIOADA     
+      AND D.CUATM_FULL LIKE '%'||:pCOD_CUATM||';%'
+      AND D.FORM       IN(10)
+      AND D.CAPITOL    IN(46)
+      
+      GROUP BY 
+          D.CUIIO,
+      D.CUIIO_VERS,
+      D.RIND,
+      D.COL1
+      
+--      HAVING 
+--      D.RIND = '00'
+      ORDER BY 
+      D.RIND
+      
+    
+  ) D ON(
+ 
+--(C.CODUL = D.RIND AND D.COL1 = 1) OR 
+ 
+
+ C.CODUL='00')
+GROUP BY
+  C.CODUL,
+  C.DENUMIRE
