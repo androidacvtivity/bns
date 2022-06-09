@@ -1,0 +1,39 @@
+SELECT  
+ 'Rind. '||D.RIND||':  COL.A - '||
+  SUM(D.COL1)
+  
+   
+  
+  AS REZULTAT
+ 
+ 
+
+
+FROM
+  CIS2.VW_DATA_ALL_GC D 
+        
+WHERE
+  (D.PERIOADA=:PERIOADA           ) AND
+  (D.NR_GOSP=:NR_GOSP               OR :NR_GOSP = -1) AND
+  (D.UNIT_CODE_VERS=:UNIT_CODE_VERS    OR :UNIT_CODE_VERS = -1) AND
+  (D.FORM = :FORM               ) AND
+  (D.FORM_VERS=:FORM_VERS ) AND
+  (D.CAPITOL=:CAPITOL            OR :CAPITOL = -1) AND
+  (D.CAPITOL_VERS=:CAPITOL_VERS OR :CAPITOL_VERS = -1) AND
+  (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+ 
+  D.FORM IN (62)  
+  AND D.CAPITOL IN (1198)   
+  
+  
+ GROUP BY 
+  D.RIND
+ 
+
+
+HAVING
+
+SUM(D.COL1) NOT IN(1,2,3,4,5,6,7,8,9,10,11)
+
+
+ 

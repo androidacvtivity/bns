@@ -1,0 +1,27 @@
+        SELECT 
+  CAPITOL,
+  CAPITOL_VERS,
+  DENUMIRE,
+  INDEX1,
+  INDEX2,
+  TAB,
+  HEADER_HTML,
+  DEN_SHORT,
+  FOOTNOTE,
+  DINAMIC,
+  ORDINE,
+  DATA_REG,
+  STATUT,
+  HAS_FILIAL,
+  SCRIPT_JS  
+        
+                FROM CIS2.MD_CAPITOL 
+                
+                WHERE
+                1=1 
+                  --  CAPITOL IN  (1116,1115,1117)
+                
+                
+
+ORDER BY 
+  CAPITOL
