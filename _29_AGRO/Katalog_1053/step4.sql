@@ -1,45 +1,5 @@
---         INSERT INTO RENIM (
---         CUIIO,
---    CUIIO_VERS,
---    DENUMIRE,
---    EDIT_USER,
---    STATUT,
---    CUATM,
---    CFP,
---    CFOJ,
---    COCM,
---    CAEM,
---    BUGET,
---    TIP,
---    PROD,
---    FOR_CUB,
---    GENMUZEE,
---    TIPMUZEE,
---    TIP_LOCAL,
---    TIP_INST,
---    CAEM2,
---    N85_NTL,
---    N85_NTIIP,
---    N85_NDIIP,
---    N85_NPDS,
---    N85_NRIIP,
---    N85_NSIIP,
---    GENMUZEE2,
---    NFI,
---    NTII,
---    NPDS,
---    ORGANE,
---    TIP_INV,
---    RENIM_PERS,
---    ORGANE_COND,
---    GEN_INSTITUTIE,
---    IDNO
---         )
---         
-         
-         SELECT
-         
-    CUIIO,
+         INSERT INTO CIS2.RENIM (
+         CUIIO,
     CUIIO_VERS,
     DENUMIRE,
     EDIT_USER,
@@ -74,24 +34,98 @@
     ORGANE_COND,
     GEN_INSTITUTIE,
     IDNO
-            FROM USER_BANCU.VW_MAX_RENIM_TRIM_CIS2
+         )
+         
+         
+         SELECT
+         
+    CUIIO,
+    1053 CUIIO_VERS,
+    DENUMIRE,
+    EDIT_USER,
+    STATUT,
+    CUATM,
+    CFP,
+    CFOJ,
+    COCM,
+    CAEM,
+    BUGET,
+    TIP,
+    PROD,
+    FOR_CUB,
+    GENMUZEE,
+    TIPMUZEE,
+    TIP_LOCAL,
+    TIP_INST,
+    CAEM2,
+    N85_NTL,
+    N85_NTIIP,
+    N85_NDIIP,
+    N85_NPDS,
+    N85_NRIIP,
+    N85_NSIIP,
+    GENMUZEE2,
+    NFI,
+    NTII,
+    NPDS,
+    ORGANE,
+    TIP_INV,
+    RENIM_PERS,
+    ORGANE_COND,
+    GEN_INSTITUTIE,
+    IDNO
+            FROM USER_BANCU.VW_MAX_RENIM_CIS2
             
             
             WHERE 
             
             CUIIO IN (
             
-            SELECT FC.CUIIO
-                  
-              FROM CIS2.FORM_CUIIO  FC
-                   INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
-                                   FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1053
-                               GROUP BY CUIIO) BB
-                       ON (    BB.CUIIO = FC.CUIIO
-                           AND BB.CUIIO_VERS = FC.CUIIO_VERS)
-             WHERE FC.FORM IN (45) AND FC.STATUT <> '3'
+            31514898,
+--38823039,
+40157898,
+40671017,
+40803246,
+40841821,
+40951320,
+41069423,
+41096934,
+41102296,
+41121371,
+41153678,
+41154092,
+41190509,
+41191302,
+41191621,
+41290085,
+41344266,
+41373351,
+41390776,
+41418119,
+41478736,
+41484257,
+41500989,
+41506243,
+41509081,
+41520958,
+41534268,
+41534662,
+41559682,
+41560314,
+41560320,
+41560353,
+274936378,
+2037291064,
+3752981867,
+4057855978,
+4118442064,
+4119400445,
+4120350264,
+4122910564,
+4143030467,
+4146944767,
+4150963264
             
             )
             
-            AND CUIIO_VERS <> 1053
+        --   AND CUIIO_VERS <> 2011

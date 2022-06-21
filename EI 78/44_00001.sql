@@ -1,0 +1,29 @@
+SELECT
+    'Cap. SR Export si/sau Cap. SR Import nu are date.' AS REZULTAT
+    FROM
+      CIS2.VW_DATA_ALL D
+    WHERE
+      (D.PERIOADA=:PERIOADA          ) AND
+      (D.CUIIO=:CUIIO               ) AND
+      (D.CUIIO_VERS=:CUIIO_VERS     OR :CUIIO_VERS = -1) AND
+      (D.FORM_VERS=:FORM_VERS       OR :FORM_VERS = -1) AND
+      (:CAPITOL_VERS = :CAPITOL_VERS OR :CAPITOL_VERS <>  :CAPITOL_VERS) AND
+      (D.ID_MD=:ID_MD               OR :ID_MD = -1) AND
+      (:CAPITOL=:CAPITOL            OR CAPITOL <> :CAPITOL) AND
+      :FORM = :FORM AND
+       D.FORM IN (44)  
+       
+       
+     
+--
+--     HAVING 
+--    ( 
+--     SUM(CASE WHEN D.CAPITOL = 405 AND (D.COL33 IS NOT NULL OR D.COL31 IS NOT NULL OR D.COL4 IS NOT NULL ) THEN 0 ELSE 1 END)
+--     +  SUM(CASE WHEN D.CAPITOL = 407 AND (D.COL33 IS NOT NULL OR D.COL31 IS NOT NULL OR D.COL4 IS NOT NULL ) THEN 0 ELSE 1 END)  
+-- >  0
+-- )
+-- 
+-- AND 
+-- 
+--  SUM(CASE WHEN D.CAPITOL = 1 THEN NVAL(D.COL1)  ELSE 0 END)
+--     + SUM(CASE WHEN D.CAPITOL = 14 THEN NVAL(D.COL1) ELSE 0 END)  =   0
