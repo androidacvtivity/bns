@@ -1,20 +1,30 @@
-﻿SELECT 
-      L.CONTROL,
-      L.FORMULA,
-      L.PRIORITATEA,
-      L.STATUT
-      
-      
-        
-        FROM
 
-( 
-SELECT 
-      B.CONTROL,
-      B.FORMULA,
-      B.PRIORITATEA,
-      B.STATUT
-      
+SELECT D.*
+
+FROM
+
+
+(
+
+        SELECT D.*    
+        FROM CIS2.CONTROL D
+        
+        WHERE 
+        D.FORM = 64
+        AND D.PERIOADA = 2010
+        
+        AND D.REZULTAT <> 'OK'
+        
+        ) D
+        
+        
+        WHERE 
+        
+        D.CONTROL IN (
+        
+        SELECT 
+      B.CONTROL
+
       
         
         FROM CIS2.MD_CONTROL B  INNER JOIN (
@@ -27,7 +37,7 @@ SELECT
         
          WHERE
          1=1
-         AND A.FORM  = 61
+         AND A.FORM  = 64
                
          GROUP BY 
           A.CONTROL
@@ -40,11 +50,15 @@ SELECT
         
          WHERE
          1=1
-         AND B.FORM  = 61
+         AND B.FORM  = 64
          AND B.STATUT <> '3'
-        -- AND B.FORM_VERS = 2009
-               
+         AND B.PRIORITATEA = '2'
          
          
-         ORDER BY 
-          B.CONTROL ) L
+       
+        )
+        
+        
+        
+        ORDER BY 
+        D.CUIIO

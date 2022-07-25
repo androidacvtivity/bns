@@ -24,7 +24,7 @@ SELECT
         
          WHERE
          1=1
-         AND A.FORM  = 46
+         AND A.FORM  = 64
                
          GROUP BY 
           A.CONTROL
@@ -37,7 +37,7 @@ SELECT
         
          WHERE
          1=1
-         AND B.FORM  = 46
+         AND B.FORM  = 64
          AND B.STATUT <> '3'
                
          
