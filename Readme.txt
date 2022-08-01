@@ -1,7 +1,15 @@
-docker run -d -p 8082:8082 docker/getting-started
+131829	499749	3.8	4.8
 
-docker build -t getting-started .
 
-docker run -p 8082:8082 getting-started 
 
-docker run --getting-started  node-appp -d -p 3000:3000 node-app
+58686	302129	
+
+
+131805	73143	499017	197620	
+
+
+7001416
+
+3210
+
+Chi$in@u2020
