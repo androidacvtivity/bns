@@ -12,4 +12,8 @@
 
 3210
 
-Chi$in@u2020
+
+
+GP   -- cap.II col1 rind.010 /10000
+
+GT    -- cap.II co2 rind.010 /10000
