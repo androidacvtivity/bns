@@ -10,3 +10,7 @@ Si in general Ovseanicova a zis ca in 29 Agro nici in CIS2 nu este autosuma dar 
 verificare la egalitate. 
 
 
+
+
+CAP1_R3_C8
+
