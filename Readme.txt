@@ -14,3 +14,5 @@ verificare la egalitate.
 
 CAP1_R3_C8
 
+
+Chi$in@u2020
