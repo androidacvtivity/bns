@@ -1,18 +1,14 @@
-Am vorbit cu Ovseanicova depre acest control 45-015
-si ea a zis
- 
-controlul dat nu este autosuma dar regula de validare cu prioritatea 2. 
+Cont personal  256/8398130000
 
-45-015	Rind.(1328)=Rind.(1301+1302+1320+1321+1322+1323+1324+1327) pe COL1	2	1
-
-      int =  (float) (partea dreapta se rotungeste dar fara virgula dupa)
-Si in general Ovseanicova a zis ca in 29 Agro nici in CIS2 nu este autosuma dar acestea sunt controlale la 
-verificare la egalitate. 
+Electricitate  NLC  1143078
 
 
 
+IDNP 0990207164880 Bancu Valentina
+IDNP 0992411165853 Bancu Gheorghe
+IDNP 0983009161119 Bancu Octavian
+tel  068325707 
 
-CAP1_R3_C8
+Roma2022!@#$
+vitalie.bancu@gmail.com
 
-
-Chi$in@u2020
