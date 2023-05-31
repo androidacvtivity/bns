@@ -22,7 +22,7 @@
                
                                     --7
  
-  FROM USER_BANCU.AGRO_4 C
+  FROM USER_BANCU.AGRO_4_23 C
        WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS
@@ -32,7 +32,7 @@
                 
                 (
                     SELECT *
-                    FROM AGRO_4 C
+                    FROM USER_BANCU.AGRO_4_23 C
                    WHERE
                    VB.CUIIO       = C.CUIIO AND 
                    VB.CUIIO_VERS  = C.CUIIO_VERS

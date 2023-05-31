@@ -1,5 +1,10 @@
 SELECT 
-         D.PERIOADA,
+         CASE 
+         WHEN D.PERIOADA = 1055 THEN 'TRIM IV'
+         WHEN D.PERIOADA = 1054 THEN 'TRIM III'
+         WHEN D.PERIOADA = 1053 THEN 'TRIM II'
+         WHEN D.PERIOADA = 1052 THEN 'TRIM I'
+         END TRIMESTRU,
          D.UNIT_CODE,
          D.CUATM,
          CASE 
@@ -40,7 +45,7 @@ FROM
   
 WHERE
  -- (D.PERIOADA IN (1040,1041,1042,1043))  AND   
-  (D.PERIOADA IN (1050))  AND   
+  (D.PERIOADA IN (1055,1054,1053,1052))  AND   
   (D.FORM =62) AND
   
   

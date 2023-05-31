@@ -1,14 +1,14 @@
-﻿            INSERT INTO CIS2.FORM_CUIIO
-            
-             (
-            
-                   CUIIO,
-                   CUIIO_VERS,
-                   FORM,
-                   FORM_VERS,
-                   STATUT 
-            
-            )
+﻿--            INSERT INTO CIS2.FORM_CUIIO
+--            
+--             (
+--            
+--                   CUIIO,
+--                   CUIIO_VERS,
+--                   FORM,
+--                   FORM_VERS,
+--                   STATUT 
+--            
+--            )
 
 
 
@@ -17,15 +17,16 @@
 --                    L.CUIIO L_CUIIO,
 --                    L.CUIIO_VERS  L_CUIIO_VERS,
                     
+                    R.CUIIO,
                     L.CUIIO,
                     L.CUIIO_VERS,
                     43 FORM,
                     2000 FORM_VERS,
                     '1' STATUT 
                 
-                    FROM AGRO_4 L
+                    FROM USER_BANCU.AGRO_4_23 L
                     
-                                LEFT   JOIN (
+                                RIGHT   JOIN (
                                 
                                 SELECT 
                   FC.CUIIO,
@@ -75,7 +76,7 @@
                                 
                                 
                                 WHERE 
-                                R.CUIIO IS  NOT  NULL
+                                L.CUIIO IS NOT    NULL
                                 
                        --         AND   R.CUIIO_VERS  <> 1040    
                                      

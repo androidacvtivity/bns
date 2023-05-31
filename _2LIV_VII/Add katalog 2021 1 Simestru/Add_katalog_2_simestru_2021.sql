@@ -50,6 +50,8 @@
                ON (R.CUIIO = FC.CUIIO AND R.CUIIO_VERS = FC.CUIIO_VERS)
                
                
-           
+WHERE 
+
+R.CUIIO_VERS <> 1826           
                
                
