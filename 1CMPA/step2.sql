@@ -6,4 +6,4 @@
             
             
             SELECT *
-            FROM USER_BANCU.CMPA1;
+            FROM REG_UNIT_GC;
