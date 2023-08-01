@@ -40,7 +40,7 @@
          SELECT
          
     CUIIO,
-    CUIIO_VERS,
+    1057 CUIIO_VERS,
     DENUMIRE,
     EDIT_USER,
     STATUT,
@@ -80,14 +80,19 @@
             WHERE 
             
             CUIIO IN (
-            
-       SELECT CUIIO
-FROM USER_BANCU.VW_4_AGRO_2022
-           
+
+
+SELECT FC.CUIIO
+               
+              FROM USER_BANCU.VW_4_AGRO_1057 FC 
+                  
+             
+             
+      
             
             )
             
-            --AND CUIIO_VERS <> 1053
-            
+            AND CUIIO_VERS  <>   1057
+--            
             ORDER BY 
             CUIIO_VERS
