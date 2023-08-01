@@ -1,4 +1,14 @@
+UPDATE CIS2.FORM_CUIIO
+
+SET STATUT = '3'
+
+--SELECT *
 --
+--FROM CIS2.FORM_CUIIO  
+
+
+WHERE 
+CUIIO IN (
 --INSERT INTO CIS2.FORM_CUIIO (
 --                    CUIIO,
 --                    CUIIO_VERS,
@@ -7,9 +17,23 @@
 --                    STATUT 
 --)
 
-               SELECT 
-                   R.CUIIO,
-                   1053 CUIIO_VERS,
+     
+SELECT 
+
+                    CUIIO
+--                    CUIIO_VERS,
+--                    FORM,
+--                    FORM_VERS,
+--                    STATUT 
+                    
+                    
+                    
+                    FROM 
+        
+
+         (  SELECT 
+                   FC.CUIIO,
+                   1057 CUIIO_VERS,
                    45 FORM,
                    1004 FORM_VERS,
                    '1' STATUT
@@ -24,18 +48,25 @@ SELECT FC.CUIIO,
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1053
+                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1057
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
              WHERE 
              FC.FORM IN (45) AND FC.STATUT <> '3'
              
-             ) FC RIGHT JOIN (
+             ) FC LEFT  JOIN (
+
              SELECT CUIIO
-FROM USER_BANCU.VW_4_AGRO_2022
+FROM USER_BANCU.VW_4_AGRO_1057
+
+
              ) R ON R.CUIIO = FC.CUIIO 
              
              WHERE 
-             FC.CUIIO IS NOT   NULL 
+             R.CUIIO IS     NULL 
               
+             ))
+             AND FORM  = 45 
+             AND CUIIO_VERS = 1057
+             AND STATUT = '1'

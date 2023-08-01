@@ -12,7 +12,7 @@ CURSOR C IS
                   C.CAEM2,
                   C.IDNO        
   
-  FROM USER_BANCU.VW_4_AGRO_1053  C
+  FROM USER_BANCU.VW_4_AGRO_1057  C
          
 ;
 

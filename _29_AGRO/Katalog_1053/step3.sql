@@ -1,12 +1,21 @@
+--INSERT INTO CIS2.FORM_CUIIO (
+--        CUIIO,
+--        CUIIO_VERS,
+--        FORM,
+--        FORM_VERS,
+--        STATUT
+--)
+
+
 SELECT FC.CUIIO,
-                   FC.CUIIO_VERS,
+                   1057 CUIIO_VERS,
                    FC.FORM,
                    FC.FORM_VERS,
                    FC.STATUT
               FROM CIS2.FORM_CUIIO  FC
                    INNER JOIN (  SELECT CUIIO, MAX (CUIIO_VERS) CUIIO_VERS
                                    FROM CIS2.FORM_CUIIO
-                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1053
+                                  WHERE FORM IN (45) AND CUIIO_VERS <= 1057
                                GROUP BY CUIIO) BB
                        ON (    BB.CUIIO = FC.CUIIO
                            AND BB.CUIIO_VERS = FC.CUIIO_VERS)
@@ -14,4 +23,4 @@ SELECT FC.CUIIO,
              FC.FORM IN (45) AND FC.STATUT <> '3'
              
              
-             AND FC.CUIIO_VERS =   1053
+--             AND FC.CUIIO_VERS =    1057
