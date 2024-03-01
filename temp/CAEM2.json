@@ -1,0 +1,17 @@
+{
+	"table": "cl_prodmold_fisc_1",
+	"rows":
+	[
+		{
+			"tid": 1,
+			"CODE": "081112610",
+			"unitatea_mas": "t",
+			"vid": "26",
+			"NAME": "Porfir (brut, degroșat sau simplu debitat)",
+			"DESCRIPTION": null,
+			"FORMAT": null,
+			"weight": "0",
+			"language": "und"
+		}
+	]
+}
