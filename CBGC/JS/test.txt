@@ -1,0 +1,1 @@
+Verifica acest cod in js. Nu calculeaza suma corect. Daca un rind printre randuri nu este completat nu calculeza suma corect.
