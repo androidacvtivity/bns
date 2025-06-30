@@ -1,23 +1,21 @@
-﻿INSERT INTO CIS2.REG_UNIT_GC
-
-(
-
-UNIT_CODE,
-  UNIT_CODE_VERS,
-  NR_GOSP,
-  NR_MAPS,         
-  SURNAME,         
-  NAME,            
-  PATRONIMIC,      
-  CUATM,           
-  ADDRESS_1,       
-  ADDRESS_2,       
-  ADDRESS_3,       
-  ADDRESS_4,       
-  ENVIRONMENT,     
-  CSID,            
-  EDIT_USER 
-)
+﻿--INSERT INTO CIS2.REG_UNIT_GC
+--(
+--  UNIT_CODE,
+--  UNIT_CODE_VERS,
+--  NR_GOSP,
+--  NR_MAPS,         
+--  SURNAME,         
+--  NAME,            
+--  PATRONIMIC,      
+--  CUATM,           
+--  ADDRESS_1,       
+--  ADDRESS_2,       
+--  ADDRESS_3,       
+--  ADDRESS_4,       
+--  ENVIRONMENT,     
+--  CSID,            
+--  EDIT_USER 
+--)
 
 
 
@@ -44,46 +42,33 @@ SELECT
     UNIT_CODE IN (
     
 
-    
+ 878860,
+879091,
+879176,
+879206,
+879222,
+879336,
+879441,
+879540,
+879697,
+879704,
+879772,
+879853,
+879933,
+879948,
+879950,
+880018,
+880163,
+880340,
+880436,
+880540,
+880586
 
-860468,
-860516,
-860536,
-860543,
-860544,
-860570,
-860573,
-860575,
-860580,
-860586,
-860609,
-860611,
-860626,
-860627,
-860634,
-860664,
-860686,
-860692,
-860714,
-860725,
-860736,
-860738,
-860749,
-860756,
-860767,
-860768,
-860791,
-860792,
-860798,
-860814,
-860815,
-860871,
-860911,
-860918,
-860919,
-860945
 
-    )
+
+)
+
+AND UNIT_CODE_VERS <> 1065
     
     ORDER BY
     UNIT_CODE
