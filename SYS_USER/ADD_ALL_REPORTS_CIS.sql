@@ -12,13 +12,13 @@
 --  CAPITOL_ACCES,  
 --  DATA_REG       
 --  )
---  
+  
 
 
 
 
 SELECT
-  620 ID_USER,        
+  209 ID_USER,        
   L.CUATM,          
   L.FORM,           
   L.FORM_VERS,      
@@ -68,7 +68,7 @@ FROM
   
         WHERE
         
-        ID_USER IN (620)
+        ID_USER IN (209)
         
         ) R ON R.FORM = L.FORM
 
@@ -89,7 +89,7 @@ GROUP BY
 
       HAVING 
      1=1 
-      AND ROWNUM <=15  
+     AND  L.FORM IN (57,63,66,67,59,13,64)  
 
 
 
