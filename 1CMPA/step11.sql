@@ -5,7 +5,7 @@
 
 
 SELECT 
-FC.UNIT_CODE 
+D.UNIT_CODE 
 
     
 FROM 
@@ -50,12 +50,12 @@ FC.STATUT
                )
  WHERE FC.FORM IN (61) AND FC.STATUT <> '3') FC 
  
-                                              LEFT JOIN  USER_BANCU.CMPA1_v1 D  ON FC.UNIT_CODE = D.UNIT_CODE  
+                                              RIGHT JOIN  USER_BANCU.CMPA2_1068_FINAL D  ON FC.UNIT_CODE = D.UNIT_CODE  
                                               
                                               
                                               WHERE 
                                               
-                                              D.UNIT_CODE IS NOT  NULL 
+                                              FC.UNIT_CODE IS     NULL ;
  
  
 -- WHERE 
