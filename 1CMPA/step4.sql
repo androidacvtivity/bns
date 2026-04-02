@@ -1,4 +1,4 @@
-﻿--INSERT INTO USER_BANCU.CMPA2_1052_FINAL (
+﻿--INSERT INTO USER_BANCU.CMPA2_1068_FINAL (
 --  UNIT_CODE,
 --  UNIT_CODE_VERS,
 --  NR_GOSP,
@@ -69,7 +69,7 @@ SELECT
             
            
             
-            FROM USER_BANCU.CMPA2_1052 D
+            FROM USER_BANCU.CMPA2_1068 D
 
 )
 
@@ -80,4 +80,10 @@ LEFT   JOIN  CIS2.VW_CL_CUATM C ON C.CODUL = D.CUATM
   WHERE 
   
   C.CODUL IS NOT  NULL ;
+  
+  
+  
+  
+ SELECT * 
+    FROM USER_BANCU.CMPA2_1068_FINAL
            

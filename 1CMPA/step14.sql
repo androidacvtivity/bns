@@ -23,7 +23,7 @@ D.NR_MAPS,
             
            
             
-            FROM USER_BANCU.CMPA1_v1 D
+            FROM USER_BANCU.CMPA2_1068_FINAL D
             
                             LEFT JOIN REG_UNIT_GC RN
                         ON     D.UNIT_CODE = RN.UNIT_CODE
@@ -34,4 +34,7 @@ D.NR_MAPS,
                   
                   WHERE 
                   
-                  RN.UNIT_CODE IS NOT  NULL
+                  RN.UNIT_CODE IS  NOT  NULL;
+                  
+--                  SELECT *
+--                  FROM USER_BANCU.CMPA2_1068_FINAL;
